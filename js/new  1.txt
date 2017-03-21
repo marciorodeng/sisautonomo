@@ -1,0 +1,15 @@
+<div class="col-md-2">\
+	<label for="ConcluidoProcedtarefa">Ação Concl.? </label><br>\
+	<div class="form-group">\
+		<div class="btn-group" data-toggle="buttons">\
+			<label class="btn btn-warning active" name="radio_ConcluidoProcedtarefa'+ps+'" id="radio_ConcluidoProcedtarefa'+ps+'N">\
+			<input type="radio" name="ConcluidoProcedtarefa'+ps+'" id="radiogeraldinamico"\
+				autocomplete="off" value="N" checked>Não\
+			</label>\
+			<label class="btn btn-default" name="radio_ConcluidoProcedtarefa'+ps+'" id="radio_ConcluidoProcedtarefa'+ps+'S">\
+			<input type="radio" name="ConcluidoProcedtarefa'+ps+'" id="radiogeraldinamico"\
+				autocomplete="off" value="S">Sim\
+			</label>\
+		</div>\
+	</div>\
+</div>\
