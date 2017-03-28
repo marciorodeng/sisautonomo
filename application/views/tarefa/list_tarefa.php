@@ -45,6 +45,8 @@
                             <span class="glyphicon glyphicon-calendar"></span> <b>Criada:</b> <?php echo $row['DataTarefa']; ?> -
                             <?php } if ($row['DataPrazoTarefa']) { ?>
                             <span class="glyphicon glyphicon-calendar"></span> <b>Prazo:</b> <?php echo $row['DataPrazoTarefa']; ?>
+							<?php } if ($row['QuitadoTarefa']) { ?>
+                            <span class="glyphicon glyphicon-calendar"></span> <b>Prioridade?</b> <?php echo $row['QuitadoTarefa']; ?>
                             <?php } ?>						
 						</p>
                         <p>
@@ -92,6 +94,8 @@
                             <span class="glyphicon glyphicon-calendar"></span> <b>Criada:</b> <?php echo $row['DataTarefa']; ?> -
                             <?php } if ($row['DataPrazoTarefa']) { ?>
                             <span class="glyphicon glyphicon-calendar"></span> <b>Prazo:</b> <?php echo $row['DataPrazoTarefa']; ?>
+							<?php } if ($row['QuitadoTarefa']) { ?>
+                            <span class="glyphicon glyphicon-calendar"></span> <b>Prioridade?</b> <?php echo $row['QuitadoTarefa']; ?>
                             <?php } ?>						
 						</p>
 

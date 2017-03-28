@@ -88,7 +88,9 @@
 						<li><a href="<?php echo base_url() ?>relatorio/despesa">Despesas & Saídas</a></li>
 						<li role="separator" class="divider"></li>
 						<li><a href="<?php echo base_url() ?>relatorio/financeiro">Entradas & Pagamentos</a></li>
-						<li role="separator" class="divider"></li>					
+						<li role="separator" class="divider"></li>
+						<li><a href="<?php echo base_url() ?>relatorio/clienteprod">Clientes & Orçam. & Produtos & Proc.</a></li>
+						<li role="separator" class="divider"></li>							
 						<li><a href="<?php echo base_url() ?>">Estoque</a></li>
 						<li role="separator" class="divider"></li>
 					</ul>

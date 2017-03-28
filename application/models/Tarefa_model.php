@@ -128,20 +128,25 @@ class Tarefa_model extends CI_Model {
 
     public function list_tarefa($id, $aprovado, $completo) {
 
-        $query = $this->db->query('SELECT '
-            . 'TF.idApp_Tarefa, '
-            . 'TF.DataTarefa, '
-			. 'TF.DataPrazoTarefa, '
-            . 'TF.ProfissionalTarefa, '
-            . 'TF.AprovadoTarefa, '
-            . 'TF.ObsTarefa '
-            . 'FROM '
-            . 'App_Tarefa AS TF '
-            . 'WHERE '
-            #. 'TF.idApp_Cliente = ' . $id . ' AND '
-            . 'TF.idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND '
-			. 'TF.AprovadoTarefa = "' . $aprovado . '" '
-            . 'ORDER BY TF.DataTarefa DESC ');
+        $query = $this->db->query('
+            SELECT
+                TF.idApp_Tarefa,
+                TF.DataTarefa,
+    			TF.DataPrazoTarefa,
+				TF.QuitadoTarefa,
+                TF.ProfissionalTarefa,
+                TF.AprovadoTarefa,
+                TF.ObsTarefa
+            FROM
+                App_Tarefa AS TF
+            WHERE
+                TF.idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND
+                TF.AprovadoTarefa = "' . $aprovado . '"
+            ORDER BY
+                TF.DataPrazoTarefa ASC,
+				TF.QuitadoTarefa DESC
+				
+        ');
         /*
           echo $this->db->last_query();
           echo "<pre>";
@@ -180,7 +185,7 @@ class Tarefa_model extends CI_Model {
             . 'App_Tarefa AS TF '
             . 'WHERE '
             #. 'TF.idApp_Cliente = ' . $_SESSION['Tarefa']['idApp_Cliente'] . ' '
-            . 'ORDER BY TF.DataTarefa DESC ');
+            . 'ORDER BY TF.DataTarefa ASC ');
         /*
           echo $this->db->last_query();
           echo "<pre>";
