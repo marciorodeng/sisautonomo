@@ -738,7 +738,7 @@ class Tarefa extends CI_Controller {
             $data['update']['procedtarefa']['anterior'] = $this->Tarefa_model->get_procedtarefa($data['tarefa']['idApp_Tarefa']);
             if (isset($data['procedtarefa']) || (!isset($data['procedtarefa']) && isset($data['update']['procedtarefa']['anterior']) ) ) {
 
-                if (isset($data['servico']))
+                if (isset($data['procedtarefa']))
                     $data['procedtarefa'] = array_values($data['procedtarefa']);
                 else
                     $data['procedtarefa'] = array();
