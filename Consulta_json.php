@@ -2,8 +2,8 @@
 
 session_start();
 
-#$link = mysql_connect($_SESSION['db']['hostname'], $_SESSION['db']['username'], $_SESSION['db']['password']);
-$link = mysql_connect('localhost', 'root', '');
+$link = mysql_connect($_SESSION['db']['hostname'], $_SESSION['db']['username'], $_SESSION['db']['password']);
+#$link = mysql_connect('localhost', 'root', '');
 if (!$link) {
     die('Não foi possível conectar: ' . mysql_error());
 }
