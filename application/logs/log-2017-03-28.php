@@ -57,3 +57,11 @@ ERROR - 2017-03-28 12:19:45 --> Severity: Notice --> Undefined variable: parcela
 ERROR - 2017-03-28 12:20:54 --> Severity: Notice --> Undefined index: AprovadoOrca C:\xampp\htdocs\sisautonomo\application\views\relatorio\tela_clienteprod.php 25
 ERROR - 2017-03-28 12:20:54 --> Severity: Notice --> Undefined index: AprovadoOrca C:\xampp\htdocs\sisautonomo\application\views\relatorio\tela_clienteprod.php 25
 ERROR - 2017-03-28 12:20:54 --> Severity: Notice --> Undefined index: AprovadoOrca C:\xampp\htdocs\sisautonomo\application\views\relatorio\tela_clienteprod.php 25
+ERROR - 2017-03-28 16:20:02 --> 404 Page Not Found: Faviconico/index
+ERROR - 2017-03-28 16:20:50 --> Severity: Notice --> Undefined index: idApp_Procedimento C:\xampp\htdocs\sisautonomo\application\views\orcatrata\form_orcatrata.php 774
+ERROR - 2017-03-28 16:20:50 --> Severity: Notice --> Undefined index: idApp_ParcelasRec C:\xampp\htdocs\sisautonomo\application\views\orcatrata\form_orcatrata.php 775
+ERROR - 2017-03-28 16:23:27 --> Severity: Notice --> Undefined index: idApp_Procedimento C:\xampp\htdocs\sisautonomo\application\views\orcatrata\form_orcatrata.php 773
+ERROR - 2017-03-28 16:23:27 --> Severity: Notice --> Undefined index: idApp_ParcelasRec C:\xampp\htdocs\sisautonomo\application\views\orcatrata\form_orcatrata.php 774
+ERROR - 2017-03-28 16:24:04 --> Severity: Notice --> Undefined index: log C:\xampp\htdocs\sisautonomo\application\controllers\Login.php 452
+ERROR - 2017-03-28 16:24:29 --> Severity: Notice --> Undefined index: idApp_Procedimento C:\xampp\htdocs\sisautonomo\application\views\orcatrata\form_orcatrata.php 773
+ERROR - 2017-03-28 16:24:29 --> Severity: Notice --> Undefined index: idApp_ParcelasRec C:\xampp\htdocs\sisautonomo\application\views\orcatrata\form_orcatrata.php 774
