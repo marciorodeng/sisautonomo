@@ -143,7 +143,8 @@ class Tarefa_model extends CI_Model {
                 TF.idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND
                 TF.AprovadoTarefa = "' . $aprovado . '"
             ORDER BY
-                TF.DataPrazoTarefa ASC,
+                TF.ProfissionalTarefa ASC,
+				TF.DataPrazoTarefa ASC,
 				TF.QuitadoTarefa DESC
 				
         ');

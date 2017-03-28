@@ -65,3 +65,17 @@ ERROR - 2017-03-28 16:23:27 --> Severity: Notice --> Undefined index: idApp_Parc
 ERROR - 2017-03-28 16:24:04 --> Severity: Notice --> Undefined index: log C:\xampp\htdocs\sisautonomo\application\controllers\Login.php 452
 ERROR - 2017-03-28 16:24:29 --> Severity: Notice --> Undefined index: idApp_Procedimento C:\xampp\htdocs\sisautonomo\application\views\orcatrata\form_orcatrata.php 773
 ERROR - 2017-03-28 16:24:29 --> Severity: Notice --> Undefined index: idApp_ParcelasRec C:\xampp\htdocs\sisautonomo\application\views\orcatrata\form_orcatrata.php 774
+ERROR - 2017-03-28 16:49:24 --> Severity: Notice --> Undefined variable: nav_secundario C:\xampp\htdocs\sisautonomo\application\views\tarefa\tela_tarefa.php 6
+ERROR - 2017-03-28 16:52:57 --> Severity: Notice --> Undefined variable: nav_secundario C:\xampp\htdocs\sisautonomo\application\views\tarefa\tela_tarefa.php 6
+ERROR - 2017-03-28 16:53:33 --> Severity: Notice --> Undefined index: idApp_Procedtarefa C:\xampp\htdocs\sisautonomo\application\views\tarefa\form_tarefa.php 335
+ERROR - 2017-03-28 16:53:33 --> Severity: Notice --> Undefined variable: parcelasrec C:\xampp\htdocs\sisautonomo\application\views\tarefa\form_tarefa.php 336
+ERROR - 2017-03-28 17:09:41 --> Severity: Notice --> Undefined variable: nav_secundario C:\xampp\htdocs\sisautonomo\application\views\tarefa\tela_tarefa.php 6
+ERROR - 2017-03-28 17:09:54 --> Severity: Notice --> Undefined index: idApp_Procedtarefa C:\xampp\htdocs\sisautonomo\application\views\tarefa\form_tarefa.php 335
+ERROR - 2017-03-28 17:09:54 --> Severity: Notice --> Undefined variable: parcelasrec C:\xampp\htdocs\sisautonomo\application\views\tarefa\form_tarefa.php 336
+ERROR - 2017-03-28 17:10:21 --> Severity: Notice --> Undefined index: idApp_Tarefa C:\xampp\htdocs\sisautonomo\application\controllers\Tarefa.php 316
+ERROR - 2017-03-28 17:10:28 --> Severity: Notice --> Undefined variable: nav_secundario C:\xampp\htdocs\sisautonomo\application\views\tarefa\tela_tarefa.php 6
+ERROR - 2017-03-28 17:11:23 --> Severity: Notice --> Undefined index: idApp_Procedtarefa C:\xampp\htdocs\sisautonomo\application\views\tarefa\form_tarefa.php 335
+ERROR - 2017-03-28 17:11:23 --> Severity: Notice --> Undefined variable: parcelasrec C:\xampp\htdocs\sisautonomo\application\views\tarefa\form_tarefa.php 336
+ERROR - 2017-03-28 17:11:27 --> Severity: Notice --> Undefined index: auditoriaitem C:\xampp\htdocs\sisautonomo\application\controllers\Tarefa.php 787
+ERROR - 2017-03-28 17:11:34 --> Severity: Notice --> Undefined variable: nav_secundario C:\xampp\htdocs\sisautonomo\application\views\tarefa\tela_tarefa.php 6
+ERROR - 2017-03-28 18:57:53 --> Severity: Warning --> mysqli::real_connect(): MySQL server has gone away C:\xampp\htdocs\sisautonomo\system\database\drivers\mysqli\mysqli_driver.php 133
