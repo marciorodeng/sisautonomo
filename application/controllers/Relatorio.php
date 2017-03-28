@@ -644,7 +644,7 @@ class Relatorio extends CI_Controller {
 			'PT.Profissional' => 'Profissional',
 			'PT.Procedtarefa' => 'Procedtarefa',			
 			'PT.ConcluidoProcedtarefa' => 'Proc. Concl.?',			
-			'PT.DataProcedtarefaLimite' => 'Data Limite',
+			
 			
         );
 

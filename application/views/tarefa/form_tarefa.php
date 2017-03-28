@@ -136,17 +136,7 @@
 														<span class="glyphicon glyphicon-calendar"></span>
 													</span>
 												</div>
-											</div>
-											<div class="col-md-2">
-												<label for="DataProcedtarefaLimite<?php echo $i ?>">Data Limite:</label>
-												<div class="input-group <?php echo $datepicker; ?>">
-													<input type="text" class="form-control Date" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
-														   name="DataProcedtarefaLimite<?php echo $i ?>" value="<?php echo $procedtarefa[$i]['DataProcedtarefaLimite']; ?>">
-													<span class="input-group-addon" disabled>
-														<span class="glyphicon glyphicon-calendar"></span>
-													</span>
-												</div>
-											</div>
+											</div>											
 											<div class="col-md-2">
 												<label for="Profissional<?php echo $i ?>">Profissional:</label>
 												<?php if ($i == 1) { ?>

@@ -21,7 +21,6 @@
 						<th class="active">Profis.</th>
 						<th class="active">Procedimento</th>
 						<th class="active">Proced. Conl.?</th>
-						<th class="active">Data Limite.</th>
 						<th class="active">Data Prazo.</th>
                     </tr>
                 </thead>
@@ -47,7 +46,6 @@
 							echo '<td>' . $row['NomeProfissional'] . '</td>';
 							echo '<td>' . $row['Procedimento'] . '</td>';
 							echo '<td>' . $row['ConcluidoProcedimento'] . '</td>';
-							echo '<td>' . $row['DataProcedimentoLimite'] . '</td>';
 							echo '<td>' . $row['DataPrazo'] . '</td>';
                         echo '</tr>';
                     }
