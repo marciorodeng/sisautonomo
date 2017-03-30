@@ -73,24 +73,24 @@
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Relatórios<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="<?php echo base_url() ?>relatorio/clientes">Clientes</a></li>											
+						<li><a href="<?php echo base_url() ?>relatorio/clientes">Clientes & Contatos</a></li>											
 						<li role="separator" class="divider"></li>						
-						<li><a href="<?php echo base_url() ?>relatorio/profissionais">Prof. & Func.</a></li>
-						<li role="separator" class="divider"></li>
-						<li><a href="<?php echo base_url() ?>relatorio/empresas">Empresas & Fornec.</a></li>
+						<li><a href="<?php echo base_url() ?>relatorio/profissionais">Prof. & Func & Contatos.</a></li>
+						<li role="separator" class="divider"></li>						
+						<li><a href="<?php echo base_url() ?>relatorio/empresas">Empresas & Fornec & Contatos.</a></li>
 						<li role="separator" class="divider"></li>
 						<li><a href="<?php echo base_url() ?>relatorio/orcamentopc">Clientes & Procedimentos</a></li>
 						<li role="separator" class="divider"></li>
-						<li><a href="<?php echo base_url() ?>relatorio/tarefa">Tarefas & Ações</a></li>
+						<li><a href="<?php echo base_url() ?>relatorio/tarefa">Tarefas & Profissionais</a></li>
+						<li role="separator" class="divider"></li>											
+						<li><a href="<?php echo base_url() ?>relatorio/orcamentosv">Clientes & Serviços</a></li>
 						<li role="separator" class="divider"></li>
-						<li><a href="<?php echo base_url() ?>relatorio/orcamento">Orçamentos & Status</a></li>
-						<li role="separator" class="divider"></li>
-						<li><a href="<?php echo base_url() ?>relatorio/despesa">Despesas & Saídas</a></li>
+						<li><a href="<?php echo base_url() ?>relatorio/orcamento">Clientes & Valores</a></li>
 						<li role="separator" class="divider"></li>
 						<li><a href="<?php echo base_url() ?>relatorio/financeiro">Entradas & Pagamentos</a></li>
 						<li role="separator" class="divider"></li>
-						<li><a href="<?php echo base_url() ?>relatorio/clienteprod">Clientes & Orçam. & Produtos & Proc.</a></li>
-						<li role="separator" class="divider"></li>							
+						<li><a href="<?php echo base_url() ?>relatorio/despesa">Despesas & Saídas</a></li>
+						<li role="separator" class="divider"></li>																			
 						<li><a href="<?php echo base_url() ?>">Estoque</a></li>
 						<li role="separator" class="divider"></li>
 					</ul>

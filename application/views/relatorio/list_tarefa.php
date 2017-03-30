@@ -7,25 +7,21 @@
 
                 <thead>
                     <tr>
-                        <th class="active">N.Tarefa.</th>
-						<th class="active">Tarefa.</th>
-						<th class="active">Responsável.</th>						
-                        <!--<th class="active">Cliente</th>-->
-                        <th class="active">Criada em:</th>
+                        
+						<th class="active">N.Tarefa</th>
+						<th class="active">Criada em:</th>
 						<th class="active">Prioridade?</th>
-						<th class="active">Data Prazo.</th>
-						<th class="active">Tarefa Concluída?</th>                        
-                        <!--<th class="active">Valor Orçamento</th>-->
+						<th class="active">Prazo de Conclusão</th>
 						
-                        <!--<th class="active">Serviço Concl.?</th>-->
-                        <th class="active">Data Conclusão</th>
-						<th class="active">Data Retorno</th>
-						<th class="active">Data Proced.</th>
-						<th class="active">Profis.</th>
-						<th class="active">Procedtarefa</th>
-						<th class="active">Proced. Conl.?</th>
-						<th class="active">Data Limite.</th>
+						<th class="active">Responsável</th>
+						<th class="active">Tarefa</th>
+                        <th class="active">Tarefa Concluída?</th>
+						<th class="active">Data da Conclusão</th>
 						
+						<th class="active">Data da Ação</th>
+						<th class="active">Ação</th>						
+						<th class="active">Ação Concluída?</th>
+																								
                     </tr>
                 </thead>
 
@@ -37,24 +33,19 @@
                         #echo '<tr>';
                         echo '<tr class="clickable-row" data-href="' . base_url() . 'tarefa/alterar/' . $row['idApp_Tarefa'] . '">';
                             echo '<td>' . $row['idApp_Tarefa'] . '</td>';
-							echo '<td>' . $row['ObsTarefa'] . '</td>';
-							echo '<td>' . $row['NomeProfissional'] . '</td>';
-                            #echo '<td>' . $row['NomeCliente'] . '</td>';
-                            echo '<td>' . $row['DataTarefa'] . '</td>';
-							echo '<td>' . $row['QuitadoTarefa'] . '</td>';
+							echo '<td>' . $row['DataTarefa'] . '</td>';
+							echo '<td>' . $row['QuitadoTarefa'] . '</td>'; // = Prioridade
 							echo '<td>' . $row['DataPrazoTarefa'] . '</td>';
-							echo '<td>' . $row['AprovadoTarefa'] . '</td>';                            
-                           # echo '<td class="text-left">R$ ' . $row['ValorTarefa'] . '</td>';
 							
-                           # echo '<td>' . $row['ServicoConcluido'] . '</td>';
-                            echo '<td>' . $row['DataConclusao'] . '</td>';
-							echo '<td>' . $row['DataRetorno'] . '</td>';
+							echo '<td>' . $row['NomeProfissional'] . '</td>';							
+							echo '<td>' . $row['ObsTarefa'] . '</td>'; //  = Tarefa							
+							echo '<td>' . $row['AprovadoTarefa'] . '</td>'; // = Tarefa Concluída?
+							echo '<td>' . $row['DataConclusao'] . '</td>';
+							
 							echo '<td>' . $row['DataProcedtarefa'] . '</td>';
-							echo '<td>' . $row['Profissional'] . '</td>';
 							echo '<td>' . $row['Procedtarefa'] . '</td>';
 							echo '<td>' . $row['ConcluidoProcedtarefa'] . '</td>';
-							echo '<td>' . $row['DataProcedtarefaLimite'] . '</td>';
-							
+														
                         echo '</tr>';
                     }
                     ?>

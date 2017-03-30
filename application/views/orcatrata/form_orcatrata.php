@@ -632,7 +632,7 @@
 													<h4 class="panel-title">
 														<a class="accordion-toggle">
 															<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-															Tratamento - Procedimentos
+															Procedimentos
 														</a>
 													</h4>
 												</div>
