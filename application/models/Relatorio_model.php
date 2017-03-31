@@ -288,7 +288,6 @@ class Relatorio_model extends CI_Model {
             SELECT
                 C.idApp_Cliente,
                 C.NomeCliente,
-
                 C.DataNascimento,
                 C.Telefone1,
                 C.Telefone2,
@@ -297,12 +296,15 @@ class Relatorio_model extends CI_Model {
                 C.Endereco,
                 C.Bairro,
                 CONCAT(M.NomeMunicipio, "/", M.Uf) AS Municipio,
-                C.Email
+                C.Email,
+				CC.NomeContatoCliente,
+				CC.RelaCom,
+				CC.Sexo
 
             FROM
                 App_Cliente AS C
                     LEFT JOIN Tab_Municipio AS M ON C.Municipio = M.idTab_Municipio
-
+					LEFT JOIN App_ContatoCliente AS CC ON C.idApp_Cliente = CC.idApp_Cliente
             WHERE
                 C.idSis_Usuario = ' . $_SESSION['log']['id'] . '
 
@@ -361,12 +363,15 @@ class Relatorio_model extends CI_Model {
                 P.Endereco,
                 P.Bairro,
                 CONCAT(M.NomeMunicipio, "/", M.Uf) AS Municipio,
-                P.Email
+                P.Email,
+				CP.NomeContatoProf,
+				CP.RelaPes,
+				CP.Sexo
 
             FROM
                 App_Profissional AS P
                     LEFT JOIN Tab_Municipio AS M ON P.Municipio = M.idTab_Municipio
-
+					LEFT JOIN App_ContatoProf AS CP ON P.idApp_Profissional = CP.idApp_Profissional
             WHERE
                 P.idSis_Usuario = ' . $_SESSION['log']['id'] . '
 
@@ -425,12 +430,15 @@ class Relatorio_model extends CI_Model {
                 E.Endereco,
                 E.Bairro,
                 CONCAT(M.NomeMunicipio, "/", M.Uf) AS Municipio,
-                E.Email
+                E.Email,
+				CE.NomeContato,
+				CE.RelaCom,
+				CE.Sexo
 
             FROM
                 App_Empresa AS E
                     LEFT JOIN Tab_Municipio AS M ON E.Municipio = M.idTab_Municipio
-
+					LEFT JOIN App_Contato AS CE ON E.idApp_Empresa = CE.idApp_Empresa
             WHERE
                 E.idSis_Usuario = ' . $_SESSION['log']['id'] . '
 

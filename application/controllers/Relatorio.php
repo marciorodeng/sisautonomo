@@ -302,12 +302,14 @@ class Relatorio extends CI_Controller {
 
         $data['select']['Campo'] = array(
             'C.NomeCliente' => 'Nome do Cliente',
-
             'C.DataNascimento' => 'Data de Nascimento',
             'C.Sexo' => 'Sexo',
             'C.Bairro' => 'Bairro',
             'C.Municipio' => 'Município',
             'C.Email' => 'E-mail',
+			'CC.NomeContatoCliente' => 'Contato do Cliente',
+			'CC.RelaCom' => 'Relação',
+			'CC.Sexo' => 'Sexo',
 
         );
 
@@ -371,6 +373,9 @@ class Relatorio extends CI_Controller {
             'P.Bairro' => 'Bairro',
             'P.Municipio' => 'Município',
             'P.Email' => 'E-mail',
+			'CP.NomeContatoProf' => 'Contato do Profissional',
+			'CP.RelaPes' => 'Relação',
+			'CP.Sexo' => 'Sexo',
 
         );
 
@@ -434,6 +439,9 @@ class Relatorio extends CI_Controller {
             'E.Bairro' => 'Bairro',
             'E.Municipio' => 'Município',
             'E.Email' => 'E-mail',
+			'CE.NomeContato' => 'Contato da Empresa',
+			'CE.RelaCom' => 'Relação',
+			'CE.Sexo' => 'Sexo',
 
         );
 
