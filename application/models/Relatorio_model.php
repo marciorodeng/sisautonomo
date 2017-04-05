@@ -334,9 +334,12 @@ class Relatorio_model extends CI_Model {
                 #$row->Sexo = $this->basico->get_sexo($row->Sexo);
                 #$row->Sexo = ($row->Sexo == 2) ? 'F' : 'M';
                 
-                $row->Telefone = ($row->Telefone1) ? $row->Telefone1 : FALSE;
-                $row->Telefone .= ($row->Telefone2) ? ' / ' . $row->Telefone2 : FALSE;
-                $row->Telefone .= ($row->Telefone3) ? ' / ' . $row->Telefone3 : FALSE;
+                $row->Telefone1 = ($row->Telefone1) ? $row->Telefone1 : FALSE;
+				$row->Telefone2 = ($row->Telefone2) ? $row->Telefone2 : FALSE;
+				$row->Telefone3 = ($row->Telefone3) ? $row->Telefone3 : FALSE;
+				
+                #$row->Telefone .= ($row->Telefone2) ? ' / ' . $row->Telefone2 : FALSE;
+                #$row->Telefone .= ($row->Telefone3) ? ' / ' . $row->Telefone3 : FALSE;
 
             }
 

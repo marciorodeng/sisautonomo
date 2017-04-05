@@ -134,6 +134,7 @@ class Tarefa_model extends CI_Model {
                 TF.DataTarefa,
     			TF.DataPrazoTarefa,
 				TF.QuitadoTarefa,
+				TF.ServicoConcluido,
                 TF.ProfissionalTarefa,
                 TF.AprovadoTarefa,
                 TF.ObsTarefa
@@ -144,8 +145,9 @@ class Tarefa_model extends CI_Model {
                 TF.AprovadoTarefa = "' . $aprovado . '"
             ORDER BY
                 TF.ProfissionalTarefa ASC,
-				TF.DataPrazoTarefa ASC,
-				TF.QuitadoTarefa DESC
+				TF.ServicoConcluido DESC,				
+				TF.QuitadoTarefa DESC,
+				TF.DataPrazoTarefa ASC
 				
         ');
         /*
@@ -166,6 +168,8 @@ class Tarefa_model extends CI_Model {
 					$row->DataTarefa = $this->basico->mascara_data($row->DataTarefa, 'barras');
 					$row->DataPrazoTarefa = $this->basico->mascara_data($row->DataPrazoTarefa, 'barras');
                     $row->AprovadoTarefa = $this->basico->mascara_palavra_completa($row->AprovadoTarefa, 'NS');
+					$row->ServicoConcluido = $this->basico->mascara_palavra_completa($row->ServicoConcluido, 'NS');
+					$row->QuitadoTarefa = $this->basico->mascara_palavra_completa($row->QuitadoTarefa, 'NS');
                     $row->ProfissionalTarefa = $this->get_profissional($row->ProfissionalTarefa);
                 }
                 return $query;
