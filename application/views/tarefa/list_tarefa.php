@@ -36,10 +36,19 @@
                         </a>
 
                         <br><br>
-
+						
+                            
+                             
+                        
                         <h4>
-                            <span class="glyphicon glyphicon-pencil"></span> <b>Tarefa:</b> <?php echo nl2br($row['ObsTarefa']); ?>							
+							<p>
+								<span class=""></span> <b>Tarefa:</b> <?php echo $row['idApp_Tarefa']; ?>
+                            </p>
+							<p>
+								<span class="glyphicon glyphicon-pencil"></span> <b></b> <?php echo nl2br($row['ObsTarefa']); ?>	
+							</p>
                         </h4>
+						
 						<p>
                             <?php if ($row['ProfissionalTarefa']) { ?>
                             <span class="glyphicon glyphicon-user"></span> <b>Responsável:</b> <?php echo $row['ProfissionalTarefa']; ?> 
@@ -93,10 +102,16 @@
                         </a>
 
                         <br><br>
-
-                        <h4>
-                            <span class="glyphicon glyphicon-pencil"></span> <b>Tarefa:</b> <?php echo nl2br($row['ObsTarefa']); ?>							
+						
+                        <h4>						
+                            <p>
+								<span class=""></span> <b>Tarefa:</b> <?php echo $row['idApp_Tarefa']; ?>
+                            </p>
+							<p>
+								<span class="glyphicon glyphicon-pencil"></span> <b></b> <?php echo nl2br($row['ObsTarefa']); ?>	
+							</p>					
                         </h4>
+						
 						<p>
                             <?php if ($row['ProfissionalTarefa']) { ?>
                             <span class="glyphicon glyphicon-user"></span> <b>Responsável:</b> <?php echo $row['ProfissionalTarefa']; ?> 
