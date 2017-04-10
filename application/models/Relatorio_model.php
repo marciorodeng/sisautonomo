@@ -605,6 +605,7 @@ class Relatorio_model extends CI_Model {
                 TF.AprovadoTarefa,
                 TF.DataTarefa,               
 				TF.QuitadoTarefa,
+				TF.ServicoConcluido,
 				TF.DataPrazoTarefa,
 				TF.DataConclusao,
 				PT.Procedtarefa,
@@ -620,10 +621,14 @@ class Relatorio_model extends CI_Model {
             WHERE
                 TF.idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND                
 				TF.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' AND
+				TF.AprovadoTarefa = "N" AND
 				(' . $consulta . ')   
               
             ORDER BY
-                ' . $data['Campo'] . ' ' . $data['Ordenamento'] . '
+                TF.ProfissionalTarefa ASC,
+				TF.ServicoConcluido DESC,				
+				TF.QuitadoTarefa DESC,
+				TF.DataPrazoTarefa ASC
         ');
 
         /*
