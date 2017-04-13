@@ -301,7 +301,8 @@ class Relatorio extends CI_Controller {
 
 
         $data['select']['Campo'] = array(
-            'C.NomeCliente' => 'Nome do Cliente',
+            'C.idApp_Cliente' => 'nº Cliente',
+			'C.NomeCliente' => 'Nome do Cliente',
             'C.DataNascimento' => 'Data de Nascimento',
             'C.Sexo' => 'Sexo',
             'C.Bairro' => 'Bairro',

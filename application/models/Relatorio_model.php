@@ -285,8 +285,8 @@ class Relatorio_model extends CI_Model {
         $data['Ordenamento'] = (!$data['Ordenamento']) ? 'ASC' : $data['Ordenamento'];
 
         $query = $this->db->query('
-            SELECT
-                C.idApp_Cliente,
+            SELECT               
+				C.idApp_Cliente,
                 C.NomeCliente,
                 C.DataNascimento,
                 C.Telefone1,
