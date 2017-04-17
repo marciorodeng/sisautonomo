@@ -64,6 +64,7 @@
 						</div>
                     </div>
                 </div>
+				<!--
 				<div class="col-md-2">
 					<label for="Associado">Associado?</label><br>
 					<div class="form-group">
@@ -92,6 +93,7 @@
 						</div>
 					</div>
 				</div>
+				-->
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-12 text-center">
