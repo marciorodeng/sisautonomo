@@ -352,5 +352,21 @@ class Basico_model extends CI_Model {
 
         return $array;
     }
+	
+	public function select_modulo($data = FALSE) {
+
+        if ($data === TRUE) {
+            $array = $this->db->query('SELECT * FROM Tab_Modulo');
+        } else {
+            $query = $this->db->query('SELECT * FROM Tab_Modulo');
+
+            $array = array();
+            foreach ($query->result() as $row) {
+                $array[$row->idTab_Modulo] = $row->Modulo;
+            }
+        }
+
+        return $array;
+    }
 
 }

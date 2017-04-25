@@ -636,12 +636,12 @@ class Relatorio_model extends CI_Model {
 
             WHERE
                 TF.idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND
-				TF.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' AND
-				TF.AprovadoTarefa = "N" AND
+				TF.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' AND			
 				(' . $consulta . ')
                 ' . $data['NomeProfissional'] . '                
 
             ORDER BY
+				TF.AprovadoTarefa ASC,
                 TF.ProfissionalTarefa ASC,
 				TF.ServicoConcluido DESC,
 				TF.QuitadoTarefa DESC,

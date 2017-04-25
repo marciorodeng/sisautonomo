@@ -47,8 +47,8 @@
     <br>
 
     <label for="Celular">Celular:</label>
-    <input type="text" class="form-control" id="Celular" maxlength="45"
-           name="Celular" value="<?php echo $query['Celular']; ?>">
+    <input type="text" class="form-control Celular CelularVariavel" id="Celular" maxlength="20"
+           name="Celular" placeholder="(99) 999999999" value="<?php echo $query['Celular']; ?>">
     <?php echo form_error('Celular'); ?>
     <br>
 
@@ -73,7 +73,7 @@
     </select>
     <?php echo form_error('Sexo'); ?>
     <br>
-
+	
     <button class="btn btn-lg btn-primary btn-block" type="submit">REGISTRAR</button>
 </form>
 
