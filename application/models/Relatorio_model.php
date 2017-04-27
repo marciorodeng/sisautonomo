@@ -44,7 +44,8 @@ class Relatorio_model extends CI_Model {
                 OT.DataOrca,
                 OT.DataEntradaOrca,
                 OT.ValorEntradaOrca,
-
+				OT.QuitadoOrca,
+				OT.ServicoConcluido,
                 PR.ParcelaRecebiveis,
                 PR.DataVencimentoRecebiveis,
                 PR.ValorParcelaRecebiveis,
@@ -90,6 +91,8 @@ class Relatorio_model extends CI_Model {
                 $row->DataPagoRecebiveis = $this->basico->mascara_data($row->DataPagoRecebiveis, 'barras');
 
                 $row->AprovadoOrca = $this->basico->mascara_palavra_completa($row->AprovadoOrca, 'NS');
+				$row->QuitadoOrca = $this->basico->mascara_palavra_completa($row->QuitadoOrca, 'NS');
+				$row->ServicoConcluido = $this->basico->mascara_palavra_completa($row->ServicoConcluido, 'NS');
                 $row->QuitadoRecebiveis = $this->basico->mascara_palavra_completa($row->QuitadoRecebiveis, 'NS');
 
                 #esse trecho pode ser melhorado, serve para somar apenas uma vez
