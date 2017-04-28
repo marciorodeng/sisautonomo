@@ -58,11 +58,11 @@
                 <thead>
                     <tr>
                         <th class="active">#</th>
-                        <th class="active">Cliente</th>                      
+                        <th class="active">Cliente</th>
+                        <th class="active">Aprovado?</th>
                         <th class="active">Data do Orçamento</th>
                         <!--<th class="active">Data Entrada</th>
                         <th class="active">Valor Entrada</th>-->
-						<th class="active">Aprovado?</th>
 						<th class="active">Orç.Quit.?</th>
 						<th class="active">Serv. Concl.</th>
                         <th class="active">Parcela</th>
@@ -82,11 +82,12 @@
                         #echo '<tr>';
                         echo '<tr class="clickable-row" data-href="' . base_url() . 'orcatrata/alterar/' . $row['idApp_OrcaTrata'] . '">';
                             echo '<td>' . $row['idApp_OrcaTrata'] . '</td>';
-                            echo '<td>' . $row['NomeCliente'] . '</td>';                           
+
+                            echo '<td>' . $row['NomeCliente'] . '</td>';
+                            echo '<td>' . $row['AprovadoOrca'] . '</td>';
                             echo '<td>' . $row['DataOrca'] . '</td>';
                            # echo '<td>' . $row['DataEntradaOrca'] . '</td>';
                            # echo '<td class="text-right">R$ ' . $row['ValorEntradaOrca'] . '</td>';
-						    echo '<td>' . $row['AprovadoOrca'] . '</td>';
 							echo '<td>' . $row['QuitadoOrca'] . '</td>';
 							echo '<td>' . $row['ServicoConcluido'] . '</td>';
                             echo '<td>' . $row['ParcelaRecebiveis'] . '</td>';

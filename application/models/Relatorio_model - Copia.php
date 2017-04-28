@@ -23,21 +23,17 @@ class Relatorio_model extends CI_Model {
         #C.NomeCliente ASC
         */
 
-        
+        $data['NomeCliente'] = ($data['NomeCliente']) ? ' AND C.idApp_Cliente = ' . $data['NomeCliente'] : FALSE;
         if ($data['DataFim']) {
             $consulta =
-                '(PR.DataVencimentoRecebiveis >= "' . $data['DataInicio'] . '" AND PR.DataVencimentoRecebiveis <= "' . $data['DataFim'] . '") OR
+                '(OT.DataEntradaOrca >= "' . $data['DataInicio'] . '" AND OT.DataEntradaOrca <= "' . $data['DataFim'] . '") OR
                 (PR.DataPagoRecebiveis >= "' . $data['DataInicio'] . '" AND PR.DataPagoRecebiveis <= "' . $data['DataFim'] . '")';
         }
         else {
             $consulta =
-                '(PR.DataVencimentoRecebiveis >= "' . $data['DataInicio'] . '") OR
+                '(OT.DataEntradaOrca >= "' . $data['DataInicio'] . '") OR
                 (PR.DataPagoRecebiveis >= "' . $data['DataInicio'] . '")';
         }
-		
-		$data['NomeCliente'] = ($data['NomeCliente']) ? ' AND C.idApp_Cliente = ' . $data['NomeCliente'] : FALSE;
-		$filtro1 = ($data['AprovadoOrca'] != '#') ? 'OT.AprovadoOrca = "' . $data['AprovadoOrca'] . '" AND ' : FALSE;
-        $filtro2 = ($data['QuitadoOrca'] != '#') ? 'OT.QuitadoOrca = "' . $data['QuitadoOrca'] . '" AND ' : FALSE;
 
         $query = $this->db->query('
             SELECT
@@ -65,13 +61,14 @@ class Relatorio_model extends CI_Model {
             WHERE
                 C.idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND
                 (' . $consulta . ') AND
-                ' . $filtro1 . '
-                ' . $filtro2 . '                
+                OT.AprovadoOrca = "S" AND
                 C.idApp_Cliente = OT.idApp_Cliente
                 ' . $data['NomeCliente'] . '
 
             ORDER BY
-                ' . $data['Campo'] . ' ' . $data['Ordenamento'] . '
+                OT.DataOrca ASC,
+                PR.ParcelaRecebiveis ASC,
+                C.NomeCliente ASC
         ');
 
         /*

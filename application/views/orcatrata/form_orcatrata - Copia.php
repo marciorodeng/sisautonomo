@@ -329,7 +329,7 @@
 												</select>
 											</div>
 
-											<!--<div class="col-md-3">
+											<div class="col-md-3">
 												<label for="ValorEntradaOrca">Valor Pago - A Vista /Entrada:</label><br>
 												<div class="input-group" id="txtHint">
 													<span class="input-group-addon" id="basic-addon1">R$</span>
@@ -348,7 +348,7 @@
 														<span class="glyphicon glyphicon-calendar"></span>
 													</span>
 												</div>
-											</div>-->
+											</div>
 
 											<div class="col-md-3">
 												<label for="ValorRestanteOrca">Resta:</label><br>
