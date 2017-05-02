@@ -3,13 +3,13 @@
 
         <div class="col-md-1"></div>
 
-        <div class="col-md-2">
-            <label for="DataFim">Total Entrada/À vista:</label>
+        <!--<div class="col-md-2">
+            <label for="DataFim">Total de Desconto:</label>
             <div class="input-group">
                 <span class="input-group-addon">R$</span>
                 <input type="text" class="form-control" disabled aria-label="Total Entrada" value="<?php echo $report->soma->somaentrada ?>">
             </div>
-        </div>
+        </div>-->
 
         <div class="col-md-2">
             <label for="DataFim">Total Pago:</label>
@@ -19,13 +19,13 @@
             </div>
         </div>
 
-        <div class="col-md-2">
+        <!--<div class="col-md-2">
             <label for="DataFim">Total Real/Caixa:</label>
             <div class="input-group">
                 <span class="input-group-addon">R$</span>
                 <input type="text" class="form-control" disabled aria-label="Total Real" value="<?php echo $report->soma->somareal ?>">
             </div>
-        </div>
+        </div>-->
 
         <div class="col-md-2">
             <label for="DataFim">Total a receber:</label>

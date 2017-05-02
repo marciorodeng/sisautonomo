@@ -89,3 +89,21 @@ ERROR - 2017-04-28 13:49:04 --> Severity: Notice --> Undefined index: idApp_Proc
 ERROR - 2017-04-28 13:49:04 --> Severity: Notice --> Undefined index: idApp_ParcelasRec C:\xampp\htdocs\sisautonomo\application\views\orcatrata\form_orcatrata.php 766
 ERROR - 2017-04-28 13:50:09 --> Severity: Notice --> Undefined index: idApp_Procedimento C:\xampp\htdocs\sisautonomo\application\views\orcatrata\form_orcatrata.php 763
 ERROR - 2017-04-28 13:50:09 --> Severity: Notice --> Undefined index: idApp_ParcelasRec C:\xampp\htdocs\sisautonomo\application\views\orcatrata\form_orcatrata.php 764
+ERROR - 2017-04-28 14:41:49 --> Severity: Notice --> Undefined index: QuitadoOrca C:\xampp\htdocs\sisautonomo\application\views\relatorio\tela_orcamentopc.php 93
+ERROR - 2017-04-28 14:41:49 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\sisautonomo\application\views\relatorio\tela_orcamentopc.php 93
+ERROR - 2017-04-28 14:41:55 --> Severity: Notice --> Undefined index: QuitadoOrca C:\xampp\htdocs\sisautonomo\application\views\relatorio\tela_orcamentopc.php 93
+ERROR - 2017-04-28 14:41:55 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\sisautonomo\application\views\relatorio\tela_orcamentopc.php 93
+ERROR - 2017-04-28 14:42:18 --> Severity: Notice --> Undefined index: AprovadoOrca C:\xampp\htdocs\sisautonomo\application\views\relatorio\tela_despesa.php 63
+ERROR - 2017-04-28 14:42:18 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\sisautonomo\application\views\relatorio\tela_despesa.php 63
+ERROR - 2017-04-28 14:42:18 --> Severity: Notice --> Undefined index: QuitadoOrca C:\xampp\htdocs\sisautonomo\application\views\relatorio\tela_despesa.php 79
+ERROR - 2017-04-28 14:42:18 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\sisautonomo\application\views\relatorio\tela_despesa.php 79
+ERROR - 2017-04-28 14:42:22 --> Severity: Notice --> Undefined index: AprovadoOrca C:\xampp\htdocs\sisautonomo\application\views\relatorio\tela_despesa.php 63
+ERROR - 2017-04-28 14:42:22 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\sisautonomo\application\views\relatorio\tela_despesa.php 63
+ERROR - 2017-04-28 14:42:22 --> Severity: Notice --> Undefined index: QuitadoOrca C:\xampp\htdocs\sisautonomo\application\views\relatorio\tela_despesa.php 79
+ERROR - 2017-04-28 14:42:22 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\sisautonomo\application\views\relatorio\tela_despesa.php 79
+ERROR - 2017-04-28 14:42:45 --> Severity: Notice --> Undefined index: QuitadoOrca C:\xampp\htdocs\sisautonomo\application\views\relatorio\tela_orcamentopc.php 93
+ERROR - 2017-04-28 14:42:45 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\sisautonomo\application\views\relatorio\tela_orcamentopc.php 93
+ERROR - 2017-04-28 23:55:46 --> Severity: Warning --> mysqli::real_connect(): MySQL server has gone away C:\xampp\htdocs\sisautonomo\system\database\drivers\mysqli\mysqli_driver.php 133
+ERROR - 2017-04-28 23:55:57 --> Severity: Warning --> mysqli::real_connect(): MySQL server has gone away C:\xampp\htdocs\sisautonomo\system\database\drivers\mysqli\mysqli_driver.php 133
+ERROR - 2017-04-28 23:58:20 --> Severity: Warning --> mysqli::real_connect(): MySQL server has gone away C:\xampp\htdocs\sisautonomo\system\database\drivers\mysqli\mysqli_driver.php 133
+ERROR - 2017-04-28 23:58:23 --> Severity: Notice --> Undefined variable: query C:\xampp\htdocs\sisautonomo\application\views\despesa\pesq_despesa.php 109

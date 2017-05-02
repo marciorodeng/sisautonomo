@@ -57,7 +57,8 @@ class Relatorio extends CI_Controller {
             'QuitadoOrca',
         ), TRUE));
 
-        
+        if (!$data['query']['DataInicio'])			
+           $data['query']['DataInicio'] = '01/01/2017';
 
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
         #$this->form_validation->set_rules('Pesquisa', 'Pesquisa', 'required|trim');
@@ -163,6 +164,9 @@ class Relatorio extends CI_Controller {
             'QuitadoOrca',
 
         ), TRUE));
+		
+		if (!$data['query']['DataInicio'])			
+           $data['query']['DataInicio'] = '01/01/2017';
 
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
         #$this->form_validation->set_rules('Pesquisa', 'Pesquisa', 'required|trim');
@@ -189,6 +193,8 @@ class Relatorio extends CI_Controller {
             'OT.AprovadoOrca' => 'Orçamento Aprovado?',
             'OT.DataOrca' => 'Data do Orçamento',
             'OT.ValorOrca' => 'Valor do Orçamento',
+			'OT.ValorEntradaOrca' => 'Valor do Desconto',
+			'OT.ValorRestanteOrca' => 'Valor a Receber',
 
             'OT.ServicoConcluido' => 'Serviço Concluído?',
             'OT.QuitadoOrca' => 'Orçamento Quitado?',
@@ -260,6 +266,9 @@ class Relatorio extends CI_Controller {
             #'QuitadoOrca',
         ), TRUE));
 
+		if (!$data['query']['DataInicio'])			
+           $data['query']['DataInicio'] = '01/01/2017';
+	   
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
         #$this->form_validation->set_rules('Pesquisa', 'Pesquisa', 'required|trim');
         $this->form_validation->set_rules('DataInicio', 'Data Início', 'required|trim|valid_date');
@@ -565,6 +574,9 @@ class Relatorio extends CI_Controller {
 			'ConcluidoProcedimento',
 
         ), TRUE));
+		
+		if (!$data['query']['DataInicio'])			
+           $data['query']['DataInicio'] = '01/01/2017';
 
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
         #$this->form_validation->set_rules('Pesquisa', 'Pesquisa', 'required|trim');
