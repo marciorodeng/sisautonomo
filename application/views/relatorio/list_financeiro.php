@@ -62,9 +62,9 @@
                         <th class="active">Data do Orçamento</th>
                         <!--<th class="active">Data Entrada</th>
                         <th class="active">Valor Entrada</th>-->
-						<th class="active">Aprovado?</th>
-						<th class="active">Orç.Quit.?</th>
-						<th class="active">Serv. Concl.</th>
+						<th class="active">Orç. Aprovado?</th>
+						<th class="active">Orç. Quitado?</th>
+						<th class="active">Serv. Concl.?</th>
                         <th class="active">Parcela</th>
                         <th class="active">Vencimento</th>
                         <th class="active">À receber</th>
@@ -103,7 +103,7 @@
 
                 <tfoot>
                     <tr>
-                        <th colspan="12" class="active">Total encontrado: <?php echo $report->num_rows(); ?> resultado(s)</th>
+                        <th colspan="3" class="active">Total encontrado: <?php echo $report->num_rows(); ?> resultado(s)</th>
                     </tr>
                 </tfoot>
             </table>
