@@ -31,3 +31,17 @@ ERROR - 2017-05-07 00:54:21 --> Severity: Notice --> Undefined index: Cliente C:
 ERROR - 2017-05-07 00:55:59 --> Severity: Notice --> Undefined index: Cliente C:\xampp\htdocs\sisautonomo\application\views\tarefa\form_tarefa.php 320
 ERROR - 2017-05-07 00:55:59 --> Severity: Notice --> Undefined index: idApp_Procedtarefa C:\xampp\htdocs\sisautonomo\application\views\tarefa\form_tarefa.php 323
 ERROR - 2017-05-07 00:55:59 --> Severity: Notice --> Undefined variable: parcelasrec C:\xampp\htdocs\sisautonomo\application\views\tarefa\form_tarefa.php 324
+ERROR - 2017-05-07 14:42:37 --> Severity: Notice --> Undefined index: Cliente C:\xampp\htdocs\sisautonomo\application\views\tarefa\form_tarefa.php 320
+ERROR - 2017-05-07 14:43:18 --> Severity: Notice --> Undefined index: Cliente C:\xampp\htdocs\sisautonomo\application\views\tarefa\form_tarefa.php 320
+ERROR - 2017-05-07 14:45:32 --> Severity: Notice --> Undefined index: agenda C:\xampp\htdocs\sisautonomo\application\controllers\Cliente.php 332
+ERROR - 2017-05-07 14:45:35 --> 404 Page Not Found: Faviconico/index
+ERROR - 2017-05-07 14:45:51 --> Severity: Notice --> Undefined index: idApp_Procedimento C:\xampp\htdocs\sisautonomo\application\views\orcatrata\form_orcatrata.php 762
+ERROR - 2017-05-07 14:45:51 --> Severity: Notice --> Undefined index: idApp_ParcelasRec C:\xampp\htdocs\sisautonomo\application\views\orcatrata\form_orcatrata.php 763
+ERROR - 2017-05-07 14:53:42 --> Severity: Notice --> Undefined index: agenda C:\xampp\htdocs\sisautonomo\application\controllers\Cliente.php 332
+ERROR - 2017-05-07 14:53:56 --> Severity: Notice --> Undefined index: idApp_Procedimento C:\xampp\htdocs\sisautonomo\application\views\orcatrata\form_orcatrata.php 762
+ERROR - 2017-05-07 14:53:56 --> Severity: Notice --> Undefined index: idApp_ParcelasRec C:\xampp\htdocs\sisautonomo\application\views\orcatrata\form_orcatrata.php 763
+ERROR - 2017-05-07 14:55:57 --> Severity: Notice --> Undefined index: idApp_Procedimento C:\xampp\htdocs\sisautonomo\application\views\orcatrata\form_orcatrata.php 762
+ERROR - 2017-05-07 14:55:57 --> Severity: Notice --> Undefined index: idApp_ParcelasRec C:\xampp\htdocs\sisautonomo\application\views\orcatrata\form_orcatrata.php 763
+ERROR - 2017-05-07 14:57:13 --> Severity: Notice --> Undefined index: idApp_Procedimento C:\xampp\htdocs\sisautonomo\application\views\orcatrata\form_orcatrata.php 762
+ERROR - 2017-05-07 14:57:13 --> Severity: Notice --> Undefined index: idApp_ParcelasRec C:\xampp\htdocs\sisautonomo\application\views\orcatrata\form_orcatrata.php 763
+ERROR - 2017-05-07 14:59:11 --> Severity: Notice --> Undefined index: auditoriaitem C:\xampp\htdocs\sisautonomo\application\controllers\Orcatrata.php 783

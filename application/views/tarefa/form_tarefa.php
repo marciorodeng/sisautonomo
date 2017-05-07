@@ -42,7 +42,7 @@
 								</select>
 							</div>
 							<div class="col-md-3">
-								<label for="ObsTarefa">Tarefa:</label>
+								<label for="ObsTarefa">Tarefa / Missão:</label>
 								<textarea class="form-control" id="ObsTarefa" <?php echo $readonly; ?>
 									autofocus name="ObsTarefa"><?php echo $tarefa['ObsTarefa']; ?></textarea>
 							</div>
