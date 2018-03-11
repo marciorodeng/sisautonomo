@@ -82,13 +82,14 @@ class Formapag_model extends CI_Model {
             }
         }
     }*/
+	
 	public function lista_formapag($x) {
 
         $query = $this->db->query('SELECT * '
                 . 'FROM Tab_FormaPag '
-                #. 'WHERE '
-                #. 'idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND '
-                #. 'idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' '
+                . 'WHERE '
+                . 'Empresa = ' . $_SESSION['log']['Empresa'] . ' AND '
+                . 'idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' '
                 . 'ORDER BY idTab_FormaPag ASC ');
 
         /*
@@ -115,7 +116,7 @@ class Formapag_model extends CI_Model {
         }
     }
 
-    public function select_formapag($data = FALSE) {
+    public function select_formapag2($data = FALSE) {
 
         if ($data === TRUE) {
             $array = $this->db->query(
@@ -125,13 +126,48 @@ class Formapag_model extends CI_Model {
                     #. 'ValorVenda '
                     . 'FROM '
                     . 'Tab_FormaPag '
-                    #. 'WHERE '
+                    . 'WHERE '
                     #. 'idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND '
-                    #. 'idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] );
+                    . 'idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ''
 					. 'ORDER BY idTab_FormaPag ASC ');
         } else {
-            #$query = $this->db->query('SELECT idTab_FormaPag, FormaPag FROM Tab_FormaPag WHERE idSis_Usuario = ' . $_SESSION['log']['id']);
-            $query = $this->db->query('SELECT idTab_FormaPag, FormaPag FROM Tab_FormaPag ORDER BY idTab_FormaPag ASC ');
+            $query = $this->db->query('SELECT idTab_FormaPag, FormaPag FROM Tab_FormaPag WHERE idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo']);
+            #$query = $this->db->query('SELECT idTab_FormaPag, FormaPag FROM Tab_FormaPag ORDER BY idTab_FormaPag ASC ');
+            $array = array();
+            foreach ($query->result() as $row) {
+                $array[$row->idTab_FormaPag] = $row->FormaPag;
+            }
+        }
+
+        return $array;
+    }
+	
+	public function select_formapag($data = FALSE) {
+
+        if ($data === TRUE) {
+            $array = $this->db->query(
+                'SELECT '
+                    . 'idTab_FormaPag, '
+                    . 'FormaPag '
+                    . 'FROM '
+                    . 'Tab_FormaPag '
+                    . 'WHERE '
+                    . 'Empresa = ' . $_SESSION['log']['Empresa'] . ' AND '
+                    . 'idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo']. ' '
+					. 'ORDER BY FormaPag ASC ');		
+					
+        } else {
+            $query = $this->db->query(
+                'SELECT '
+                    . 'idTab_FormaPag, '
+                    . 'FormaPag '
+                    . 'FROM '
+                    . 'Tab_FormaPag '
+                    . 'WHERE '
+                    . 'Empresa = ' . $_SESSION['log']['Empresa'] . ' AND '
+                    . 'idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo']. ' '
+					. 'ORDER BY FormaPag ASC ');
+            
             $array = array();
             foreach ($query->result() as $row) {
                 $array[$row->idTab_FormaPag] = $row->FormaPag;

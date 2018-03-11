@@ -15,6 +15,9 @@ app = app.substring(1);
 pos = app.indexOf('/');
 app = app.substring(0, pos);
 
+//Captura a data do dia e carrega no campo correspondente
+var currentDate = moment();
+
 //variável de opções necessária para o funcionamento do datepiker em divs
 //geradas dinamicamente
 var dateTimePickerOptions = {
@@ -45,6 +48,127 @@ var dateTimePickerOptions = {
     format: 'DD/MM/YYYY',
     //minDate: moment(m + '/' + d + '/' + y),
     locale: 'pt-br'
+}
+
+/*
+ * Função responsável por carregar valores nos respectivos campos do orcatrata
+ * caso o botão Quitado seja alterado para SIM
+ *
+ * @param {int} quant
+ * @param {string} campo
+ * @param {int} num
+ * @returns {decimal}
+ */
+
+ /*Carrega a Data do Dia do lançamento*/
+function carregaQuitado(value, name, i, cadastrar = 0) {
+
+    if (value == "S") {
+
+        if (!$("#ValorPagoRecebiveis"+i).val() || $("#ValorPagoRecebiveis"+i).val() == "0,00")
+            $("#ValorPagoRecebiveis"+i).val($("#ValorParcelaRecebiveis"+i).val())
+
+        if (!$("#DataPagoRecebiveis"+i).val()) {
+            if (cadastrar == 1)
+                $("#DataPagoRecebiveis"+i).val($("#DataVencimentoRecebiveis"+i).val())
+            else
+                $("#DataPagoRecebiveis"+i).val(currentDate.format('DD/MM/YYYY'))
+        }
+
+
+    }
+    else {
+
+        $("#ValorPagoRecebiveis"+i).val("")
+        $("#DataPagoRecebiveis"+i).val("")
+
+    }
+
+}
+
+/*Carrega a Data do Dia do Vencimento*/
+function carregaQuitado2(value, name, i, cadastrar = 0) {
+
+    if (value == "S") {
+
+        if (!$("#ValorPagoRecebiveis"+i).val() || $("#ValorPagoRecebiveis"+i).val() == "0,00")
+            $("#ValorPagoRecebiveis"+i).val($("#ValorParcelaRecebiveis"+i).val())
+
+		if (!$("#DataPagoRecebiveis"+i).val()) {
+            if (cadastrar == 1)
+                $("#DataPagoRecebiveis"+i).val($("#DataVencimentoRecebiveis"+i).val())
+            else
+                $("#DataPagoRecebiveis"+i).val($("#DataVencimentoRecebiveis"+i).val())
+        }
+
+    }
+    else {
+
+        $("#ValorPagoRecebiveis"+i).val("")
+        $("#DataPagoRecebiveis"+i).val("")
+
+    }
+
+}
+
+/*
+ * Função responsável por carregar valores nos respectivos campos do despesas
+ * caso o botão Quitado seja alterado para SIM
+ *
+ * @param {int} quant
+ * @param {string} campo
+ * @param {int} num
+ * @returns {decimal}
+ */
+
+ /*Carrega a Data do Dia do lançamento*/
+function carregaQuitadoDespesas(value, name, i, cadastrar = 0) {
+
+    if (value == "S") {
+
+        if (!$("#ValorPagoPagaveis"+i).val() || $("#ValorPagoPagaveis"+i).val() == "0,00")
+            $("#ValorPagoPagaveis"+i).val($("#ValorParcelaPagaveis"+i).val())
+
+		if (!$("#DataPagoPagaveis"+i).val()) {
+            if (cadastrar == 1)
+                $("#DataPagoPagaveis"+i).val($("#DataVencimentoPagaveis"+i).val())
+            else
+                $("#DataPagoPagaveis"+i).val(currentDate.format('DD/MM/YYYY'))
+        }
+
+    }
+    else {
+
+        $("#ValorPagoPagaveis"+i).val("")
+        $("#DataPagoPagaveis"+i).val("")
+
+    }
+
+}
+
+/*Carrega a Data do Dia do Vencimento*/
+function carregaQuitadoDespesas2(value, name, i, cadastrar = 0) {
+
+    if (value == "S") {
+
+        if (!$("#ValorPagoPagaveis"+i).val() || $("#ValorPagoPagaveis"+i).val() == "0,00")
+            $("#ValorPagoPagaveis"+i).val($("#ValorParcelaPagaveis"+i).val())
+
+		if (!$("#DataPagoPagaveis"+i).val()) {
+            if (cadastrar == 1)
+                $("#DataPagoPagaveis"+i).val($("#DataVencimentoPagaveis"+i).val())
+            else
+                $("#DataPagoPagaveis"+i).val($("#DataVencimentoPagaveis"+i).val())
+        }
+
+    }
+    else {
+
+        $("#ValorPagoPagaveis"+i).val("")
+        $("#DataPagoPagaveis"+i).val("")
+
+    }
+
 }
 
 /*
@@ -87,6 +211,32 @@ function calculaResta(entrada) {
 
     //o valor é escrito no seu campo no formulário
     $('#ValorRestanteOrca').val(resta);
+
+}
+
+function calculaRestaDespesas(entrada) {
+
+    //recebe o valor da despesa
+    var despesa = $("#ValorDespesas").val();
+    var resta = (despesa.replace(".","").replace(",",".") - entrada.replace(".","").replace(",","."));
+
+    resta = mascaraValorReal(resta);
+
+    //o valor é escrito no seu campo no formulário
+    $('#ValorRestanteDespesas').val(resta);
+
+}
+
+function calculaRestaConsumo(entrada) {
+
+    //recebe o valor da despesa
+    var despesa = $("#ValorConsumo").val();
+    var resta = (despesa.replace(".","").replace(",",".") - entrada.replace(".","").replace(",","."));
+
+    resta = mascaraValorReal(resta);
+
+    //o valor é escrito no seu campo no formulário
+    $('#ValorRestanteConsumo').val(resta);
 
 }
 
@@ -136,65 +286,69 @@ function calculaParcelas() {
 
         $(".input_fields_parcelas").append('\
             <div class="form-group">\
-                <div class="row">\
-                    <div class="col-md-1">\
-                        <label for="ParcelaRecebiveis">Parcela:</label><br>\
-                        <input type="text" class="form-control" maxlength="6" readonly=""\
-                               name="ParcelaRecebiveis'+i+'" value="'+i+'/'+parcelas+'">\
-                    </div>\
-                    <div class="col-md-2">\
-                        <label for="ValorParcelaRecebiveis">Valor Parcela:</label><br>\
-                        <div class="input-group" id="txtHint">\
-                            <span class="input-group-addon" id="basic-addon1">R$</span>\
-                            <input type="text" class="form-control Valor" maxlength="10" placeholder="0,00"\
-                                   name="ValorParcelaRecebiveis'+i+'" value="'+parcorca+'">\
-                        </div>\
-                    </div>\
-                    <div class="col-md-2">\
-                        <label for="DataVencimentoRecebiveis">Data Venc. Parc.</label>\
-                        <div class="input-group DatePicker">\
-                            <input type="text" class="form-control Date" id="DataPagoRecebiveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
-                                   name="DataVencimentoRecebiveis'+i+'" value="'+futureMonth.format('DD/MM/YYYY')+'">\
-                            <span class="input-group-addon" disabled>\
-                                <span class="glyphicon glyphicon-calendar"></span>\
-                            </span>\
-                        </div>\
-                    </div>\
-                    <div class="col-md-2">\
-                        <label for="ValorPagoRecebiveis">Valor Pago:</label><br>\
-                        <div class="input-group" id="txtHint">\
-                            <span class="input-group-addon" id="basic-addon1">R$</span>\
-                            <input type="text" class="form-control Valor" maxlength="10" placeholder="0,00"\
-                                   name="ValorPagoRecebiveis'+i+'" value="">\
-                        </div>\
-                    </div>\
-                    <div class="col-md-2">\
-                        <label for="DataPagoRecebiveis">Data Pag.</label>\
-                        <div class="input-group DatePicker">\
-                            <input type="text" class="form-control Date" id="DataPagoRecebiveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
-                                   name="DataPagoRecebiveis'+i+'" value="">\
-                            <span class="input-group-addon" disabled>\
-                                <span class="glyphicon glyphicon-calendar"></span>\
-                            </span>\
-                        </div>\
-                    </div>\
-                    <div class="col-md-3">\
-                        <label for="QuitadoRecebiveis">Quitado?</label><br>\
-                        <div class="form-group">\
-                            <div class="btn-group" data-toggle="buttons">\
-                                <label class="btn btn-warning active" name="radio_QuitadoRecebiveis'+i+'" id="radio_QuitadoRecebiveis'+i+'N">\
-                                <input type="radio" name="QuitadoRecebiveis'+i+'" id="radiogeraldinamico"\
-                                    autocomplete="off" value="N" checked>Não\
-                                </label>\
-                                <label class="btn btn-default" name="radio_QuitadoRecebiveis'+i+'" id="radio_QuitadoRecebiveis'+i+'S">\
-                                <input type="radio" name="QuitadoRecebiveis'+i+'" id="radiogeraldinamico"\
-                                    autocomplete="off" value="S">Sim\
-                                </label>\
-                            </div>\
-                        </div>\
-                    </div>\
-                </div>\
-            </div>'
+				<div class="panel panel-info">\
+					<div class="panel-heading">\
+						<div class="row">\
+							<div class="col-md-2">\
+								<label for="ParcelaRecebiveis">Parcela:</label><br>\
+								<input type="text" class="form-control" maxlength="6" readonly=""\
+									   name="ParcelaRecebiveis'+i+'" value="'+i+'/'+parcelas+'">\
+							</div>\
+							<div class="col-md-2">\
+								<label for="ValorParcelaRecebiveis">Valor Parcela:</label><br>\
+								<div class="input-group" id="txtHint">\
+									<span class="input-group-addon" id="basic-addon1">R$</span>\
+									<input type="text" class="form-control Valor" maxlength="10" placeholder="0,00"\
+										    id="ValorParcelaRecebiveis'+i+'" name="ValorParcelaRecebiveis'+i+'" value="'+parcorca+'">\
+								</div>\
+							</div>\
+							<div class="col-md-2">\
+								<label for="DataVencimentoRecebiveis">Data Venc. Parc.</label>\
+								<div class="input-group DatePicker">\
+									<input type="text" class="form-control Date" id="DataVencimentoRecebiveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
+										   name="DataVencimentoRecebiveis'+i+'" value="'+futureMonth.format('DD/MM/YYYY')+'">\
+									<span class="input-group-addon" disabled>\
+										<span class="glyphicon glyphicon-calendar"></span>\
+									</span>\
+								</div>\
+							</div>\
+							<div class="col-md-2">\
+								<label for="ValorPagoRecebiveis">Valor Pago:</label><br>\
+								<div class="input-group" id="txtHint">\
+									<span class="input-group-addon" id="basic-addon1">R$</span>\
+									<input type="text" class="form-control Valor" maxlength="10" placeholder="0,00"\
+										    id="ValorPagoRecebiveis'+i+'" name="ValorPagoRecebiveis'+i+'" value="">\
+								</div>\
+							</div>\
+							<div class="col-md-2">\
+								<label for="DataPagoRecebiveis">Data Pag.</label>\
+								<div class="input-group DatePicker">\
+									<input type="text" class="form-control Date" id="DataPagoRecebiveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
+										   name="DataPagoRecebiveis'+i+'" value="">\
+									<span class="input-group-addon" disabled>\
+										<span class="glyphicon glyphicon-calendar"></span>\
+									</span>\
+								</div>\
+							</div>\
+							<div class="col-md-2">\
+								<label for="QuitadoRecebiveis">Quitado????</label><br>\
+								<div class="form-group">\
+									<div class="btn-group" data-toggle="buttons">\
+										<label class="btn btn-warning active" name="radio_QuitadoRecebiveis'+i+'" id="radio_QuitadoRecebiveis'+i+'N">\
+										<input type="radio" name="QuitadoRecebiveis'+i+'" id="radiogeraldinamico"\
+											onchange="carregaQuitado(this.value,this.name,'+i+',1)" autocomplete="off" value="N" checked>Não\
+										</label>\
+										<label class="btn btn-default" name="radio_QuitadoRecebiveis'+i+'" id="radio_QuitadoRecebiveis'+i+'S">\
+										<input type="radio" name="QuitadoRecebiveis'+i+'" id="radiogeraldinamico"\
+											onchange="carregaQuitado(this.value,this.name,'+i+',1)" autocomplete="off" value="S">Sim\
+										</label>\
+									</div>\
+								</div>\
+							</div>\
+						</div>\
+					</div>\
+				</div>\
+			</div>'
         );
 
     }
@@ -216,6 +370,133 @@ function calculaParcelas() {
 
     });
 }
+
+/*
+ * Função responsável por calcular as parcelas PAGAVEIS do orçamento em função do dados
+ * informados no formulário (valor restante / parcelas e datas do vencimento)
+ */
+function calculaParcelasPagaveis() {
+
+    //captura os valores dos campos indicados
+    var resta = $("#ValorRestanteDespesas").val();
+    var parcelas = $("#QtdParcelasDespesas").val();
+    var vencimento = $("#DataVencimentoDespesas").val();
+
+    //valor de cada parcela
+    var parcdesp = (resta.replace(".","").replace(",",".") / parcelas);
+    parcdesp = mascaraValorReal(parcdesp);
+
+    //pega a data do primeiro vencimento e separa em dia, mês e ano
+    var split = vencimento.split("/");
+
+    //define a data do primeiro vencimento no formato do momentjs
+    var currentDate = moment(split[2]+'-'+split[1]+'-'+split[0]);
+
+    //console.log(currentDate.format('DD-MM-YYYY'));
+    //console.log(futureMonth.format('DD-MM-YYYY'));
+    //alert('>>v '+vencimento+'::d1 '+currentDate.format('DD/MM/YYYY')+'::d2 '+futureMonth.format('DD/MM/YYYY')+'::d3 '+futureMonthEnd.format('DD/MM/YYYY')+'<<');
+
+    //caso as parcelas já tenham sido geradas elas serão excluídas para que
+    //sejam geradas novas parcelas
+    $(".input_fields_parcelas").empty();
+
+    //gera os campos de parcelas
+    for (i=1; i<=parcelas; i++) {
+
+        //calcula as datas das próximas parcelas
+        var futureMonth = moment(currentDate).add(i-1, 'M');
+        var futureMonthEnd = moment(futureMonth).endOf('month');
+
+        if(currentDate.date() != futureMonth.date() && futureMonth.isSame(futureMonthEnd.format('YYYY-MM-DD')))
+            futureMonth = futureMonth.add(i-1, 'd');
+
+        $(".input_fields_parcelas").append('\
+			<div class="form-group">\
+				<div class="panel panel-danger">\
+					<div class="panel-heading">\
+						<div class="row">\
+							<div class="col-md-2">\
+								<label for="ParcelaPagaveis">Parcela:</label><br>\
+								<input type="text" class="form-control" maxlength="6" readonly=""\
+									   name="ParcelaPagaveis'+i+'" value="'+i+'/'+parcelas+'">\
+							</div>\
+							<div class="col-md-2">\
+								<label for="ValorParcelaPagaveis">Valor Parcela:</label><br>\
+								<div class="input-group" id="txtHint">\
+									<span class="input-group-addon" id="basic-addon1">R$</span>\
+									<input type="text" class="form-control Valor" maxlength="10" placeholder="0,00"\
+										    id="ValorParcelaPagaveis'+i+'" name="ValorParcelaPagaveis'+i+'" value="'+parcdesp+'">\
+								</div>\
+							</div>\
+							<div class="col-md-2">\
+								<label for="DataVencimentoPagaveis">Data Venc. Parc.</label>\
+								<div class="input-group DatePicker">\
+									<input type="text" class="form-control Date" id="DataVencimentoPagaveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
+										   name="DataVencimentoPagaveis'+i+'" value="'+futureMonth.format('DD/MM/YYYY')+'">\
+									<span class="input-group-addon" disabled>\
+										<span class="glyphicon glyphicon-calendar"></span>\
+									</span>\
+								</div>\
+							</div>\
+							<div class="col-md-2">\
+								<label for="ValorPagoPagaveis">Valor Pago:</label><br>\
+								<div class="input-group" id="txtHint">\
+									<span class="input-group-addon" id="basic-addon1">R$</span>\
+									<input type="text" class="form-control Valor" maxlength="10" placeholder="0,00"\
+										    id="ValorPagoPagaveis'+i+'" name="ValorPagoPagaveis'+i+'" value="">\
+								</div>\
+							</div>\
+							<div class="col-md-2">\
+								<label for="DataPagoPagaveis">Data Pag.</label>\
+								<div class="input-group DatePicker">\
+									<input type="text" class="form-control Date" id="DataPagoPagaveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
+										   name="DataPagoPagaveis'+i+'" value="">\
+									<span class="input-group-addon" disabled>\
+										<span class="glyphicon glyphicon-calendar"></span>\
+									</span>\
+								</div>\
+							</div>\
+							<div class="col-md-2">\
+								<label for="QuitadoPagaveis">Quitado?</label><br>\
+								<div class="form-group">\
+									<div class="btn-group" data-toggle="buttons">\
+										<label class="btn btn-warning active" name="radio_QuitadoPagaveis'+i+'" id="radio_QuitadoPagaveis'+i+'N">\
+										<input type="radio" name="QuitadoPagaveis'+i+'" id="radiogeraldinamico"\
+											onchange="carregaQuitadoDespesas(this.value,this.name,'+i+',1)" autocomplete="off" value="N" checked>Não\
+										</label>\
+										<label class="btn btn-default" name="radio_QuitadoPagaveis'+i+'" id="radio_QuitadoPagaveis'+i+'S">\
+										<input type="radio" name="QuitadoPagaveis'+i+'" id="radiogeraldinamico"\
+											onchange="carregaQuitadoDespesas(this.value,this.name,'+i+',1)" autocomplete="off" value="S">Sim\
+										</label>\
+									</div>\
+								</div>\
+							</div>\
+						</div>\
+					</div>\
+				</div>\
+			</div>'
+        );
+
+    }
+    //habilita o botão de calendário após a geração dos campos dinâmicos
+    $('.DatePicker').datetimepicker(dateTimePickerOptions);
+
+    //permite o uso de radio buttons nesse bloco dinâmico
+    $('input:radio[id="radiogeraldinamico"]').change(function() {
+
+        var value = $(this).val();
+        var name = $(this).attr("name");
+
+        //console.log(value + ' <<>> ' + name);
+
+        $('label[name="radio_' + name + '"]').removeClass();
+        $('label[name="radio_' + name + '"]').addClass("btn btn-default");
+        $('#radio_' + name + value).addClass("btn btn-warning active");
+        //$('#radiogeral'+ value).addClass("btn btn-warning active");
+
+    });
+}
+
 
 /*
  * Função responsável por adicionar novos campos de Procedimento dinamicamente no
@@ -242,51 +523,48 @@ function adicionaProcedimento() {
 
     $(".input_fields_wrap3").append('\
         <div class="form-group" id="3div'+pc+'">\
-            <div class="row">\
-                <div class="col-md-2">\
-                    <label for="DataProcedimento'+pc+'">Data do Procedimento:</label>\
-                    <div class="input-group DatePicker">\
-                        <input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"\
-                               name="DataProcedimento'+pc+'" value="'+currentDate.format('DD/MM/YYYY')+'">\
-                        <span class="input-group-addon" disabled>\
-                            <span class="glyphicon glyphicon-calendar"></span>\
-                        </span>\
-                    </div>\
-                </div>\
-                <div class="col-md-2">\
-                    <label for="Profissional'+pc+'">Profissional:</label>\
-                    <select data-placeholder="Selecione uma opção..." class="form-control"\
-                             id="listadinamicac'+pc+'" name="Profissional'+pc+'">\
-                        <option value="">-- Selecione uma opção --</option>\
-                    </select>\
-                </div>\
-                <div class="col-md-3">\
-                    <label for="Procedimento'+pc+'">Procedimento:</label>\
-                    <textarea class="form-control" id="Procedimento'+pc+'"\
-                              name="Procedimento'+pc+'"></textarea>\
-                </div>\
-				<div class="col-md-2">\
-					<label for="ConcluidoProcedimento">Proc. Concl.? </label><br>\
-					<div class="form-group">\
-						<div class="btn-group" data-toggle="buttons">\
-							<label class="btn btn-warning active" name="radio_ConcluidoProcedimento'+pc+'" id="radio_ConcluidoProcedimento'+pc+'N">\
-							<input type="radio" name="ConcluidoProcedimento'+pc+'" id="radiogeraldinamico"\
-								autocomplete="off" value="N" checked>Não\
-							</label>\
-							<label class="btn btn-default" name="radio_ConcluidoProcedimento'+pc+'" id="radio_ConcluidoProcedimento'+pc+'S">\
-							<input type="radio" name="ConcluidoProcedimento'+pc+'" id="radiogeraldinamico"\
-								autocomplete="off" value="S">Sim\
-							</label>\
+			<div class="panel panel-info">\
+				<div class="panel-heading">\
+					<div class="row">\
+						<div class="col-md-4">\
+							<label for="Procedimento'+pc+'">Procedimento:</label>\
+							<textarea class="form-control" id="Procedimento'+pc+'"\
+									  name="Procedimento'+pc+'"></textarea>\
+						</div>\
+						<div class="col-md-3">\
+							<label for="DataProcedimento'+pc+'">Data do Proced.:</label>\
+							<div class="input-group DatePicker">\
+								<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"\
+									   name="DataProcedimento'+pc+'" value="'+currentDate.format('DD/MM/YYYY')+'">\
+								<span class="input-group-addon" disabled>\
+									<span class="glyphicon glyphicon-calendar"></span>\
+								</span>\
+							</div>\
+						</div>\
+						<div class="col-md-3">\
+							<label for="ConcluidoProcedimento">Proc. Concl.? </label><br>\
+							<div class="form-group">\
+								<div class="btn-group" data-toggle="buttons">\
+									<label class="btn btn-warning active" name="radio_ConcluidoProcedimento'+pc+'" id="radio_ConcluidoProcedimento'+pc+'N">\
+									<input type="radio" name="ConcluidoProcedimento'+pc+'" id="radiogeraldinamico"\
+										autocomplete="off" value="N" checked>Não\
+									</label>\
+									<label class="btn btn-default" name="radio_ConcluidoProcedimento'+pc+'" id="radio_ConcluidoProcedimento'+pc+'S">\
+									<input type="radio" name="ConcluidoProcedimento'+pc+'" id="radiogeraldinamico"\
+										autocomplete="off" value="S">Sim\
+									</label>\
+								</div>\
+							</div>\
+						</div>\
+						<div class="col-md-2">\
+							<label><br></label><br>\
+							<button type="button" id="'+pc+'" class="remove_field3 btn btn-danger">\
+								<span class="glyphicon glyphicon-trash"></span>\
+							</button>\
 						</div>\
 					</div>\
 				</div>\
-                <div class="col-md-1">\
-                    <label><br></label><br>\
-                    <button type="button" id="'+pc+'" class="remove_field3 btn btn-danger">\
-                        <span class="glyphicon glyphicon-trash"></span>\
-                    </button>\
-                </div>\
-            </div>\
+			</div>\
         </div>'
     ); //add input box
     //habilita o botão de calendário após a geração dos campos dinâmicos
@@ -348,51 +626,48 @@ function adicionaProcedtarefa() {
 
     $(".input_fields_wrap3").append('\
         <div class="form-group" id="3div'+pt+'">\
-            <div class="row">\
-                <div class="col-md-2">\
-                    <label for="Profissional'+pt+'">Profissional:</label>\
-                    <select data-placeholder="Selecione uma opção..." class="form-control"\
-                             id="listadinamicad'+pt+'" name="Profissional'+pt+'">\
-                        <option value="">-- Selecione uma opção --</option>\
-                    </select>\
-                </div>\
-                <div class="col-md-3">\
-                    <label for="Procedtarefa'+pt+'">Ação:</label>\
-                    <textarea class="form-control" id="Procedtarefa'+pt+'"\
-                              name="Procedtarefa'+pt+'"></textarea>\
-                </div>\
-                <div class="col-md-2">\
-                    <label for="DataProcedtarefa'+pt+'">Data da Ação:</label>\
-                    <div class="input-group DatePicker">\
-                        <input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"\
-                               name="DataProcedtarefa'+pt+'" value="'+currentDate.format('DD/MM/YYYY')+'">\
-                        <span class="input-group-addon" disabled>\
-                            <span class="glyphicon glyphicon-calendar"></span>\
-                        </span>\
-                    </div>\
-                </div>\
-				<div class="col-md-2">\
-					<label for="ConcluidoProcedtarefa">Ação Concl.? </label><br>\
-					<div class="form-group">\
-						<div class="btn-group" data-toggle="buttons">\
-							<label class="btn btn-warning active" name="radio_ConcluidoProcedtarefa'+pt+'" id="radio_ConcluidoProcedtarefa'+pt+'N">\
-							<input type="radio" name="ConcluidoProcedtarefa'+pt+'" id="radiogeraldinamico"\
-								autocomplete="off" value="N" checked>Não\
-							</label>\
-							<label class="btn btn-default" name="radio_ConcluidoProcedtarefa'+pt+'" id="radio_ConcluidoProcedtarefa'+pt+'S">\
-							<input type="radio" name="ConcluidoProcedtarefa'+pt+'" id="radiogeraldinamico"\
-								autocomplete="off" value="S">Sim\
-							</label>\
+			<div class="panel panel-info">\
+				<div class="panel-heading">\
+					<div class="row">\
+						<div class="col-md-4">\
+							<label for="Procedtarefa'+pt+'">Ação:</label>\
+							<textarea class="form-control" id="Procedtarefa'+pt+'"\
+									  name="Procedtarefa'+pt+'"></textarea>\
+						</div>\
+						<div class="col-md-3">\
+							<label for="DataProcedtarefa'+pt+'">Data da Ação:</label>\
+							<div class="input-group DatePicker">\
+								<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"\
+									   name="DataProcedtarefa'+pt+'" value="'+currentDate.format('DD/MM/YYYY')+'">\
+								<span class="input-group-addon" disabled>\
+									<span class="glyphicon glyphicon-calendar"></span>\
+								</span>\
+							</div>\
+						</div>\
+						<div class="col-md-3">\
+							<label for="ConcluidoProcedtarefa">Ação Concl.? </label><br>\
+							<div class="form-group">\
+								<div class="btn-group" data-toggle="buttons">\
+									<label class="btn btn-warning active" name="radio_ConcluidoProcedtarefa'+pt+'" id="radio_ConcluidoProcedtarefa'+pt+'N">\
+									<input type="radio" name="ConcluidoProcedtarefa'+pt+'" id="radiogeraldinamico"\
+										autocomplete="off" value="N" checked>Não\
+									</label>\
+									<label class="btn btn-default" name="radio_ConcluidoProcedtarefa'+pt+'" id="radio_ConcluidoProcedtarefa'+pt+'S">\
+									<input type="radio" name="ConcluidoProcedtarefa'+pt+'" id="radiogeraldinamico"\
+										autocomplete="off" value="S">Sim\
+									</label>\
+								</div>\
+							</div>\
+						</div>\
+						<div class="col-md-2">\
+							<label><br></label><br>\
+							<button type="button" id="'+pt+'" class="remove_field3 btn btn-danger">\
+								<span class="glyphicon glyphicon-trash"></span>\
+							</button>\
 						</div>\
 					</div>\
 				</div>\
-                <div class="col-md-1">\
-                    <label><br></label><br>\
-                    <button type="button" id="'+pt+'" class="remove_field3 btn btn-danger">\
-                        <span class="glyphicon glyphicon-trash"></span>\
-                    </button>\
-                </div>\
-            </div>\
+			</div>\
         </div>'
     ); //add input box
     //habilita o botão de calendário após a geração dos campos dinâmicos
@@ -404,6 +679,179 @@ function adicionaProcedtarefa() {
     //request the JSON data and parse into the select element
     $.ajax({
         url: window.location.origin+ '/' + app + '/Getvalues_json.php?q=3',
+        dataType: 'JSON',
+        type: "GET",
+        success: function (data) {
+            //clear the current content of the select
+            $select.html('');
+            //iterate over the data and append a select option
+            $select.append('<option value="">-- Selecione uma opção --</option>');
+            $.each(data, function (key, val) {
+                //alert(val.id);
+                if (val.id == chosen)
+                    $select.append('<option value="' + val.id + '" selected="selected">' + val.name + '</option>');
+                else
+                    $select.append('<option value="' + val.id + '">' + val.name + '</option>');
+            })
+        },
+        error: function () {
+            //alert('erro listadinamicaB');
+            //if there is an error append a 'none available' option
+            $select.html('<option id="-1">ERRO</option>');
+        }
+
+    });
+
+}
+
+function adicionaValor() {
+
+    var pt = $("#PTCount").val(); //initlal text box count
+
+    //alert( $("#SCount").val() );
+    pt++; //text box increment
+    $("#PTCount").val(pt);
+    //console.log(pt);
+
+    if (pt >= 2) {
+        //console.log( $("#listadinamicad"+(pt-1)).val() );
+        var chosen;
+        chosen = $("#listadinamicad"+(pt-1)).val();
+        //console.log( chosen + ' :: ' + pt );
+    }
+
+    //Captura a data do dia e carrega no campo correspondente
+    var currentDate = moment();
+
+    $(".input_fields_wrap3").append('\
+        <div class="form-group" id="3div'+pt+'">\
+			<div class="panel panel-info">\
+				<div class="panel-heading">\
+					<div class="row">\
+						<div class="col-md-4">\
+							<label for="Convenio'+pt+'">Tabelas & Planos:</label>\
+							<select data-placeholder="Selecione uma opção..." class="form-control"\
+									 id="listadinamicad'+pt+'" name="Convenio'+pt+'">\
+								<option value="">-- Selecione uma opção --</option>\
+							</select>\
+						</div>\
+						<div class="col-md-4">\
+							<label for="Convdesc'+pt+'">Descrição:</label>\
+							<input type="text" class="form-control" id="Convdesc'+pt+'"\
+									  name="Convdesc'+pt+'" value="">\
+						</div>\
+						<div class="col-md-3">\
+							<label for="ValorVendaProduto'+pt+'">Valor Venda:</label><br>\
+							<div class="input-group id="ValorVendaProduto'+pt+'">\
+								<span class="input-group-addon" id="basic-addon1">R$</span>\
+								<input type="text" class="form-control Valor" id="ValorVendaProduto'+pt+'" maxlength="10" placeholder="0,00" \
+									name="ValorVendaProduto'+pt+'" value="">\
+							</div>\
+						</div>\
+						<div class="col-md-1">\
+							<label><br></label><br>\
+							<button type="button" id="'+pt+'" class="remove_field3 btn btn-danger">\
+								<span class="glyphicon glyphicon-trash"></span>\
+							</button>\
+						</div>\
+					</div>\
+				</div>\
+			</div>\
+        </div>'
+    ); //add input box
+    //habilita o botão de calendário após a geração dos campos dinâmicos
+    $('.DatePicker').datetimepicker(dateTimePickerOptions);
+
+    //get a reference to the select element
+    $select = $('#listadinamicad'+pt);
+
+    //request the JSON data and parse into the select element
+    $.ajax({
+        url: window.location.origin+ '/' + app + '/Getvalues_json.php?q=4',
+        dataType: 'JSON',
+        type: "GET",
+        success: function (data) {
+            //clear the current content of the select
+            $select.html('');
+            //iterate over the data and append a select option
+            $select.append('<option value="">-- Selecione uma opção --</option>');
+            $.each(data, function (key, val) {
+                //alert(val.id);
+                if (val.id == chosen)
+                    $select.append('<option value="' + val.id + '" selected="selected">' + val.name + '</option>');
+                else
+                    $select.append('<option value="' + val.id + '">' + val.name + '</option>');
+            })
+        },
+        error: function () {
+            //alert('erro listadinamicaB');
+            //if there is an error append a 'none available' option
+            $select.html('<option id="-1">ERRO</option>');
+        }
+
+    });
+
+}
+
+function adicionaValorServ() {
+
+    var pt = $("#PTCount").val(); //initlal text box count
+
+    //alert( $("#SCount").val() );
+    pt++; //text box increment
+    $("#PTCount").val(pt);
+    //console.log(pt);
+
+    if (pt >= 2) {
+        //console.log( $("#listadinamicad"+(pt-1)).val() );
+        var chosen;
+        chosen = $("#listadinamicad"+(pt-1)).val();
+        //console.log( chosen + ' :: ' + pt );
+    }
+
+    //Captura a data do dia e carrega no campo correspondente
+    var currentDate = moment();
+
+    $(".input_fields_wrap3").append('\
+        <div class="form-group" id="3div'+pt+'">\
+			<div class="panel panel-info">\
+				<div class="panel-heading">\
+					<div class="row">\
+						<div class="col-md-4">\
+							<label for="Convenio'+pt+'">Plano:</label>\
+							<select data-placeholder="Selecione uma opção..." class="form-control"\
+									 id="listadinamicad'+pt+'" name="Convenio'+pt+'">\
+								<option value="">-- Selecione uma opção --</option>\
+							</select>\
+						</div>\
+						<div class="col-md-3">\
+							<label for="ValorVendaServico'+pt+'">Valor Venda:</label><br>\
+							<div class="input-group id="ValorVendaServico'+pt+'">\
+								<span class="input-group-addon" id="basic-addon1">R$</span>\
+								<input type="text" class="form-control Valor" id="ValorVendaServico'+pt+'" maxlength="10" placeholder="0,00" \
+									name="ValorVendaServico'+pt+'" value="">\
+							</div>\
+						</div>\
+						<div class="col-md-1">\
+							<label><br></label><br>\
+							<button type="button" id="'+pt+'" class="remove_field3 btn btn-danger">\
+								<span class="glyphicon glyphicon-trash"></span>\
+							</button>\
+						</div>\
+					</div>\
+				</div>\
+			</div>\
+        </div>'
+    ); //add input box
+    //habilita o botão de calendário após a geração dos campos dinâmicos
+    $('.DatePicker').datetimepicker(dateTimePickerOptions);
+
+    //get a reference to the select element
+    $select = $('#listadinamicad'+pt);
+
+    //request the JSON data and parse into the select element
+    $.ajax({
+        url: window.location.origin+ '/' + app + '/Getvalues_json.php?q=4',
         dataType: 'JSON',
         type: "GET",
         success: function (data) {
@@ -465,7 +913,7 @@ function adicionaProcedtarefa() {
  * @param {string} tabela
  * @returns {decimal}
  */
-function buscaValor(id, campo, tabela, num) {
+function buscaValor(id, campo, tabela, num, campo2) {
 
     $.ajax({
         // url para o arquivo json.php
@@ -492,6 +940,121 @@ function buscaValor(id, campo, tabela, num) {
                     //para cada valor carregado o orçamento é calculado/atualizado
                     //através da chamada de sua função
                     calculaOrcamento();
+                    break;
+                }
+
+            }//fim do laço
+
+        }
+    });//termina o ajax
+
+
+}
+
+function buscaValor2Tabelas(id, campo, tabela, num, campo2) {
+
+    $.ajax({
+        // url para o arquivo json.php
+        url: window.location.origin + "/" + app + "/Valor_json.php?tabela=" + tabela + "&campo2=" + campo2,
+        // dataType json
+        dataType: "json",
+        // função para de sucesso
+        success: function (data) {
+
+            // executo este laço para acessar os itens do objeto javaScript
+            for (i = 0; i < data.length; i++) {
+
+                if (data[i].id == id) {
+
+                    //carrega o valor no campo de acordo com a opção selecionada
+                    $('#'+campo).val(data[i].valor);
+
+                    //if (tabela == area && $("#QtdVenda"+tabela+num).val()) {
+                    if ($("#QtdVenda"+campo2+num).val()) {
+                        calculaSubtotal($("#idTab_"+campo2+num).val(),$("#QtdVenda"+campo2+num).val(),num,'OUTRO',campo2);
+                        break;
+                    }
+
+                    //para cada valor carregado o orçamento é calculado/atualizado
+                    //através da chamada de sua função
+                    calculaOrcamento();
+                    break;
+                }
+
+            }//fim do laço
+
+        }
+    });//termina o ajax
+
+
+}
+
+
+function buscaValorCompra(id, campo, tabela, num) {
+
+    $.ajax({
+        // url para o arquivo json.php
+        url: window.location.origin + "/" + app + "/ValorCompra_json.php?tabela=" + tabela,
+        // dataType json
+        dataType: "json",
+        // função para de sucesso
+        success: function (data) {
+
+            // executo este laço para acessar os itens do objeto javaScript
+            for (i = 0; i < data.length; i++) {
+
+                if (data[i].id == id) {
+
+                    //carrega o valor no campo de acordo com a opção selecionada
+                    $('#'+campo).val(data[i].valor);
+
+                    //if (tabela == area && $("#QtdCompra"+tabela+num).val()) {
+                    if ($("#QtdCompra"+tabela+num).val()) {
+                        calculaSubtotalCompra($("#idTab_"+tabela+num).val(),$("#QtdCompra"+tabela+num).val(),num,'OUTRO',tabela);
+                        break;
+                    }
+
+                    //para cada valor carregado a despesa é calculado/atualizado
+                    //através da chamada de sua função
+                    calculaDespesas();
+                    break;
+                }
+
+            }//fim do laço
+
+        }
+    });//termina o ajax
+
+
+}
+
+function buscaValorConsumo(id, campo, tabela, num) {
+
+    $.ajax({
+        // url para o arquivo json.php
+        url: window.location.origin + "/" + app + "/ValorConsumo_json.php?tabela=" + tabela,
+        // dataType json
+        dataType: "json",
+        // função para de sucesso
+        success: function (data) {
+
+            // executo este laço para acessar os itens do objeto javaScript
+            for (i = 0; i < data.length; i++) {
+
+                if (data[i].id == id) {
+
+                    //carrega o valor no campo de acordo com a opção selecionada
+                    $('#'+campo).val(data[i].valor);
+
+                    //if (tabela == area && $("#QtdCompra"+tabela+num).val()) {
+                    if ($("#QtdConsumo"+tabela+num).val()) {
+                        calculaSubtotalConsumo($("#idTab_"+tabela+num).val(),$("#QtdConsumo"+tabela+num).val(),num,'OUTRO',tabela);
+                        break;
+                    }
+
+                    //para cada valor carregado a despesa é calculado/atualizado
+                    //através da chamada de sua função
+                    calculaConsumo();
                     break;
                 }
 
@@ -538,6 +1101,66 @@ function calculaSubtotal(valor, campo, num, tipo, tabela) {
     //para cada vez que o subtotal for calculado o orçamento e o total restante
     //também serão atualizados
     calculaOrcamento();
+
+}
+
+function calculaSubtotalCompra(valor, campo, num, tipo, tabela) {
+
+    if (tipo == 'VP') {
+        //variável valor recebe o valor do produto selecionado
+        var data = $("#QtdCompra"+tabela+num).val();
+
+        //o subtotal é calculado como o produto da quantidade pelo seu valor
+        var subtotal = (valor.replace(".","").replace(",",".") * data);
+        //alert('>>>'+valor+' :: '+campo+' :: '+num+' :: '+tipo+'<<<');
+    } else if (tipo == 'QTD') {
+        //variável valor recebe o valor do produto selecionado
+        var data = $("#idTab_"+tabela+num).val();
+
+        //o subtotal é calculado como o produto da quantidade pelo seu valor
+        var subtotal = (valor * data.replace(".","").replace(",","."));
+    } else {
+        //o subtotal é calculado como o produto da quantidade pelo seu valor
+        var subtotal = (valor.replace(".","").replace(",",".") * campo.replace(".","").replace(",","."));
+    }
+
+    subtotal = mascaraValorReal(subtotal);
+    //o subtotal é escrito no seu campo no formulário
+    $('#Subtotal'+tabela+num).val(subtotal);
+
+    //para cada vez que o subtotal for calculado o orçamento e o total restante
+    //também serão atualizados
+    calculaDespesas();
+
+}
+
+function calculaSubtotalConsumo(valor, campo, num, tipo, tabela) {
+
+    if (tipo == 'VP') {
+        //variável valor recebe o valor do produto selecionado
+        var data = $("#QtdConsumo"+tabela+num).val();
+
+        //o subtotal é calculado como o produto da quantidade pelo seu valor
+        var subtotal = (valor.replace(".","").replace(",",".") * data);
+        //alert('>>>'+valor+' :: '+campo+' :: '+num+' :: '+tipo+'<<<');
+    } else if (tipo == 'QTD') {
+        //variável valor recebe o valor do produto selecionado
+        var data = $("#idTab_"+tabela+num).val();
+
+        //o subtotal é calculado como o produto da quantidade pelo seu valor
+        var subtotal = (valor * data.replace(".","").replace(",","."));
+    } else {
+        //o subtotal é calculado como o produto da quantidade pelo seu valor
+        var subtotal = (valor.replace(".","").replace(",",".") * campo.replace(".","").replace(",","."));
+    }
+
+    subtotal = mascaraValorReal(subtotal);
+    //o subtotal é escrito no seu campo no formulário
+    $('#Subtotal'+tabela+num).val(subtotal);
+
+    //para cada vez que o subtotal for calculado o orçamento e o total restante
+    //também serão atualizados
+    calculaConsumo();
 
 }
 
@@ -589,6 +1212,92 @@ function calculaOrcamento() {
     calculaResta($("#ValorEntradaOrca").val());
 }
 
+function calculaDespesas() {
+
+    //captura o número incrementador do formulário, que controla quantos campos
+    //foram acrescidos tanto para serviços quanto para produtos
+    var sc = parseFloat($('#SCount').val().replace(".","").replace(",","."));
+    var pc = parseFloat($('#PCount').val().replace(".","").replace(",","."));
+    //define o subtotal inicial em 0.00
+    var subtotal = 0.00;
+
+    //variável incrementadora
+    var i = 0;
+    //percorre todos os campos de serviço, somando seus valores
+    while (i <= sc) {
+
+        //soma os valores apenas dos campos que existirem, o que forem apagados
+        //ou removidos são ignorados
+        if ($('#SubtotalServico'+i).val())
+            //subtotal += parseFloat($('#idTab_Servico'+i).val().replace(".","").replace(",","."));
+            subtotal += parseFloat($('#SubtotalServico'+i).val().replace(".","").replace(",","."));
+
+        //incrementa a variável i
+        i++;
+    }
+
+    //faz o mesmo que o laço anterior mas agora para produtos
+    var i = 0;
+    while (i <= pc) {
+
+        if ($('#SubtotalProduto'+i).val())
+            subtotal += parseFloat($('#SubtotalProduto'+i).val().replace(".","").replace(",","."));
+
+        i++;
+    }
+
+    //calcula o subtotal, configurando para duas casas decimais e trocando o
+    //ponto para o vírgula como separador de casas decimais
+    subtotal = mascaraValorReal(subtotal);
+
+    //escreve o subtotal no campo do formulário
+    $('#ValorDespesas').val(subtotal);
+    calculaRestaDespesas($("#ValorEntradaDespesas").val());
+}
+
+function calculaConsumo() {
+
+    //captura o número incrementador do formulário, que controla quantos campos
+    //foram acrescidos tanto para serviços quanto para produtos
+    var sc = parseFloat($('#SCount').val().replace(".","").replace(",","."));
+    var pc = parseFloat($('#PCount').val().replace(".","").replace(",","."));
+    //define o subtotal inicial em 0.00
+    var subtotal = 0.00;
+
+    //variável incrementadora
+    var i = 0;
+    //percorre todos os campos de serviço, somando seus valores
+    while (i <= sc) {
+
+        //soma os valores apenas dos campos que existirem, o que forem apagados
+        //ou removidos são ignorados
+        if ($('#SubtotalServico'+i).val())
+            //subtotal += parseFloat($('#idTab_Servico'+i).val().replace(".","").replace(",","."));
+            subtotal += parseFloat($('#SubtotalServico'+i).val().replace(".","").replace(",","."));
+
+        //incrementa a variável i
+        i++;
+    }
+
+    //faz o mesmo que o laço anterior mas agora para produtos
+    var i = 0;
+    while (i <= pc) {
+
+        if ($('#SubtotalProduto'+i).val())
+            subtotal += parseFloat($('#SubtotalProduto'+i).val().replace(".","").replace(",","."));
+
+        i++;
+    }
+
+    //calcula o subtotal, configurando para duas casas decimais e trocando o
+    //ponto para o vírgula como separador de casas decimais
+    subtotal = mascaraValorReal(subtotal);
+
+    //escreve o subtotal no campo do formulário
+    $('#ValorConsumo').val(subtotal);
+    calculaRestaConsumo($("#ValorEntradaConsumo").val());
+}
+
 /*
  * Função responsável por adicionar novos campos de serviço dinamicamente no
  * formulário de orçamento/tratametno
@@ -607,7 +1316,7 @@ function adicionaServico() {
             <div class="panel panel-info">\
                 <div class="panel-heading">\
                     <div class="row">\
-						<div class="col-md-1">\
+						<div class="col-md-2">\
                             <label for="QtdVendaServico">Qtd:</label><br>\
                             <div class="input-group">\
                                 <input type="text" class="form-control Numero" maxlength="3" id="QtdVendaServico'+ps+'" placeholder="0"\
@@ -638,15 +1347,129 @@ function adicionaServico() {
                                        name="SubtotalServico'+ps+'" value="">\
                             </div>\
                         </div>\
-                        <div class="col-md-1">\
+                    </div>\
+                    <div class="row">\
+                        <div class="col-md-6">\
+                            <label for="ObsServico'+ps+'">Obs:</label><br>\
+                            <input type="text" class="form-control" id="ObsServico'+ps+'" maxlength="250"\
+                                   name="ObsServico'+ps+'" value="">\
+                        </div>\
+                        <div class="col-md-3">\
+                            <label for="ConcluidoServico">Concluído? </label><br>\
+                            <div class="form-group">\
+                                <div class="btn-group" data-toggle="buttons">\
+                                    <label class="btn btn-warning active" name="radio_ConcluidoServico'+ps+'" id="radio_ConcluidoServico'+ps+'N">\
+                                    <input type="radio" name="ConcluidoServico'+ps+'" id="radiogeraldinamico"\
+                                        autocomplete="off" value="N" checked>Não\
+                                    </label>\
+                                    <label class="btn btn-default" name="radio_ConcluidoServico'+ps+'" id="radio_ConcluidoServico'+ps+'S">\
+                                    <input type="radio" name="ConcluidoServico'+ps+'" id="radiogeraldinamico"\
+                                        autocomplete="off" value="S">Sim\
+                                    </label>\
+                                </div>\
+                            </div>\
+                        </div>\
+						<div class="col-md-2">\
                             <label><br></label><br>\
                             <a href="#" id="'+ps+'" class="remove_field btn btn-danger">\
                                 <span class="glyphicon glyphicon-trash"></span>\
                             </a>\
                         </div>\
                     </div>\
+                </div>\
+            </div>\
+        </div>'
+    ); //add input box
+
+    //get a reference to the select element
+    $select = $('#listadinamica'+ps);
+
+    //request the JSON data and parse into the select element
+    $.ajax({
+        url: window.location.origin+ '/' + app + '/Getvalues_json.php?q=1',
+        dataType: 'JSON',
+        type: "GET",
+        success: function (data) {
+            //clear the current content of the select
+            $select.html('');
+            //iterate over the data and append a select option
+            $select.append('<option value="">-- Selecione uma opção --</option>');
+            $.each(data, function (key, val) {
+                //alert(val.id);
+                $select.append('<option value="' + val.id + '">' + val.name + '</option>');
+            })
+        },
+        error: function () {
+            //alert('erro listadinamicaA');
+            //if there is an error append a 'none available' option
+            $select.html('<option id="-1">ERRO</option>');
+        }
+
+    });
+
+    //permite o uso de radio buttons nesse bloco dinâmico
+    $('input:radio[id="radiogeraldinamico"]').change(function() {
+
+        var value = $(this).val();
+        var name = $(this).attr("name");
+
+        //console.log(value + ' <<>> ' + name);
+
+        $('label[name="radio_' + name + '"]').removeClass();
+        $('label[name="radio_' + name + '"]').addClass("btn btn-default");
+        $('#radio_' + name + value).addClass("btn btn-warning active");
+
+    });
+}
+
+function adicionaServicoCompra() {
+
+    var ps = $("#SCount").val(); //initlal text box count
+
+    //alert( $("#SCount").val() );
+    ps++; //text box increment
+    $("#SCount").val(ps);
+    //console.log(ps);
+
+    $(".input_fields_wrap5").append('\
+        <div class="form-group" id="5div'+ps+'">\
+            <div class="panel panel-info">\
+                <div class="panel-heading">\
                     <div class="row">\
-                        <div class="col-md-10">\
+						<div class="col-md-2">\
+                            <label for="QtdCompraServico">Qtd:</label><br>\
+                            <div class="input-group">\
+                                <input type="text" class="form-control Numero" maxlength="3" id="QtdCompraServico'+ps+'" placeholder="0"\
+                                    onkeyup="calculaSubtotalCompra(this.value,this.name,'+ps+',\'QTD\',\'Servico\')"\
+                                    name="QtdCompraServico'+ps+'" value="">\
+                            </div>\
+                        </div>\
+						<div class="col-md-4">\
+                            <label for="idTab_Servico">Serviços:</label><br>\
+                            <select class="form-control" id="listadinamica'+ps+'" onchange="buscaValorCompra(this.value,this.name,\'Servico\','+ps+')" name="idTab_Servico'+ps+'">\
+                                <option value="">-- Selecione uma opção --</option>\
+                            </select>\
+                        </div>\
+                        <div class="col-md-3">\
+                            <label for="ValorCompraServico">Valor do Serviço:</label><br>\
+                            <div class="input-group" id="txtHint">\
+                                <span class="input-group-addon" id="basic-addon1">R$</span>\
+                                <input type="text" class="form-control Valor" id="idTab_Servico'+ps+'" maxlength="10" placeholder="0,00" \
+                                    onkeyup="calculaSubtotalCompra(this.value,this.name,'+ps+',\'VP\',\'Servico\')"\
+                                    name="ValorCompraServico'+ps+'" value="">\
+                            </div>\
+                        </div>\
+                        <div class="col-md-3">\
+                            <label for="SubtotalServico">Subtotal:</label><br>\
+                            <div class="input-group id="txtHint">\
+                                <span class="input-group-addon" id="basic-addon1">R$</span>\
+                                <input type="text" class="form-control Valor" maxlength="10" placeholder="0,00" readonly="" id="SubtotalServico'+ps+'"\
+                                       name="SubtotalServico'+ps+'" value="">\
+                            </div>\
+                        </div>\
+                    </div>\
+                    <div class="row">\
+                        <div class="col-md-8">\
                             <label for="ObsServico'+ps+'">Obs:</label><br>\
                             <input type="text" class="form-control" id="ObsServico'+ps+'" maxlength="250"\
                                    name="ObsServico'+ps+'" value="">\
@@ -666,6 +1489,12 @@ function adicionaServico() {
                                 </div>\
                             </div>\
                         </div>\
+						<div class="col-md-1">\
+                            <label><br></label><br>\
+                            <a href="#" id="'+ps+'" class="remove_field5 btn btn-danger">\
+                                <span class="glyphicon glyphicon-trash"></span>\
+                            </a>\
+                        </div>\
                     </div>\
                 </div>\
             </div>\
@@ -677,7 +1506,7 @@ function adicionaServico() {
 
     //request the JSON data and parse into the select element
     $.ajax({
-        url: window.location.origin+ '/' + app + '/Getvalues_json.php?q=1',
+        url: window.location.origin+ '/' + app + '/GetvaluesCompra_json.php?q=1',
         dataType: 'JSON',
         type: "GET",
         success: function (data) {
@@ -753,14 +1582,16 @@ $("#first-choice").change(function () {
 $(document).ready(function () {
 
     $(".Date").mask("99/99/9999");
+	$(".Cnpj").mask("99.999.999/9999-99");
     $(".Time").mask("99:99");
-    $(".Cpf").mask("999.999.999-99");
-    $(".Cep").mask("99999-999");
+    $(".Cpf").mask("99999999999");
+    $(".Cep").mask("99999999");
+	$(".Rg").mask("999999999");
     $(".TituloEleitor").mask("9999.9999.9999");
     $(".Valor").mask("#.##0,00", {reverse: true});
     $('.Numero').mask('0#');
 
-    $(".Celular").mask("(99) 999999999");
+    $(".Celular").mask("99999999999");
     $(".CelularVariavel").on("blur", function () {
         var last = $(this).val().substr($(this).val().indexOf("-") + 1);
 
@@ -840,13 +1671,13 @@ $(document).ready(function () {
                                         name="QtdVendaProduto'+pc+'" value="">\
                                 </div>\
                             </div>\
-                            <div class="col-md-4">\
+                            <div class="col-md-7">\
                                 <label for="idTab_Produto">Produto:</label><br>\
-                                <select class="form-control" id="listadinamicab'+pc+'" onchange="buscaValor(this.value,this.name,\'Produto\','+pc+')" name="idTab_Produto'+pc+'">\
+                                <select class="form-control Chosen" id="listadinamicab'+pc+'" onchange="buscaValor2Tabelas(this.value,this.name,\'Valor\','+pc+',\'Produto\')" name="idTab_Produto'+pc+'">\
                                     <option value="">-- Selecione uma opção --</option>\
                                 </select>\
                             </div>\
-                            <div class="col-md-3">\
+                            <div class="col-md-2">\
                                 <label for="ValorVendaProduto">Valor do Produto:</label><br>\
                                 <div class="input-group id="txtHint">\
                                     <span class="input-group-addon" id="basic-addon1">R$</span>\
@@ -855,7 +1686,7 @@ $(document).ready(function () {
                                         name="ValorVendaProduto'+pc+'" value="">\
                                 </div>\
                             </div>\
-                            <div class="col-md-3">\
+                            <div class="col-md-2">\
                                 <label for="SubtotalProduto">Subtotal:</label><br>\
                                 <div class="input-group id="txtHint">\
                                     <span class="input-group-addon" id="basic-addon1">R$</span>\
@@ -863,18 +1694,35 @@ $(document).ready(function () {
                                            name="SubtotalProduto'+pc+'" value="">\
                                 </div>\
                             </div>\
-                            <div class="col-md-1">\
+                        </div>\
+						<div class="row">\
+						<div class="col-md-1"></div>\
+						<div class="col-md-7">\
+								<label for="ObsProduto'+pc+'">Obs:</label><br>\
+								<input type="text" class="form-control" id="ObsProduto'+pc+'" maxlength="250"\
+									   name="ObsProduto'+pc+'" value="">\
+							</div>\
+							<div class="col-md-2">\
+								<label for="DataValidadeProduto'+pc+'">Val. do Produto:</label>\
+								<div class="input-group DatePicker">\
+									<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"\
+										   name="DataValidadeProduto'+pc+'" value="'+currentDate.format('DD/MM/YYYY')+'">\
+									<span class="input-group-addon" disabled>\
+										<span class="glyphicon glyphicon-calendar"></span>\
+									</span>\
+								</div>\
+							</div>\
+							<div class="col-md-1">\
                                 <label><br></label><br>\
                                 <a href="#" id="'+pc+'" class="remove_field2 btn btn-danger">\
                                     <span class="glyphicon glyphicon-trash"></span>\
                                 </a>\
                             </div>\
-                        </div>\
+						</div>\
                     </div>\
                 </div>\
             </div>'
         ); //add input box
-
 
         //get a reference to the select element
         $select = $('#listadinamicab'+pc);
@@ -893,6 +1741,295 @@ $(document).ready(function () {
                     //alert(val.id);
                     $select.append('<option value="' + val.id + '">' + val.name + '</option>');
                 })
+                $('.Chosen').chosen({
+                    disable_search_threshold: 10,
+                    multiple_text: "Selecione uma ou mais opções",
+                    single_text: "Selecione uma opção",
+                    no_results_text: "Nenhum resultado para",
+                    width: "100%"
+                });
+            },
+            error: function () {
+                //alert('erro listadinamicaB');
+                //if there is an error append a 'none available' option
+                $select.html('<option id="-1">ERRO</option>');
+            }
+
+        });
+
+    });
+
+	//adiciona campos dinamicamente
+    var pc = $("#PCount").val(); //initlal text box count
+    $(".add_field_button4").click(function(e){ //on add input button click
+        e.preventDefault();
+
+        pc++; //text box increment
+        $("#PCount").val(pc);
+
+		$(".input_fields_wrap4").append('\
+            <div class="form-group" id="4div'+pc+'">\
+                <div class="panel panel-info">\
+                    <div class="panel-heading">\
+                        <div class="row">\
+                            <div class="col-md-1">\
+                                <label for="QtdCompraProduto">Qtd:</label><br>\
+                                <div class="input-group">\
+                                    <input type="text" class="form-control Numero" maxlength="3" id="QtdCompraProduto'+pc+'" placeholder="0"\
+                                        onkeyup="calculaSubtotalCompra(this.value,this.name,'+pc+',\'QTD\',\'Produto\')"\
+                                        name="QtdCompraProduto'+pc+'" value="">\
+                                </div>\
+                            </div>\
+                            <div class="col-md-7">\
+                                <label for="idTab_Produto">Produto:</label><br>\
+                                <select class="form-control Chosen" id="listadinamicab'+pc+'" onchange="buscaValorCompra(this.value,this.name,\'Produto\','+pc+')" name="idTab_Produto'+pc+'">\
+                                    <option value="">-- Selecione uma opção --</option>\
+                                </select>\
+                            </div>\
+                            <div class="col-md-2">\
+                                <label for="ValorCompraProduto">Valor do Produto:</label><br>\
+                                <div class="input-group id="txtHint">\
+                                    <span class="input-group-addon" id="basic-addon1">R$</span>\
+                                    <input type="text" class="form-control Valor" id="idTab_Produto'+pc+'" maxlength="10" placeholder="0,00" \
+                                        onkeyup="calculaSubtotalCompra(this.value,this.name,'+pc+',\'VP\',\'Produto\')"\
+                                        name="ValorCompraProduto'+pc+'" value="">\
+                                </div>\
+                            </div>\
+                            <div class="col-md-2">\
+                                <label for="SubtotalProduto">Subtotal:</label><br>\
+                                <div class="input-group id="txtHint">\
+                                    <span class="input-group-addon" id="basic-addon1">R$</span>\
+                                    <input type="text" class="form-control Valor" maxlength="10" placeholder="0,00" readonly="" id="SubtotalProduto'+pc+'"\
+                                           name="SubtotalProduto'+pc+'" value="">\
+                                </div>\
+                            </div>\
+                            <div class="col-md-1">\
+                                <label><br></label><br>\
+                                <a href="#" id="'+pc+'" class="remove_field4 btn btn-danger">\
+                                    <span class="glyphicon glyphicon-trash"></span>\
+                                </a>\
+                            </div>\
+                        </div>\
+                    </div>\
+                </div>\
+            </div>'
+        ); //add input box
+
+        //get a reference to the select element
+        $select = $('#listadinamicab'+pc);
+
+        //request the JSON data and parse into the select element
+        $.ajax({
+            url: window.location.origin+ '/' + app + '/GetvaluesCompra_json.php?q=2',
+            dataType: 'JSON',
+            type: "GET",
+            success: function (data) {
+                //clear the current content of the select
+                $select.html('');
+                //iterate over the data and append a select option
+                $select.append('<option value="">-- Selecione uma opção --</option>');
+                $.each(data, function (key, val) {
+                    //alert(val.id);
+                    $select.append('<option value="' + val.id + '">' + val.name + '</option>');
+                })
+                $('.Chosen').chosen({
+                    disable_search_threshold: 10,
+                    multiple_text: "Selecione uma ou mais opções",
+                    single_text: "Selecione uma opção",
+                    no_results_text: "Nenhum resultado para",
+                    width: "100%"
+                });
+            },
+            error: function () {
+                //alert('erro listadinamicaB');
+                //if there is an error append a 'none available' option
+                $select.html('<option id="-1">ERRO</option>');
+            }
+
+        });
+
+    });
+
+	//adiciona campos dinamicamente
+    var pc = $("#PCount").val(); //initlal text box count
+    $(".add_field_button6").click(function(e){ //on add input button click
+        e.preventDefault();
+
+        pc++; //text box increment
+        $("#PCount").val(pc);
+
+		$(".input_fields_wrap6").append('\
+            <div class="form-group" id="6div'+pc+'">\
+                <div class="panel panel-danger">\
+                    <div class="panel-heading">\
+                        <div class="row">\
+                            <div class="col-md-1">\
+                                <label for="QtdCompraProduto">Qtd:</label><br>\
+                                <div class="input-group">\
+                                    <input type="text" class="form-control Numero" maxlength="3" id="QtdCompraProduto'+pc+'" placeholder="0"\
+                                        onkeyup="calculaSubtotalCompra(this.value,this.name,'+pc+',\'QTD\',\'Produto\')"\
+                                        name="QtdCompraProduto'+pc+'" value="">\
+                                </div>\
+                            </div>\
+                            <div class="col-md-7">\
+                                <label for="idTab_Produto">Produto:</label><br>\
+                                <select class="form-control Chosen" id="listadinamicab'+pc+'" onchange="buscaValorCompra(this.value,this.name,\'Produto\','+pc+')" name="idTab_Produto'+pc+'">\
+                                    <option value="">-- Selecione uma opção --</option>\
+                                </select>\
+                            </div>\
+                            <div class="col-md-2">\
+                                <label for="ValorCompraProduto">Valor do Produto:</label><br>\
+                                <div class="input-group id="txtHint">\
+                                    <span class="input-group-addon" id="basic-addon1">R$</span>\
+                                    <input type="text" class="form-control Valor" id="idTab_Produto'+pc+'" maxlength="10" placeholder="0,00" \
+                                        onkeyup="calculaSubtotalCompra(this.value,this.name,'+pc+',\'VP\',\'Produto\')"\
+                                        name="ValorCompraProduto'+pc+'" value="">\
+                                </div>\
+                            </div>\
+                            <div class="col-md-2">\
+                                <label for="SubtotalProduto">Subtotal:</label><br>\
+                                <div class="input-group id="txtHint">\
+                                    <span class="input-group-addon" id="basic-addon1">R$</span>\
+                                    <input type="text" class="form-control Valor" maxlength="10" placeholder="0,00" readonly="" id="SubtotalProduto'+pc+'"\
+                                           name="SubtotalProduto'+pc+'" value="">\
+                                </div>\
+                            </div>\
+                        </div>\
+						<div class="row">\
+						<div class="col-md-1"></div>\
+						<div class="col-md-7">\
+								<label for="ObsProduto'+pc+'">Obs:</label><br>\
+								<input type="text" class="form-control" id="ObsProduto'+pc+'" maxlength="250"\
+									   name="ObsProduto'+pc+'" value="">\
+							</div>\
+							<div class="col-md-2">\
+								<label for="DataValidadeProduto'+pc+'">Val. do Produto:</label>\
+								<div class="input-group DatePicker">\
+									<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"\
+										   name="DataValidadeProduto'+pc+'" value="'+currentDate.format('DD/MM/YYYY')+'">\
+									<span class="input-group-addon" disabled>\
+										<span class="glyphicon glyphicon-calendar"></span>\
+									</span>\
+								</div>\
+							</div>\
+							<div class="col-md-1">\
+                                <label><br></label><br>\
+                                <a href="#" id="'+pc+'" class="remove_field6 btn btn-danger">\
+                                    <span class="glyphicon glyphicon-trash"></span>\
+                                </a>\
+                            </div>\
+						</div>\
+                    </div>\
+                </div>\
+            </div>'
+        ); //add input box
+
+        //get a reference to the select element
+        $select = $('#listadinamicab'+pc);
+
+        //request the JSON data and parse into the select element
+        $.ajax({
+            url: window.location.origin+ '/' + app + '/GetvaluesCompra_json.php?q=2',
+            dataType: 'JSON',
+            type: "GET",
+            success: function (data) {
+                //clear the current content of the select
+                $select.html('');
+                //iterate over the data and append a select option
+                $select.append('<option value="">-- Selecione uma opção --</option>');
+                $.each(data, function (key, val) {
+                    //alert(val.id);
+                    $select.append('<option value="' + val.id + '">' + val.name + '</option>');
+                })
+                $('.Chosen').chosen({
+                    disable_search_threshold: 10,
+                    multiple_text: "Selecione uma ou mais opções",
+                    single_text: "Selecione uma opção",
+                    no_results_text: "Nenhum resultado para",
+                    width: "100%"
+                });
+            },
+            error: function () {
+                //alert('erro listadinamicaB');
+                //if there is an error append a 'none available' option
+                $select.html('<option id="-1">ERRO</option>');
+            }
+
+        });
+
+    });
+
+	//adiciona campos dinamicamente
+    var pc = $("#PCount").val(); //initlal text box count
+    $(".add_field_button7").click(function(e){ //on add input button click
+        e.preventDefault();
+
+        pc++; //text box increment
+        $("#PCount").val(pc);
+
+		$(".input_fields_wrap7").append('\
+            <div class="form-group" id="7div'+pc+'">\
+                <div class="panel panel-danger">\
+                    <div class="panel-heading">\
+                        <div class="row">\
+                            <div class="col-md-1">\
+                                <label for="QtdCompraProduto">Qtd:</label><br>\
+                                <div class="input-group">\
+                                    <input type="text" class="form-control Numero" maxlength="3" id="QtdCompraProduto'+pc+'" placeholder="0"\
+                                        onkeyup="calculaSubtotalCompra(this.value,this.name,'+pc+',\'QTD\',\'Produto\')"\
+                                        name="QtdCompraProduto'+pc+'" value="">\
+                                </div>\
+                            </div>\
+                            <div class="col-md-7">\
+                                <label for="idTab_Produto">Produto:</label><br>\
+                                <select class="form-control Chosen" id="listadinamicab'+pc+'" onchange="buscaValorCompra(this.value,this.name,\'Produto\','+pc+')" name="idTab_Produto'+pc+'">\
+                                    <option value="">-- Selecione uma opção --</option>\
+                                </select>\
+                            </div>\
+                        </div>\
+						<div class="row">\
+						<div class="col-md-1"></div>\
+						<div class="col-md-7">\
+								<label for="ObsProduto'+pc+'">Obs:</label><br>\
+								<input type="text" class="form-control" id="ObsProduto'+pc+'" maxlength="250"\
+									   name="ObsProduto'+pc+'" value="">\
+							</div>\
+							<div class="col-md-1">\
+                                <label><br></label><br>\
+                                <a href="#" id="'+pc+'" class="remove_field7 btn btn-danger">\
+                                    <span class="glyphicon glyphicon-trash"></span>\
+                                </a>\
+                            </div>\
+						</div>\
+                    </div>\
+                </div>\
+            </div>'
+        ); //add input box
+
+        //get a reference to the select element
+        $select = $('#listadinamicab'+pc);
+
+        //request the JSON data and parse into the select element
+        $.ajax({
+            url: window.location.origin+ '/' + app + '/GetvaluesCompra_json.php?q=2',
+            dataType: 'JSON',
+            type: "GET",
+            success: function (data) {
+                //clear the current content of the select
+                $select.html('');
+                //iterate over the data and append a select option
+                $select.append('<option value="">-- Selecione uma opção --</option>');
+                $.each(data, function (key, val) {
+                    //alert(val.id);
+                    $select.append('<option value="' + val.id + '">' + val.name + '</option>');
+                })
+                $('.Chosen').chosen({
+                    disable_search_threshold: 10,
+                    multiple_text: "Selecione uma ou mais opções",
+                    single_text: "Selecione uma opção",
+                    no_results_text: "Nenhum resultado para",
+                    width: "100%"
+                });
             },
             error: function () {
                 //alert('erro listadinamicaB');
@@ -916,6 +2053,34 @@ $(document).ready(function () {
         $("#2div"+$(this).attr("id")).remove();
         //após remover o campo refaz o cálculo do orçamento e total restante
         calculaOrcamento();
+    })
+
+	//Remove os campos adicionados dinamicamente
+    $(".input_fields_wrap4").on("click",".remove_field4", function(e){ //user click on remove text
+        $("#4div"+$(this).attr("id")).remove();
+        //após remover o campo refaz o cálculo do orçamento e total restante
+        calculaOrcamento();
+    })
+
+	//Remove os campos adicionados dinamicamente
+    $(".input_fields_wrap5").on("click",".remove_field5", function(e){ //user click on remove text
+        $("#5div"+$(this).attr("id")).remove();
+        //após remover o campo refaz o cálculo da despesa e total restante
+        calculaDespesas();
+    })
+
+	//Remove os campos adicionados dinamicamente
+    $(".input_fields_wrap6").on("click",".remove_field6", function(e){ //user click on remove text
+        $("#6div"+$(this).attr("id")).remove();
+        //após remover o campo refaz o cálculo do orçamento e total restante
+        calculaDespesas();
+    })
+
+	//Remove os campos adicionados dinamicamente
+    $(".input_fields_wrap7").on("click",".remove_field7", function(e){ //user click on remove text
+        $("#7div"+$(this).attr("id")).remove();
+		//após remover o campo refaz o cálculo do orçamento e total restante
+        //calculaCompra();
     })
 
     //Remove os campos adicionados dinamicamente
@@ -987,6 +2152,7 @@ $(document).ready(function () {
         no_results_text: "Nenhum resultado para",
         width: "100%"
     });
+
     $("button.fc-today-button").click(function () {
         $('#datepickerinline').datetimepicker({
             today: '2011-01-01',
@@ -1134,8 +2300,12 @@ $('#submit').on('click', function () {
 
 jQuery(document).ready(function ($) {
     $(".clickable-row").click(function () {
-        window.document.location = $(this).data("href");
+        if(!$(event.target).hasClass('notclickable'))
+           window.location = $(this).data("href");
+        else
+            event.stopPropagation();
     });
+
 });
 setTimeout(function () {
     $('#hidediv').fadeOut('slow');
@@ -1282,7 +2452,8 @@ $('#calendar').fullCalendar({
     //handleWindowResize: false,
     //aspectRatio: 2,
 
-    minTime: '07:00',
+    firstDay: '1',
+	minTime: '07:00',
     maxTime: '21:00',
     //minTime: '00:00',
     //maxTime: '24:00',
@@ -1295,13 +2466,13 @@ $('#calendar').fullCalendar({
     eventAfterRender: function (event, element) {
 
         if (event.Evento == 1)
-            var title = "<b>Evento Agendado</b><br><br><b>Obs:</b> " + event.Obs;
+            var title = "<b>Evento Agendado</b><br><br><b>Obs:</b> " + event.Obs + "<br>\n\<b>Profissional:</b> " + event.Profissional;
         else {
 
             if (event.Paciente == 'D')
-                var title = "<b>" + event.title + "</b><br><b>Responsável:</b> " + event.subtitle + "<br>\n\<b>Tipo de Consulta:</b> " + event.TipoConsulta + "<br><b>Obs:</b> " + event.Obs + "<br><b>Profissional:</b> " + event.Profissional;
+                var title = "<b>" + event.title + "</b><br><b>Responsável:</b> " + event.subtitle + "<br><b>Tel.1:</b> " + event.Telefone1 + "<br>\n\<b>Profissional:</b> " + event.Profissional + "<br>\n\<b>Obs:</b> " + event.Obs + "<br>\n\<b>Tipo de Consulta:</b> " + event.TipoConsulta;
             else
-                var title = "<b>" + event.title + "</b><br>\n\<b>Tipo de Consulta:</b> " + event.TipoConsulta + "<br><b>Obs:</b> " + event.Obs + "<br><b>Profissional:</b> " + event.Profissional;
+                var title = "<b>" + event.title + "<b> " + "<br><b>Tel.1:</b> " + event.Telefone1 + "<br>\n\<b>Profissional:</b> " + event.Profissional + "<br>\n\<b>Obs:</b> " + event.Obs + "<br>\n\<b>Tipo de Consulta:</b> " + event.TipoConsulta;
         }
 
 
@@ -1348,6 +2519,15 @@ function redirecionar(x) {
     var start = moment($("#start").val());
     var end = moment($("#end").val());
     (x == 1) ? url = 'consulta/cadastrar_evento' : url = 'cliente/pesquisar';
+    window.location = re.exec(window.location.href) + url + '?start=' + start + '&end=' + end
+}
+
+function redirecionar2(x) {
+
+    var re = new RegExp(/^.*\//);
+    var start = moment($("#start").val());
+    var end = moment($("#end").val());
+    (x == 3) ? url = 'consulta/cadastrar_particular' : url = 'cliente/pesquisar';
     window.location = re.exec(window.location.href) + url + '?start=' + start + '&end=' + end
 }
 

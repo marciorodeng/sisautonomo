@@ -3,13 +3,13 @@
 	<div class="row">
 		<div class="btn-group" role="group">
 			<a class="btn btn-lg btn-primary active"> 
-				<span class="glyphicon glyphicon-sort-by-attributes"></span> <?php echo '<b>Total de Contatos:</b> ' . $query->num_rows() ?>
+				<span class="glyphicon glyphicon-sort-by-attributes"></span> <?php echo '<b>Total:</b> ' . $query->num_rows() ?>
 			</a>        
 		</div>
 
 		<div class="btn-group" role="group">
 			<a class="btn btn-lg btn-warning" href="<?php echo base_url() ?>contatocliente/cadastrar" role="button"> 
-				<span class="glyphicon glyphicon-plus"></span> Cadastrar Novo Contato
+				<span class="glyphicon glyphicon-plus"></span> Cad.
 			</a>
 		</div>
 	</div>        
@@ -83,6 +83,11 @@ foreach ($query->result_array() as $row) {
 			<p>	
 				<?php if ($row['Telefone1']) { ?>
 				<span class="glyphicon glyphicon-phone-alt"></span> <b>Telefone:</b> <?php echo $row['Telefone1']; ?>
+				<?php } ?>
+            </p>
+			<p>	
+				<?php if ($row['Ativo']) { ?>
+				<span class="glyphicon glyphicon-alert"></span> <b>Ativo:</b> <?php echo $row['Ativo']; ?>
 				<?php } ?>
             </p>
 

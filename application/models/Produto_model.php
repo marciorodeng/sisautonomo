@@ -48,16 +48,35 @@ class Produto_model extends CI_Model {
         } else {
             return TRUE;
         }
-    }    
-    
-    public function lista_produto($x) {
+    }
 
-        $query = $this->db->query('SELECT * '
-                . 'FROM Tab_Produto '
-                . 'WHERE '
-                . 'idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND '
-                . 'idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' '
-                . 'ORDER BY NomeProduto ASC ');
+	public function delete_produto($data) {        
+		$query = $this->db->delete('Tab_Produto', array('idTab_Produto' => $data));
+
+        if ($this->db->affected_rows() === 0) {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+    }
+    
+    public function lista_produto1($x) {
+
+        $query = $this->db->query(
+                'SELECT '
+                    . 'idTab_Produto, '
+                    . 'NomeProduto, '
+                    . 'TipoProduto, '
+					. 'Convenio, '
+					. 'ProdutoBase, '
+                    . 'UnidadeProduto, '
+                    . 'ValorCompraProduto, '
+                    . 'ValorVendaProduto '
+                    . 'FROM '
+                    . 'Tab_Produto '
+                    . 'WHERE '
+                    . 'idSis_Usuario = ' . $_SESSION['log']['id'] . ' ' 
+					. 'ORDER BY TipoProduto ASC, NomeProduto ASC ');
         
         /*
           echo $this->db->last_query();
@@ -81,38 +100,140 @@ class Produto_model extends CI_Model {
                 return $query;
             }
         }
-    }    
-    
+    }
+
+	public function lista_produto2($x) {
+
+        $query = $this->db->query('
+            SELECT
+                TPV.idTab_Produto,
+				TTP.TipoProduto,
+				TPB.TipoProdutoBase,
+				TPB.ProdutoBase,
+				TPB.UnidadeProdutoBase,
+				TPB.CodProd,
+				TC.Convenio,
+				TPB.ValorCompraProdutoBase,
+				TPV.ValorVendaProduto           
+            FROM
+                Tab_Produto AS TPV				
+				LEFT JOIN Tab_Convenio AS TC ON TC.idTab_Convenio = TPV.Convenio										
+				LEFT JOIN Tab_ProdutoBase AS TPB ON TPB.idTab_ProdutoBase= TPV.ProdutoBase
+				LEFT JOIN Tab_TipoProduto AS TTP ON TTP.Abrev = TPB.TipoProdutoBase
+            WHERE
+                TPV.idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND
+                TPV.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' 
+            ORDER BY
+				TPB.TipoProdutoBase DESC,
+				TPB.ProdutoBase,
+				TC.Convenio DESC
+											
+        ');
+
+        /*
+		
+		LEFT JOIN Tab_ProdutoBase AS PB ON PB.idTab_ProdutoBase = TPC.ProdutoBase
+		
+		
+          echo $this->db->last_query();
+          $query = $query->result_array();
+          echo "<pre>";
+          print_r($query);
+          echo "</pre>";
+          exit();
+          */
+
+        if ($query->num_rows() === 0) {
+            return FALSE;
+        } else {
+            if ($x === FALSE) {
+                return TRUE;
+            } else {               
+                $query = $query->result_array();
+                return $query;
+            }
+        }
+    }
+	
+	public function lista_produto($x) {
+
+        $query = $this->db->query('
+            SELECT
+                TPV.idTab_Produto,
+				TTP.TipoProduto,
+				TPV.CodProd,				
+				TPV.NomeProduto,
+				TPV.UnidadeProduto,
+				TPV.ValorVendaProduto,				
+				TPV.ValorCompraProduto,
+				TSU.NomeEmpresa
+            FROM
+				Tab_Produto AS TPV
+				LEFT JOIN Tab_TipoProduto AS TTP ON TTP.Abrev = TPV.TipoProduto
+				LEFT JOIN Sis_Usuario AS TSU ON TSU.idSis_Usuario = TPV.idSis_Usuario
+            WHERE				
+				TPV.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' AND
+				(TPV.Empresa = ' . $_SESSION['log']['id'] . ' OR
+				 TPV.Empresa = ' . $_SESSION['log']['Empresa'] . ')
+            ORDER BY
+				TPV.TipoProduto DESC,
+				TPV.NomeProduto											
+        ');
+
+        /*
+          echo $this->db->last_query();
+          $query = $query->result_array();
+          echo "<pre>";
+          print_r($query);
+          echo "</pre>";
+          exit();
+          */
+
+        if ($query->num_rows() === 0) {
+            return FALSE;
+        } else {
+            if ($x === FALSE) {
+                return TRUE;
+            } else {               
+                $query = $query->result_array();
+                return $query;
+            }
+        }
+    }
+	   		
 	public function select_produto($data = FALSE) {
 
         if ($data === TRUE) {
             $array = $this->db->query(
-                'SELECT '
-                    . 'idTab_Produto, '
-                    . 'NomeProduto, '
-                    . 'Quantidade, '
-                    . 'Unidade, '
-                    . 'ValorCompra, '
-                    . 'ValorProdVenda '
-                    . 'FROM '
-                    . 'Tab_Produto '
-                    . 'WHERE '
-                    . 'idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND '
-                    . 'idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] );
+                'SELECT
+                TPV.idTab_Produto,
+				CONCAT(TPV.NomeProduto, " --- ", TPV.UnidadeProduto, " --- R$ ", TPV.ValorCompraProduto) AS NomeProduto,
+				TPV.ValorCompraProduto
+            FROM
+                Tab_Produto AS TPV																	
+            WHERE
+				TPV.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' AND
+				(TPV.Empresa = ' . $_SESSION['log']['id'] . ' OR
+				 TPV.Empresa = ' . $_SESSION['log']['Empresa'] . ')
+			ORDER BY  
+				TPV.NomeProduto ASC'
+    );
         } else {
             $query = $this->db->query(
-                'SELECT '
-                    . 'idTab_Produto, '
-                    . 'NomeProduto, '
-                    . 'Quantidade, '
-                    . 'Unidade, '
-                    . 'ValorCompra, '
-                    . 'ValorProdVenda '
-                    . 'FROM '
-                    . 'Tab_Produto '
-                    . 'WHERE '
-                    . 'idSis_Usuario = ' . $_SESSION['log']['id']);
-            
+                'SELECT
+                TPV.idTab_Produto,
+				CONCAT(TPV.NomeProduto, " --- ", TPV.UnidadeProduto, " --- R$ ", TPV.ValorCompraProduto) AS NomeProduto,
+				TPV.ValorCompraProduto
+            FROM
+                Tab_Produto AS TPV																	
+            WHERE
+				TPV.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' AND
+				(TPV.Empresa = ' . $_SESSION['log']['id'] . ' OR
+				 TPV.Empresa = ' . $_SESSION['log']['Empresa'] . ')
+			ORDER BY  
+				TPV.NomeProduto ASC'
+    );
+
             $array = array();
             foreach ($query->result() as $row) {
                 $array[$row->idTab_Produto] = $row->NomeProduto;

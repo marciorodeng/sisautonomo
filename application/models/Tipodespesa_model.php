@@ -49,15 +49,44 @@ class Tipodespesa_model extends CI_Model {
             return TRUE;
         }
     }
+	
+	public function delete_tipodespesa($data) {        
+		$query = $this->db->delete('Tab_TipoDespesa', array('idTab_TipoDespesa' => $data));
+
+        if ($this->db->affected_rows() === 0) {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+    }
+	
+	public function delete_tipoconsumo($data) {        
+		$query = $this->db->delete('Tab_TipoConsumo', array('idTab_TipoConsumo' => $data));
+
+        if ($this->db->affected_rows() === 0) {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+    }
 
     public function lista_tipodespesa($x) {
 
-        $query = $this->db->query('SELECT * '
-                . 'FROM Tab_TipoDespesa '
-                #. 'WHERE '
-                #. 'idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND '
-                #. 'idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' '
-                . 'ORDER BY TipoDespesa ASC ');
+        $query = $this->db->query('
+				SELECT 
+                    TD.idTab_TipoDespesa, 
+                    TD.TipoDespesa,
+					CD.Categoriadesp
+				FROM 
+                    Tab_TipoDespesa AS TD
+						LEFT JOIN Tab_Categoriadesp AS CD ON CD.idTab_Categoriadesp = TD.Categoriadesp
+				WHERE 
+                    TD.Empresa = ' . $_SESSION['log']['Empresa'] . ' AND 
+                    TD.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . '
+				ORDER BY
+					CD.Categoriadesp,
+					TD.TipoDespesa 
+			');
 
         /*
           echo $this->db->last_query();
@@ -83,27 +112,145 @@ class Tipodespesa_model extends CI_Model {
         }
     }
 
-    public function select_tipodespesa($data = FALSE) {
+    public function select_tipodespesa2($data = FALSE) {
 
         if ($data === TRUE) {
             $array = $this->db->query(
                 'SELECT '
                     . 'idTab_TipoDespesa, '
-                    . 'TipoDespesa, '
-                    #. 'ValorVenda '
+                    . 'TipoDespesa '
                     . 'FROM '
                     . 'Tab_TipoDespesa '
-                    . 'ORDER BY TipoDespesa ASC ');
-					#. 'WHERE '
-                    #. 'idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND '
-                   # . 'idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] );
+					. 'WHERE '
+                    . 'Empresa = ' . $_SESSION['log']['Empresa'] . ' AND '
+                    . 'idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] );				   
         } else {
-            #$query = $this->db->query('SELECT idTab_TipoDespesa, TipoDespesa FROM Tab_TipoDespesa WHERE idSis_Usuario = ' . $_SESSION['log']['id']);
-			$query = $this->db->query('SELECT idTab_TipoDespesa, TipoDespesa FROM Tab_TipoDespesa ORDER BY TipoDespesa ASC ');
+            $query = $this->db->query(
+                'SELECT '
+                    . 'idTab_TipoDespesa, '
+                    . 'TipoDespesa '
+                    . 'FROM '
+                    . 'Tab_TipoDespesa '
+					. 'WHERE '
+                    . 'Empresa = ' . $_SESSION['log']['Empresa'] . ' AND '
+                    . 'idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] );
 
             $array = array();
             foreach ($query->result() as $row) {
                 $array[$row->idTab_TipoDespesa] = $row->TipoDespesa;
+            }
+        }
+
+        return $array;
+    }
+	
+    public function select_tipodespesa($data = FALSE) {
+
+        if ($data === TRUE) {
+            $array = $this->db->query('
+				SELECT 
+					TD.idTab_TipoDespesa, 
+					CONCAT(CD.Abrevcategoriadesp, " " , "--" , " " , TD.TipoDespesa) AS TipoDespesa,
+					CD.Categoriadesp,
+					CD.idTab_Categoriadesp,
+					CD.Abrevcategoriadesp
+				FROM 
+					Tab_TipoDespesa AS TD
+						LEFT JOIN Tab_Categoriadesp AS CD ON CD.idTab_Categoriadesp = TD.Categoriadesp
+				WHERE 
+					TD.Empresa = ' . $_SESSION['log']['Empresa'] . ' AND 
+					TD.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . '
+				ORDER BY
+					CD.idTab_Categoriadesp,
+					TD.TipoDespesa
+				');
+				   
+        } 
+		else {
+            $query = $this->db->query('
+				SELECT 
+					TD.idTab_TipoDespesa, 
+					CONCAT(CD.Abrevcategoriadesp, " " , "--" , " " , TD.TipoDespesa) AS TipoDespesa,
+					CD.Categoriadesp,
+					CD.idTab_Categoriadesp,
+					CD.Abrevcategoriadesp
+				FROM 
+					Tab_TipoDespesa AS TD
+						LEFT JOIN Tab_Categoriadesp AS CD ON CD.idTab_Categoriadesp = TD.Categoriadesp
+				WHERE 
+					TD.Empresa = ' . $_SESSION['log']['Empresa'] . ' AND 
+					TD.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . '
+				ORDER BY
+					CD.idTab_Categoriadesp,
+					TD.TipoDespesa
+				');
+
+            $array = array();
+            foreach ($query->result() as $row) {
+                $array[$row->idTab_TipoDespesa] = $row->TipoDespesa;
+            }
+        }
+
+        return $array;
+    }
+
+    public function select_tipodevolucao($data = FALSE) {
+
+        if ($data === TRUE) {
+            $array = $this->db->query('
+				SELECT
+                idTab_TipoDevolucao,
+                CONCAT(TipoDevolucao, " " , " - " , ObsTipoDevolucao)TipoDevolucao,
+				ObsTipoDevolucao
+            FROM
+                Tab_TipoDevolucao 
+            ORDER BY
+                TipoDevolucao DESC
+				');
+				   
+        } 
+		else {
+            $query = $this->db->query('
+				SELECT
+                idTab_TipoDevolucao,
+                CONCAT(TipoDevolucao, " " , " - " , ObsTipoDevolucao)TipoDevolucao,
+				ObsTipoDevolucao
+            FROM
+                Tab_TipoDevolucao 
+            ORDER BY
+                TipoDevolucao DESC
+				');
+
+            $array = array();
+            foreach ($query->result() as $row) {
+                $array[$row->idTab_TipoDevolucao] = $row->TipoDevolucao;
+            }
+        }
+
+        return $array;
+    }	
+	
+	public function select_tipoconsumo($data = FALSE) {
+
+        if ($data === TRUE) {
+            $array = $this->db->query(
+                'SELECT '
+                    . 'idTab_TipoConsumo, '
+                    . 'TipoConsumo, '
+                    #. 'ValorVenda '
+                    . 'FROM '
+                    . 'Tab_TipoConsumo '
+                    . 'ORDER BY TipoConsumo ASC ');
+					#. 'WHERE '
+                    #. 'idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND '
+                   # . 'idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] );
+        } else {
+            #$query = $this->db->query('SELECT idTab_TipoConsumo, TipoConsumo FROM Tab_TipoConsumo WHERE idSis_Usuario = ' . $_SESSION['log']['id']);
+			$query = $this->db->query('SELECT idTab_TipoConsumo, TipoConsumo FROM Tab_TipoConsumo ORDER BY TipoConsumo ASC ');
+
+            $array = array();
+            foreach ($query->result() as $row) {
+                $array[$row->idTab_TipoConsumo] = $row->TipoConsumo;
             }
         }
 

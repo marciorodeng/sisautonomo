@@ -3,9 +3,12 @@
 <table class="table table-hover">
     <thead>
         <tr>
-            <th>Produto</th>
-            <!--<th>Qte Compra</th>-->
-            <th>Unidade de Medida</th>
+			<!--<th>idTab_Produto</th>-->		
+			<th>Nome da Empresa</th>
+			<th>Cod. do Prod.</th>				
+			<th>Tipo</th>	
+			<th>Produto</th>
+            <th>Unidade</th>
             <th>Valor de Compra</th>
             <th>Valor de Venda</th>
             <th></th>
@@ -22,11 +25,14 @@
                 $url = base_url() . 'produto/alterar/' . $row['idTab_Produto'];
                 #$url = '';
 
-                echo '<tr class="clickable-row" data-href="' . $url . '">';
-                    echo '<td>' . str_replace('.',',',$row['NomeProduto']) . '</td>';
-                    #echo '<td>' . str_replace('.',',',$row['Quantidade']) . '</td>';
-                    echo '<td>' . str_replace('.',',',$row['UnidadeProduto']) . '</td>';                    
-                    echo '<td>' . str_replace('.',',',$row['ValorCompraProduto']) . '</td>';
+                echo '<tr class="clickable-row" data-href="' . $url . '">';                   
+					#echo '<td>' . str_replace('.',',',$row['idTab_Produto']) . '</td>';					
+					echo '<td>' . str_replace('.',',',$row['NomeEmpresa']) . '</td>';
+					echo '<td>' . str_replace('.',',',$row['CodProd']) . '</td>';						
+					echo '<td>' . str_replace('.',',',$row['TipoProduto']) . '</td>';				
+					echo '<td>' . str_replace('.',',',$row['NomeProduto']) . '</td>';
+					echo '<td>' . str_replace('.',',',$row['UnidadeProduto']) . '</td>';
+					echo '<td>' . str_replace('.',',',$row['ValorCompraProduto']) . '</td>';
                     echo '<td>' . str_replace('.',',',$row['ValorVendaProduto']) . '</td>';
                     echo '<td></td>';
                 echo '</tr>';            

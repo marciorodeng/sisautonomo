@@ -53,16 +53,22 @@ class Cliente extends CI_Controller {
 			'idApp_Cliente',
             'NomeCliente',
             'DataNascimento',
-
+			'DataCadastroCliente',
+			'Cpf',
+			'Rg',
+			'OrgaoExp',
+			'EstadoExp',
+			'DataEmissao',			
+			'Cep',
             'Telefone1',
             'Telefone2',
             'Telefone3',
-
+			'Ativo',
             'Sexo',
             'Endereco',
             'Bairro',
             'Municipio',
-
+			'Estado',
             'Obs',
 			'Email',
 
@@ -70,17 +76,22 @@ class Cliente extends CI_Controller {
 			'Associado',
         ), TRUE));
 
-        $this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
+       
+		(!$data['query']['DataCadastroCliente']) ? $data['query']['DataCadastroCliente'] = date('d/m/Y', time()) : FALSE;
+		
+	   $this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
 
         #$this->form_validation->set_rules('NomeCliente', 'Nome do Responsável', 'required|trim|is_unique_duplo[App_Cliente.NomeCliente.DataNascimento.' . $this->basico->mascara_data($data['query']['DataNascimento'], 'mysql') . ']');
         $this->form_validation->set_rules('NomeCliente', 'Nome do Responsável', 'required|trim');
         $this->form_validation->set_rules('DataNascimento', 'Data de Nascimento', 'trim|valid_date');
         $this->form_validation->set_rules('Telefone1', 'Telefone1', 'required|trim');
         $this->form_validation->set_rules('Email', 'E-mail', 'trim|valid_email');
-
-        $data['select']['Municipio'] = $this->Basico_model->select_municipio();
+		
+		
+        #$data['select']['Municipio'] = $this->Basico_model->select_municipio();
         $data['select']['Sexo'] = $this->Basico_model->select_sexo();
 		$data['select']['Associado'] = $this->Basico_model->select_status_sn();
+		$data['select']['Ativo'] = $this->Basico_model->select_status_sn();
 		
         $data['titulo'] = 'Cadastrar Cliente';
         $data['form_open_path'] = 'cliente/cadastrar';
@@ -90,7 +101,9 @@ class Cliente extends CI_Controller {
         $data['metodo'] = 1;
 
         if ($data['query']['Sexo'] || $data['query']['Endereco'] || $data['query']['Bairro'] ||
-                $data['query']['Municipio'] || $data['query']['Obs'] || $data['query']['Email'] || $data['query']['RegistroFicha'])
+			$data['query']['Municipio'] || $data['query']['Estado'] || $data['query']['Obs'] || $data['query']['Email'] || 
+			$data['query']['RegistroFicha'] || $data['query']['Cep'] || $data['query']['Cpf'] || 
+			$data['query']['Rg']  || $data['query']['OrgaoExp'] || $data['query']['EstadoExp']  || $data['query']['DataEmissao'])
             $data['collapse'] = '';
         else
             $data['collapse'] = 'class="collapse"';
@@ -105,10 +118,13 @@ class Cliente extends CI_Controller {
             $this->load->view('cliente/form_cliente', $data);
         } else {
 
+			
             $data['query']['NomeCliente'] = trim(mb_strtoupper($data['query']['NomeCliente'], 'ISO-8859-1'));
-            $data['query']['DataNascimento'] = $this->basico->mascara_data($data['query']['DataNascimento'], 'mysql');
-            $data['query']['Obs'] = nl2br($data['query']['Obs']);
-            $data['query']['idSis_Usuario'] = $_SESSION['log']['id'];
+            $data['query']['DataNascimento'] = $this->basico->mascara_data($data['query']['DataNascimento'], 'mysql');            
+			$data['query']['DataCadastroCliente'] = $this->basico->mascara_data($data['query']['DataCadastroCliente'], 'mysql');
+			$data['query']['Obs'] = nl2br($data['query']['Obs']);
+			$data['query']['Empresa'] = $_SESSION['log']['Empresa'];
+			$data['query']['idSis_Usuario'] = $_SESSION['log']['id'];
             $data['query']['idTab_Modulo'] = $_SESSION['log']['idTab_Modulo'];
 
             $data['campos'] = array_keys($data['query']);
@@ -148,18 +164,24 @@ class Cliente extends CI_Controller {
             'idApp_Cliente',
             'NomeCliente',
             'DataNascimento',
-
+			'DataCadastroCliente',
+			'Cpf',
+			'Rg',
+			'OrgaoExp',
+			'EstadoExp',
+			'DataEmissao',
+			'Cep',
             'Telefone1',
             'Telefone2',
             'Telefone3',
-
+			'Ativo',
             'Sexo',
             'Endereco',
             'Bairro',
             'Municipio',
-
+			'Estado',
             'Obs',
-            'idSis_Usuario',
+            #'idSis_Usuario',
             'Email',
             'RegistroFicha',
 			'Associado',
@@ -168,6 +190,7 @@ class Cliente extends CI_Controller {
         if ($id) {
             $data['query'] = $this->Cliente_model->get_cliente($id);
             $data['query']['DataNascimento'] = $this->basico->mascara_data($data['query']['DataNascimento'], 'barras');
+			$data['query']['DataCadastroCliente'] = $this->basico->mascara_data($data['query']['DataCadastroCliente'], 'barras');
         }
 
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
@@ -178,9 +201,10 @@ class Cliente extends CI_Controller {
         $this->form_validation->set_rules('Telefone1', 'Telefone1', 'required|trim');
         $this->form_validation->set_rules('Email', 'E-mail', 'trim|valid_email');
 
-        $data['select']['Municipio'] = $this->Basico_model->select_municipio();
+        #$data['select']['Municipio'] = $this->Basico_model->select_municipio();
         $data['select']['Sexo'] = $this->Basico_model->select_sexo();
 		$data['select']['Associado'] = $this->Basico_model->select_status_sn();
+		$data['select']['Ativo'] = $this->Basico_model->select_status_sn();
 		
         $data['titulo'] = 'Editar Dados';
         $data['form_open_path'] = 'cliente/alterar';
@@ -190,7 +214,9 @@ class Cliente extends CI_Controller {
         $data['metodo'] = 2;
 
         if ($data['query']['Sexo'] || $data['query']['Endereco'] || $data['query']['Bairro'] ||
-                $data['query']['Municipio'] || $data['query']['Obs'] || $data['query']['Email'] || $data['query']['RegistroFicha'])
+			$data['query']['Municipio'] || $data['query']['Estado'] || $data['query']['Obs'] || $data['query']['Email'] || 
+			$data['query']['RegistroFicha'] || $data['query']['Cep'] || $data['query']['Cpf'] || 
+			$data['query']['Rg']  || $data['query']['OrgaoExp'] || $data['query']['EstadoExp']  || $data['query']['DataEmissao'])
             $data['collapse'] = '';
         else
             $data['collapse'] = 'class="collapse"';
@@ -207,9 +233,11 @@ class Cliente extends CI_Controller {
 
             $data['query']['NomeCliente'] = trim(mb_strtoupper($data['query']['NomeCliente'], 'ISO-8859-1'));
             $data['query']['DataNascimento'] = $this->basico->mascara_data($data['query']['DataNascimento'], 'mysql');
-            $data['query']['Obs'] = nl2br($data['query']['Obs']);
-            $data['query']['idSis_Usuario'] = $_SESSION['log']['id'];
-
+            $data['query']['DataCadastroCliente'] = $this->basico->mascara_data($data['query']['DataCadastroCliente'], 'mysql');
+			$data['query']['Obs'] = nl2br($data['query']['Obs']);
+			$data['query']['Empresa'] = $_SESSION['log']['Empresa'];
+			#$data['query']['idSis_Usuario'] = $_SESSION['log']['id'];
+						
             $data['anterior'] = $this->Cliente_model->get_cliente($data['query']['idApp_Cliente']);
             $data['campos'] = array_keys($data['query']);
 
@@ -245,6 +273,25 @@ class Cliente extends CI_Controller {
         else
             $data['msg'] = '';
 
+        $this->Cliente_model->delete_cliente($id);
+
+        $data['msg'] = '?m=1';
+
+		redirect(base_url() . 'agenda' . $data['msg']);
+		exit();
+
+        $this->load->view('basico/footer');
+    }
+
+    public function excluirBKP($id = FALSE) {
+
+        if ($this->input->get('m') == 1)
+            $data['msg'] = $this->basico->msg('<strong>Informações salvas com sucesso</strong>', 'sucesso', TRUE, TRUE, TRUE);
+        elseif ($this->input->get('m') == 2)
+            $data['msg'] = $this->basico->msg('<strong>Erro no Banco de dados. Entre em contato com o administrador deste sistema.</strong>', 'erro', TRUE, TRUE, TRUE);
+        else
+            $data['msg'] = '';
+
         $data['query'] = $this->input->post(array(
             'idApp_Cliente',
             'submit'
@@ -256,7 +303,7 @@ class Cliente extends CI_Controller {
             $data['query']['ClienteDataNascimento'] = $this->basico->mascara_data($data['query']['ClienteDataNascimento'], 'barras');
         }
 
-        $data['select']['Municipio'] = $this->Basico_model->select_municipio();
+        #$data['select']['Municipio'] = $this->Basico_model->select_municipio();
         $data['select']['Sexo'] = $this->Basico_model->select_sexo();
 
         $data['titulo'] = 'Tem certeza que deseja excluir o registro abaixo?';
@@ -380,19 +427,21 @@ class Cliente extends CI_Controller {
         $data['query']['profile'] = ($data['query']['Sexo']) ? strtolower($data['query']['Sexo']) : 'o';
 
         $data['query']['Sexo'] = $this->Basico_model->get_sexo($data['query']['Sexo']);
-
+		$data['query']['Ativo'] = $this->Basico_model->get_ativo($data['query']['Ativo']);
+		$data['query']['Empresa'] = $this->Basico_model->get_empresa($data['query']['Empresa']);
+		
         $data['query']['Telefone'] = $data['query']['Telefone1'];
         ($data['query']['Telefone2']) ? $data['query']['Telefone'] = $data['query']['Telefone'] . ' - ' . $data['query']['Telefone2'] : FALSE;
         ($data['query']['Telefone3']) ? $data['query']['Telefone'] = $data['query']['Telefone'] . ' - ' . $data['query']['Telefone3'] : FALSE;
 
-
+		/*
         if ($data['query']['Municipio']) {
             $mun = $this->Basico_model->get_municipio($data['query']['Municipio']);
             $data['query']['Municipio'] = $mun['NomeMunicipio'] . '/' . $mun['Uf'];
         } else {
             $data['query']['Municipio'] = $data['query']['Uf'] = $mun['Uf'] = '';
         }
-
+		*/
         $data['contatocliente'] = $this->Contatocliente_model->lista_contatocliente(TRUE);
         /*
           echo "<pre>";

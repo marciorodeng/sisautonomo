@@ -13,13 +13,13 @@ class Agenda extends CI_Controller {
         $this->load->helper(array('form', 'url', 'date', 'string'));
         #$this->load->library(array('basico', 'Basico_model', 'form_validation'));
         $this->load->library(array('basico', 'form_validation'));
-        $this->load->model(array('Basico_model', 'Agenda_model'));
+        $this->load->model(array('Basico_model', 'Agenda_model', 'Relatorio_model'));
         $this->load->driver('session');
 
         #load header view
         $this->load->view('basico/header');
         $this->load->view('basico/nav_principal');
-        
+
         unset($_SESSION['agenda']);
 
     }
@@ -33,10 +33,22 @@ class Agenda extends CI_Controller {
         else
             $data['msg'] = '';
 
+        $data['select']['NomeUsuario'] = $this->Relatorio_model->select_usuario();
+
+        $data['query'] = quotes_to_entities($this->input->post(array(
+            'NomeUsuario',
+        ), TRUE));
+
+        $_SESSION['log']['NomeUsuario'] = ($data['query']['NomeUsuario']) ?
+            $data['query']['NomeUsuario'] : FALSE;
+
         $data['query']['estatisticas'] = $this->Agenda_model->resumo_estatisticas($_SESSION['log']['id']);
         $data['query']['cliente_aniversariantes'] = $this->Agenda_model->cliente_aniversariantes($_SESSION['log']['id']);
         $data['query']['contatocliente_aniversariantes'] = $this->Agenda_model->contatocliente_aniversariantes($_SESSION['log']['id']);
-        $this->load->view('agenda/tela_agenda', $data);
+        #$data['query']['profissional_aniversariantes'] = $this->Agenda_model->profissional_aniversariantes($_SESSION['log']['id']);
+		#$data['query']['contatoprof_aniversariantes'] = $this->Agenda_model->contatoprof_aniversariantes($_SESSION['log']['id']);
+		
+		$this->load->view('agenda/tela_agenda', $data);
 
         #load footer view
         $this->load->view('basico/footer');

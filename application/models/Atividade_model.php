@@ -55,7 +55,7 @@ class Atividade_model extends CI_Model {
         $query = $this->db->query('SELECT * '
                 . 'FROM App_Atividade '
                 . 'WHERE '
-                . 'idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND '
+                . 'Empresa = ' . $_SESSION['log']['Empresa'] . ' AND '
                 . 'idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' '
                 . 'ORDER BY Atividade ASC ');
         
@@ -87,29 +87,38 @@ class Atividade_model extends CI_Model {
 
         if ($data === TRUE) {
             $array = $this->db->query(
-                'SELECT * '
+                'SELECT '
                     . 'idApp_Atividade, '
                     . 'Atividade '
                     . 'FROM '
                     . 'App_Atividade '					
 					. 'WHERE '
-                    . 'idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND '
-                    . 'idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo']);
-							
+                    . 'Empresa = ' . $_SESSION['log']['Empresa'] . ' AND '
+                    . 'idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo']. ' '
+					. 'ORDER BY Atividade ASC ');		
 					
         } else {
-            $query = $this->db->query('SELECT  idApp_Atividade, Atividade FROM App_Atividade  WHERE idSis_Usuario = ' . $_SESSION['log']['id']);
+            $query = $this->db->query(
+				'SELECT '
+                    . 'idApp_Atividade, '
+                    . 'Atividade '
+                    . 'FROM '
+                    . 'App_Atividade '					
+					. 'WHERE '
+                    . 'Empresa = ' . $_SESSION['log']['Empresa'] . ' AND '
+                    . 'idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo']. ' '
+					. 'ORDER BY Atividade ASC ');
             
             $array = array();
             foreach ($query->result() as $row) {
-                #$array[$row->idApp_Atividade] = $row->Atividade;
-				$array[$row->Atividade] = $row->Atividade;
+                $array[$row->idApp_Atividade] = $row->Atividade;
+				#$array[$row->Atividade] = $row->Atividade;
             }
         }
 
         return $array;
     }
-	
+		
 	/*public function select_atividade($data = FALSE) {
 
         if ($data === TRUE) {

@@ -4,6 +4,7 @@
     <thead>
         <tr>
             <th>Funcao</th>
+			<th>Abrev</th>
             <th></th>
         </tr>
     </thead>
@@ -20,6 +21,7 @@
 
                 echo '<tr class="clickable-row" data-href="' . $url . '">';
                     echo '<td>' . $row['Funcao'] . '</td>';
+					echo '<td>' . $row['Abrev'] . '</td>';
                     echo '<td></td>';
                 echo '</tr>';            
 
