@@ -710,7 +710,7 @@
 																	<div class="btn-group" data-toggle="buttons">
 																		<?php
 																		foreach ($select['ServicoConcluido'] as $key => $row) {
-																			(!$orcatrata['ServicoConcluido']) ? $orcatrata['ServicoConcluido'] = 'S' : FALSE;
+																			(!$orcatrata['ServicoConcluido']) ? $orcatrata['ServicoConcluido'] = 'N' : FALSE;
 
 																			if ($orcatrata['ServicoConcluido'] == $key) {
 																				echo ''
@@ -875,12 +875,7 @@
 													<!--
 													<div class="col-md-1"></div>
 													<div class="form-group text-center">
-														<div class="row">
-															<div class="col-md-6">
-																<label for="ObsOrca">OBS:</label>
-																<textarea class="form-control" id="ObsOrca" <?php echo $readonly; ?>
-																		  name="ObsOrca"><?php echo $orcatrata['ObsOrca']; ?></textarea>
-															</div>
+														<div class="row">															
 															<div class="col-md-3">
 																<label for="DataRetorno">Retornar em:</label>
 																<div class="input-group <?php echo $datepicker; ?>">

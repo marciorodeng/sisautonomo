@@ -121,7 +121,7 @@
 							</div>
 						</div>	
 						
-											
+						<!--					
 						<div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true">
 							<div class="panel panel-primary">
 								<div class="panel-heading collapsed " role="tab" id="heading1" data-toggle="collapse" data-parent="#accordion1" data-target="#collapse1" aria-expanded="false">								<h4 class="panel-title">
@@ -135,7 +135,6 @@
 								<div id="collapse1" class="panel-collapse" role="tabpanel" aria-labelledby="heading1" aria-expanded="false">
 									<div class="panel-body">
 
-										<!--#######################################-->
 
 										<input type="hidden" name="SCount" id="SCount" value="<?php echo $count['SCount']; ?>"/>
 
@@ -249,7 +248,7 @@
 										?>
 
 										</div>
-										<!--
+										
 										<div class="form-group">
 											<div class="row">
 												<div class="col-md-4">
@@ -261,7 +260,7 @@
 										</div>
 										
 										<hr>
-										-->
+										
 										<input type="hidden" name="PCount" id="PCount" value="<?php echo $count['PCount']; ?>"/>
 
 										<div class="input_fields_wrap6">
@@ -287,9 +286,9 @@
 														<div class="col-md-7">
 															<label for="idTab_Produto">Produto:</label>
 															<?php if ($i == 1) { ?>
-															<!--<a class="btn btn-xs btn-info" href="<?php echo base_url() ?>produtos/cadastrar" role="button">
+															<a class="btn btn-xs btn-info" href="<?php echo base_url() ?>produtos/cadastrar" role="button">
 																<span class="glyphicon glyphicon-plus"></span> <b>Novo Produto</b>
-															</a>-->
+															</a>
 															<?php } ?>
 															<select data-placeholder="Selecione uma opção..." class="form-control Chosen" onchange="buscaValorCompra(this.value,this.name,'Produto',<?php echo $i ?>)" <?php echo $readonly; ?>
 																	 id="listadinamicab<?php echo $i ?>" name="idTab_Produto<?php echo $i ?>">
@@ -371,7 +370,7 @@
 								</div>
 							</div>
 						</div>
-			<!--#######################################-->					
+						-->		
 						
 						<div class="panel-group" id="accordion4" role="tablist" aria-multiselectable="true">
 							<div class="panel panel-primary">
@@ -797,7 +796,9 @@
 															-->
 														</div>
 													</div>						
+													<!--
 													<div class="col-md-1"></div>
+													
 													<div class="form-group text-center">
 														<div class="row">
 															<div class="col-md-9">
@@ -807,6 +808,7 @@
 															</div>
 														</div>
 													</div>
+													-->
 												</div>
 											</div>
 										</div>

@@ -45,15 +45,20 @@ $result = mysql_query(
             TC.TipoConsulta,
             C.Evento
         FROM
-            app.App_Agenda AS A
-                LEFT JOIN app.Sis_Usuario AS U ON U.idSis_Usuario = A.idSis_Usuario,
-            app.App_Consulta AS C
-                LEFT JOIN app.App_Cliente AS R ON R.idApp_Cliente = C.idApp_Cliente
-                LEFT JOIN app.App_ContatoCliente AS D ON D.idApp_ContatoCliente = C.idApp_ContatoCliente
-                LEFT JOIN app.Sis_Usuario AS P ON P.idSis_Usuario = C.idSis_Usuario
-                LEFT JOIN app.Tab_TipoConsulta AS TC ON TC.idTab_TipoConsulta = C.idTab_TipoConsulta
-
-
+            App_Agenda AS A
+                LEFT JOIN Sis_Usuario AS U ON U.idSis_Usuario = A.idSis_Usuario,
+            App_Consulta AS C
+                LEFT JOIN App_Cliente AS R ON R.idApp_Cliente = C.idApp_Cliente
+                LEFT JOIN App_ContatoCliente AS D ON D.idApp_ContatoCliente = C.idApp_ContatoCliente
+                LEFT JOIN Sis_Usuario AS P ON P.idSis_Usuario = C.idSis_Usuario
+                LEFT JOIN Tab_TipoConsulta AS TC ON TC.idTab_TipoConsulta = C.idTab_TipoConsulta
+		WHERE						
+			C.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' AND
+			C.idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND
+           	C.Empresa = ' . $_SESSION['log']['Empresa'] . ' AND
+			' . $query . '
+            ' . $permissao . '
+            A.idApp_Agenda = C.idApp_Agenda			
         ORDER BY C.DataInicio ASC'
 );
 
@@ -152,7 +157,7 @@ while ($row = mysql_fetch_assoc($result)) {
     $event_array[] = array(
         'id' => $row['idApp_Consulta'],
         'title' => $title,
-        'subtitle' => $subtitle,
+        #'subtitle' => $subtitle,
         'start' => str_replace('', 'T', $row['DataInicio']),
         'end' => str_replace('', 'T', $row['DataFim']),
         'allDay' => false,

@@ -19,7 +19,7 @@
 
 						<div class="form-group">
 							<div class="row">
-
+								<!--
 								<div class="col-md-4">
 									<label for="Ordenamento">Nome do Cliente:</label>
 									<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
@@ -35,6 +35,7 @@
 										?>
 									</select>
 								</div>
+								-->
 								<div class="col-md-2">
 									<label for="AprovadoOrca">Orç.Aprov.?</label>
 									<select data-placeholder="Selecione uma opção..." class="form-control Chosen"

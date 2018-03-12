@@ -574,7 +574,7 @@ class Orcatrata2 extends CI_Controller {
         $data['select']['Produto'] = $this->Basico_model->select_produtos();		
 
         $data['titulo'] = 'Editar Orçamento';
-        $data['form_open_path'] = 'orcatrata/alterar';
+        $data['form_open_path'] = 'orcatrata2/alterar';
         $data['readonly'] = '';
         $data['disabled'] = '';
         $data['panel'] = 'primary';
@@ -627,7 +627,7 @@ class Orcatrata2 extends CI_Controller {
 
         #run form validation
         if ($this->form_validation->run() === FALSE) {
-            $this->load->view('orcatrata/form_orcatrata', $data);
+            $this->load->view('orcatrata/form_orcatrata2', $data);
         } else {
 
             ////////////////////////////////Preparar Dados para Inserção Ex. Datas "mysql" //////////////////////////////////////////////
@@ -834,7 +834,7 @@ class Orcatrata2 extends CI_Controller {
                 $msg = "<strong>Erro no Banco de dados. Entre em contato com o administrador deste sistema.</strong>";
 
                 $this->basico->erro($msg);
-                $this->load->view('orcatrata/form_orcatrata', $data);
+                $this->load->view('orcatrata/form_orcatrata2', $data);
             } else {
 
                 //$data['auditoriaitem'] = $this->basico->set_log($data['anterior'], $data['query'], $data['campos'], $data['idApp_OrcaTrata'], FALSE);
@@ -885,7 +885,7 @@ class Orcatrata2 extends CI_Controller {
                 $data['msg'] = '?m=1';
 
                 #redirect(base_url() . 'orcatrata/listar/' . $_SESSION['Cliente']['idApp_Cliente'] . $data['msg']);
-				redirect(base_url() . 'orcatrata/listar/' . $data['msg']);
+				redirect(base_url() . 'relatorio/orcamento/' . $data['msg']);
                 exit();
             //}
         //}

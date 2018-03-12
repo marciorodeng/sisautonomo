@@ -216,9 +216,9 @@
 	<br>			
 	
 
-    <button class="btn btn-lg btn-primary btn-block" type="submit"><span class="glyphicon glyphicon-log-in"></span> Salvar Novo Consultor</button>
+    <button class="btn btn-lg btn-primary btn-block" type="submit"><span class="glyphicon glyphicon-log-in"></span> Salvar Novo Usuário</button>
 	<br>
-	<a class="btn btn-lg btn-info btn-block" href="<?php echo base_url(); ?>login/index" role="button"> Acesso dos Consultores <span class="glyphicon glyphicon-log-out"></span></a>
+	<a class="btn btn-lg btn-info btn-block" href="<?php echo base_url(); ?>login/index" role="button"> Acesso do Usuário <span class="glyphicon glyphicon-log-out"></span></a>
 	<!--<a class="btn btn btn-primary btn-warning btn-block" href="<?php echo base_url(); ?>loginempresafilial/index" role="button">Acesso do Admin. da Empresa</a>-->		
 </form>
 

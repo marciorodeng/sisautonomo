@@ -12,7 +12,7 @@
         </a>
     </p>
     <!--<h2 class="form-signin-heading text-center">Agenda <?php echo ucfirst($nome_modulo) ?></h2><h4><b>***** versão alpha *****</b></h4>-->
-    <h2 class="form-signin-heading text-center">Rede Calisi de Vendas</h2>
+    <h2 class="form-signin-heading text-center">Autônomos</h2>
 	
 	<label class="sr-only">Usuário</label>
     <input type="text" id="inputText" class="form-control" placeholder="Usuário ou E-mail" autofocus name="Usuario" value="<?php echo set_value('Usuario'); ?>">
@@ -24,7 +24,7 @@
     <button class="btn btn-lg btn-primary btn-block" type="submit">ENTRAR</button>
     <p><a href="<?php echo base_url(); ?>loginfuncionario/recuperar/?usuario=<?php echo set_value('Usuario'); ?>">Esqueci usuário/senha!</a></p>
     <br>
-    <a class="btn btn btn-primary btn-warning" href="<?php echo base_url(); ?>loginfuncionario/registrar" role="button">Cadastrar Novo Funcionário</a>
+    <a class="btn btn btn-primary btn-warning" href="<?php echo base_url(); ?>loginfuncionario/registrar" role="button">Cadastrar Novo Usuário</a>
 </form>
 
 </div>

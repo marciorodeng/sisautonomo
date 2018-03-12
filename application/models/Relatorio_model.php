@@ -180,7 +180,7 @@ class Relatorio_model extends CI_Model {
                 '(OT.DataOrca >= "' . $data['DataInicio3'] . '")';
         }
 
-		$data['NomeCliente'] = ($data['NomeCliente']) ? ' AND C.idApp_Cliente = ' . $data['NomeCliente'] : FALSE;
+		#$data['NomeCliente'] = ($data['NomeCliente']) ? ' AND C.idApp_Cliente = ' . $data['NomeCliente'] : FALSE;
 		$filtro1 = ($data['AprovadoOrca'] != '#') ? 'OT.AprovadoOrca = "' . $data['AprovadoOrca'] . '" AND ' : FALSE;
         $filtro2 = ($data['QuitadoOrca'] != '#') ? 'OT.QuitadoOrca = "' . $data['QuitadoOrca'] . '" AND ' : FALSE;
 		$filtro3 = ($data['ServicoConcluido'] != '#') ? 'OT.ServicoConcluido = "' . $data['ServicoConcluido'] . '" AND ' : FALSE;
@@ -188,7 +188,7 @@ class Relatorio_model extends CI_Model {
 
         $query = $this->db->query(
             'SELECT
-                C.NomeCliente,
+                
                 OT.idApp_OrcaTrata,
 				OT.TipoRD,
                 OT.AprovadoOrca,
@@ -206,13 +206,13 @@ class Relatorio_model extends CI_Model {
 				PR.ValorPagoPagaveis,
                 PR.QuitadoRecebiveis
             FROM
-                App_Cliente AS C,
+                
                 App_OrcaTrata AS OT
                     LEFT JOIN App_ParcelasRecebiveis AS PR ON OT.idApp_OrcaTrata = PR.idApp_OrcaTrata
             WHERE
-                C.Empresa = ' . $_SESSION['log']['Empresa'] . ' AND
-				C.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' AND
-				C.idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND
+                OT.Empresa = ' . $_SESSION['log']['Empresa'] . ' AND
+				OT.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' AND
+				OT.idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND
                 (' . $consulta . ') AND
 				(' . $consulta2 . ') AND
 				(' . $consulta3 . ') AND
@@ -220,12 +220,9 @@ class Relatorio_model extends CI_Model {
                 ' . $filtro2 . '
                 ' . $filtro3 . '
 				' . $filtro4 . '
-                C.idApp_Cliente = OT.idApp_Cliente
-                ' . $data['NomeCliente'] . ' AND
 				OT.TipoRD = "R"
 
             ORDER BY
-                C.NomeCliente,
 				OT.AprovadoOrca DESC,
 				PR.DataVencimentoRecebiveis'
             );
@@ -873,14 +870,13 @@ class Relatorio_model extends CI_Model {
             'SELECT
                 ' . $somareceitas . '
             FROM
-                App_Cliente AS C,
+                
                 App_OrcaTrata AS OT
                     LEFT JOIN App_ParcelasRecebiveis AS PR ON OT.idApp_OrcaTrata = PR.idApp_OrcaTrata
             WHERE
-                C.Empresa = ' . $_SESSION['log']['Empresa'] . ' AND
-                C.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' AND
-				C.idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND
-                C.idApp_Cliente = OT.idApp_Cliente AND
+                OT.Empresa = ' . $_SESSION['log']['Empresa'] . ' AND
+                OT.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' AND
+				OT.idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND
 				OT.TipoRD = "R" AND
             	YEAR(PR.DataPagoRecebiveis) = ' . $data['Ano']
         );
@@ -904,14 +900,14 @@ class Relatorio_model extends CI_Model {
             'SELECT
                 ' . $somadevolucoes . '
             FROM
-                App_Cliente AS C,
+                
                 App_OrcaTrata AS OT
                     LEFT JOIN App_ParcelasRecebiveis AS PR ON OT.idApp_OrcaTrata = PR.idApp_OrcaTrata
             WHERE
-                C.Empresa = ' . $_SESSION['log']['Empresa'] . ' AND
-                C.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' AND
-				C.idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND
-                C.idApp_Cliente = OT.idApp_Cliente AND
+                OT.Empresa = ' . $_SESSION['log']['Empresa'] . ' AND
+                OT.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' AND
+				OT.idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND
+
 				OT.TipoRD = "D" AND
             	YEAR(PR.DataPagoRecebiveis) = ' . $data['Ano']
         );
@@ -2512,9 +2508,9 @@ exit();*/
                 '(OT.DataQuitado >= "' . $data['DataInicio4'] . '")';
         }
 
-        $data['NomeCliente'] = ($data['NomeCliente']) ? ' AND C.idApp_Cliente = ' . $data['NomeCliente'] : FALSE;
+        #$data['NomeCliente'] = ($data['NomeCliente']) ? ' AND C.idApp_Cliente = ' . $data['NomeCliente'] : FALSE;
 		$data['FormaPag'] = ($data['FormaPag']) ? ' AND TFP.idTab_FormaPag = ' . $data['FormaPag'] : FALSE;
-        $data['Campo'] = (!$data['Campo']) ? 'C.NomeCliente' : $data['Campo'];
+        $data['Campo'] = (!$data['Campo']) ? 'OT.idApp_OrcaTrata' : $data['Campo'];
         $data['Ordenamento'] = (!$data['Ordenamento']) ? 'ASC' : $data['Ordenamento'];
 		$filtro1 = ($data['AprovadoOrca'] != '#') ? 'OT.AprovadoOrca = "' . $data['AprovadoOrca'] . '" AND ' : FALSE;
         $filtro2 = ($data['QuitadoOrca'] != '#') ? 'OT.QuitadoOrca = "' . $data['QuitadoOrca'] . '" AND ' : FALSE;
@@ -2522,7 +2518,7 @@ exit();*/
 
         $query = $this->db->query('
             SELECT
-                C.NomeCliente,
+                
                 OT.idApp_OrcaTrata,
                 OT.AprovadoOrca,
                 OT.DataOrca,
@@ -2541,26 +2537,24 @@ exit();*/
 				TFP.FormaPag,
 				TSU.Nome
             FROM
-                App_Cliente AS C,
+                
                 App_OrcaTrata AS OT
 				LEFT JOIN Sis_Usuario AS TSU ON TSU.idSis_Usuario = OT.idSis_Usuario
 				LEFT JOIN Tab_FormaPag AS TFP ON TFP.idTab_FormaPag = OT.FormaPagamento
 
             WHERE
-				C.Empresa = ' . $_SESSION['log']['Empresa'] . ' AND
-				C.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' AND
-				C.idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND
+				OT.Empresa = ' . $_SESSION['log']['Empresa'] . ' AND
+				OT.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' AND
+				OT.idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND
                 (' . $consulta . ') AND
 				(' . $consulta2 . ') AND
 				(' . $consulta3 . ') AND
 				(' . $consulta4 . ') AND
                 ' . $filtro1 . '
                 ' . $filtro2 . '
-				' . $filtro3 . '
-                C.idApp_Cliente = OT.idApp_Cliente
-                ' . $data['NomeCliente'] . '
-				' . $data['FormaPag'] . ' AND
-				OT.TipoRD = "R"
+				' . $filtro3 . '                 
+				OT.TipoRD = "R" 
+				' . $data['FormaPag'] . '
             ORDER BY
                 ' . $data['Campo'] . ' ' . $data['Ordenamento'] . '
 

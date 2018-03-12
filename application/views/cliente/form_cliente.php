@@ -51,7 +51,7 @@
 										</div>	
 									</div>	
 								</div>
-
+								<!--
 								<div class="col-md-4 text-right">
 									<label for="">Orçamentos:</label>
 									<div class="form-group ">
@@ -69,6 +69,7 @@
 										</div>		
 									</div>	
 								</div>
+								-->
 							</div>
 							<div class="col-md-2 "></div>
 						</div>	

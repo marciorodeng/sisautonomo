@@ -60,7 +60,7 @@
 						<th class="active">Dt.Desp.</th> 
 						<th class="active">Dt.Concl.</th>
                         <th class="active">Dt.Quit.</th>
-                        <th class="active">Prof.</th>
+                        <!--<th class="active">Prof.</th>-->
 
                     </tr>
                 </thead>
@@ -90,7 +90,7 @@
 							echo '<td>' . $row['DataDespesas'] . '</td>'; 
 							echo '<td>' . $row['DataConclusaoDespesas'] . '</td>';
                             echo '<td>' . $row['DataQuitadoDespesas'] . '</td>';
-							echo '<td>' . $row['Nome'] . '</td>';
+							#echo '<td>' . $row['Nome'] . '</td>';
                             #echo '</div>';
                         echo '</tr>';
                     }
