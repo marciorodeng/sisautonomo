@@ -102,7 +102,7 @@
 											<div class="col-md-3">
 												<label for="idApp_Agenda">Agenda do Profis.*</label>
 												<select data-placeholder="Selecione uma opção..." class="form-control" <?php echo $readonly; ?>
-														id="idApp_Agenda" autofocus name="idApp_Agenda">
+														id="idApp_Agenda" name="idApp_Agenda">
 													<?php echo $select['option']; ?>
 													<?php
 													foreach ($select['idApp_Agenda'] as $key => $row) {
@@ -160,7 +160,7 @@
 											<div class="col-md-12">
 												<label for="Obs">Obs:</label>
 												<textarea class="form-control" id="Obs"
-														  name="Obs"><?php echo $query['Obs']; ?></textarea>
+														 autofocus name="Obs"><?php echo $query['Obs']; ?></textarea>
 											</div>
 										</div>
 									</div>

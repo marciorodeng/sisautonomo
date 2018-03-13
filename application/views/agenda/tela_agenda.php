@@ -29,12 +29,12 @@
 								<label for="">Agendamento:</label>
 								<div class="form-group">
 									<div class="row">
-										<button type="button" id="MarcarConsulta" onclick="redirecionar(2)" class="btn btn-primary"> Com Contato
+										<button type="button" id="MarcarConsulta" onclick="redirecionar(2)" class="btn btn-primary"> C/ Contato
 										</button>
 									</div>
 									<br>
 									<div class="row">
-										<button type="button" id="AgendarEvento" onclick="redirecionar(1)" class="btn btn-info">Outro Evento
+										<button type="button" id="AgendarEvento" onclick="redirecionar(1)" class="btn btn-info"> S/ Contato
 										</button>
 									</div>
 									<!--
