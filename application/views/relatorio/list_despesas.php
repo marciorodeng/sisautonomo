@@ -43,10 +43,10 @@
 
 						<!--<th class="active">Cliente</th>
 						<th class="active">Tipo</th>-->
-						<th class="active">Desp</th>
+						<th class="active">Nº</th>
 						<th class="active">Categ.</th>
 						<th class="active">Tipo</th>
-						<th class="active">Descr.</th>
+						<th class="active">Despesa</th>
 						<!--<th class="active">Orçam.</th>
 						<th class="active">Cliente</th>-->
                         

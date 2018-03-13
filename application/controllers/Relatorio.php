@@ -172,6 +172,7 @@ class Relatorio extends CI_Controller {
             'DataFim3',
 			'Ordenamento',
             'Campo',
+			'ObsOrca',
             'AprovadoOrca',
             'QuitadoOrca',
 			'ServicoConcluido',
@@ -224,17 +225,13 @@ class Relatorio extends CI_Controller {
 			'PR.DataPagoRecebiveis' => 'Data do Pagam.',
 			'PR.QuitadoRecebiveis' => 'Quit.Parc.',
 			#'C.NomeCliente' => 'Nome do Cliente',
-            'OT.idApp_OrcaTrata' => 'Número do Orçamento',
-            'OT.AprovadoOrca' => 'Orçamento Aprovado?',
-            'OT.DataOrca' => 'Data do Orçamento',
-            'OT.ValorOrca' => 'Valor do Orçamento',
-            'OT.ServicoConcluido' => 'Serviço Concluído?',
-            'OT.QuitadoOrca' => 'Orçamento Quitado?',
+            'OT.idApp_OrcaTrata' => 'Número da Receita',
+            'OT.DataOrca' => 'Data da Receita',
+            'OT.ValorOrca' => 'Valor da Receita',
+            'OT.ServicoConcluido' => 'Receita Concluída?',
+            'OT.QuitadoOrca' => 'Receita Quitada?',
             'OT.DataConclusao' => 'Data de Conclusão',
 			'OT.DataQuitado' => 'Data de Quitado',
-            'OT.DataRetorno' => 'Data de Retorno',
-			'OT.ProfissionalOrca' => 'Profissional',
-
 
         );
 
@@ -244,7 +241,7 @@ class Relatorio extends CI_Controller {
         );
 
 		#$data['select']['NomeCliente'] = $this->Relatorio_model->select_cliente();
-
+		$data['select']['ObsOrca'] = $this->Relatorio_model->select_obsorca();
 		/*
         $data['select']['Pesquisa'] = array(
             'DataEntradaOrca' => 'Data de Entrada',
@@ -253,14 +250,15 @@ class Relatorio extends CI_Controller {
         */
 
 
-        $data['titulo'] = 'Relatório de Receitas & Entradas';
+        $data['titulo'] = 'Receitas & Pagamentos';
 
         #run form validation
         if ($this->form_validation->run() !== FALSE) {
 
             #$data['bd']['Pesquisa'] = $data['query']['Pesquisa'];
            # $data['bd']['NomeCliente'] = $data['query']['NomeCliente'];
-            $data['bd']['DataInicio'] = $this->basico->mascara_data($data['query']['DataInicio'], 'mysql');
+            $data['bd']['ObsOrca'] = $data['query']['ObsOrca'];
+			$data['bd']['DataInicio'] = $this->basico->mascara_data($data['query']['DataInicio'], 'mysql');
             $data['bd']['DataFim'] = $this->basico->mascara_data($data['query']['DataFim'], 'mysql');
 			$data['bd']['DataInicio2'] = $this->basico->mascara_data($data['query']['DataInicio2'], 'mysql');
             $data['bd']['DataFim2'] = $this->basico->mascara_data($data['query']['DataFim2'], 'mysql');
@@ -635,7 +633,7 @@ class Relatorio extends CI_Controller {
 
 		$data['select']['TipoDespesa'] = $this->Relatorio_model->select_tipodespesa();
 
-        $data['titulo'] = 'Relatório de Despesas & Saídas';
+        $data['titulo'] = 'Despesas & Pagamentos';
 
         #run form validation
         if ($this->form_validation->run() !== FALSE) {
@@ -817,6 +815,12 @@ class Relatorio extends CI_Controller {
             'Ano',
         ), TRUE));
 
+		
+		
+		if (!$data['query']['Ano'])
+           $data['query']['Ano'] = '2018';
+				
+		
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
         #$this->form_validation->set_rules('Pesquisa', 'Pesquisa', 'required|trim');
         $this->form_validation->set_rules('Ano', 'Ano', 'required|trim|integer|greater_than[1900]');
@@ -1803,7 +1807,8 @@ class Relatorio extends CI_Controller {
 			'DataInicio4',
             'Ordenamento',
             'Campo',
-            'AprovadoOrca',
+            'ObsOrca',
+			'AprovadoOrca',
             'QuitadoOrca',
 			'ServicoConcluido',
 			'FormaPag',
@@ -1845,12 +1850,8 @@ class Relatorio extends CI_Controller {
 
         $data['select']['Campo'] = array(
             #'C.NomeCliente' => 'Nome do Cliente',
-
             'OT.idApp_OrcaTrata' => 'Número do Orçamento',
-            'OT.AprovadoOrca' => 'Orçamento Aprovado?',
             'OT.DataOrca' => 'Data do Orçamento',
-			'OT.DataEntradaOrca' => 'Validade do Orçamento',
-			'OT.DataPrazo' => 'Data da Entrega',
             'OT.ValorOrca' => 'Valor do Orçamento',
 			'OT.ValorEntradaOrca' => 'Valor do Desconto',
 			'OT.ValorRestanteOrca' => 'Valor a Receber',
@@ -1859,9 +1860,6 @@ class Relatorio extends CI_Controller {
             'OT.QuitadoOrca' => 'Orçamento Quitado?',
             'OT.DataConclusao' => 'Data de Conclusão',
 			'OT.DataQuitado' => 'Data de Quitado',
-            'OT.DataRetorno' => 'Data de Retorno',
-			'OT.ProfissionalOrca' => 'Profissional',
-
         );
 
         $data['select']['Ordenamento'] = array(
@@ -1870,16 +1868,18 @@ class Relatorio extends CI_Controller {
         );
 
         #$data['select']['NomeCliente'] = $this->Relatorio_model->select_cliente();
+		$data['select']['ObsOrca'] = $this->Relatorio_model->select_obsorca();
 		$data['select']['FormaPag'] = $this->Relatorio_model->select_formapag();
 
-        $data['titulo'] = 'Clientes & Orçamentos';
+        $data['titulo'] = 'Receitas';
 
         #run form validation
         if ($this->form_validation->run() !== FALSE) {
 
             #$data['bd']['Pesquisa'] = $data['query']['Pesquisa'];
             #$data['bd']['NomeCliente'] = $data['query']['NomeCliente'];
-			$data['bd']['FormaPag'] = $data['query']['FormaPag'];
+			$data['bd']['ObsOrca'] = $data['query']['ObsOrca'];
+			$data['bd']['FormaPag'] = $data['query']['FormaPag'];			
             $data['bd']['DataInicio'] = $this->basico->mascara_data($data['query']['DataInicio'], 'mysql');
             $data['bd']['DataFim'] = $this->basico->mascara_data($data['query']['DataFim'], 'mysql');
 			$data['bd']['DataInicio2'] = $this->basico->mascara_data($data['query']['DataInicio2'], 'mysql');
@@ -2241,19 +2241,18 @@ class Relatorio extends CI_Controller {
         );
 
         $data['select']['Campo'] = array(
-
-			'C.NomeCliente' => 'Cliente',
+			'OT.DataDespesas' => 'Data da Despesa',
             'OT.idApp_Despesas' => 'Número da Despesa',
-            'OT.AprovadoDespesas' => 'Orçamento Aprovado?',
-            'OT.TipoDespesa' => 'Tipo de Despesa',
-			'OT.DataDespesas' => 'Data do Orçamento',
-            'OT.ValorDespesas' => 'Valor do Orçamento',
+            'CD.Categoriadesp' => 'Categoria ',
+			'OT.TipoDespesa' => 'Tipo',
+			'OT.Despesa' => 'Despesa',			
+			'OT.DataConclusaoDespesas' => 'Data da Conclusão',
+			'OT.DataQuitadoDespesas' => 'Data da Quitação',
+            'OT.ServicoConcluidoDespesas' => 'Despesa Concluída?',
+            'OT.QuitadoDespesas' => 'Despesa Quitada?',			
+            'OT.ValorDespesas' => 'Valor da Despesa',
 			'OT.ValorEntradaDespesas' => 'Valor do Desconto',
 			'OT.ValorRestanteDespesas' => 'Valor a Receber',
-            'OT.ServicoConcluidoDespesas' => 'Serviço Concluído?',
-            'OT.QuitadoDespesas' => 'Orçamento Quitado?',
-            'OT.DataConclusaoDespesas' => 'Data de Conclusão',
-			'OT.ProfissionalDespesas' => 'Profissional',
 
         );
 

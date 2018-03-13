@@ -2,6 +2,13 @@
     <div class="panel-body">
 
         <div class="col-md-1"></div>
+        <div class="col-md-3">
+            <label for="DataFim">Total do Período:</label>
+            <div class="input-group">
+                <span class="input-group-addon">R$</span>
+                <input type="text" class="form-control" disabled aria-label="Total Entrada" value="<?php echo $report->soma->balanco ?>">
+            </div>
+        </div>		
 		<div class="col-md-3">
             <label for="DataFim">Total Recebido:</label>
             <div class="input-group">
@@ -14,13 +21,6 @@
             <div class="input-group">
                 <span class="input-group-addon">R$</span>
                 <input type="text" class="form-control" disabled aria-label="Total a receber" value="<?php echo $report->soma->somareceber ?>">
-            </div>
-        </div>
-        <div class="col-md-3">
-            <label for="DataFim">Total do Período:</label>
-            <div class="input-group">
-                <span class="input-group-addon">R$</span>
-                <input type="text" class="form-control" disabled aria-label="Total Entrada" value="<?php echo $report->soma->balanco ?>">
             </div>
         </div>
         <div class="col-md-1"></div>
@@ -41,7 +41,8 @@
                 <thead>
                     <tr>
                         <!--<th class="active">Cliente</th>-->
-						<th class="active">Orç.</th>                                             
+						<th class="active">Nº</th>
+						<th class="active">Receita</th>
                         <th class="active">Data do Orç.</th>
                         <!--<th class="active">Data Entrada</th>
                         <th class="active">Valor Entrada</th>-->
@@ -62,7 +63,8 @@
                         #echo '<tr>';
                         echo '<tr class="clickable-row" data-href="' . base_url() . 'orcatrata2/alterar/' . $row['idApp_OrcaTrata'] . '">';
                            # echo '<td>' . $row['NomeCliente'] . '</td>';
-							echo '<td>' . $row['idApp_OrcaTrata'] . '</td>';                                                       
+							echo '<td>' . $row['idApp_OrcaTrata'] . '</td>';
+							echo '<td>' . $row['ObsOrca'] . '</td>';
                             echo '<td>' . $row['DataOrca'] . '</td>';
                            # echo '<td>' . $row['DataEntradaOrca'] . '</td>';
                            # echo '<td class="text-right">R$ ' . $row['ValorEntradaOrca'] . '</td>';

@@ -35,7 +35,7 @@
 										?>
 									</select>
 								</div>
-								-->
+								
 								<div class="col-md-2">
 									<label for="AprovadoOrca">Orç.Aprov.?</label>
 									<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
@@ -51,8 +51,24 @@
 										?>
 									</select>
 								</div>
+								-->
 								<div class="col-md-2">
-									<label for="ServicoConcluido">Serv. Concl.?</label>
+									<label for="Ordenamento">Receitas:</label>
+									<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
+											id="ObsOrca" name="ObsOrca">
+										<?php
+										foreach ($select['ObsOrca'] as $key => $row) {
+											if ($query['ObsOrca'] == $key) {
+												echo '<option value="' . $key . '" selected="selected">' . $row . '</option>';
+											} else {
+												echo '<option value="' . $key . '">' . $row . '</option>';
+											}
+										}
+										?>
+									</select>
+								</div>
+								<div class="col-md-2">
+									<label for="ServicoConcluido">Receita. Concl.?</label>
 									<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
 											id="ServicoConcluido" name="ServicoConcluido">
 										<?php
@@ -67,7 +83,7 @@
 									</select>
 								</div>
 								<div class="col-md-2">
-									<label for="QuitadoOrca">Orç.Quit.?</label>
+									<label for="QuitadoOrca">Receita.Quit.?</label>
 									<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
 											id="QuitadoOrca" name="QuitadoOrca">
 										<?php
@@ -96,8 +112,8 @@
 										?>
 									</select>
 								</div>
-								<!--
-								<div class="col-md-3">
+								
+								<div class="col-md-4">
 									<label for="Ordenamento">Ordenamento:</label>
 
 									<div class="form-group">
@@ -134,26 +150,26 @@
 										</div>
 									</div>
 								</div>
-								-->
+								
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="row">
 								<div class="col-md-2">
-									<label for="DataInicio3">Orç.- Data Inc.</label>
+									<label for="DataInicio3">Receita - Data Inc.</label>
 									<div class="input-group DatePicker">
 										<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"
-											   autofocus name="DataInicio3" value="<?php echo set_value('DataInicio3', $query['DataInicio3']); ?>">
+											    name="DataInicio3" value="<?php echo set_value('DataInicio3', $query['DataInicio3']); ?>">
 										<span class="input-group-addon" disabled>
 											<span class="glyphicon glyphicon-calendar"></span>
 										</span>
 									</div>
 								</div>
 								<div class="col-md-2">
-									<label for="DataFim3">Orç.- Data Fim</label>
+									<label for="DataFim3">Receita - Data Fim</label>
 									<div class="input-group DatePicker">
 										<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"
-											   autofocus name="DataFim3" value="<?php echo set_value('DataFim3', $query['DataFim3']); ?>">
+											    name="DataFim3" value="<?php echo set_value('DataFim3', $query['DataFim3']); ?>">
 										<span class="input-group-addon" disabled>
 											<span class="glyphicon glyphicon-calendar"></span>
 										</span>
@@ -173,7 +189,7 @@
 									<label for="DataFim">Venc.- Data Fim</label>
 									<div class="input-group DatePicker">
 										<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"
-											   autofocus name="DataFim" value="<?php echo set_value('DataFim', $query['DataFim']); ?>">
+											    name="DataFim" value="<?php echo set_value('DataFim', $query['DataFim']); ?>">
 										<span class="input-group-addon" disabled>
 											<span class="glyphicon glyphicon-calendar"></span>
 										</span>
@@ -183,7 +199,7 @@
 									<label for="DataInicio2">Pagam.- Data Inc.</label>
 									<div class="input-group DatePicker">
 										<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"
-											   autofocus name="DataInicio2" value="<?php echo set_value('DataInicio2', $query['DataInicio2']); ?>">
+											    name="DataInicio2" value="<?php echo set_value('DataInicio2', $query['DataInicio2']); ?>">
 										<span class="input-group-addon" disabled>
 											<span class="glyphicon glyphicon-calendar"></span>
 										</span>
@@ -193,7 +209,7 @@
 									<label for="DataFim2">Pagam.- Data Fim</label>
 									<div class="input-group DatePicker">
 										<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"
-											   autofocus name="DataFim2" value="<?php echo set_value('DataFim2', $query['DataFim2']); ?>">
+											    name="DataFim2" value="<?php echo set_value('DataFim2', $query['DataFim2']); ?>">
 										<span class="input-group-addon" disabled>
 											<span class="glyphicon glyphicon-calendar"></span>
 										</span>
@@ -213,7 +229,7 @@
 								
 								<div class="col-md-2 text-right">											
 										<a class="btn btn-lg btn-danger" href="<?php echo base_url() ?>relatorio/orcamento" role="button"> 
-											<span class="glyphicon glyphicon-plus"></span> Orçamentos
+											<span class="glyphicon glyphicon-plus"></span> Receitas
 										</a>
 								</div>
 								

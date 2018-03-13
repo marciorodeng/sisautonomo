@@ -181,6 +181,9 @@ class Relatorio_model extends CI_Model {
         }
 
 		#$data['NomeCliente'] = ($data['NomeCliente']) ? ' AND C.idApp_Cliente = ' . $data['NomeCliente'] : FALSE;
+		$data['ObsOrca'] = ($data['ObsOrca']) ? ' AND OT.idApp_OrcaTrata = ' . $data['ObsOrca'] : FALSE;
+		$data['Campo'] = (!$data['Campo']) ? 'OT.idApp_OrcaTrata' : $data['Campo'];
+        $data['Ordenamento'] = (!$data['Ordenamento']) ? 'ASC' : $data['Ordenamento'];
 		$filtro1 = ($data['AprovadoOrca'] != '#') ? 'OT.AprovadoOrca = "' . $data['AprovadoOrca'] . '" AND ' : FALSE;
         $filtro2 = ($data['QuitadoOrca'] != '#') ? 'OT.QuitadoOrca = "' . $data['QuitadoOrca'] . '" AND ' : FALSE;
 		$filtro3 = ($data['ServicoConcluido'] != '#') ? 'OT.ServicoConcluido = "' . $data['ServicoConcluido'] . '" AND ' : FALSE;
@@ -192,6 +195,7 @@ class Relatorio_model extends CI_Model {
                 OT.idApp_OrcaTrata,
 				OT.TipoRD,
                 OT.AprovadoOrca,
+				OT.ObsOrca,
                 OT.DataOrca,
                 OT.DataEntradaOrca,
                 OT.ValorEntradaOrca,
@@ -212,20 +216,20 @@ class Relatorio_model extends CI_Model {
             WHERE
                 OT.Empresa = ' . $_SESSION['log']['Empresa'] . ' AND
 				OT.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' AND
-				OT.idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND
-                (' . $consulta . ') AND
+				OT.idSis_Usuario = ' . $_SESSION['log']['id'] . ' 
+                ' . $data['ObsOrca'] . ' AND
+				(' . $consulta . ') AND
 				(' . $consulta2 . ') AND
 				(' . $consulta3 . ') AND
-                ' . $filtro1 . '
+                
                 ' . $filtro2 . '
                 ' . $filtro3 . '
 				' . $filtro4 . '
 				OT.TipoRD = "R"
 
             ORDER BY
-				OT.AprovadoOrca DESC,
-				PR.DataVencimentoRecebiveis'
-            );
+				' . $data['Campo'] . ' ' . $data['Ordenamento'] . '
+            ');
 
         /*
           echo $this->db->last_query();
@@ -606,6 +610,8 @@ class Relatorio_model extends CI_Model {
 
 
 		$data['TipoDespesa'] = ($data['TipoDespesa']) ? ' AND TD.idTab_TipoDespesa = ' . $data['TipoDespesa'] : FALSE;
+		$data['Campo'] = (!$data['Campo']) ? 'DS.idApp_Despesas' : $data['Campo'];
+        $data['Ordenamento'] = (!$data['Ordenamento']) ? 'ASC' : $data['Ordenamento'];
 		$filtro1 = ($data['AprovadoDespesas'] != '#') ? 'DS.AprovadoDespesas = "' . $data['AprovadoDespesas'] . '" AND ' : FALSE;
 		$filtro3 = ($data['ServicoConcluidoDespesas'] != '#') ? 'DS.ServicoConcluidoDespesas = "' . $data['ServicoConcluidoDespesas'] . '" AND ' : FALSE;
         $filtro2 = ($data['QuitadoDespesas'] != '#') ? 'DS.QuitadoDespesas = "' . $data['QuitadoDespesas'] . '" AND ' : FALSE;
@@ -613,9 +619,10 @@ class Relatorio_model extends CI_Model {
 
         $query = $this->db->query('
             SELECT
-                DS.idApp_Despesas,
+                DS.idApp_Despesas,				
 				DS.Despesa,
 				TD.TipoDespesa,
+				CD.Categoriadesp,
 				DS.TipoProduto,
                 DS.DataDespesas,
                 DS.DataEntradaDespesas,
@@ -633,6 +640,7 @@ class Relatorio_model extends CI_Model {
                 App_Despesas AS DS
                     LEFT JOIN App_ParcelasPagaveis AS PP ON DS.idApp_Despesas = PP.idApp_Despesas
                     LEFT JOIN Tab_TipoDespesa AS TD ON TD.idTab_TipoDespesa = DS.TipoDespesa
+					LEFT JOIN Tab_Categoriadesp AS CD ON CD.idTab_Categoriadesp = TD.Categoriadesp
             WHERE
                 DS.Empresa = ' . $_SESSION['log']['Empresa'] . ' AND
 				DS.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' AND
@@ -645,7 +653,7 @@ class Relatorio_model extends CI_Model {
 				' . $data['TipoDespesa'] . ' AND
 				(DS.TipoProduto = "D" OR DS.TipoProduto = "E")
             ORDER BY
-				PP.DataVencimentoPagaveis
+				' . $data['Campo'] . ' ' . $data['Ordenamento'] . '
         ');
 
         /*
@@ -2509,6 +2517,7 @@ exit();*/
         }
 
         #$data['NomeCliente'] = ($data['NomeCliente']) ? ' AND C.idApp_Cliente = ' . $data['NomeCliente'] : FALSE;
+		$data['ObsOrca'] = ($data['ObsOrca']) ? ' AND OT.idApp_OrcaTrata = ' . $data['ObsOrca'] : FALSE;
 		$data['FormaPag'] = ($data['FormaPag']) ? ' AND TFP.idTab_FormaPag = ' . $data['FormaPag'] : FALSE;
         $data['Campo'] = (!$data['Campo']) ? 'OT.idApp_OrcaTrata' : $data['Campo'];
         $data['Ordenamento'] = (!$data['Ordenamento']) ? 'ASC' : $data['Ordenamento'];
@@ -2521,6 +2530,7 @@ exit();*/
                 
                 OT.idApp_OrcaTrata,
                 OT.AprovadoOrca,
+				OT.ObsOrca,
                 OT.DataOrca,
 				OT.DataEntradaOrca,
 				OT.DataPrazo,
@@ -2545,12 +2555,12 @@ exit();*/
             WHERE
 				OT.Empresa = ' . $_SESSION['log']['Empresa'] . ' AND
 				OT.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' AND
-				OT.idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND
-                (' . $consulta . ') AND
+				OT.idSis_Usuario = ' . $_SESSION['log']['id'] . ' 
+                ' . $data['ObsOrca'] . ' AND
+				(' . $consulta . ') AND
 				(' . $consulta2 . ') AND
 				(' . $consulta3 . ') AND
 				(' . $consulta4 . ') AND
-                ' . $filtro1 . '
                 ' . $filtro2 . '
 				' . $filtro3 . '                 
 				OT.TipoRD = "R" 
@@ -2900,14 +2910,17 @@ exit();*/
 
         if ($data['DataFim3']) {
             $consulta3 =
-                '(OT.DataRetornoDespesas >= "' . $data['DataInicio3'] . '" AND OT.DataRetornoDespesas <= "' . $data['DataFim3'] . '")';
+                '(OT.DataQuitadoDespesas >= "' . $data['DataInicio3'] . '" AND OT.DataQuitadoDespesas <= "' . $data['DataFim3'] . '")';
         }
         else {
             $consulta3 =
-                '(OT.DataRetornoDespesas >= "' . $data['DataInicio3'] . '")';
+                '(OT.DataQuitadoDespesas >= "' . $data['DataInicio3'] . '")';
         }
 
-        $data['NomeCliente'] = ($data['NomeCliente']) ? ' AND C.idApp_Cliente = ' . $data['NomeCliente'] : FALSE;
+        
+		$data['NomeCliente'] = ($data['NomeCliente']) ? ' AND C.idApp_Cliente = ' . $data['NomeCliente'] : FALSE;
+		$data['Campo'] = (!$data['Campo']) ? 'OT.idApp_Despesas' : $data['Campo'];
+        $data['Ordenamento'] = (!$data['Ordenamento']) ? 'ASC' : $data['Ordenamento'];
 		$data['TipoDespesa'] = ($data['TipoDespesa']) ? ' AND TD.idTab_TipoDespesa = ' . $data['TipoDespesa'] : FALSE;
 		$data['Categoriadesp'] = ($data['Categoriadesp']) ? ' AND CD.idTab_Categoriadesp = ' . $data['Categoriadesp'] : FALSE;
         $filtro1 = ($data['AprovadoDespesas'] != '#') ? 'OT.AprovadoDespesas = "' . $data['AprovadoDespesas'] . '" AND ' : FALSE;
@@ -2962,9 +2975,7 @@ exit();*/
 				OT.QtdParcelasDespesas != "0"
 
             ORDER BY
-                OT.idApp_Despesas DESC,
-				OT.AprovadoDespesas ASC,
-				OT.DataDespesas
+                ' . $data['Campo'] . ' ' . $data['Ordenamento'] . '
 
         ');
 
@@ -4610,6 +4621,31 @@ exit();*/
         $array[0] = ':: Todos ::';
         foreach ($query->result() as $row) {
             $array[$row->idApp_OrcaTrata] = $row->idApp_OrcaTrata;
+        }
+
+        return $array;
+    }
+	
+		public function select_obsorca() {
+
+        $query = $this->db->query('
+            SELECT
+                P.idApp_OrcaTrata,
+                P.ObsOrca
+            FROM
+                App_OrcaTrata AS P
+            WHERE
+                P.Empresa = ' . $_SESSION['log']['Empresa'] . ' AND
+				P.idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND
+				P.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . '
+            ORDER BY
+                idApp_OrcaTrata ASC
+        ');
+
+        $array = array();
+        $array[0] = ':: Todos ::';
+        foreach ($query->result() as $row) {
+            $array[$row->idApp_OrcaTrata] = $row->ObsOrca;
         }
 
         return $array;
