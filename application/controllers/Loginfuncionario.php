@@ -218,7 +218,7 @@ class Loginfuncionario extends CI_Controller {
 			$data['query']['Funcao'] = 1;
 			$data['query']['Permissao'] = 3;
 			$data['query']['Empresa'] = 2;
-			$data['query']['NomeEmpresa'] = 'Sistema Autônomo';
+			$data['query']['NomeEmpresa'] = 'Controle Pessoal';
 			$data['query']['idTab_Modulo'] = 1;
             $data['query']['Senha'] = md5($data['query']['Senha']);
 			$data['query']['DataNascimento'] = $this->basico->mascara_data($data['query']['DataNascimento'], 'mysql');
