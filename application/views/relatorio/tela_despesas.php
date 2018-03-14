@@ -156,21 +156,23 @@
 								<div class="col-md-2">
 									<label for="DataInicio">Despesa - Inc.</label>
 									<div class="input-group DatePicker">
-										<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"
-											    name="DataInicio" value="<?php echo set_value('DataInicio', $query['DataInicio']); ?>">
 										<span class="input-group-addon" disabled>
 											<span class="glyphicon glyphicon-calendar"></span>
 										</span>
+										<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"
+											    name="DataInicio" value="<?php echo set_value('DataInicio', $query['DataInicio']); ?>">
+										
 									</div>
 								</div>
 								<div class="col-md-2">
 									<label for="DataFim">Despesa - Fim</label>
 									<div class="input-group DatePicker">
-										<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"
-											    name="DataFim" value="<?php echo set_value('DataFim', $query['DataFim']); ?>">
 										<span class="input-group-addon" disabled>
 											<span class="glyphicon glyphicon-calendar"></span>
 										</span>
+										<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"
+											    name="DataFim" value="<?php echo set_value('DataFim', $query['DataFim']); ?>">
+										
 									</div>
 								</div>
 								<!--
@@ -220,15 +222,15 @@
 						<div class="form-group">
 							<div class="row">
 								<br>
-								<div class="col-md-4"></div>
+								
 								<div class="col-md-2 text-left">
 									<button class="btn btn-lg btn-primary" name="pesquisar" value="0" type="submit">
-										<span class="glyphicon glyphicon-search"></span> Pesquisar
+										<span class="glyphicon glyphicon-search"></span> Pesq.
 									</button>
 								</div>
-								<div class="col-md-2 text-right">											
+								<div class="col-md-2 text-left">											
 									<a class="btn btn-lg btn-danger" href="<?php echo base_url() ?>despesas/cadastrar" role="button"> 
-										<span class="glyphicon glyphicon-plus"></span> Nova Despesa
+										<span class="glyphicon glyphicon-plus"></span> Nova Desp.
 									</a>
 								</div>
 								<div class="col-md-4"></div>

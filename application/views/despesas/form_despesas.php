@@ -458,7 +458,7 @@
 														</div>
 														<br>
 														<div class="form-group">
-															<div class="col-md-3 text-center">
+															<div class="col-md-3 text-left">
 																<button class="btn btn-danger" type="button" data-toggle="collapse" onclick="calculaParcelasPagaveis()"
 																		data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas">
 																	<span class="glyphicon glyphicon-menu-down"></span> Gerar Parcelas
@@ -518,11 +518,12 @@
 															<div class="col-md-2">
 																<label for="DataVencimentoPagaveis">Data Venc. Parc.</label>
 																<div class="input-group DatePicker">
-																	<input type="text" class="form-control Date" id="DataVencimentoPagaveis<?php echo $i ?>" maxlength="10" placeholder="DD/MM/AAAA"
-																		   name="DataVencimentoPagaveis<?php echo $i ?>" value="<?php echo $parcelaspag[$i]['DataVencimentoPagaveis'] ?>">
 																	<span class="input-group-addon" disabled>
 																		<span class="glyphicon glyphicon-calendar"></span>
 																	</span>
+																	<input type="text" class="form-control Date" id="DataVencimentoPagaveis<?php echo $i ?>" maxlength="10" placeholder="DD/MM/AAAA"
+																		   name="DataVencimentoPagaveis<?php echo $i ?>" value="<?php echo $parcelaspag[$i]['DataVencimentoPagaveis'] ?>">
+																	
 																</div>
 															</div>
 															<div class="col-md-2">
@@ -536,11 +537,12 @@
 															<div class="col-md-2">
 																<label for="DataPagoPagaveis">Data Pag.</label>
 																<div class="input-group DatePicker">
-																	<input type="text" class="form-control Date" id="DataPagoPagaveis<?php echo $i ?>" maxlength="10" placeholder="DD/MM/AAAA"
-																		   name="DataPagoPagaveis<?php echo $i ?>" value="<?php echo $parcelaspag[$i]['DataPagoPagaveis'] ?>">
 																	<span class="input-group-addon" disabled>
 																		<span class="glyphicon glyphicon-calendar"></span>
 																	</span>
+																	<input type="text" class="form-control Date" id="DataPagoPagaveis<?php echo $i ?>" maxlength="10" placeholder="DD/MM/AAAA"
+																		   name="DataPagoPagaveis<?php echo $i ?>" value="<?php echo $parcelaspag[$i]['DataPagoPagaveis'] ?>">
+																	
 																</div>
 															</div>
 															<div class="col-md-2">
@@ -604,7 +606,7 @@
 											<div class="panel panel-danger">
 												<div class="panel-heading">
 													
-													<div class="form-group text-center">
+													<div class="form-group text-left">
 														<div class="row">									
 															<!--
 															<div class="col-md-3 form-inline">
@@ -640,7 +642,7 @@
 																</div>
 															</div>
 															-->
-															<div class="col-md-3">
+															<div class="col-md-3 text-left">
 																<label for="DataDespesas">Despesa em:</label>
 																<div class="input-group <?php echo $datepicker; ?>">
 																	<span class="input-group-addon" disabled>
@@ -650,7 +652,7 @@
 																		   name="DataDespesas" value="<?php echo $despesas['DataDespesas']; ?>">																	
 																</div>
 															</div>
-															<div class="col-md-3 form-inline">
+															<div class="col-md-3 text-left form-inline">
 																<label for="ServicoConcluidoDespesas">Concluída?</label><br>
 																<div class="form-group">
 																	<div class="btn-group" data-toggle="buttons">
@@ -678,7 +680,7 @@
 																	</div>
 																</div>
 															</div>									
-															<div class="col-md-3 text-center form-inline">
+															<div class="col-md-3 text-left form-inline">
 																<label for="QuitadoDespesas">Quitada?</label><br>
 																<div class="form-group">
 																	<div class="btn-group" data-toggle="buttons">

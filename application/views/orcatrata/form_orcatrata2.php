@@ -458,11 +458,12 @@
 															<div class="col-md-2">
 																<label for="DataVencimentoRecebiveis">Data Venc. Parc.</label>
 																<div class="input-group DatePicker">
-																	<input type="text" class="form-control Date" id="DataVencimentoRecebiveis<?php echo $i ?>" maxlength="10" placeholder="DD/MM/AAAA"
-																		   name="DataVencimentoRecebiveis<?php echo $i ?>" value="<?php echo $parcelasrec[$i]['DataVencimentoRecebiveis'] ?>">
 																	<span class="input-group-addon" disabled>
 																		<span class="glyphicon glyphicon-calendar"></span>
 																	</span>
+																	<input type="text" class="form-control Date" id="DataVencimentoRecebiveis<?php echo $i ?>" maxlength="10" placeholder="DD/MM/AAAA"
+																		   name="DataVencimentoRecebiveis<?php echo $i ?>" value="<?php echo $parcelasrec[$i]['DataVencimentoRecebiveis'] ?>">
+																	
 																</div>
 															</div>
 															<div class="col-md-2">
@@ -476,11 +477,12 @@
 															<div class="col-md-2">
 																<label for="DataPagoRecebiveis">Data Pag.</label>
 																<div class="input-group DatePicker">
-																	<input type="text" class="form-control Date" id="DataPagoRecebiveis<?php echo $i ?>" maxlength="10" placeholder="DD/MM/AAAA"
-																		   name="DataPagoRecebiveis<?php echo $i ?>" value="<?php echo $parcelasrec[$i]['DataPagoRecebiveis'] ?>">
 																	<span class="input-group-addon" disabled>
 																		<span class="glyphicon glyphicon-calendar"></span>
 																	</span>
+																	<input type="text" class="form-control Date" id="DataPagoRecebiveis<?php echo $i ?>" maxlength="10" placeholder="DD/MM/AAAA"
+																		   name="DataPagoRecebiveis<?php echo $i ?>" value="<?php echo $parcelasrec[$i]['DataPagoRecebiveis'] ?>">
+																	
 																</div>
 															</div>
 															<div class="col-md-2">
@@ -670,7 +672,7 @@
 											<div class="panel panel-info">
 												<div class="panel-heading">
 													
-													<div class="form-group text-center">
+													<div class="form-group text-left">
 														<div class="row">
 															<!--
 															<div class="col-md-3 form-inline">

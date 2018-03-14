@@ -3,7 +3,7 @@
 
 		<div class="col-md-1"></div>
         <div class="col-md-3">
-            <label for="DataFim">Total dos Orçamentos:</label>
+            <label for="DataFim">Total das Despesas:</label>
             <div class="input-group">
                 <span class="input-group-addon">R$</span>
                 <input type="text" class="form-control" disabled aria-label="Total Despesasmentos" value="<?php echo $report->soma->somaorcamento ?>">
@@ -17,7 +17,7 @@
             </div>
         </div>
 		<div class="col-md-3">
-            <label for="DataFim">Total A Receber:</label>
+            <label for="DataFim">Total A Pagar:</label>
             <div class="input-group">
                 <span class="input-group-addon">R$</span>
                 <input type="text" class="form-control" disabled aria-label="Total Restante" value="<?php echo $report->soma->somarestante ?>">

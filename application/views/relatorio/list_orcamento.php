@@ -3,7 +3,7 @@
 
 		<div class="col-md-1"></div>
         <div class="col-md-3">
-            <label for="DataFim">Total dos Orçamentos:</label>
+            <label for="DataFim">Total das Receitas:</label>
             <div class="input-group">
                 <span class="input-group-addon">R$</span>
                 <input type="text" class="form-control" disabled aria-label="Total Orcamentos" value="<?php echo $report->soma->somaorcamento ?>">
@@ -58,8 +58,8 @@
 						<!--<th class="active">Dt. Concl.</th>
                         <th class="active">Dt. Quit.</th>
 						<th class="active">Dt. Retor.</th>
-                        <th class="active">Profissional</th>-->
-                        <th class="active"></th>
+                        <th class="active">Profissional</th>
+                        <th class="active"></th>-->
                     </tr>
                 </thead>
 				<tbody>
@@ -89,11 +89,13 @@
 							#echo '<td>' . $row['DataRetorno'] . '</td>';
 							#echo '<td>' . $row['Nome'] . '</td>';
                             #echo '</div>';
-                            echo '<td class="notclickable">
+                            /*
+							echo '<td class="notclickable">
                                     <a class="btn btn-md btn-info notclickable" target="_blank" href="' . base_url() . 'OrcatrataPrint/imprimir/' . $row['idApp_OrcaTrata'] . '">
                                         <span class="glyphicon glyphicon-print notclickable"></span>
                                     </a>
                                 </td>';
+							*/
                         echo '</tr>';
                     }
                     ?>
