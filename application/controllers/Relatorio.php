@@ -3115,7 +3115,7 @@ class Relatorio extends CI_Controller {
 		$data['select']['ObsTarefa'] = $this->Relatorio_model->select_obstarefa();
 		$data['select']['Procedtarefa'] = $this->Relatorio_model->select_procedtarefa();
 
-        $data['titulo'] = 'Funcionários & Tarefas';
+        $data['titulo'] = 'Tarefas & Ações';
 
         #run form validation
         if ($this->form_validation->run() !== FALSE) {

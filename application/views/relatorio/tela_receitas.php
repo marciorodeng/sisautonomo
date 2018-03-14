@@ -225,21 +225,16 @@
 						</div>
 						<div class="form-group">
 							<div class="row">
-								<br>
-								
-								<div class="col-md-2 text-left">
+								<br>							
+								<div class="text-left">
+									<span class="glyphicon glyphicon-search"></span>
 									<button class="btn btn-lg btn-primary" name="pesquisar" value="0" type="submit">
 										<span class="glyphicon glyphicon-search"></span> Pesq.
-									</button>
-								</div>
-								
-								<div class="col-md-2 text-left">											
-										<a class="btn btn-lg btn-danger" href="<?php echo base_url() ?>relatorio/orcamento" role="button"> 
-											<span class="glyphicon glyphicon-plus"></span> Nova Rec.
-										</a>
-								</div>
-								
-								<div class="col-md-4"></div>
+									</button>											
+									<a class="btn btn-lg btn-danger" href="<?php echo base_url() ?>relatorio/orcamento" role="button"> 
+										<span class="glyphicon glyphicon-plus"></span> Nova Rec.
+									</a>
+								</div>								
 							</div>
 						</div>
 						</form>
