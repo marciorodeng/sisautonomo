@@ -388,11 +388,11 @@
 														<div class="col-md-3">
 															<label for="DataVencimentoOrca">1º Venc.</label>
 															<div class="input-group <?php echo $datepicker; ?>">
-																<input type="text" class="form-control Date" id="DataVencimentoOrca" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
-																	   name="DataVencimentoOrca" value="<?php echo $orcatrata['DataVencimentoOrca']; ?>">
 																<span class="input-group-addon" disabled>
 																	<span class="glyphicon glyphicon-calendar"></span>
 																</span>
+																<input type="text" class="form-control Date" id="DataVencimentoOrca" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
+																	   name="DataVencimentoOrca" value="<?php echo $orcatrata['DataVencimentoOrca']; ?>">															
 															</div>
 														</div>
 														<br>
@@ -669,9 +669,10 @@
 										<div class="form-group">
 											<div class="panel panel-info">
 												<div class="panel-heading">
-													<div class="col-md-1"></div>
+													
 													<div class="form-group text-center">
 														<div class="row">
+															<!--
 															<div class="col-md-3 form-inline">
 																<label for="AprovadoOrca">Aprovada?</label><br>
 																<div class="form-group">
@@ -704,8 +705,19 @@
 																	</div>
 																</div>
 															</div>
+															-->
+															<div class="col-md-3">
+																<label for="DataOrca">Receita em:</label>
+																<div class="input-group <?php echo $datepicker; ?>">
+																	<span class="input-group-addon" disabled>
+																		<span class="glyphicon glyphicon-calendar"></span>
+																	</span>
+																	<input type="text" class="form-control Date" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
+																			name="DataOrca" value="<?php echo $orcatrata['DataOrca']; ?>">																	
+																</div>
+															</div>
 															<div class="col-md-3 form-inline">
-																<label for="ServicoConcluido">Concluído?</label><br>
+																<label for="ServicoConcluido">Concluída?</label><br>
 																<div class="form-group">
 																	<div class="btn-group" data-toggle="buttons">
 																		<?php
@@ -762,11 +774,13 @@
 															</div>
 														</div>
 													</div>
+													<!--
 													<div class="col-md-1"></div>
 													<div class="form-group text-center">
 														<div class="row">
+															
 															<div class="col-md-3">
-																<label for="DataOrca">Orçado em:</label>
+																<label for="DataOrca">Receita em:</label>
 																<div class="input-group <?php echo $datepicker; ?>">
 																	<input type="text" class="form-control Date" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
 																			name="DataOrca" value="<?php echo $orcatrata['DataOrca']; ?>">
@@ -775,6 +789,7 @@
 																	</span>
 																</div>
 															</div>
+															
 															<div class="col-md-3">
 																<label for="DataConclusao">Concluído em:</label>
 																<div class="input-group <?php echo $datepicker; ?>">
@@ -794,8 +809,8 @@
 																		<span class="glyphicon glyphicon-calendar"></span>
 																	</span>
 																</div>
-															</div>															
-															<!--
+															</div>
+															
 															<div class="form-group text-center">
 																<div id="AprovadoOrca" <?php echo $div['AprovadoOrca']; ?>>
 																	<div class="col-md-3 form-inline">
@@ -869,10 +884,11 @@
 
 																</div>
 															</div>
-															-->
+															
 														</div>
 													</div>
-													<!--
+													
+													
 													<div class="col-md-1"></div>
 													<div class="form-group text-center">
 														<div class="row">															

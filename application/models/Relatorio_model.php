@@ -2558,9 +2558,6 @@ exit();*/
 				OT.idSis_Usuario = ' . $_SESSION['log']['id'] . ' 
                 ' . $data['ObsOrca'] . ' AND
 				(' . $consulta . ') AND
-				(' . $consulta2 . ') AND
-				(' . $consulta3 . ') AND
-				(' . $consulta4 . ') AND
                 ' . $filtro2 . '
 				' . $filtro3 . '                 
 				OT.TipoRD = "R" 
@@ -2967,9 +2964,7 @@ exit();*/
 				OT.idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND
 				OT.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . '
                 ' . $data['NomeCliente'] . ' AND
-				' . $consulta . ' AND
-				' . $consulta2 . ' AND
-				' . $consulta3 . '
+				' . $consulta . ' 
 				' . $data['TipoDespesa'] . ' AND
 
 				OT.QtdParcelasDespesas != "0"

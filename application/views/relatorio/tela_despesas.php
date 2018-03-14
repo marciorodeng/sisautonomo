@@ -173,6 +173,7 @@
 										</span>
 									</div>
 								</div>
+								<!--
 								<div class="col-md-2">
 									<label for="DataInicio2">Conclusão - Inc.</label>
 									<div class="input-group DatePicker">
@@ -212,7 +213,8 @@
 											<span class="glyphicon glyphicon-calendar"></span>
 										</span>
 									</div>
-								</div>								
+								</div>
+								-->
 							</div>
 						</div>
 						<div class="form-group">

@@ -67,7 +67,7 @@
 									</select>
 								</div>
 								<div class="col-md-2">
-									<label for="ServicoConcluido">Receita Concl.?</label>
+									<label for="ServicoConcluido">Concl.?</label>
 									<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
 											id="ServicoConcluido" name="ServicoConcluido">
 										<?php
@@ -82,7 +82,7 @@
 									</select>
 								</div>
 								<div class="col-md-2">
-									<label for="QuitadoOrca">Receita Quit.?</label>
+									<label for="QuitadoOrca">Quit.?</label>
 									<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
 											id="QuitadoOrca" name="QuitadoOrca">
 										<?php
@@ -152,7 +152,7 @@
 						<div class="form-group">
 							<div class="row">
 								<div class="col-md-2">
-									<label for="DataInicio">Orçam. - Data Inc.</label>
+									<label for="DataInicio">Receita - Data Inc.</label>
 									<div class="input-group DatePicker">
 										<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"
 											    name="DataInicio" value="<?php echo set_value('DataInicio', $query['DataInicio']); ?>">
@@ -162,7 +162,7 @@
 									</div>
 								</div>
 								<div class="col-md-2">
-									<label for="DataFim">Orçam. - Data Fim</label>
+									<label for="DataFim">Receita - Data Fim</label>
 									<div class="input-group DatePicker">
 										<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"
 											    name="DataFim" value="<?php echo set_value('DataFim', $query['DataFim']); ?>">
@@ -171,6 +171,7 @@
 										</span>
 									</div>
 								</div>
+								<!--
 								<div class="col-md-2">
 									<label for="DataInicio2">Concl. - Data Inc.</label>
 									<div class="input-group DatePicker">
@@ -210,7 +211,8 @@
 											<span class="glyphicon glyphicon-calendar"></span>
 										</span>
 									</div>
-								</div>								
+								</div>
+								-->
 							</div>
 						</div>
 						<div class="form-group">

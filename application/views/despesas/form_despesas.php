@@ -449,11 +449,11 @@
 														<div class="col-md-3">
 															<label for="DataVencimentoDespesas">Data do 1º Venc.</label>
 															<div class="input-group <?php echo $datepicker; ?>">
-																<input type="text" class="form-control Date" id="DataVencimentoDespesas" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
-																	   name="DataVencimentoDespesas" value="<?php echo $despesas['DataVencimentoDespesas']; ?>">
 																<span class="input-group-addon" disabled>
 																	<span class="glyphicon glyphicon-calendar"></span>
 																</span>
+																<input type="text" class="form-control Date" id="DataVencimentoDespesas" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
+																	   name="DataVencimentoDespesas" value="<?php echo $despesas['DataVencimentoDespesas']; ?>">															
 															</div>
 														</div>
 														<br>
@@ -603,10 +603,10 @@
 										<div class="form-group">
 											<div class="panel panel-danger">
 												<div class="panel-heading">
-													<div class="col-md-1"></div>
+													
 													<div class="form-group text-center">
 														<div class="row">									
-															
+															<!--
 															<div class="col-md-3 form-inline">
 																<label for="AprovadoDespesas">Aprovada?</label><br>
 																<div class="form-group">
@@ -639,14 +639,24 @@
 																	</div>
 																</div>
 															</div>
-															
+															-->
+															<div class="col-md-3">
+																<label for="DataDespesas">Despesa em:</label>
+																<div class="input-group <?php echo $datepicker; ?>">
+																	<span class="input-group-addon" disabled>
+																		<span class="glyphicon glyphicon-calendar"></span>
+																	</span>
+																	<input type="text" class="form-control Date" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
+																		   name="DataDespesas" value="<?php echo $despesas['DataDespesas']; ?>">																	
+																</div>
+															</div>
 															<div class="col-md-3 form-inline">
 																<label for="ServicoConcluidoDespesas">Concluída?</label><br>
 																<div class="form-group">
 																	<div class="btn-group" data-toggle="buttons">
 																		<?php
 																		foreach ($select['ServicoConcluidoDespesas'] as $key => $row) {
-																			(!$despesas['ServicoConcluidoDespesas']) ? $despesas['ServicoConcluidoDespesas'] = 'S' : FALSE;
+																			(!$despesas['ServicoConcluidoDespesas']) ? $despesas['ServicoConcluidoDespesas'] = 'N' : FALSE;
 
 																			if ($despesas['ServicoConcluidoDespesas'] == $key) {
 																				echo ''
@@ -749,19 +759,23 @@
 															-->
 														</div>
 													</div>	
+													<!--
 													<div class="col-md-1"></div>
 													<div class="form-group text-center">
 														<div class="row">
+															
 															<div class="col-md-3">
 																<label for="DataDespesas">Despesa em:</label>
 																<div class="input-group <?php echo $datepicker; ?>">
-																	<input type="text" class="form-control Date" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
-																		   name="DataDespesas" value="<?php echo $despesas['DataDespesas']; ?>">
 																	<span class="input-group-addon" disabled>
 																		<span class="glyphicon glyphicon-calendar"></span>
 																	</span>
+																	<input type="text" class="form-control Date" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
+																		   name="DataDespesas" value="<?php echo $despesas['DataDespesas']; ?>">
+																	
 																</div>
 															</div>
+															
 															<div class="col-md-3">
 																<label for="DataConclusaoDespesas">Concluída em:</label>
 																<div class="input-group <?php echo $datepicker; ?>">
@@ -782,7 +796,7 @@
 																	</span>
 																</div>
 															</div>
-															<!--
+															
 															<div class="col-md-3">
 																<label for="DataRetornoDespesas">Data do Retorno:</label>
 																<div class="input-group <?php echo $datepicker; ?>">
@@ -793,10 +807,10 @@
 																	</span>
 																</div>
 															</div>
-															-->
+															
 														</div>
 													</div>						
-													<!--
+													
 													<div class="col-md-1"></div>
 													
 													<div class="form-group text-center">
