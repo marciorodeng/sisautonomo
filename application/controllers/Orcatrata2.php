@@ -89,7 +89,7 @@ class Orcatrata2 extends CI_Controller {
         (!$this->input->post('PMCount')) ? $data['count']['PMCount'] = 0 : $data['count']['PMCount'] = $this->input->post('PMCount');
 
         //Data de hoje como default
-        #(!$data['orcatrata']['DataOrca']) ? $data['orcatrata']['DataOrca'] = date('d/m/Y', time()) : FALSE;
+        (!$data['orcatrata']['DataOrca']) ? $data['orcatrata']['DataOrca'] = date('d/m/Y', time()) : FALSE;
 		#(!$data['orcatrata']['DataVencimentoOrca']) ? $data['orcatrata']['DataVencimentoOrca'] = date('d/m/Y', time()) : FALSE;
 		#(!$data['orcatrata']['DataPrazo']) ? $data['orcatrata']['DataPrazo'] = date('d/m/Y', time()) : FALSE;
         (!$data['orcatrata']['TipoRD']) ? $data['orcatrata']['TipoRD'] = 'R' : FALSE;
@@ -351,7 +351,8 @@ class Orcatrata2 extends CI_Controller {
                 $data['msg'] = '?m=1';
 
                 #redirect(base_url() . 'orcatrata2/listar/' . $data['msg']);
-				redirect(base_url() . 'relatorio/orcamento/' . $data['msg']);
+				#redirect(base_url() . 'relatorio/orcamento/' . $data['msg']);
+				redirect(base_url() . 'relatorio/receitas/' . $data['msg']);
                 exit();
             }
         }
@@ -842,7 +843,8 @@ class Orcatrata2 extends CI_Controller {
                 $data['msg'] = '?m=1';
 
                 #redirect(base_url() . 'orcatrata/listar/' . $_SESSION['Cliente']['idApp_Cliente'] . $data['msg']);
-				redirect(base_url() . 'relatorio/orcamento/' . $data['msg']);
+				#redirect(base_url() . 'relatorio/orcamento/' . $data['msg']);
+				redirect(base_url() . 'relatorio/receitas/' . $data['msg']);
                 
 				exit();
             }

@@ -81,7 +81,7 @@ class Despesas extends CI_Controller {
 
 
         //Data de hoje como default
-        #(!$data['despesas']['DataDespesas']) ? $data['despesas']['DataDespesas'] = date('d/m/Y', time()) : FALSE;
+        (!$data['despesas']['DataDespesas']) ? $data['despesas']['DataDespesas'] = date('d/m/Y', time()) : FALSE;
 		#(!$data['despesas']['DataConclusaoDespesas']) ? $data['despesas']['DataConclusaoDespesas'] = date('d/m/Y', time()) : FALSE;
 		#(!$data['despesas']['DataVencimentoDespesas']) ? $data['despesas']['DataVencimentoDespesas'] = date('d/m/Y', time()) : FALSE;
 		(!$data['despesas']['TipoProduto']) ? $data['despesas']['TipoProduto'] = 'D' : FALSE;
@@ -324,8 +324,8 @@ class Despesas extends CI_Controller {
                 //$data['auditoria'] = $this->Basico_model->set_auditoria($data['auditoriaitem'], 'App_Despesas', 'CREATE', $data['auditoriaitem']);
                 $data['msg'] = '?m=1';
 
-                redirect(base_url() . 'relatorio/despesas/'  . $data['msg']);
-				
+                #redirect(base_url() . 'relatorio/despesas/'  . $data['msg']);
+				redirect(base_url() . 'relatorio/despesaspag/'  . $data['msg']);
                 exit();
             }
         }
@@ -759,7 +759,8 @@ class Despesas extends CI_Controller {
                 //$data['auditoria'] = $this->Basico_model->set_auditoria($data['auditoriaitem'], 'App_Despesas', 'CREATE', $data['auditoriaitem']);
                 $data['msg'] = '?m=1';
 
-                redirect(base_url() . 'relatorio/despesas/' . $data['msg']);
+                #redirect(base_url() . 'relatorio/despesas/' . $data['msg']);
+				redirect(base_url() . 'relatorio/despesaspag/'  . $data['msg']);
                 exit();
             }
         }
