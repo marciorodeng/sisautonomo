@@ -43,12 +43,12 @@
                         <!--<th class="active">Cliente</th>-->
 						<th class="active">Nº</th>
 						<th class="active">Receita</th>
-                        <th class="active">Data Receita.</th>
-                        <!--<th class="active">Data Entrada</th>
+                        <!--<th class="active">Data Receita.</th>
+                        <th class="active">Data Entrada</th>
                         <th class="active">Valor Entrada</th>
-						<th class="active">Orç. Aprov.?</th>-->
+						<th class="active">Orç. Aprov.?</th>
 						<th class="active">Concl.?</th>
-						<th class="active">Quit.?</th>						
+						<th class="active">Quit.?</th>-->						
                         <th class="active">Parcela</th>
                         <th class="active">Data do Venc.</th>
                         <th class="active">Valor À Receber</th>
@@ -65,12 +65,12 @@
                            # echo '<td>' . $row['NomeCliente'] . '</td>';
 							echo '<td>' . $row['idApp_OrcaTrata'] . '</td>';
 							echo '<td>' . $row['ObsOrca'] . '</td>';
-                            echo '<td>' . $row['DataOrca'] . '</td>';
+                            #echo '<td>' . $row['DataOrca'] . '</td>';
                            # echo '<td>' . $row['DataEntradaOrca'] . '</td>';
                            # echo '<td class="text-right">R$ ' . $row['ValorEntradaOrca'] . '</td>';
 						    #echo '<td>' . $row['AprovadoOrca'] . '</td>';
-							echo '<td>' . $row['ServicoConcluido'] . '</td>';
-							echo '<td>' . $row['QuitadoOrca'] . '</td>';						
+							#echo '<td>' . $row['ServicoConcluido'] . '</td>';
+							#echo '<td>' . $row['QuitadoOrca'] . '</td>';						
                             echo '<td>' . $row['ParcelaRecebiveis'] . '</td>';
                             echo '<td>' . $row['DataVencimentoRecebiveis'] . '</td>';
                             echo '<td class="text-right">R$ ' . $row['ValorParcelaRecebiveis'] . '</td>';
