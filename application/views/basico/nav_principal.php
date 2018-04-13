@@ -35,7 +35,7 @@
 								<ul class="dropdown-menu" role="menu">
 									<li><a href="<?php echo base_url() ?>acesso/index"><span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['log']['Usuario']; ?></a></li>
 									<li role="separator" class="divider"></li>
-									<li><a href="<?php echo base_url(); ?>login/sair"><span class="glyphicon glyphicon-pencil"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
+									<li><a href="<?php echo base_url(); ?>login/sair"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
 								</ul>
 							</div>
 							<div class="btn-group">
