@@ -16,7 +16,7 @@
 									<div class="form-group">
 										<div class="row">
 											<div class="col-md-12">
-												<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
+												<select data-placeholder="Selecione uma opção..." class="form-control Chosen" onchange="this.form.submit()"
 														id="NomeCliente" autofocus name="NomeCliente">
 													<?php
 													foreach ($select['NomeCliente'] as $key => $row) {
@@ -52,7 +52,7 @@
 									<div class="form-group">
 										<div class="row">
 											<div class="col-md-6">
-												<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
+												<select data-placeholder="Selecione uma opção..." class="form-control Chosen" onchange="this.form.submit()"
 														id="Campo" name="Campo">
 													<?php
 													foreach ($select['Campo'] as $key => $row) {
@@ -66,7 +66,7 @@
 												</select>
 											</div>
 											<div class="col-md-4">
-												<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
+												<select data-placeholder="Selecione uma opção..." class="form-control Chosen" onchange="this.form.submit()"
 														id="Ordenamento" name="Ordenamento">
 													<?php
 													foreach ($select['Ordenamento'] as $key => $row) {

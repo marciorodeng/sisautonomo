@@ -54,7 +54,7 @@
 								-->
 								<div class="col-md-2">
 									<label for="Ordenamento">Receitas:</label>
-									<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
+									<select data-placeholder="Selecione uma opção..." class="form-control Chosen" onchange="this.form.submit()"
 											id="ObsOrca" name="ObsOrca">
 										<?php
 										foreach ($select['ObsOrca'] as $key => $row) {
@@ -67,6 +67,7 @@
 										?>
 									</select>
 								</div>
+								<!--
 								<div class="col-md-2">
 									<label for="ServicoConcluido">Receita. Concl.?</label>
 									<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
@@ -97,9 +98,10 @@
 										?>
 									</select>
 								</div>
+								-->
 								<div class="col-md-2">
 									<label for="QuitadoRecebiveis">Parc. Quit.?</label>
-									<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
+									<select data-placeholder="Selecione uma opção..." class="form-control Chosen" onchange="this.form.submit()"
 											id="QuitadoRecebiveis" name="QuitadoRecebiveis">
 										<?php
 										foreach ($select['QuitadoRecebiveis'] as $key => $row) {
@@ -119,7 +121,7 @@
 									<div class="form-group">
 										<div class="row">
 											<div class="col-md-6">
-												<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
+												<select data-placeholder="Selecione uma opção..." class="form-control Chosen" onchange="this.form.submit()"
 														id="Campo" name="Campo">
 													<?php
 													foreach ($select['Campo'] as $key => $row) {
@@ -134,7 +136,7 @@
 											</div>
 
 											<div class="col-md-4">
-												<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
+												<select data-placeholder="Selecione uma opção..." class="form-control Chosen" onchange="this.form.submit()"
 														id="Ordenamento" name="Ordenamento">
 													<?php
 													foreach ($select['Ordenamento'] as $key => $row) {
@@ -155,6 +157,7 @@
 						</div>
 						<div class="form-group">
 							<div class="row">
+								<!--
 								<div class="col-md-2">
 									<label for="DataInicio3">Receita - Data Inc.</label>
 									<div class="input-group DatePicker">
@@ -176,7 +179,8 @@
 											    name="DataFim3" value="<?php echo set_value('DataFim3', $query['DataFim3']); ?>">
 										
 									</div>
-								</div>								
+								</div>
+								-->
 								<div class="col-md-2">
 									<label for="DataInicio">Venc.- Data Inc.</label>
 									<div class="input-group DatePicker">

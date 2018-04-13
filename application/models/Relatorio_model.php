@@ -219,11 +219,7 @@ class Relatorio_model extends CI_Model {
 				OT.idSis_Usuario = ' . $_SESSION['log']['id'] . ' 
                 ' . $data['ObsOrca'] . ' AND
 				(' . $consulta . ') AND
-				(' . $consulta2 . ') AND
-				(' . $consulta3 . ') AND
-                
-                ' . $filtro2 . '
-                ' . $filtro3 . '
+				(' . $consulta2 . ') AND          
 				' . $filtro4 . '
 				OT.TipoRD = "R"
 
@@ -645,11 +641,9 @@ class Relatorio_model extends CI_Model {
                 DS.Empresa = ' . $_SESSION['log']['Empresa'] . ' AND
 				DS.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' AND
 				DS.idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND
-				' . $filtro2 . '
 				' . $filtro4 . '
 				(' . $consulta . ') AND
-				(' . $consulta2 . ') AND
-				(' . $consulta3 . ')
+				(' . $consulta2 . ') 
 				' . $data['TipoDespesa'] . ' AND
 				(DS.TipoProduto = "D" OR DS.TipoProduto = "E")
             ORDER BY
