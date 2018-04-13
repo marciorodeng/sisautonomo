@@ -3,7 +3,7 @@
 <table class="table table-hover">
     <thead>
         <tr>
-            <th>Cliente</th>
+            <th>Contato</th>
             <!--<th>Nascimento</th>-->
             <th>Telefone</th>
         </tr>

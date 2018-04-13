@@ -1,62 +1,15 @@
 <?php if (isset($msg)) echo $msg; ?>
-<?php if ( !isset($evento) && isset($_SESSION['Cliente'])) { ?>
+
 
 <div class="container-fluid">
 	<div class="row">
 	
 		<div class="col-md-2"></div>
-		<div class="col-md-8 ">
+		<div class="col-md-8">
 		
 			<div class="panel panel-primary">
-				
-				<div class="panel-heading"><strong><?php echo '<strong>' . $_SESSION['Cliente']['NomeCliente'] . '</strong> - <small>Id.: ' . $_SESSION['Cliente']['idApp_Cliente'] . '</small>' ?></strong></div>
+								
 				<div class="panel-body">
-			
-					<div class="form-group">
-						<div class="row">
-							<div class="col-md-2 "></div>
-							<div class="col-md-8 col-lg-8">
-								<div class="col-md-4 text-left">
-									<label for="">Contato:</label>
-									<div class="form-group">
-										<div class="row">	
-											<a <?php if (preg_match("/prontuario\b/", $_SERVER['REQUEST_URI'])) echo 'class=active'; //(.)+\/prontuario/   ?>>
-												<a class="btn btn-md btn-success" href="<?php echo base_url() . 'cliente/prontuario/' . $_SESSION['Cliente']['idApp_Cliente']; ?>">
-													<span class="glyphicon glyphicon-file"> </span> Ver <span class="sr-only">(current)</span>
-												</a>
-											</a>				
-											<a <?php if (preg_match("/cliente\/alterar\b/", $_SERVER['REQUEST_URI'])) echo 'class=active'; ///(.)+\/alterar/    ?>>
-												<a class="btn btn-md btn-warning" href="<?php echo base_url() . 'cliente/alterar/' . $_SESSION['Cliente']['idApp_Cliente']; ?>">
-													<span class="glyphicon glyphicon-edit"></span> Edit.
-												</a>
-											</a>
-										</div>
-									</div>	
-								</div>
-
-								<div class="col-md-4 text-left">
-									<label for="">Agendamentos:</label>
-									<div class="form-group">
-										<div class="row">
-											<a <?php if (preg_match("/consulta\/listar\b/", $_SERVER['REQUEST_URI'])) echo 'class=active'; ?>>
-												<a class="btn btn-md btn-success" href="<?php echo base_url() . 'consulta/listar/' . $_SESSION['Cliente']['idApp_Cliente']; ?>">
-													<span class="glyphicon glyphicon-calendar"></span> List.
-												</a>
-											</a>
-											<a <?php if (preg_match("/consulta\/(cadastrar2|alterar)\b/", $_SERVER['REQUEST_URI'])) echo 'class=active'; ?>>
-												<a class="btn btn-md btn-warning" href="<?php echo base_url() . 'consulta/cadastrar2/' . $_SESSION['Cliente']['idApp_Cliente']; ?>">
-													<span class="glyphicon glyphicon-plus"></span> Cad.
-												</a>
-											</a>
-										</div>	
-									</div>	
-								</div>
-							</div>
-							<div class="col-md-2 "></div>
-						</div>	
-					</div>
-
-					<?php } ?>
 					
 					<div class="row">
 						<div class="col-md-12 col-lg-12">	
@@ -65,7 +18,7 @@
 
 							<div class="panel panel-<?php echo $panel; ?>">
 
-								<div class="panel-heading"><strong>Cliente</strong></div>
+								<div class="panel-heading"><strong>Contato</strong></div>
 								<div class="panel-body">
 
 									<?php echo form_open_multipart($form_open_path); ?>
@@ -73,7 +26,7 @@
 									<div class="form-group">
 										<div class="row">
 											<div class="col-md-4">
-												<label for="NomeCliente">Nome do Cliente: *</label>
+												<label for="NomeCliente">Nome do Contato: *</label>
 												<input type="text" class="form-control" id="NomeCliente" maxlength="255" <?php echo $readonly; ?>
 													   name="NomeCliente" autofocus value="<?php echo $query['NomeCliente']; ?>">
 											</div>
@@ -105,37 +58,6 @@
 											</div>
 										</div>
 									</div>
-									
-									<!--
-									<div class="col-md-2">
-										<label for="Associado">Associado?</label><br>
-										<div class="form-group">
-											<div class="btn-group" data-toggle="buttons">
-												<?php
-												foreach ($select['Associado'] as $key => $row) {
-													(!$query['Associado']) ? $query['Associado'] = 'N' : FALSE;
-
-													if ($query['Associado'] == $key) {
-														echo ''
-														. '<label class="btn btn-warning active" name="radiobutton_Associado" id="radiobutton_Associado' . $key . '">'
-														. '<input type="radio" name="Associado" id="radiobutton" '
-														. 'autocomplete="off" value="' . $key . '" checked>' . $row
-														. '</label>'
-														;
-													} else {
-														echo ''
-														. '<label class="btn btn-default" name="radiobutton_Associado" id="radiobutton_Associado' . $key . '">'
-														. '<input type="radio" name="Associado" id="radiobutton" '
-														. 'autocomplete="off" value="' . $key . '" >' . $row
-														. '</label>'
-														;
-													}
-												}
-												?>
-											</div>
-										</div>
-									</div>
-									-->
 									<div class="form-group">
 										<div class="row">
 											<div class="col-md-12 text-center">
