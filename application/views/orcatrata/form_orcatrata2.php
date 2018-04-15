@@ -367,7 +367,7 @@
 																$options = array(
 																	''	=> '-- Selecione uma opção --',
 																	'M'	=> 'MENSALIDADE',
-																	'P'	=> 'ESPORÁDICO',																	
+																	'P'	=> 'PARCELADO',																	
 																);
 																$cfg = 'data-placeholder="Selecione uma opção..." class="form-control" ' . $readonly . '
 																		id="Modalidade"';
@@ -388,7 +388,7 @@
 														
 														<div class="col-md-3">
 															<label for="FormaPagamento">Forma de Pagam.:</label>
-															<select data-placeholder="Selecione uma opção..." class="form-control" <?php echo $readonly; ?>
+															<select data-placeholder="Selecione uma opção..." class="form-control" onchange="calculaParcelasPagaveis()" <?php echo $readonly; ?>
 																	id="FormaPagamento" name="FormaPagamento">
 																<option value="">-- Selecione uma opção --</option>
 																<?php

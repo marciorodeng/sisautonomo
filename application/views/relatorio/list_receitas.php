@@ -43,7 +43,7 @@
                         <!--<th class="active">Cliente</th>-->
 						<th class="active">Nº</th>
 						<th class="active">Receita</th>
-						<th class="active">Parc. Quit.?</th>
+						<th class="active">Quit.?</th>
                         <!--<th class="active">Data Receita.</th>
                         <th class="active">Data Entrada</th>
                         <th class="active">Valor Entrada</th>

@@ -216,12 +216,9 @@ class Relatorio_model extends CI_Model {
             WHERE
                 OT.Empresa = ' . $_SESSION['log']['Empresa'] . ' AND
 				OT.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' AND
-				OT.idSis_Usuario = ' . $_SESSION['log']['id'] . ' 
-                ' . $data['ObsOrca'] . ' AND
-				(' . $consulta . ') AND
-				(' . $consulta2 . ') AND          
-				' . $filtro4 . '
-				OT.TipoRD = "R"
+				OT.idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND
+				((' . $filtro4 . ' (' . $consulta . ')) OR (' . $consulta2 . '))
+                ' . $data['ObsOrca'] . ' AND OT.TipoRD = "R"
 
             ORDER BY
 				' . $data['Campo'] . ' ' . $data['Ordenamento'] . '
