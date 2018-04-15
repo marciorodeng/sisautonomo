@@ -2538,6 +2538,7 @@ exit();*/
 				OT.DataRetorno,
 				OT.TipoRD,
 				OT.FormaPagamento,
+				OT.Modalidade,
 				TFP.FormaPag,
 				TSU.Nome
             FROM
@@ -2551,11 +2552,10 @@ exit();*/
 				OT.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' AND
 				OT.idSis_Usuario = ' . $_SESSION['log']['id'] . ' 
                 ' . $data['ObsOrca'] . ' AND
-				(' . $consulta . ') AND
-                ' . $filtro2 . '
 				' . $filtro3 . '                 
 				OT.TipoRD = "R" 
-				' . $data['FormaPag'] . '
+				' . $data['FormaPag'] . ' AND
+				OT.Modalidade = "M"
             ORDER BY
                 ' . $data['Campo'] . ' ' . $data['Ordenamento'] . '
 
@@ -2939,6 +2939,7 @@ exit();*/
 				OT.DataQuitadoDespesas,
                 OT.DataRetornoDespesas,
 				OT.FormaPagamentoDespesas,
+				OT.ModalidadeDespesas,
 				C.NomeCliente,
 				OT.TipoProduto,
 				TFP.FormaPag,
@@ -2957,11 +2958,8 @@ exit();*/
 				OT.Empresa = ' . $_SESSION['log']['Empresa'] . ' AND
 				OT.idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND
 				OT.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . '
-                ' . $data['NomeCliente'] . ' AND
-				' . $consulta . ' 
 				' . $data['TipoDespesa'] . ' AND
-
-				OT.QtdParcelasDespesas != "0"
+				OT.ModalidadeDespesas = "M"
 
             ORDER BY
                 ' . $data['Campo'] . ' ' . $data['Ordenamento'] . '

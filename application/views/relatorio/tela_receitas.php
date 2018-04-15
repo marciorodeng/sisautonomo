@@ -52,7 +52,7 @@
 									</select>
 								</div>
 								-->
-								<div class="col-md-2">
+								<div class="col-md-4">
 									<label for="Ordenamento">Receitas:</label>
 									<select data-placeholder="Selecione uma opção..." class="form-control Chosen" onchange="this.form.submit()"
 											id="ObsOrca" name="ObsOrca">
@@ -188,7 +188,7 @@
 											<span class="glyphicon glyphicon-calendar"></span>
 										</span>
 										<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"
-											   autofocus name="DataInicio" value="<?php echo set_value('DataInicio', $query['DataInicio']); ?>">
+											   name="DataInicio" value="<?php echo set_value('DataInicio', $query['DataInicio']); ?>">
 										
 									</div>
 								</div>
@@ -210,7 +210,7 @@
 											<span class="glyphicon glyphicon-calendar"></span>
 										</span>
 										<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"
-											    name="DataInicio2" value="<?php echo set_value('DataInicio2', $query['DataInicio2']); ?>">
+											   autofocus name="DataInicio2" value="<?php echo set_value('DataInicio2', $query['DataInicio2']); ?>">
 										
 									</div>
 								</div>

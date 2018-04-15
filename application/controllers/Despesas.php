@@ -71,6 +71,7 @@ class Despesas extends CI_Controller {
             'DataVencimentoDespesas',
             'ObsDespesas',
 			'TipoProduto',
+			'ModalidadeDespesas',
         ), TRUE));
 
         //Dá pra melhorar/encurtar esse trecho (que vai daqui até onde estiver

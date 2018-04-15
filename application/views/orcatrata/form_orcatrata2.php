@@ -26,12 +26,18 @@
 							<div class="panel panel-info">
 								<div class="panel-heading">
 									<div class="row">
+										<div class="col-md-4">
+											<label for="ObsOrca">Receita</label><br>
+											<input type="text" class="form-control" maxlength="200"
+													name="ObsOrca" value="<?php echo $orcatrata['ObsOrca'] ?>">
+										</div>
+										<!--
 										<div class="col-md-6">
 											<label for="ObsOrca">Receita:</label>
 											<textarea class="form-control" id="ObsOrca" <?php echo $readonly; ?>
 													  name="ObsOrca"><?php echo $orcatrata['ObsOrca']; ?></textarea>
 										</div>
-										<!--
+										
 										<div class="col-md-4">
 											<label for="idApp_Cliente">Cliente *</label>
 											<select data-placeholder="Selecione uma opção..." class="form-control Chosen" <?php echo $readonly; ?>
@@ -346,11 +352,27 @@
 														</div>
 
 														<div class="col-md-3">
-															<label for="ValorRestanteOrca">Resta Pagar:</label><br>
+															<label for="ValorRestanteOrca">Resta Receber:</label><br>
 															<div class="input-group" id="txtHint">
 																<span class="input-group-addon" id="basic-addon1">R$</span>
 																<input type="text" class="form-control Valor" id="ValorRestanteOrca" maxlength="10" placeholder="0,00" readonly=""
 																	   name="ValorRestanteOrca" value="<?php echo $orcatrata['ValorRestanteOrca'] ?>">
+															</div>
+														</div>
+														
+														<div class="col-md-3">
+															<label for="Modalidade">Tipo de Recebimento:</label><br>
+															<div class="input-group" id="txtHint">
+																<?php
+																$options = array(
+																	''	=> '-- Selecione uma opção --',
+																	'M'	=> 'MENSALIDADE',
+																	'P'	=> 'ESPORÁDICO',																	
+																);
+																$cfg = 'data-placeholder="Selecione uma opção..." class="form-control" ' . $readonly . '
+																		id="Modalidade"';
+																echo form_dropdown('Modalidade', $options, $orcatrata['Modalidade'], $cfg);
+																?>
 															</div>
 														</div>
 													</div>

@@ -35,9 +35,9 @@
 									</select>
 								</div>
 								-->
-								<div class="col-md-4">
+								<div class="col-md-3">
 									<label for="Ordenamento">Tipo de Despesa:</label>
-									<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
+									<select data-placeholder="Selecione uma opção..." class="form-control Chosen" onchange="this.form.submit()"
 											id="TipoDespesa" name="TipoDespesa">
 										<?php
 										foreach ($select['TipoDespesa'] as $key => $row) {
@@ -84,7 +84,7 @@
 								-->
 								<div class="col-md-2">
 									<label for="ServicoConcluidoDespesas">Desp. Concl.?</label>
-									<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
+									<select data-placeholder="Selecione uma opção..." class="form-control Chosen" onchange="this.form.submit()"
 											id="ServicoConcluidoDespesas" name="ServicoConcluidoDespesas">
 										<?php
 										foreach ($select['ServicoConcluidoDespesas'] as $key => $row) {
@@ -97,6 +97,7 @@
 										?>
 									</select>
 								</div>
+								<!--
 								<div class="col-md-2">
 									<label for="QuitadoDespesas">Desp. Quitada?</label>
 									<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
@@ -112,14 +113,14 @@
 										?>
 									</select>
 								</div>
-																
+								-->								
 								<div class="col-md-4">
 									<label for="Ordenamento">Ordenamento:</label>
 									<div class="form-group">
 										<div class="row">
 											<div class="col-md-6">
-												<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
-														id="Campo" autofocus name="Campo">
+												<select data-placeholder="Selecione uma opção..." class="form-control Chosen" onchange="this.form.submit()"
+														id="Campo" name="Campo">
 													<?php
 													foreach ($select['Campo'] as $key => $row) {
 														if ($query['Campo'] == $key) {
@@ -133,7 +134,7 @@
 											</div>
 
 											<div class="col-md-4">
-												<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
+												<select data-placeholder="Selecione uma opção..." class="form-control Chosen" onchange="this.form.submit()"
 														id="Ordenamento" name="Ordenamento">
 													<?php
 													foreach ($select['Ordenamento'] as $key => $row) {
@@ -151,6 +152,7 @@
 								</div>					
 							</div>
 						</div>
+						<!--
 						<div class="form-group">
 							<div class="row">
 								<div class="col-md-2">
@@ -175,7 +177,7 @@
 										
 									</div>
 								</div>
-								<!--
+								
 								<div class="col-md-2">
 									<label for="DataInicio2">Conclusão - Inc.</label>
 									<div class="input-group DatePicker">
@@ -216,9 +218,10 @@
 										</span>
 									</div>
 								</div>
-								-->
+								
 							</div>
 						</div>
+						-->
 						<div class="form-group">
 							<div class="row">
 								<br>								

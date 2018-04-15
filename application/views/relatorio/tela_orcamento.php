@@ -51,9 +51,9 @@
 									</select>
 								</div>
 								-->
-								<div class="col-md-2">
+								<div class="col-md-3">
 									<label for="Ordenamento">Receitas:</label>
-									<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
+									<select data-placeholder="Selecione uma opção..." class="form-control Chosen" onchange="this.form.submit()"
 											id="ObsOrca" name="ObsOrca">
 										<?php
 										foreach ($select['ObsOrca'] as $key => $row) {
@@ -68,7 +68,7 @@
 								</div>
 								<div class="col-md-2">
 									<label for="ServicoConcluido">Concl.?</label>
-									<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
+									<select data-placeholder="Selecione uma opção..." class="form-control Chosen" onchange="this.form.submit()"
 											id="ServicoConcluido" name="ServicoConcluido">
 										<?php
 										foreach ($select['ServicoConcluido'] as $key => $row) {
@@ -81,6 +81,7 @@
 										?>
 									</select>
 								</div>
+								<!--
 								<div class="col-md-2">
 									<label for="QuitadoOrca">Quit.?</label>
 									<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
@@ -96,9 +97,10 @@
 										?>
 									</select>
 								</div>
+								-->
 								<div class="col-md-2">
 									<label for="Ordenamento">Forma de Pag.</label>
-									<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
+									<select data-placeholder="Selecione uma opção..." class="form-control Chosen" onchange="this.form.submit()"
 											id="FormaPag" name="FormaPag">
 										<?php
 										foreach ($select['FormaPag'] as $key => $row) {
@@ -116,7 +118,7 @@
 									<div class="form-group">
 										<div class="row">
 											<div class="col-md-6">
-												<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
+												<select data-placeholder="Selecione uma opção..." class="form-control Chosen" onchange="this.form.submit()"
 														id="Campo" autofocus name="Campo">
 													<?php
 													foreach ($select['Campo'] as $key => $row) {
@@ -131,7 +133,7 @@
 											</div>
 
 											<div class="col-md-4">
-												<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
+												<select data-placeholder="Selecione uma opção..." class="form-control Chosen" onchange="this.form.submit()"
 														id="Ordenamento" name="Ordenamento">
 													<?php
 													foreach ($select['Ordenamento'] as $key => $row) {
@@ -149,6 +151,7 @@
 								</div>								
 							</div>
 						</div>
+						<!--
 						<div class="form-group">
 							<div class="row">
 								<div class="col-md-2">
@@ -171,7 +174,7 @@
 											    name="DataFim" value="<?php echo set_value('DataFim', $query['DataFim']); ?>">										
 									</div>
 								</div>
-								<!--
+								
 								<div class="col-md-2">
 									<label for="DataInicio2">Concl. - Data Inc.</label>
 									<div class="input-group DatePicker">
@@ -212,9 +215,10 @@
 										</span>
 									</div>
 								</div>
-								-->
+								
 							</div>
 						</div>
+						-->
 						<div class="form-group">
 							<div class="row">
 								<!--

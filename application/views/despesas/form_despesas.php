@@ -415,6 +415,22 @@
 																	   name="ValorRestanteDespesas" value="<?php echo $despesas['ValorRestanteDespesas'] ?>">
 															</div>
 														</div>
+														
+														<div class="col-md-3">
+															<label for="ModalidadeDespesas">Tipo de Pagamento:</label><br>
+															<div class="input-group" id="txtHint">
+																<?php
+																$options = array(
+																	''	=> '-- Selecione uma opção --',
+																	'M'	=> 'MENSALIDADE',
+																	'P'	=> 'ESPORÁDICO',																	
+																);
+																$cfg = 'data-placeholder="Selecione uma opção..." class="form-control" ' . $readonly . '
+																		id="ModalidadeDespesas"';
+																echo form_dropdown('ModalidadeDespesas', $options, $despesas['ModalidadeDespesas'], $cfg);
+																?>
+															</div>
+														</div>
 													</div>
 												</div>
 											</div>	

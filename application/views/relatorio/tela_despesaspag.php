@@ -171,7 +171,7 @@
 											<span class="glyphicon glyphicon-calendar"></span>
 										</span>
 										<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"
-											   autofocus name="DataInicio" value="<?php echo set_value('DataInicio', $query['DataInicio']); ?>">
+											    name="DataInicio" value="<?php echo set_value('DataInicio', $query['DataInicio']); ?>">
 										
 									</div>
 								</div>
@@ -193,7 +193,7 @@
 											<span class="glyphicon glyphicon-calendar"></span>
 										</span>
 										<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"
-											    name="DataInicio2" value="<?php echo set_value('DataInicio2', $query['DataInicio2']); ?>">
+											   autofocus name="DataInicio2" value="<?php echo set_value('DataInicio2', $query['DataInicio2']); ?>">
 										
 									</div>
 								</div>
@@ -218,7 +218,7 @@
 									<button class="btn btn-lg btn-primary" name="pesquisar" value="0" type="submit">
 										<span class="glyphicon glyphicon-search"></span> Pesq.
 									</button>											
-									<a class="btn btn-lg btn-danger" href="<?php echo base_url() ?>despesas/cadastrar" role="button"> 
+									<a class="btn btn-lg btn-danger" href="<?php echo base_url() ?>relatorio/despesas" role="button"> 
 										<span class="glyphicon glyphicon-plus"></span> Nova Desp.
 									</a>
 								</div>

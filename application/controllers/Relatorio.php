@@ -181,13 +181,14 @@ class Relatorio extends CI_Controller {
 
 		/*
         if (!$data['query']['DataInicio'])
-           $data['query']['DataInicio'] = '01/01/2017';
-
+           $data['query']['DataInicio'] = '01/01/2018';
+		
 		if (!$data['query']['DataInicio2'])
            $data['query']['DataInicio2'] = '01/01/2017';
+		
+		if (!$data['query']['DataInicio2'])
+           $data['query']['DataInicio2'] = date("d/m/Y", mktime(0,0,0,date('m'),'01',date('Y')));
 		*/
-		if (!$data['query']['DataInicio'])
-           $data['query']['DataInicio'] = date("d/m/Y", mktime(0,0,0,date('m'),'01',date('Y')));
 		if (!$data['query']['DataFim'])
            $data['query']['DataFim'] = date("t/m/Y", mktime(0,0,0,date('m'),'01',date('Y')));
 
@@ -220,8 +221,8 @@ class Relatorio extends CI_Controller {
 
 		$data['select']['QuitadoRecebiveis'] = array(
             '#' => 'TODOS',
-            'N' => 'Não',
-            'S' => 'Sim',
+			'N' => 'Não',
+            'S' => 'Sim',			            
         );
 
         $data['select']['Campo'] = array(
@@ -254,7 +255,7 @@ class Relatorio extends CI_Controller {
         */
 
 
-        $data['titulo'] = 'Receitas & Pagamentos';
+        $data['titulo'] = 'Receitas & Recebimentos';
 
         #run form validation
         if ($this->form_validation->run() !== FALSE) {
@@ -578,22 +579,23 @@ class Relatorio extends CI_Controller {
         ), TRUE));
 		/*
         if (!$data['query']['DataInicio'])
-           $data['query']['DataInicio'] = '01/01/2017';
-
+           $data['query']['DataInicio'] = '01/01/2018';
+		
 		if (!$data['query']['DataInicio2'])
            $data['query']['DataInicio2'] = '01/01/2017';
+		
+		if (!$data['query']['DataInicio2'])
+           $data['query']['DataInicio2'] = date("d/m/Y", mktime(0,0,0,date('m'),'01',date('Y')));
 		*/
-		if (!$data['query']['DataInicio'])
-           $data['query']['DataInicio'] = date("d/m/Y", mktime(0,0,0,date('m'),'01',date('Y')));
 		if (!$data['query']['DataFim'])
            $data['query']['DataFim'] = date("t/m/Y", mktime(0,0,0,date('m'),'01',date('Y')));
 	   
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
         #$this->form_validation->set_rules('Pesquisa', 'Pesquisa', 'required|trim');
-        $this->form_validation->set_rules('DataInicio', 'Data Início', 'trim|valid_date');
-        $this->form_validation->set_rules('DataFim', 'Data Fim', 'trim|valid_date');
-		$this->form_validation->set_rules('DataInicio2', 'Data Início', 'trim|valid_date');
-        $this->form_validation->set_rules('DataFim2', 'Data Fim', 'trim|valid_date');
+        $this->form_validation->set_rules('DataInicio', 'Data Início do Venc.', 'trim|valid_date');
+        $this->form_validation->set_rules('DataFim', 'Data Fim do Venc.', 'trim|valid_date');
+		$this->form_validation->set_rules('DataInicio2', 'Data Início do Pagam.', 'trim|valid_date');
+        $this->form_validation->set_rules('DataFim2', 'Data Fim do Pagam.', 'trim|valid_date');
 		$this->form_validation->set_rules('DataInicio3', 'Data Início do Orçamento', 'trim|valid_date');
         $this->form_validation->set_rules('DataFim3', 'Data Fim do Orçamento', 'trim|valid_date');
 
@@ -616,13 +618,12 @@ class Relatorio extends CI_Controller {
         );
 
 		$data['select']['QuitadoPagaveis'] = array(
-            '#' => 'TODOS',
-            'N' => 'Não',
-            'S' => 'Sim',
+            '#' => 'TODOS', 
+			'N' => 'Não',
+            'S' => 'Sim',			           
         );
 
         $data['select']['Campo'] = array(
-
             'PP.DataVencimentoPagaveis' => 'Data do Venc.',
 			'PP.DataPagoPagaveis' => 'Data do Pagam.',
 			'PP.QuitadoPagaveis' => 'Quit.Parc.',
@@ -1013,7 +1014,6 @@ class Relatorio extends CI_Controller {
 	$this->load->view('basico/footer');
 
 }
-
 	
     public function estoque2() {
 
@@ -1881,7 +1881,7 @@ class Relatorio extends CI_Controller {
 		$data['select']['ObsOrca'] = $this->Relatorio_model->select_obsorca();
 		$data['select']['FormaPag'] = $this->Relatorio_model->select_formapag();
 
-        $data['titulo'] = 'Receitas';
+        $data['titulo'] = 'Receitas Mensais';
 
         #run form validation
         if ($this->form_validation->run() !== FALSE) {
@@ -2251,15 +2251,11 @@ class Relatorio extends CI_Controller {
         );
 
         $data['select']['Campo'] = array(
-			'OT.DataDespesas' => 'Data da Despesa',
-            'OT.idApp_Despesas' => 'Número da Despesa',
             'CD.Categoriadesp' => 'Categoria ',
 			'OT.TipoDespesa' => 'Tipo',
 			'OT.Despesa' => 'Despesa',			
 			'OT.DataConclusaoDespesas' => 'Data da Conclusão',
-			'OT.DataQuitadoDespesas' => 'Data da Quitação',
-            'OT.ServicoConcluidoDespesas' => 'Despesa Concluída?',
-            'OT.QuitadoDespesas' => 'Despesa Quitada?',			
+            'OT.ServicoConcluidoDespesas' => 'Despesa Concluída?',		
             'OT.ValorDespesas' => 'Valor da Despesa',
 			'OT.ValorEntradaDespesas' => 'Valor do Desconto',
 			'OT.ValorRestanteDespesas' => 'Valor a Receber',
@@ -2275,7 +2271,7 @@ class Relatorio extends CI_Controller {
 		$data['select']['TipoDespesa'] = $this->Relatorio_model->select_tipodespesa();
 		$data['select']['Categoriadesp'] = $this->Relatorio_model->select_categoriadesp();
 
-        $data['titulo'] = 'Despesas';
+        $data['titulo'] = 'Despesas Mensais';
 
         #run form validation
         if ($this->form_validation->run() !== FALSE) {

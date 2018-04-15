@@ -57,9 +57,9 @@
 						<th class="active">Forma de Pag.</th>
 						<!--<th class="active">Aprov.?</th>-->
 						<th class="active">Concl.?</th>
-						<th class="active">Quit.?</th>                       
+						<!--<th class="active">Quit.?</th>                       
 						<th class="active">Dt.Desp.</th> 
-						<!--<th class="active">Dt.Concl.</th>
+						<th class="active">Dt.Concl.</th>
                         <th class="active">Dt.Quit.</th>
                         <th class="active">Prof.</th>-->
 
@@ -88,8 +88,8 @@
 							echo '<td>' . $row['FormaPag'] . '</td>';
 							#echo '<td>' . $row['AprovadoDespesas'] . '</td>';
 							echo '<td>' . $row['ServicoConcluidoDespesas'] . '</td>';
-							echo '<td>' . $row['QuitadoDespesas'] . '</td>';                           
-							echo '<td>' . $row['DataDespesas'] . '</td>'; 
+							#echo '<td>' . $row['QuitadoDespesas'] . '</td>';                           
+							#echo '<td>' . $row['DataDespesas'] . '</td>'; 
 							#echo '<td>' . $row['DataConclusaoDespesas'] . '</td>';
                             #echo '<td>' . $row['DataQuitadoDespesas'] . '</td>';
 							#echo '<td>' . $row['Nome'] . '</td>';

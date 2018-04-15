@@ -8,8 +8,9 @@
         </a>
     </p>
     -->
-    <h2 class="form-signin-heading text-center">Agenda <?php echo ucfirst($_SESSION['log']['nome_modulo']) ?></h2>
-
+    <!--<h2 class="form-signin-heading text-center">Agenda <?php echo ucfirst($_SESSION['log']['nome_modulo']) ?></h2>-->
+	<h2 class="form-signin-heading text-center">Controle Pessoal</h2>
+	
     <?php if ($aviso) echo $aviso; ?>
 
     <a class="btn btn-lg btn-primary" href="<?php echo base_url() ?>">

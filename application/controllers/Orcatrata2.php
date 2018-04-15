@@ -79,6 +79,7 @@ class Orcatrata2 extends CI_Controller {
             'DataVencimentoOrca',
             'ObsOrca',
 			'TipoRD',
+			'Modalidade',
         ), TRUE));
 
         //Dá pra melhorar/encurtar esse trecho (que vai daqui até onde estiver
