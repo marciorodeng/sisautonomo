@@ -82,23 +82,7 @@
 										?>
 									</select>
 								</div>
-								-->
-								<div class="col-md-2">
-									<label for="QuitadoPagaveis">Parc. Quit.?</label>
-									<select data-placeholder="Selecione uma opção..." class="form-control Chosen" onchange="this.form.submit()"
-											id="QuitadoPagaveis" name="QuitadoPagaveis">
-										<?php
-										foreach ($select['QuitadoPagaveis'] as $key => $row) {
-											if ($query['QuitadoPagaveis'] == $key) {
-												echo '<option value="' . $key . '" selected="selected">' . $row . '</option>';
-											} else {
-												echo '<option value="' . $key . '">' . $row . '</option>';
-											}
-										}
-										?>
-									</select>
-								</div>
-								
+								-->																
 								<div class="col-md-4">
 									<label for="Ordenamento">Ordenamento:</label>
 									<div class="form-group">
@@ -187,6 +171,21 @@
 									</div>
 								</div>
 								<div class="col-md-2">
+									<label for="QuitadoPagaveis">Parc. Quit.?</label>
+									<select data-placeholder="Selecione uma opção..." class="form-control Chosen" onchange="this.form.submit()"
+											id="QuitadoPagaveis" name="QuitadoPagaveis">
+										<?php
+										foreach ($select['QuitadoPagaveis'] as $key => $row) {
+											if ($query['QuitadoPagaveis'] == $key) {
+												echo '<option value="' . $key . '" selected="selected">' . $row . '</option>';
+											} else {
+												echo '<option value="' . $key . '">' . $row . '</option>';
+											}
+										}
+										?>
+									</select>
+								</div>
+								<div class="col-md-2">
 									<label for="DataInicio2">Pagam.- Data Inc.</label>
 									<div class="input-group DatePicker">
 										<span class="input-group-addon" disabled>
@@ -219,7 +218,7 @@
 										<span class="glyphicon glyphicon-search"></span> Pesq.
 									</button>											
 									<a class="btn btn-lg btn-danger" href="<?php echo base_url() ?>relatorio/despesas" role="button"> 
-										<span class="glyphicon glyphicon-plus"></span> Nova Desp.
+										<span class="glyphicon glyphicon-plus"></span> Mensais/ Expor.
 									</a>
 								</div>
 							</div>

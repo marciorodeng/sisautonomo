@@ -67,7 +67,7 @@
 						<th class="active">Categ.</th>
 						<th class="active">Tipo</th>
 						<th class="active">Despesa</th>
-						
+						<th class="active">Quit.?</th>
                         <!--<th class="active">Data da Despesa</th>
                         <th class="active">Data Entrada</th>
                         <th class="active">Valor Entrada</th>
@@ -79,7 +79,7 @@
                         <th class="active">Valor À Pagar</th>
                         <th class="active">Data do Pagam.</th>
                         <th class="active">Valor Pago</th>
-                        <th class="active">Parc. Quit.?</th>
+                        
                     </tr>
                 </thead>
 
@@ -95,7 +95,7 @@
 							echo '<td>' . $row['Categoriadesp'] . '</td>';
 							echo '<td>' . $row['TipoDespesa'] . '</td>';
 							echo '<td>' . $row['Despesa'] . '</td>';
-							
+							echo '<td>' . $row['QuitadoPagaveis'] . '</td>';
                             #echo '<td>' . $row['DataDespesas'] . '</td>';
                             #echo '<td>' . $row['DataEntradaOrca'] . '</td>';
                             #echo '<td class="text-right">R$ ' . $row['ValorEntradaOrca'] . '</td>';
@@ -107,7 +107,7 @@
                             echo '<td class="text-left">R$ ' . $row['ValorParcelaPagaveis'] . '</td>';
                             echo '<td>' . $row['DataPagoPagaveis'] . '</td>';
                             echo '<td class="text-left">R$ ' . $row['ValorPagoPagaveis'] . '</td>';
-                            echo '<td>' . $row['QuitadoPagaveis'] . '</td>';
+                            
                         echo '</tr>';
                     }
                     ?>

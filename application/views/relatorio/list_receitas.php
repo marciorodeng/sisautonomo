@@ -43,6 +43,7 @@
                         <!--<th class="active">Cliente</th>-->
 						<th class="active">Nº</th>
 						<th class="active">Receita</th>
+						<th class="active">Parc. Quit.?</th>
                         <!--<th class="active">Data Receita.</th>
                         <th class="active">Data Entrada</th>
                         <th class="active">Valor Entrada</th>
@@ -54,7 +55,7 @@
                         <th class="active">Valor À Receber</th>
                         <th class="active">Data do Pagam.</th>
                         <th class="active">Valor Recebido</th>
-                        <th class="active">Parc. Quit.?</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -65,7 +66,8 @@
                            # echo '<td>' . $row['NomeCliente'] . '</td>';
 							echo '<td>' . $row['idApp_OrcaTrata'] . '</td>';
 							echo '<td>' . $row['ObsOrca'] . '</td>';
-                            #echo '<td>' . $row['DataOrca'] . '</td>';
+                            echo '<td>' . $row['QuitadoRecebiveis'] . '</td>';
+							#echo '<td>' . $row['DataOrca'] . '</td>';
                            # echo '<td>' . $row['DataEntradaOrca'] . '</td>';
                            # echo '<td class="text-right">R$ ' . $row['ValorEntradaOrca'] . '</td>';
 						    #echo '<td>' . $row['AprovadoOrca'] . '</td>';
@@ -75,8 +77,7 @@
                             echo '<td>' . $row['DataVencimentoRecebiveis'] . '</td>';
                             echo '<td class="text-right">R$ ' . $row['ValorParcelaRecebiveis'] . '</td>';
                             echo '<td>' . $row['DataPagoRecebiveis'] . '</td>';
-                            echo '<td class="text-right">R$ ' . $row['ValorPagoRecebiveis'] . '</td>';
-                            echo '<td>' . $row['QuitadoRecebiveis'] . '</td>';
+                            echo '<td class="text-right">R$ ' . $row['ValorPagoRecebiveis'] . '</td>';                           
                         echo '</tr>';
                     }
                     ?>

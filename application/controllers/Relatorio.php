@@ -577,16 +577,16 @@ class Relatorio extends CI_Controller {
 			'QuitadoPagaveis',
 
         ), TRUE));
-		/*
-        if (!$data['query']['DataInicio'])
+		
+        if (!$data['query']['DataInicio2'])
+           $data['query']['DataInicio2'] = date("d/m/Y", mktime(0,0,0,date('m'),'01',date('Y')));
+		
+		if (!$data['query']['DataFim2'])
+           $data['query']['DataFim2'] = date("t/m/Y", mktime(0,0,0,date('m'),'01',date('Y')));
+						
+		if (!$data['query']['DataInicio'])
            $data['query']['DataInicio'] = '01/01/2018';
 		
-		if (!$data['query']['DataInicio2'])
-           $data['query']['DataInicio2'] = '01/01/2017';
-		
-		if (!$data['query']['DataInicio2'])
-           $data['query']['DataInicio2'] = date("d/m/Y", mktime(0,0,0,date('m'),'01',date('Y')));
-		*/
 		if (!$data['query']['DataFim'])
            $data['query']['DataFim'] = date("t/m/Y", mktime(0,0,0,date('m'),'01',date('Y')));
 	   
@@ -618,15 +618,15 @@ class Relatorio extends CI_Controller {
         );
 
 		$data['select']['QuitadoPagaveis'] = array(
-            '#' => 'TODOS', 
-			'N' => 'Não',
-            'S' => 'Sim',			           
+            'N' => 'Não',
+            'S' => 'Sim',
+			'#' => 'TODOS', 						           
         );
 
         $data['select']['Campo'] = array(
-            'PP.DataVencimentoPagaveis' => 'Data do Venc.',
-			'PP.DataPagoPagaveis' => 'Data do Pagam.',
-			'PP.QuitadoPagaveis' => 'Quit.Parc.',
+            'PP.QuitadoPagaveis' => 'Quit.Parc.',
+			'PP.DataVencimentoPagaveis' => 'Data do Venc.',
+			'PP.DataPagoPagaveis' => 'Data do Pagam.',			
 			'DS.idApp_Despesas' => 'Número da Despesa',
             'DS.DataDespesas' => 'Data da Despesa',
             'DS.ValorDespesas' => 'Valor da Despesa',

@@ -641,11 +641,8 @@ class Relatorio_model extends CI_Model {
                 DS.Empresa = ' . $_SESSION['log']['Empresa'] . ' AND
 				DS.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' AND
 				DS.idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND
-				' . $filtro4 . '
-				(' . $consulta . ') AND
-				(' . $consulta2 . ') 
-				' . $data['TipoDespesa'] . ' AND
-				(DS.TipoProduto = "D" OR DS.TipoProduto = "E")
+				((' . $filtro4 . ' (' . $consulta . ')) OR (' . $consulta2 . ')) 
+				' . $data['TipoDespesa'] . ' AND (DS.TipoProduto = "D" OR DS.TipoProduto = "E")
             ORDER BY
 				' . $data['Campo'] . ' ' . $data['Ordenamento'] . '
         ');
