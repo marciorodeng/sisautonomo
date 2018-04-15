@@ -47,16 +47,16 @@
 						<th class="active">Categ.</th>
 						<th class="active">Tipo</th>
 						<th class="active">Despesa</th>
+						<th class="active">Concl.?</th>
 						<!--<th class="active">Orçam.</th>
-						<th class="active">Cliente</th>-->
-                        
+						<th class="active">Cliente</th>-->                        
 						<!--<th class="active">Valid. do Orçam.</th>-->
-                        <th class="active">Valor da Desp.</th>
+                        <th class="active">Valor da Despesa</th>
 						<th class="active">Valor do Desconto</th>
 						<th class="active">Valor A Pagar</th>
 						<th class="active">Forma de Pag.</th>
 						<!--<th class="active">Aprov.?</th>-->
-						<th class="active">Concl.?</th>
+						
 						<!--<th class="active">Quit.?</th>                       
 						<th class="active">Dt.Desp.</th> 
 						<th class="active">Dt.Concl.</th>
@@ -77,17 +77,16 @@
 							echo '<td>' . $row['idApp_Despesas'] . '</td>';
 							echo '<td>' . $row['Categoriadesp'] . '</td>';
 							echo '<td>' . $row['TipoDespesa'] . '</td>';
-							echo '<td>' . $row['Despesa'] . '</td>';							
+							echo '<td>' . $row['Despesa'] . '</td>';
+							echo '<td>' . $row['ServicoConcluidoDespesas'] . '</td>';
 							#echo '<td>' . $row['idApp_OrcaTrata'] . '</td>';
-							#echo '<td>' . $row['NomeCliente'] . '</td>';
-                            
+							#echo '<td>' . $row['NomeCliente'] . '</td>';                            
 							#echo '<td>' . $row['DataEntradaDespesas'] . '</td>';
                             echo '<td class="text-left">R$ ' . $row['ValorDespesas'] . '</td>';
 							echo '<td class="text-left">R$ ' . $row['ValorEntradaDespesas'] . '</td>';
 							echo '<td class="text-left">R$ ' . $row['ValorRestanteDespesas'] . '</td>';
 							echo '<td>' . $row['FormaPag'] . '</td>';
-							#echo '<td>' . $row['AprovadoDespesas'] . '</td>';
-							echo '<td>' . $row['ServicoConcluidoDespesas'] . '</td>';
+							#echo '<td>' . $row['AprovadoDespesas'] . '</td>';							
 							#echo '<td>' . $row['QuitadoDespesas'] . '</td>';                           
 							#echo '<td>' . $row['DataDespesas'] . '</td>'; 
 							#echo '<td>' . $row['DataConclusaoDespesas'] . '</td>';

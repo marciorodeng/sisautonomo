@@ -68,7 +68,17 @@
 											</select>
 										</div>
 										-->
-										<div class="col-md-4">
+										<div class="col-md-3 text-left">
+											<label for="DataDespesas">Data:</label>
+											<div class="input-group <?php echo $datepicker; ?>">
+												<span class="input-group-addon" disabled>
+													<span class="glyphicon glyphicon-calendar"></span>
+												</span>
+												<input type="text" class="form-control Date" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
+													   name="DataDespesas" value="<?php echo $despesas['DataDespesas']; ?>">																	
+											</div>
+										</div>
+										<div class="col-md-3">
 											<label for="TipoDespesa">Tipo de Despesa</label>
 											<!--<a class="btn btn-xs btn-info" href="<?php echo base_url() ?>tipodespesa/cadastrar/tipodespesa" role="button">
 												<span class="glyphicon glyphicon-plus"></span> <b>Forma Pag</b>
@@ -87,7 +97,7 @@
 												?>
 											</select>
 										</div>
-										<div class="col-md-4">
+										<div class="col-md-3">
 											<label for="Despesa">Descrição</label><br>
 											<input type="text" class="form-control" maxlength="200"
 													name="Despesa" value="<?php echo $despesas['Despesa'] ?>">
@@ -423,7 +433,7 @@
 																$options = array(
 																	''	=> '-- Selecione uma opção --',
 																	'M'	=> 'MENSALIDADE',
-																	'P'	=> 'ESPORÁDICO',																	
+																	'P'	=> 'PARCELADO',																	
 																);
 																$cfg = 'data-placeholder="Selecione uma opção..." class="form-control" ' . $readonly . '
 																		id="ModalidadeDespesas"';
@@ -443,7 +453,7 @@
 													<div class="row">														
 														<div class="col-md-3">
 															<label for="FormaPagamentoDespesas">Forma de Pagamento:</label>
-															<select data-placeholder="Selecione uma opção..." class="form-control" <?php echo $readonly; ?>
+															<select data-placeholder="Selecione uma opção..." class="form-control" onchange="calculaParcelasPagaveis()" <?php echo $readonly; ?>
 																	id="FormaPagamentoDespesas" name="FormaPagamentoDespesas">
 																<option value="">-- Selecione uma opção --</option>
 																<?php
@@ -477,7 +487,7 @@
 															<div class="col-md-3 text-left">
 																<button class="btn btn-danger" type="button" data-toggle="collapse" onclick="calculaParcelasPagaveis()"
 																		data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas">
-																	<span class="glyphicon glyphicon-menu-down"></span> Gerar Parcelas
+																	<span class="glyphicon glyphicon-menu-down"></span> Gerar Novas Parcelas
 																</button>
 															</div>
 														</div>
@@ -658,16 +668,7 @@
 																</div>
 															</div>
 															-->
-															<div class="col-md-3 text-left">
-																<label for="DataDespesas">Despesa em:</label>
-																<div class="input-group <?php echo $datepicker; ?>">
-																	<span class="input-group-addon" disabled>
-																		<span class="glyphicon glyphicon-calendar"></span>
-																	</span>
-																	<input type="text" class="form-control Date" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
-																		   name="DataDespesas" value="<?php echo $despesas['DataDespesas']; ?>">																	
-																</div>
-															</div>
+															
 															<div class="col-md-3 text-left form-inline">
 																<label for="ServicoConcluidoDespesas">Concluída?</label><br>
 																<div class="form-group">
@@ -695,7 +696,8 @@
 																		?>
 																	</div>
 																</div>
-															</div>									
+															</div>
+															<!--
 															<div class="col-md-3 text-left form-inline">
 																<label for="QuitadoDespesas">Quitada?</label><br>
 																<div class="form-group">
@@ -729,7 +731,7 @@
 																</div>
 															</div>																																
 																
-															<!--
+															
 															<div class="form-group">
 
 																<div id="AprovadoDespesas" <?php echo $div['AprovadoDespesas']; ?>>									
