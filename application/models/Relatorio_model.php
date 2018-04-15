@@ -375,8 +375,8 @@ class Relatorio_model extends CI_Model {
 				OT.idSis_Usuario = ' . $_SESSION['log']['id'] . ' 
                 ' . $data['ObsOrca'] . ' AND
 				' . $filtro3 . '                 
-				OT.TipoRD = "R" 
-				' . $data['FormaPag'] . ' AND
+				OT.TipoRD = "R" AND
+
 				OT.Modalidade = "M"
             ORDER BY
                 ' . $data['Campo'] . ' ' . $data['Ordenamento'] . '

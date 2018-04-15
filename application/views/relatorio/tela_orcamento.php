@@ -97,7 +97,7 @@
 										?>
 									</select>
 								</div>
-								-->
+								
 								<div class="col-md-2">
 									<label for="Ordenamento">Forma de Pag.</label>
 									<select data-placeholder="Selecione uma opção..." class="form-control Chosen" onchange="this.form.submit()"
@@ -113,6 +113,7 @@
 										?>
 									</select>
 								</div>
+								-->
 								<div class="col-md-4">
 									<label for="Ordenamento">Ordenamento:</label>
 									<div class="form-group">

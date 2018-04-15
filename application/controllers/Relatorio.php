@@ -359,7 +359,7 @@ class Relatorio extends CI_Controller {
         );
 
         $data['select']['Campo'] = array(
-            'OT.FormaPag' => 'Forma de Pagam.',
+            #'OT.FormaPag' => 'Forma de Pagam.',
 			'OT.DataOrca' => 'Data do Orçamento',
             'OT.ValorOrca' => 'Valor do Orçamento',
 			'OT.ValorEntradaOrca' => 'Valor do Desconto',
