@@ -26,7 +26,17 @@
 							<div class="panel panel-info">
 								<div class="panel-heading">
 									<div class="row">
-										<div class="col-md-4">
+										<div class="col-md-3">
+											<label for="DataOrca">Receita em:</label>
+											<div class="input-group <?php echo $datepicker; ?>">
+												<span class="input-group-addon" disabled>
+													<span class="glyphicon glyphicon-calendar"></span>
+												</span>
+												<input type="text" class="form-control Date" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
+														name="DataOrca" value="<?php echo $orcatrata['DataOrca']; ?>">																	
+											</div>
+										</div>
+										<div class="col-md-3">
 											<label for="ObsOrca">Receita</label><br>
 											<input type="text" class="form-control" maxlength="200"
 													name="ObsOrca" value="<?php echo $orcatrata['ObsOrca'] ?>">
@@ -388,7 +398,7 @@
 														
 														<div class="col-md-3">
 															<label for="FormaPagamento">Forma de Pagam.:</label>
-															<select data-placeholder="Selecione uma opção..." class="form-control" onchange="calculaParcelasPagaveis()" <?php echo $readonly; ?>
+															<select data-placeholder="Selecione uma opção..." class="form-control" onchange="calculaParcelas()" <?php echo $readonly; ?>
 																	id="FormaPagamento" name="FormaPagamento">
 																<option value="">-- Selecione uma opção --</option>
 																<?php
@@ -729,17 +739,7 @@
 																	</div>
 																</div>
 															</div>
-															-->
-															<div class="col-md-3">
-																<label for="DataOrca">Receita em:</label>
-																<div class="input-group <?php echo $datepicker; ?>">
-																	<span class="input-group-addon" disabled>
-																		<span class="glyphicon glyphicon-calendar"></span>
-																	</span>
-																	<input type="text" class="form-control Date" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
-																			name="DataOrca" value="<?php echo $orcatrata['DataOrca']; ?>">																	
-																</div>
-															</div>
+															-->															
 															<div class="col-md-3 form-inline">
 																<label for="ServicoConcluido">Concluída?</label><br>
 																<div class="form-group">
@@ -768,6 +768,7 @@
 																	</div>
 																</div>
 															</div>								
+															<!--
 															<div class="col-md-3 form-inline">
 																<label for="QuitadoOrca">Quitado?</label><br>
 																<div class="form-group">
@@ -796,6 +797,7 @@
 																	</div>
 																</div>
 															</div>
+															-->
 														</div>
 													</div>
 													<!--

@@ -235,7 +235,7 @@
 										<span class="glyphicon glyphicon-search"></span> Pesq.
 									</button>											
 									<a class="btn btn-lg btn-danger" href="<?php echo base_url() ?>relatorio/orcamento" role="button"> 
-										<span class="glyphicon glyphicon-plus"></span> Nova Rec.
+										<span class="glyphicon glyphicon-plus"></span> Mensais/ Nova
 									</a>
 								</div>								
 							</div>
