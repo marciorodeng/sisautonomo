@@ -102,44 +102,9 @@
 								<div class="panel-body">
 
 									<?php echo form_open_multipart($form_open_path); ?>
-											<!--
-											<div class="text-left t">
-												<h4><?php echo '<strong>Prof.: ' . $_SESSION['log']['Nome'] . '</strong>' ?></h4>
-											</div>
-											-->
-									<!--App_OrcaTrata-->
-										<!--
-										<div class="form-group">
-											<div class="panel panel-info">
-												<div class="panel-heading">
-													<div class="row">
-														<div class="col-md-3">
-															<label for="DataEntradaOrca">Validade do Orç.:</label>
-															<div class="input-group <?php echo $datepicker; ?>">
-																<input type="text" class="form-control Date" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
-																	   name="DataEntradaOrca" value="<?php echo $orcatrata['DataEntradaOrca']; ?>">
-																<span class="input-group-addon" disabled>
-																	<span class="glyphicon glyphicon-calendar"></span>
-																</span>
-															</div>
-														</div>
-														<div class="col-md-3">
-															<label for="DataPrazo">Prazo de Entrega:</label>
-															<div class="input-group <?php echo $datepicker; ?>">
-																<input type="text" class="form-control Date" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
-																	   autofocus name="DataPrazo" value="<?php echo $orcatrata['DataPrazo']; ?>">
-																<span class="input-group-addon" disabled>
-																	<span class="glyphicon glyphicon-calendar"></span>
-																</span>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
 
-										<hr>
-										-->
+									<!--App_OrcaTrata-->
+
 										<div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true">
 											<div class="panel panel-primary">
 												<div class="panel-heading collapsed" role="tab" id="heading1" data-toggle="collapse" data-parent="#accordion1" data-target="#collapse1" aria-expanded="false">								<h4 class="panel-title">

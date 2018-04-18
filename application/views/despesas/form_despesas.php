@@ -433,8 +433,9 @@
 																<?php
 																$options = array(
 																	''	=> '-- Selecione uma opção --',
-																	'M'	=> 'MENSALIDADE',
-																	'P'	=> 'PARCELADO',																	
+																	'V'	=> 'A VISTA',
+																	'P'	=> 'A PRAZO/ PARCEL.',
+																	'M'	=> 'MENSALIDADE',																	
 																);
 																$cfg = 'data-placeholder="Selecione uma opção..." class="form-control" ' . $readonly . '
 																		id="ModalidadeDespesas"';
