@@ -234,9 +234,43 @@
 									<button class="btn btn-lg btn-primary" name="pesquisar" value="0" type="submit">
 										<span class="glyphicon glyphicon-search"></span> Pesq.
 									</button>											
+									<!--
 									<a class="btn btn-lg btn-danger" href="<?php echo base_url() ?>relatorio/orcamento" role="button"> 
 										<span class="glyphicon glyphicon-plus"></span> Mensais/ Nova
 									</a>
+									-->
+									<button  class="btn btn-lg btn-danger" type="button" data-toggle="modal" data-loading-text="Aguarde..." data-target=".bs-excluir-modal-sm">
+										<span class="glyphicon glyphicon-plus"></span> Nova Receita
+									</button>
+									<div class="modal fade bs-excluir-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+										<div class="modal-dialog" role="document">
+											<div class="modal-content">
+												<div class="modal-header bg-danger">
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+													<h4 class="modal-title">Se for cadastrar uma Receita do tipo "Mensalidade",<br> 
+																			confira antes as "Receitas Mensais já Cadastradas"!</h4>
+												</div>
+												<!--
+												<div class="modal-body">
+													<p>Ao confirmar esta operação todos os dados serão excluídos permanentemente do sistema. 
+														Esta operação é irreversível.</p>
+												</div>
+												-->
+												<div class="modal-footer">
+													<div class="col-md-6 text-left">
+														<a class="btn btn-lg btn-warning" href="<?php echo base_url() ?>relatorio/orcamento" role="button"> 
+															<span class="glyphicon glyphicon-list"></span> Rec. Mensais já Cadastradas
+														</a>
+													</div>
+													<div class="col-md-6 text-right">
+														<a class="btn btn-danger" href="<?php echo base_url() ?>orcatrata2/cadastrar" role="button">
+															<span class="glyphicon glyphicon-plus"></span> Nova Receita
+														</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>								
 							</div>
 						</div>

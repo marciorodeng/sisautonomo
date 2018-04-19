@@ -80,6 +80,7 @@ class Orcatrata2 extends CI_Controller {
             'ObsOrca',
 			'TipoRD',
 			'Modalidade',
+			'AVAP',
         ), TRUE));
 
         //Dá pra melhorar/encurtar esse trecho (que vai daqui até onde estiver
@@ -171,6 +172,7 @@ class Orcatrata2 extends CI_Controller {
         #$this->form_validation->set_rules('ProfissionalOrca', 'Profissional', 'required|trim');
 		#$this->form_validation->set_rules('idApp_Cliente', 'Cliente', 'required|trim');
 		$this->form_validation->set_rules('Modalidade', 'Tipo de Recebimento', 'required|trim');
+		$this->form_validation->set_rules('AVAP', 'À Vista ou À Prazo', 'required|trim');
 		$this->form_validation->set_rules('FormaPagamento', 'Forma de Pagamento', 'required|trim');
 		$this->form_validation->set_rules('QtdParcelasOrca', 'Qtd de Parcelas', 'required|trim');
 		$this->form_validation->set_rules('DataVencimentoOrca', 'Data do 1ºVenc.', 'required|trim|valid_date');
@@ -180,6 +182,8 @@ class Orcatrata2 extends CI_Controller {
         $data['select']['ServicoConcluido'] = $this->Basico_model->select_status_sn();
         $data['select']['ConcluidoServico'] = $this->Basico_model->select_status_sn();
         $data['select']['ConcluidoProcedimento'] = $this->Basico_model->select_status_sn();
+		$data['select']['Modalidade'] = $this->Basico_model->select_modalidade();
+		$data['select']['AVAP'] = $this->Basico_model->select_avap();
 		$data['select']['QuitadoOrca'] = $this->Basico_model->select_status_sn();
         $data['select']['QuitadoRecebiveis'] = $this->Basico_model->select_status_sn();
         $data['select']['Profissional'] = $this->Profissional_model->select_profissional();
@@ -213,6 +217,8 @@ class Orcatrata2 extends CI_Controller {
             $data['tratamentosin'] = '';
 
 
+		(!$data['orcatrata']['Modalidade']) ? $data['orcatrata']['Modalidade'] = 'P' : FALSE;
+		
         #Ver uma solução melhor para este campo
         (!$data['orcatrata']['AprovadoOrca']) ? $data['orcatrata']['AprovadoOrca'] = 'S' : FALSE;
 
@@ -223,6 +229,13 @@ class Orcatrata2 extends CI_Controller {
         ($data['orcatrata']['AprovadoOrca'] == 'S') ?
             $data['div']['AprovadoOrca'] = '' : $data['div']['AprovadoOrca'] = 'style="display: none;"';
 
+			
+		(!$data['orcatrata']['AVAP']) ? $data['orcatrata']['AVAP'] = 'S' : FALSE;
+        $data['radio'] = array(
+            'AVAP' => $this->basico->radio_checked($data['orcatrata']['AVAP'], 'À Vista/À Prazo', 'NS'),
+        );
+        ($data['orcatrata']['AVAP'] == 'N') ?
+            $data['div']['AVAP'] = '' : $data['div']['AVAP'] = 'style="display: none;"';	
 
         $data['sidebar'] = 'col-sm-3 col-md-2';
         $data['main'] = 'col-sm-7 col-md-8';
@@ -394,6 +407,7 @@ class Orcatrata2 extends CI_Controller {
             'QtdParcelasOrca',
             'DataVencimentoOrca',
             'ObsOrca',
+			'AVAP',
 			#'TipoRD',
         ), TRUE));
 
@@ -568,6 +582,8 @@ class Orcatrata2 extends CI_Controller {
         $data['select']['ServicoConcluido'] = $this->Basico_model->select_status_sn();
         $data['select']['ConcluidoServico'] = $this->Basico_model->select_status_sn();
         $data['select']['ConcluidoProcedimento'] = $this->Basico_model->select_status_sn();
+		$data['select']['Modalidade'] = $this->Basico_model->select_modalidade();
+		$data['select']['AVAP'] = $this->Basico_model->select_avap();
 		$data['select']['QuitadoOrca'] = $this->Basico_model->select_status_sn();
         $data['select']['QuitadoRecebiveis'] = $this->Basico_model->select_status_sn();
         $data['select']['Profissional'] = $this->Profissional_model->select_profissional();
@@ -611,6 +627,12 @@ class Orcatrata2 extends CI_Controller {
         ($data['orcatrata']['AprovadoOrca'] == 'S') ?
             $data['div']['AprovadoOrca'] = '' : $data['div']['AprovadoOrca'] = 'style="display: none;"';
 
+		(!$data['orcatrata']['AVAP']) ? $data['orcatrata']['AVAP'] = 'S' : FALSE;
+        $data['radio'] = array(
+            'AVAP' => $this->basico->radio_checked($data['orcatrata']['AVAP'], 'À Vista/À Prazo', 'NS'),
+        );
+        ($data['orcatrata']['AVAP'] == 'N') ?
+            $data['div']['AVAP'] = '' : $data['div']['AVAP'] = 'style="display: none;"';			
 
         $data['sidebar'] = 'col-sm-3 col-md-2';
         $data['main'] = 'col-sm-7 col-md-8';

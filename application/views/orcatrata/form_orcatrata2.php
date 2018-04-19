@@ -371,33 +371,6 @@
 														</div>
 														
 														<div class="col-md-3">
-															<label for="Modalidade">Tipo de Recebimento:</label><br>
-															<div class="input-group" id="txtHint">
-																<?php
-																$options = array(
-																	''	=> '-- Selecione uma opção --',
-																	'V'	=> 'A VISTA',
-																	'P'	=> 'A PRAZO/ PARCEL.',
-																	'M'	=> 'MENSALIDADE',																																		
-																);
-																$cfg = 'data-placeholder="Selecione uma opção..." class="form-control" ' . $readonly . '
-																		id="Modalidade"';
-																echo form_dropdown('Modalidade', $options, $orcatrata['Modalidade'], $cfg);
-																?>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="panel-body">
-										<div class="form-group">
-											<div class="panel panel-info">
-												<div class="panel-heading">
-													<div class="row">
-														
-														<div class="col-md-3">
 															<label for="FormaPagamento">Forma de Pagam.:</label>
 															<select data-placeholder="Selecione uma opção..." class="form-control" onchange="calculaParcelas()" <?php echo $readonly; ?>
 																	id="FormaPagamento" name="FormaPagamento">
@@ -413,30 +386,89 @@
 																?>
 															</select>
 														</div>
-														<div class="col-md-3">
-															<label for="QtdParcelasOrca">Qtd. Parc.:</label><br>
-															<input type="text" class="form-control Numero" id="QtdParcelasOrca" maxlength="3" placeholder="0"
-																   name="QtdParcelasOrca" value="<?php echo $orcatrata['QtdParcelasOrca'] ?>">
-														</div>
-														<div class="col-md-3">
-															<label for="DataVencimentoOrca">1º Venc.</label>
-															<div class="input-group <?php echo $datepicker; ?>">
-																<span class="input-group-addon" disabled>
-																	<span class="glyphicon glyphicon-calendar"></span>
-																</span>
-																<input type="text" class="form-control Date" id="DataVencimentoOrca" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
-																	   name="DataVencimentoOrca" value="<?php echo $orcatrata['DataVencimentoOrca']; ?>">															
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="panel-body">
+										<div class="form-group">
+											<div class="panel panel-info">
+												<div class="panel-heading">
+													<div class="row">																												
+														<div class="col-md-3 text-left form-inline">
+															<label for="AVAP">A Vista/Prazo?</label><br>
+															<div class="form-group">
+																<div class="btn-block" data-toggle="buttons">
+																	<?php
+																	foreach ($select['AVAP'] as $key => $row) {
+																		(!$orcatrata['AVAP']) ? $orcatrata['AVAP'] = 'S' : FALSE;
+																		
+
+																		($key == 'N') ? $hideshow = 'showradio' : $hideshow = 'hideradio';
+																													
+																		if ($orcatrata['AVAP'] == $key) {
+																			echo ''
+																			. '<label class="btn btn-warning active" name="AVAP_' . $hideshow . '">'
+																			. '<input type="radio" name="AVAP" id="' . $hideshow . '" '
+																			. 'autocomplete="off" value="' . $key . '" checked>' . $row
+																			. '</label>'
+																			;
+																		} else {
+																			echo ''
+																			. '<label class="btn btn-default" name="AVAP_' . $hideshow . '">'
+																			. '<input type="radio" name="AVAP" id="' . $hideshow . '" '
+																			. 'autocomplete="off" value="' . $key . '" >' . $row
+																			. '</label>'
+																			;
+																		}
+																		
+																	}
+																	?>
+																</div>
 															</div>
 														</div>
-														<br>
-														<div class="form-group">
-															<div class="col-md-3 text-left">
-																<button class="btn btn-danger" type="button" data-toggle="collapse" onclick="calculaParcelas()"
-																		data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas">
-																	<span class="glyphicon glyphicon-menu-down"></span> Gerar Parcelas
-																</button>
+														<div id="AVAP" <?php echo $div['AVAP']; ?>>
+															<div class="col-md-3">
+																<label for="Modalidade">Modalidade:</label><br>
+																<div class="form-group" id="txtHint">
+																	<?php
+																	$options = array(
+																		''	=> '-- Selecione uma opção --',
+																		'P'	=> 'PARCELADO',
+																		'M'	=> 'MENSALIDADE',																																		
+																	);
+																	$cfg = 'data-placeholder="Selecione uma opção..." class="form-control" ' . $readonly . '
+																			id="Modalidade"';
+																	echo form_dropdown('Modalidade', $options, $orcatrata['Modalidade'], $cfg);
+																	?>
+																</div>
 															</div>
-														</div>
+															<div class="col-md-2">
+																<label for="QtdParcelasOrca">Qtd. Parc.:</label><br>
+																<input type="text" class="form-control Numero" id="QtdParcelasOrca" maxlength="3" placeholder="0"
+																	   name="QtdParcelasOrca" value="<?php echo $orcatrata['QtdParcelasOrca'] ?>">
+															</div>
+															<div class="col-md-2">
+																<label for="DataVencimentoOrca"> Dt 1º Venc.</label>
+																<div class="input-group <?php echo $datepicker; ?>">
+																	<span class="input-group-addon" disabled>
+																		<span class="glyphicon glyphicon-calendar"></span>
+																	</span>
+																	<input type="text" class="form-control Date" id="DataVencimentoOrca" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
+																		   name="DataVencimentoOrca" value="<?php echo $orcatrata['DataVencimentoOrca']; ?>">															
+																</div>
+															</div>
+															<br>
+															<div class="form-group">
+																<div class="col-md-2 text-left">
+																	<button class="btn btn-danger" type="button" data-toggle="collapse" onclick="calculaParcelas()"
+																			data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas">
+																		<span class="glyphicon glyphicon-menu-down"></span> Novas Parcelas
+																	</button>
+																</div>
+															</div>
+														</div>	
 													</div>
 												</div>
 											</div>

@@ -427,20 +427,21 @@
 														</div>
 														
 														<div class="col-md-3">
-															<label for="ModalidadeDespesas">Tipo de Pagamento:</label><br>
-															<div class="input-group" id="txtHint">
+															<label for="FormaPagamentoDespesas">Forma de Pagamento:</label>
+															<select data-placeholder="Selecione uma opção..." class="form-control" <?php echo $readonly; ?>
+																	id="FormaPagamentoDespesas" name="FormaPagamentoDespesas" onchange="calculaParcelasPagaveis()">
+																<option value="">-- Selecione uma opção --</option>
 																<?php
-																$options = array(
-																	''	=> '-- Selecione uma opção --',
-																	'V'	=> 'A VISTA',
-																	'P'	=> 'A PRAZO/ PARCEL.',
-																	'M'	=> 'MENSALIDADE',																	
-																);
-																$cfg = 'data-placeholder="Selecione uma opção..." class="form-control" ' . $readonly . '
-																		id="ModalidadeDespesas"';
-																echo form_dropdown('ModalidadeDespesas', $options, $despesas['ModalidadeDespesas'], $cfg);
+																foreach ($select['FormaPagamentoDespesas'] as $key => $row) {
+																	#(!$despesas['FormaPagamentoDespesas']) ? $despesas['FormaPagamentoDespesas'] = '1' : FALSE;
+																	if ($despesas['FormaPagamentoDespesas'] == $key) {
+																		echo '<option value="' . $key . '" selected="selected">' . $row . '</option>';
+																	} else {
+																		echo '<option value="' . $key . '">' . $row . '</option>';
+																	}
+																}
 																?>
-															</div>
+															</select>
 														</div>
 													</div>
 												</div>
@@ -451,47 +452,80 @@
 										<div class="form-group">
 											<div class="panel panel-danger">
 												<div class="panel-heading">
-													<div class="row">														
-														<div class="col-md-3">
-															<label for="FormaPagamentoDespesas">Forma de Pagamento:</label>
-															<select data-placeholder="Selecione uma opção..." class="form-control" onchange="calculaParcelasPagaveis()" <?php echo $readonly; ?>
-																	id="FormaPagamentoDespesas" name="FormaPagamentoDespesas">
-																<option value="">-- Selecione uma opção --</option>
-																<?php
-																foreach ($select['FormaPagamentoDespesas'] as $key => $row) {
-																	if ($despesas['FormaPagamentoDespesas'] == $key) {
-																		echo '<option value="' . $key . '" selected="selected">' . $row . '</option>';
-																	} else {
-																		echo '<option value="' . $key . '">' . $row . '</option>';
+													<div class="row">																												
+														<div class="col-md-3 text-left form-inline">
+															<label for="AVAPDespesas">A Vista/Prazo?</label><br>
+															<div class="form-group">
+																<div class="btn-block" data-toggle="buttons">
+																	<?php
+																	foreach ($select['AVAPDespesas'] as $key => $row) {
+																		(!$despesas['AVAPDespesas']) ? $despesas['AVAPDespesas'] = 'S' : FALSE;
+																		
+
+																		($key == 'N') ? $hideshow = 'showradio' : $hideshow = 'hideradio';
+																													
+																		if ($despesas['AVAPDespesas'] == $key) {
+																			echo ''
+																			. '<label class="btn btn-warning active" name="AVAPDespesas_' . $hideshow . '">'
+																			. '<input type="radio" name="AVAPDespesas" id="' . $hideshow . '" '
+																			. 'autocomplete="off" value="' . $key . '" checked>' . $row
+																			. '</label>'
+																			;
+																		} else {
+																			echo ''
+																			. '<label class="btn btn-default" name="AVAPDespesas_' . $hideshow . '">'
+																			. '<input type="radio" name="AVAPDespesas" id="' . $hideshow . '" '
+																			. 'autocomplete="off" value="' . $key . '" >' . $row
+																			. '</label>'
+																			;
+																		}
+																		
 																	}
-																}
-																?>
-															</select>
-														</div>
-														<div class="col-md-3">
-															<label for="QtdParcelasDespesas">Qtd. Parc.:</label><br>
-															<input type="text" class="form-control Numero" id="QtdParcelasDespesas" maxlength="3" placeholder="0"
-																   name="QtdParcelasDespesas" value="<?php echo $despesas['QtdParcelasDespesas'] ?>">
-														</div>
-														<div class="col-md-3">
-															<label for="DataVencimentoDespesas">Data do 1º Venc.</label>
-															<div class="input-group <?php echo $datepicker; ?>">
-																<span class="input-group-addon" disabled>
-																	<span class="glyphicon glyphicon-calendar"></span>
-																</span>
-																<input type="text" class="form-control Date" id="DataVencimentoDespesas" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
-																	   name="DataVencimentoDespesas" value="<?php echo $despesas['DataVencimentoDespesas']; ?>">															
+																	?>
+																</div>
 															</div>
-														</div>
-														<br>
-														<div class="form-group">
-															<div class="col-md-3 text-left">
-																<button class="btn btn-danger" type="button" data-toggle="collapse" onclick="calculaParcelasPagaveis()"
-																		data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas">
-																	<span class="glyphicon glyphicon-menu-down"></span> Gerar Novas Parcelas
-																</button>
+														</div>																																									
+														<div id="AVAPDespesas" <?php echo $div['AVAPDespesas']; ?>>
+															<div class="col-md-3">
+																<label for="ModalidadeDespesas"> Modalidade:</label><br>
+																<div class="form-group" id="txtHint" >
+																	<?php
+																	$options = array(
+																		''	=> '-- Selecione uma opção --',
+																		'P'	=> 'PARCELADO',
+																		'M'	=> 'MENSALIDADE',																	
+																	);
+																	$cfg = 'data-placeholder="Selecione uma opção..." class="form-control" ' . $readonly . '
+																			id="ModalidadeDespesas"';
+																	echo form_dropdown('ModalidadeDespesas', $options, $despesas['ModalidadeDespesas'], $cfg);
+																	?>
+																</div>
 															</div>
-														</div>
+															<div class="col-md-2">
+																<label for="QtdParcelasDespesas">Qtd.Prc:</label><br>
+																<input type="text" class="form-control Numero" id="QtdParcelasDespesas" maxlength="3" placeholder="0"
+																	   name="QtdParcelasDespesas" value="<?php echo $despesas['QtdParcelasDespesas'] ?>">
+															</div>
+															<div class="col-md-2">
+																<label for="DataVencimentoDespesas">Dt 1º Venc.</label>
+																<div class="input-group <?php echo $datepicker; ?>">
+																	<span class="input-group-addon" disabled>
+																		<span class="glyphicon glyphicon-calendar"></span>
+																	</span>
+																	<input type="text" class="form-control Date" id="DataVencimentoDespesas" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
+																		   name="DataVencimentoDespesas" value="<?php echo $despesas['DataVencimentoDespesas']; ?>">															
+																</div>
+															</div>
+															<br>
+															<div class="form-group">
+																<div class="col-md-2 text-left">
+																	<button class="btn btn-danger" type="button" data-toggle="collapse" onclick="calculaParcelasPagaveis()"
+																			data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas">
+																		<span class="glyphicon glyphicon-menu-down"></span> Novas Parcelas
+																	</button>
+																</div>
+															</div>
+														</div>	
 													</div>
 												</div>
 											</div>

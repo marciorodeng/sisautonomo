@@ -112,7 +112,8 @@ $db['default'] = array(
 */
     #'database' => 'ci',
     #'database' => 'app',
-	'database' => 'app.autonomo',
+	#'database' => 'app.autonomo',
+	'database' => 'app.autonomo.testes',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => TRUE,

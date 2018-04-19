@@ -72,6 +72,7 @@ class Despesas extends CI_Controller {
             'ObsDespesas',
 			'TipoProduto',
 			'ModalidadeDespesas',
+			'AVAPDespesas',
         ), TRUE));
 
         //Dá pra melhorar/encurtar esse trecho (que vai daqui até onde estiver
@@ -148,6 +149,7 @@ class Despesas extends CI_Controller {
         #$this->form_validation->set_rules('TipoDespesa', 'Tipo de Despesa', 'required|trim');
         #$this->form_validation->set_rules('ProfissionalDespesas', 'Profissional', 'required|trim');
 		$this->form_validation->set_rules('ModalidadeDespesas', 'Tipo de Pagamento', 'required|trim');
+		$this->form_validation->set_rules('AVAPDespesas', 'À Vista ou À Prazo', 'required|trim');
 		$this->form_validation->set_rules('FormaPagamentoDespesas', 'Forma de Pagamento', 'required|trim');
 		$this->form_validation->set_rules('QtdParcelasDespesas', 'Qtd de Parcelas', 'required|trim');
 		$this->form_validation->set_rules('DataVencimentoDespesas', 'Data do 1ºVenc.', 'required|trim|valid_date');
@@ -156,7 +158,8 @@ class Despesas extends CI_Controller {
         $data['select']['FormaPagamentoDespesas'] = $this->Formapag_model->select_formapag();
 		$data['select']['ServicoConcluidoDespesas'] = $this->Basico_model->select_status_sn();
         $data['select']['ConcluidoServico'] = $this->Basico_model->select_status_sn();
-
+		$data['select']['ModalidadeDespesas'] = $this->Basico_model->select_modalidade();
+		$data['select']['AVAPDespesas'] = $this->Basico_model->select_avap();
 		$data['select']['QuitadoDespesas'] = $this->Basico_model->select_status_sn();
         $data['select']['QuitadoPagaveis'] = $this->Basico_model->select_status_sn();
 		$data['select']['Profissional'] = $this->Profissional_model->select_profissional();
@@ -190,24 +193,46 @@ class Despesas extends CI_Controller {
 
 
         #Ver uma solução melhor para este campo
-        (!$data['despesas']['AprovadoDespesas']) ? $data['despesas']['AprovadoDespesas'] = 'S' : FALSE;
+        #Ver uma solução melhor para este campo
+        (!$data['despesas']['ModalidadeDespesas']) ? $data['despesas']['ModalidadeDespesas'] = 'P' : FALSE;
 
+        $data['radio'] = array(
+            'ModalidadeDespesas' => $this->basico->radio_checked($data['despesas']['ModalidadeDespesas'], 'Tarefa Aprovado', 'APM'),
+        );
+
+        ($data['despesas']['ModalidadeDespesas'] == 'P') ?
+            $data['div']['ModalidadeDespesas'] = '' : $data['div']['ModalidadeDespesas'] = 'style="display: none;"';		
+		
+        (!$data['despesas']['AprovadoDespesas']) ? $data['despesas']['AprovadoDespesas'] = 'P' : FALSE;
+		
+		($data['despesas']['ModalidadeDespesas'] == 'M') ?
+            $data['div']['ModalidadeDespesas'] = '' : $data['div']['ModalidadeDespesas'] = 'style="display: none;"';		
+		
+        (!$data['despesas']['AprovadoDespesas']) ? $data['despesas']['AprovadoDespesas'] = 'M' : FALSE;
+		
+/*
         $data['radio'] = array(
             'AprovadoDespesas' => $this->basico->radio_checked($data['despesas']['AprovadoDespesas'], 'Despesa Quitada', 'NS'),
         );
-
+*/
         ($data['despesas']['AprovadoDespesas'] == 'S') ?
             $data['div']['AprovadoDespesas'] = '' : $data['div']['AprovadoDespesas'] = 'style="display: none;"';
 			
 			
 		(!$data['despesas']['QuitadoDespesas']) ? $data['despesas']['QuitadoDespesas'] = 'N' : FALSE;
-
         $data['radio'] = array(
             'QuitadoDespesas' => $this->basico->radio_checked($data['despesas']['QuitadoDespesas'], 'Despesa Quitada', 'NS'),
         );
-
         ($data['despesas']['QuitadoDespesas'] == 'S') ?
             $data['div']['QuitadoDespesas'] = '' : $data['div']['QuitadoDespesas'] = 'style="display: none;"';
+
+			
+		(!$data['despesas']['AVAPDespesas']) ? $data['despesas']['AVAPDespesas'] = 'S' : FALSE;
+        $data['radio'] = array(
+            'AVAPDespesas' => $this->basico->radio_checked($data['despesas']['AVAPDespesas'], 'À Vista/À Prazo', 'NS'),
+        );
+        ($data['despesas']['AVAPDespesas'] == 'N') ?
+            $data['div']['AVAPDespesas'] = '' : $data['div']['AVAPDespesas'] = 'style="display: none;"';	
 
 
         $data['sidebar'] = 'col-sm-3 col-md-2';
@@ -368,6 +393,7 @@ class Despesas extends CI_Controller {
             'QtdParcelasDespesas',
             'DataVencimentoDespesas',
             'ObsDespesas',
+			'AVAPDespesas',
 			#'TipoProduto',
         ), TRUE));
 
@@ -513,6 +539,8 @@ class Despesas extends CI_Controller {
         $data['select']['ServicoConcluidoDespesas'] = $this->Basico_model->select_status_sn();
         $data['select']['ConcluidoServico'] = $this->Basico_model->select_status_sn();
         $data['select']['ConcluidoProcedimento'] = $this->Basico_model->select_status_sn();
+		$data['select']['ModalidadeDespesas'] = $this->Basico_model->select_modalidade();
+		$data['select']['AVAPDespesas'] = $this->Basico_model->select_avap();
 		$data['select']['QuitadoDespesas'] = $this->Basico_model->select_status_sn();
         $data['select']['QuitadoPagaveis'] = $this->Basico_model->select_status_sn();
 		$data['select']['Profissional'] = $this->Profissional_model->select_profissional();
@@ -547,11 +575,11 @@ class Despesas extends CI_Controller {
 
         #Ver uma solução melhor para este campo
         (!$data['despesas']['AprovadoDespesas']) ? $data['despesas']['AprovadoDespesas'] = 'S' : FALSE;
-
+/*
         $data['radio'] = array(
             'AprovadoDespesas' => $this->basico->radio_checked($data['despesas']['AprovadoDespesas'], 'Despesa Quitada', 'NS'),
         );
-
+*/
         ($data['despesas']['AprovadoDespesas'] == 'S') ?
             $data['div']['AprovadoDespesas'] = '' : $data['div']['AprovadoDespesas'] = 'style="display: none;"';
 			
@@ -566,6 +594,13 @@ class Despesas extends CI_Controller {
             $data['div']['QuitadoDespesas'] = '' : $data['div']['QuitadoDespesas'] = 'style="display: none;"';
 
 
+		(!$data['despesas']['AVAPDespesas']) ? $data['despesas']['AVAPDespesas'] = 'S' : FALSE;
+        $data['radio'] = array(
+            'AVAPDespesas' => $this->basico->radio_checked($data['despesas']['AVAPDespesas'], 'À Vista/À Prazo', 'NS'),
+        );
+        ($data['despesas']['AVAPDespesas'] == 'N') ?
+            $data['div']['AVAPDespesas'] = '' : $data['div']['AVAPDespesas'] = 'style="display: none;"';	
+			
         $data['sidebar'] = 'col-sm-3 col-md-2';
         $data['main'] = 'col-sm-7 col-md-8';
 
