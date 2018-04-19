@@ -402,7 +402,7 @@
 															<label for="ValorDespesas">Valor Despesas:</label><br>
 															<div class="input-group" id="txtHint">
 																<span class="input-group-addon" id="basic-addon1">R$</span>
-																<input type="text" class="form-control Valor" id="ValorDespesas" maxlength="10" placeholder="0,00" 																	   
+																<input type="text" class="form-control Valor" id="ValorDespesas" maxlength="10" placeholder="0,00" 
 																	   name="ValorDespesas" value="<?php echo $despesas['ValorDespesas'] ?>">
 															</div>
 														</div>
@@ -411,8 +411,8 @@
 															<label for="ValorEntradaDespesas">Desconto</label><br>
 															<div class="input-group" id="txtHint">
 																<span class="input-group-addon" id="basic-addon1">R$</span>
-																<input type="text" class="form-control Valor" id="ValorEntradaDespesas" maxlength="10" placeholder="0,00" 
-																	onkeyup="calculaRestaDespesas(this.value)" 																	
+																<input type="text" class="form-control Valor" id="ValorEntradaDespesas" maxlength="10" placeholder="0,00"
+																	onkeyup="calculaRestaDespesas(this.value)"
 																	name="ValorEntradaDespesas" value="<?php echo $despesas['ValorEntradaDespesas'] ?>">
 															</div>
 														</div>
@@ -421,15 +421,14 @@
 															<label for="ValorRestanteDespesas">Valor A Pagar:</label><br>
 															<div class="input-group" id="txtHint">
 																<span class="input-group-addon" id="basic-addon1">R$</span>
-																<input type="text" class="form-control Valor" id="ValorRestanteDespesas" maxlength="10" placeholder="0,00" 
-																		onchange="calculaParcelasPagaveis()" readonly=""
+																<input type="text" class="form-control Valor" id="ValorRestanteDespesas" maxlength="10" placeholder="0,00" readonly=""
 																	   name="ValorRestanteDespesas" value="<?php echo $despesas['ValorRestanteDespesas'] ?>">
 															</div>
 														</div>
 														
 														<div class="col-md-3">
 															<label for="ModalidadeDespesas">Tipo de Pagamento:</label><br>
-															<div class="input-group" id="txtHint" onchange="calculaParcelasPagaveis()">
+															<div class="input-group" id="txtHint">
 																<?php
 																$options = array(
 																	''	=> '-- Selecione uma opção --',
@@ -455,7 +454,7 @@
 													<div class="row">														
 														<div class="col-md-3">
 															<label for="FormaPagamentoDespesas">Forma de Pagamento:</label>
-															<select data-placeholder="Selecione uma opção..." class="form-control"  <?php echo $readonly; ?>
+															<select data-placeholder="Selecione uma opção..." class="form-control" onchange="calculaParcelasPagaveis()" <?php echo $readonly; ?>
 																	id="FormaPagamentoDespesas" name="FormaPagamentoDespesas">
 																<option value="">-- Selecione uma opção --</option>
 																<?php
@@ -471,7 +470,7 @@
 														</div>
 														<div class="col-md-3">
 															<label for="QtdParcelasDespesas">Qtd. Parc.:</label><br>
-															<input type="text" class="form-control Numero" id="QtdParcelasDespesas" maxlength="3" placeholder="0" onchange="calculaParcelasPagaveis()"
+															<input type="text" class="form-control Numero" id="QtdParcelasDespesas" maxlength="3" placeholder="0"
 																   name="QtdParcelasDespesas" value="<?php echo $despesas['QtdParcelasDespesas'] ?>">
 														</div>
 														<div class="col-md-3">
@@ -480,7 +479,7 @@
 																<span class="input-group-addon" disabled>
 																	<span class="glyphicon glyphicon-calendar"></span>
 																</span>
-																<input type="text" class="form-control Date" id="DataVencimentoDespesas" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA" onchange="calculaParcelasPagaveis()
+																<input type="text" class="form-control Date" id="DataVencimentoDespesas" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
 																	   name="DataVencimentoDespesas" value="<?php echo $despesas['DataVencimentoDespesas']; ?>">															
 															</div>
 														</div>
