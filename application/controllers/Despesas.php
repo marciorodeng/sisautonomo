@@ -144,12 +144,12 @@ class Despesas extends CI_Controller {
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
 
         #### App_Despesas ####
-        $this->form_validation->set_rules('DataDespesas', 'Data da Despesa', 'required|trim|valid_date');
+        #$this->form_validation->set_rules('DataDespesas', 'Data da Despesa', 'required|trim|valid_date');
         #$this->form_validation->set_rules('Despesa', 'Despesa', 'required|trim');
         #$this->form_validation->set_rules('TipoDespesa', 'Tipo de Despesa', 'required|trim');
         #$this->form_validation->set_rules('ProfissionalDespesas', 'Profissional', 'required|trim');
 		$this->form_validation->set_rules('ModalidadeDespesas', 'Tipo de Pagamento', 'required|trim');
-		$this->form_validation->set_rules('AVAPDespesas', 'À Vista ou À Prazo', 'required|trim');
+		#$this->form_validation->set_rules('AVAPDespesas', 'À Vista ou À Prazo', 'required|trim');
 		$this->form_validation->set_rules('FormaPagamentoDespesas', 'Forma de Pagamento', 'required|trim');
 		$this->form_validation->set_rules('QtdParcelasDespesas', 'Qtd de Parcelas', 'required|trim');
 		$this->form_validation->set_rules('DataVencimentoDespesas', 'Data do 1ºVenc.', 'required|trim|valid_date');
@@ -525,7 +525,7 @@ class Despesas extends CI_Controller {
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
 
         #### App_Despesas ####
-        $this->form_validation->set_rules('DataDespesas', 'Data da Despesa', 'required|trim|valid_date');
+        #$this->form_validation->set_rules('DataDespesas', 'Data da Despesa', 'required|trim|valid_date');
         #$this->form_validation->set_rules('Despesa', 'Despesa', 'required|trim');
         #$this->form_validation->set_rules('TipoDespesa', 'Tipo de Despesa', 'required|trim');
         #$this->form_validation->set_rules('ProfissionalDespesas', 'Profissional', 'required|trim');
@@ -539,7 +539,7 @@ class Despesas extends CI_Controller {
         $data['select']['ServicoConcluidoDespesas'] = $this->Basico_model->select_status_sn();
         $data['select']['ConcluidoServico'] = $this->Basico_model->select_status_sn();
         $data['select']['ConcluidoProcedimento'] = $this->Basico_model->select_status_sn();
-		$data['select']['ModalidadeDespesas'] = $this->Basico_model->select_modalidade();
+		#$data['select']['ModalidadeDespesas'] = $this->Basico_model->select_modalidade();
 		$data['select']['AVAPDespesas'] = $this->Basico_model->select_avap();
 		$data['select']['QuitadoDespesas'] = $this->Basico_model->select_status_sn();
         $data['select']['QuitadoPagaveis'] = $this->Basico_model->select_status_sn();

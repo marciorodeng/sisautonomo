@@ -247,8 +247,11 @@
 											<div class="modal-content">
 												<div class="modal-header bg-danger">
 													<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-													<h4 class="modal-title">Se for cadastrar uma Receita do tipo "Mensalidade",<br> 
-																			confira antes as "Receitas Mensais já Cadastradas"!</h4>
+													<h4 class="modal-title">Antes de cadastrar uma <br>
+																			Nova Receita <br>
+													                         do tipo "Mensalidade",<br>
+																			 confira as <br>
+																			 "Rec. Mensais Cads."!</h4>
 												</div>
 												<!--
 												<div class="modal-body">
@@ -259,10 +262,10 @@
 												<div class="modal-footer">
 													<div class="col-md-6 text-left">
 														<a class="btn btn-lg btn-warning" href="<?php echo base_url() ?>relatorio/orcamento" role="button"> 
-															<span class="glyphicon glyphicon-list"></span> Rec. Mensais já Cadastradas
+															<span class="glyphicon glyphicon-list"></span> Rec. Mensais Cads
 														</a>
 													</div>
-													<div class="col-md-6 text-right">
+													<div class="col-md-6 text-left">
 														<a class="btn btn-danger" href="<?php echo base_url() ?>orcatrata2/cadastrar" role="button">
 															<span class="glyphicon glyphicon-plus"></span> Nova Receita
 														</a>

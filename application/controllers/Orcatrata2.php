@@ -166,13 +166,13 @@ class Orcatrata2 extends CI_Controller {
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
 
         #### App_OrcaTrata ####
-        $this->form_validation->set_rules('DataOrca', 'Data do Orçamento', 'required|trim|valid_date');
+        #$this->form_validation->set_rules('DataOrca', 'Data do Orçamento', 'required|trim|valid_date');
         #$this->form_validation->set_rules('DataProcedimento', 'DataProcedimento', 'required|trim');
         #$this->form_validation->set_rules('ParcelaRecebiveis', 'ParcelaRecebiveis', 'required|trim');
         #$this->form_validation->set_rules('ProfissionalOrca', 'Profissional', 'required|trim');
 		#$this->form_validation->set_rules('idApp_Cliente', 'Cliente', 'required|trim');
 		$this->form_validation->set_rules('Modalidade', 'Tipo de Recebimento', 'required|trim');
-		$this->form_validation->set_rules('AVAP', 'À Vista ou À Prazo', 'required|trim');
+		#$this->form_validation->set_rules('AVAP', 'À Vista ou À Prazo', 'required|trim');
 		$this->form_validation->set_rules('FormaPagamento', 'Forma de Pagamento', 'required|trim');
 		$this->form_validation->set_rules('QtdParcelasOrca', 'Qtd de Parcelas', 'required|trim');
 		$this->form_validation->set_rules('DataVencimentoOrca', 'Data do 1ºVenc.', 'required|trim|valid_date');
@@ -569,7 +569,7 @@ class Orcatrata2 extends CI_Controller {
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
 
         #### App_OrcaTrata ####
-        $this->form_validation->set_rules('DataOrca', 'Data do Orçamento', 'required|trim|valid_date');        
+        #$this->form_validation->set_rules('DataOrca', 'Data do Orçamento', 'required|trim|valid_date');        
 		#$this->form_validation->set_rules('DataProcedimento', 'DataProcedimento', 'required|trim');
         #$this->form_validation->set_rules('ParcelaRecebiveis', 'ParcelaRecebiveis', 'required|trim');
         #$this->form_validation->set_rules('ProfissionalOrca', 'Profissional', 'required|trim');

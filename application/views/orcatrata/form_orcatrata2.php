@@ -26,6 +26,7 @@
 							<div class="panel panel-info">
 								<div class="panel-heading">
 									<div class="row">
+										<!--
 										<div class="col-md-3">
 											<label for="DataOrca">Receita em:</label>
 											<div class="input-group <?php echo $datepicker; ?>">
@@ -36,6 +37,7 @@
 														name="DataOrca" value="<?php echo $orcatrata['DataOrca']; ?>">																	
 											</div>
 										</div>
+										-->
 										<div class="col-md-3">
 											<label for="ObsOrca">Receita</label><br>
 											<input type="text" class="form-control" maxlength="200"
@@ -342,6 +344,7 @@
 											<div class="panel panel-info">
 												<div class="panel-heading">
 													<div class="row">
+														<!--
 														<div class="col-md-3">
 															<label for="ValorOrca">Orçamento:</label><br>
 															<div class="input-group" id="txtHint">
@@ -360,12 +363,12 @@
 																	name="ValorEntradaOrca" value="<?php echo $orcatrata['ValorEntradaOrca'] ?>">
 															</div>
 														</div>
-
+														-->
 														<div class="col-md-3">
-															<label for="ValorRestanteOrca">Resta Receber:</label><br>
+															<label for="ValorRestanteOrca">Valor da Receita:</label><br>
 															<div class="input-group" id="txtHint">
 																<span class="input-group-addon" id="basic-addon1">R$</span>
-																<input type="text" class="form-control Valor" id="ValorRestanteOrca" maxlength="10" placeholder="0,00" readonly=""
+																<input type="text" class="form-control Valor" id="ValorRestanteOrca" maxlength="10" placeholder="0,00"
 																	   name="ValorRestanteOrca" value="<?php echo $orcatrata['ValorRestanteOrca'] ?>">
 															</div>
 														</div>
@@ -386,6 +389,21 @@
 																?>
 															</select>
 														</div>
+														<div class="col-md-3">
+															<label for="Modalidade">Modalidade:</label><br>
+															<div class="form-group" id="txtHint">
+																<?php
+																$options = array(
+																	''	=> '-- Selecione uma opção --',
+																	'P'	=> 'PARCELADO',
+																	'M'	=> 'MENSALIDADE',																																		
+																);
+																$cfg = 'data-placeholder="Selecione uma opção..." class="form-control" ' . $readonly . '
+																		id="Modalidade"';
+																echo form_dropdown('Modalidade', $options, $orcatrata['Modalidade'], $cfg);
+																?>
+															</div>
+														</div>
 													</div>
 												</div>
 											</div>
@@ -396,6 +414,7 @@
 											<div class="panel panel-info">
 												<div class="panel-heading">
 													<div class="row">																												
+														<!--
 														<div class="col-md-3 text-left form-inline">
 															<label for="AVAP">A Vista/Prazo?</label><br>
 															<div class="form-group">
@@ -428,29 +447,16 @@
 																</div>
 															</div>
 														</div>
+														
 														<div id="AVAP" <?php echo $div['AVAP']; ?>>
+														-->	
 															<div class="col-md-3">
-																<label for="Modalidade">Modalidade:</label><br>
-																<div class="form-group" id="txtHint">
-																	<?php
-																	$options = array(
-																		''	=> '-- Selecione uma opção --',
-																		'P'	=> 'PARCELADO',
-																		'M'	=> 'MENSALIDADE',																																		
-																	);
-																	$cfg = 'data-placeholder="Selecione uma opção..." class="form-control" ' . $readonly . '
-																			id="Modalidade"';
-																	echo form_dropdown('Modalidade', $options, $orcatrata['Modalidade'], $cfg);
-																	?>
-																</div>
-															</div>
-															<div class="col-md-2">
 																<label for="QtdParcelasOrca">Qtd. Parc.:</label><br>
 																<input type="text" class="form-control Numero" id="QtdParcelasOrca" maxlength="3" placeholder="0"
 																	   name="QtdParcelasOrca" value="<?php echo $orcatrata['QtdParcelasOrca'] ?>">
 															</div>
-															<div class="col-md-2">
-																<label for="DataVencimentoOrca"> Dt 1º Venc.</label>
+															<div class="col-md-3">
+																<label for="DataVencimentoOrca"> Dt Receita/ 1º Venc.</label>
 																<div class="input-group <?php echo $datepicker; ?>">
 																	<span class="input-group-addon" disabled>
 																		<span class="glyphicon glyphicon-calendar"></span>
@@ -461,14 +467,14 @@
 															</div>
 															<br>
 															<div class="form-group">
-																<div class="col-md-2 text-left">
+																<div class="col-md-3 text-left">
 																	<button class="btn btn-danger" type="button" data-toggle="collapse" onclick="calculaParcelas()"
 																			data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas">
 																		<span class="glyphicon glyphicon-menu-down"></span> Novas Parcelas
 																	</button>
 																</div>
 															</div>
-														</div>	
+															
 													</div>
 												</div>
 											</div>

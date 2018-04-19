@@ -230,12 +230,8 @@ class Relatorio extends CI_Controller {
 			'PR.QuitadoRecebiveis' => 'Quit.Parc.',
 			#'C.NomeCliente' => 'Nome do Cliente',
             'OT.idApp_OrcaTrata' => 'Número da Receita',
-            'OT.DataOrca' => 'Data da Receita',
             'OT.ValorOrca' => 'Valor da Receita',
             'OT.ServicoConcluido' => 'Receita Concluída?',
-            'OT.QuitadoOrca' => 'Receita Quitada?',
-            'OT.DataConclusao' => 'Data de Conclusão',
-			'OT.DataQuitado' => 'Data de Quitado',
 
         );
 
@@ -360,9 +356,6 @@ class Relatorio extends CI_Controller {
 
         $data['select']['Campo'] = array(
             #'OT.FormaPag' => 'Forma de Pagam.',
-			'OT.DataOrca' => 'Data do Orçamento',
-            'OT.ValorOrca' => 'Valor do Orçamento',
-			'OT.ValorEntradaOrca' => 'Valor do Desconto',
 			'OT.ValorRestanteOrca' => 'Valor a Receber',			
             'OT.ServicoConcluido' => 'Serviço Concluído?',
         );
@@ -754,12 +747,10 @@ class Relatorio extends CI_Controller {
 			'PP.DataVencimentoPagaveis' => 'Data do Venc.',
 			'PP.DataPagoPagaveis' => 'Data do Pagam.',			
 			'DS.idApp_Despesas' => 'Número da Despesa',
-            'DS.DataDespesas' => 'Data da Despesa',
             'DS.ValorDespesas' => 'Valor da Despesa',
 			'DS.Despesa' => 'Despesa',
 			'CD.Categoriadesp' => 'Categoria',
 			'DS.TipoDespesa' => 'Tipo de Despesa',
-            'DS.QuitadoDespesas' => 'Despesa Quitada?',
 
         );
 
@@ -875,12 +866,9 @@ class Relatorio extends CI_Controller {
         $data['select']['Campo'] = array(
             'CD.Categoriadesp' => 'Categoria ',
 			'OT.TipoDespesa' => 'Tipo',
-			'OT.Despesa' => 'Despesa',			
-			'OT.DataConclusaoDespesas' => 'Data da Conclusão',
-            'OT.ServicoConcluidoDespesas' => 'Despesa Concluída?',		
-            'OT.ValorDespesas' => 'Valor da Despesa',
-			'OT.ValorEntradaDespesas' => 'Valor do Desconto',
-			'OT.ValorRestanteDespesas' => 'Valor a Receber',
+			'OT.Despesa' => 'Despesa',
+            'OT.ServicoConcluidoDespesas' => 'Despesa Concluída?',	
+			'OT.ValorRestanteDespesas' => 'Valor a Pagar',
 
         );
 

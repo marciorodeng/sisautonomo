@@ -2,7 +2,8 @@
     <div class="panel-body">
 
 		<div class="col-md-1"></div>
-        <div class="col-md-3">
+        <!--
+		<div class="col-md-3">
             <label for="DataFim">Total das Receitas:</label>
             <div class="input-group">
                 <span class="input-group-addon">R$</span>
@@ -16,6 +17,7 @@
                 <input type="text" class="form-control" disabled aria-label="Total Descontos" value="<?php echo $report->soma->somadesconto ?>">
             </div>
         </div>
+		-->
 		<div class="col-md-3">
             <label for="DataFim">Total A Receber:</label>
             <div class="input-group">
@@ -47,9 +49,9 @@
 						<th class="active">Concl.?</th>
 						<!--<th class="active">Dt. Receita</th>
 						<th class="active">Valid. do Orçam.</th>
-						<th class="active">Prazo de Entrega</th>-->
+						<th class="active">Prazo de Entrega</th>
                         <th class="active">Valor do Orç.</th>
-						<th class="active">Valor do Desc.</th>
+						<th class="active">Valor do Desc.</th>-->
 						<th class="active">Valor A Receber</th>					
 						<!--<th class="active">Apv.?</th>						
 						<th class="active">Quit.?</th>-->
@@ -76,8 +78,8 @@
 							#echo '<td>' . $row['DataOrca'] . '</td>';
 							#echo '<td>' . $row['DataEntradaOrca'] . '</td>';
 							#echo '<td>' . $row['DataPrazo'] . '</td>';
-                            echo '<td class="text-left">R$ ' . $row['ValorOrca'] . '</td>';
-							echo '<td class="text-left">R$ ' . $row['ValorEntradaOrca'] . '</td>';
+                            #echo '<td class="text-left">R$ ' . $row['ValorOrca'] . '</td>';
+							#echo '<td class="text-left">R$ ' . $row['ValorEntradaOrca'] . '</td>';
 							echo '<td class="text-left">R$ ' . $row['ValorRestanteOrca'] . '</td>';							
 							#echo '<td>' . $row['AprovadoOrca'] . '</td>';							
 							#echo '<td>' . $row['QuitadoOrca'] . '</td>';

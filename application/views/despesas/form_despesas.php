@@ -67,7 +67,7 @@
 												?>
 											</select>
 										</div>
-										-->
+										
 										<div class="col-md-3 text-left">
 											<label for="DataDespesas">Data:</label>
 											<div class="input-group <?php echo $datepicker; ?>">
@@ -78,6 +78,7 @@
 													   name="DataDespesas" value="<?php echo $despesas['DataDespesas']; ?>">																	
 											</div>
 										</div>
+										-->
 										<div class="col-md-3">
 											<label for="TipoDespesa">Tipo de Despesa</label>
 											<!--<a class="btn btn-xs btn-info" href="<?php echo base_url() ?>tipodespesa/cadastrar/tipodespesa" role="button">
@@ -398,6 +399,7 @@
 											<div class="panel panel-danger">
 												<div class="panel-heading">
 													<div class="row">
+														<!--
 														<div class="col-md-3">
 															<label for="ValorDespesas">Valor Despesas:</label><br>
 															<div class="input-group" id="txtHint">
@@ -416,16 +418,15 @@
 																	name="ValorEntradaDespesas" value="<?php echo $despesas['ValorEntradaDespesas'] ?>">
 															</div>
 														</div>
-														
+														-->
 														<div class="col-md-3">
-															<label for="ValorRestanteDespesas">Valor A Pagar:</label><br>
+															<label for="ValorRestanteDespesas">Valor da Despesa:</label><br>
 															<div class="input-group" id="txtHint">
 																<span class="input-group-addon" id="basic-addon1">R$</span>
-																<input type="text" class="form-control Valor" id="ValorRestanteDespesas" maxlength="10" placeholder="0,00" readonly=""
+																<input type="text" class="form-control Valor" id="ValorRestanteDespesas" maxlength="10" placeholder="0,00"
 																	   name="ValorRestanteDespesas" value="<?php echo $despesas['ValorRestanteDespesas'] ?>">
 															</div>
 														</div>
-														
 														<div class="col-md-3">
 															<label for="FormaPagamentoDespesas">Forma de Pagamento:</label>
 															<select data-placeholder="Selecione uma opção..." class="form-control" <?php echo $readonly; ?>
@@ -443,6 +444,21 @@
 																?>
 															</select>
 														</div>
+														<div class="col-md-3">
+															<label for="ModalidadeDespesas"> Modalidade:</label><br>
+															<div class="form-group" id="txtHint" >
+																<?php
+																$options = array(
+																	''	=> '-- Selecione uma opção --',
+																	'P'	=> 'PARCELADO',
+																	'M'	=> 'MENSALIDADE',																	
+																);
+																$cfg = 'data-placeholder="Selecione uma opção..." class="form-control" ' . $readonly . '
+																		id="ModalidadeDespesas"';
+																echo form_dropdown('ModalidadeDespesas', $options, $despesas['ModalidadeDespesas'], $cfg);
+																?>
+															</div>
+														</div>
 													</div>
 												</div>
 											</div>	
@@ -452,8 +468,9 @@
 										<div class="form-group">
 											<div class="panel panel-danger">
 												<div class="panel-heading">
-													<div class="row">																												
-														<div class="col-md-3 text-left form-inline">
+													<div class="row">																																										
+														<!--
+														<div class="col-md-2 text-left form-inline">
 															<label for="AVAPDespesas">A Vista/Prazo?</label><br>
 															<div class="form-group">
 																<div class="btn-block" data-toggle="buttons">
@@ -484,30 +501,17 @@
 																	?>
 																</div>
 															</div>
-														</div>																																									
+														</div>
+														
 														<div id="AVAPDespesas" <?php echo $div['AVAPDespesas']; ?>>
+														-->																
 															<div class="col-md-3">
-																<label for="ModalidadeDespesas"> Modalidade:</label><br>
-																<div class="form-group" id="txtHint" >
-																	<?php
-																	$options = array(
-																		''	=> '-- Selecione uma opção --',
-																		'P'	=> 'PARCELADO',
-																		'M'	=> 'MENSALIDADE',																	
-																	);
-																	$cfg = 'data-placeholder="Selecione uma opção..." class="form-control" ' . $readonly . '
-																			id="ModalidadeDespesas"';
-																	echo form_dropdown('ModalidadeDespesas', $options, $despesas['ModalidadeDespesas'], $cfg);
-																	?>
-																</div>
-															</div>
-															<div class="col-md-2">
 																<label for="QtdParcelasDespesas">Qtd.Prc:</label><br>
 																<input type="text" class="form-control Numero" id="QtdParcelasDespesas" maxlength="3" placeholder="0"
 																	   name="QtdParcelasDespesas" value="<?php echo $despesas['QtdParcelasDespesas'] ?>">
 															</div>
-															<div class="col-md-2">
-																<label for="DataVencimentoDespesas">Dt 1º Venc.</label>
+															<div class="col-md-3">
+																<label for="DataVencimentoDespesas">Dt. Desp./ 1º Venc.</label>
 																<div class="input-group <?php echo $datepicker; ?>">
 																	<span class="input-group-addon" disabled>
 																		<span class="glyphicon glyphicon-calendar"></span>
@@ -525,7 +529,7 @@
 																	</button>
 																</div>
 															</div>
-														</div>	
+															
 													</div>
 												</div>
 											</div>
