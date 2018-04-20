@@ -712,6 +712,14 @@ class Relatorio_model extends CI_Model {
 
 	public function list_despesaspag($data, $completo) {
 
+		$data['TipoDespesa'] = ($data['TipoDespesa']) ? ' AND TD.idTab_TipoDespesa = ' . $data['TipoDespesa'] : FALSE;
+		$data['Campo'] = (!$data['Campo']) ? 'DS.idApp_Despesas' : $data['Campo'];
+        $data['Ordenamento'] = (!$data['Ordenamento']) ? 'ASC' : $data['Ordenamento'];
+		$filtro1 = ($data['AprovadoDespesas'] != '#') ? 'DS.AprovadoDespesas = "' . $data['AprovadoDespesas'] . '" AND ' : FALSE;
+		$filtro3 = ($data['ServicoConcluidoDespesas'] != '#') ? 'DS.ServicoConcluidoDespesas = "' . $data['ServicoConcluidoDespesas'] . '" AND ' : FALSE;
+        $filtro2 = ($data['QuitadoDespesas'] != '#') ? 'DS.QuitadoDespesas = "' . $data['QuitadoDespesas'] . '" AND ' : FALSE;
+		$filtro4 = ($data['QuitadoPagaveis'] != '#') ? 'PP.QuitadoPagaveis = "' . $data['QuitadoPagaveis'] . '" AND ' : FALSE;	
+
         if ($data['DataFim']) {
             $consulta =
                 '(PP.DataVencimentoPagaveis >= "' . $data['DataInicio'] . '" AND PP.DataVencimentoPagaveis <= "' . $data['DataFim'] . '")';
@@ -739,15 +747,6 @@ class Relatorio_model extends CI_Model {
                 '(DS.DataDespesas >= "' . $data['DataInicio3'] . '")';
         }
 
-
-		$data['TipoDespesa'] = ($data['TipoDespesa']) ? ' AND TD.idTab_TipoDespesa = ' . $data['TipoDespesa'] : FALSE;
-		$data['Campo'] = (!$data['Campo']) ? 'DS.idApp_Despesas' : $data['Campo'];
-        $data['Ordenamento'] = (!$data['Ordenamento']) ? 'ASC' : $data['Ordenamento'];
-		$filtro1 = ($data['AprovadoDespesas'] != '#') ? 'DS.AprovadoDespesas = "' . $data['AprovadoDespesas'] . '" AND ' : FALSE;
-		$filtro3 = ($data['ServicoConcluidoDespesas'] != '#') ? 'DS.ServicoConcluidoDespesas = "' . $data['ServicoConcluidoDespesas'] . '" AND ' : FALSE;
-        $filtro2 = ($data['QuitadoDespesas'] != '#') ? 'DS.QuitadoDespesas = "' . $data['QuitadoDespesas'] . '" AND ' : FALSE;
-		$filtro4 = ($data['QuitadoPagaveis'] != '#') ? 'PP.QuitadoPagaveis = "' . $data['QuitadoPagaveis'] . '" AND ' : FALSE;
-
         $query = $this->db->query('
             SELECT
                 DS.idApp_Despesas,				
@@ -761,6 +760,7 @@ class Relatorio_model extends CI_Model {
 				DS.AprovadoDespesas,
 				DS.ServicoConcluidoDespesas,
 				DS.QuitadoDespesas,
+				DS.ModalidadeDespesas,
                 PP.ParcelaPagaveis,
                 PP.DataVencimentoPagaveis,
                 PP.ValorParcelaPagaveis,
@@ -2738,7 +2738,6 @@ exit();*/
             return $query;
         }
     }
-
 
 	public function list_devolucao1($data, $completo) {
 

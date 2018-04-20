@@ -17,8 +17,7 @@
 						<?php echo form_open('relatorio/despesaspag', 'role="form"'); ?>
 
 						<div class="form-group">
-							<div class="row">
-								
+							<div class="row">								
 								<div class="col-md-4">
 									<label for="Ordenamento">Tipo de Despesa:</label>
 									<select data-placeholder="Selecione uma opção..." class="form-control Chosen" onchange="this.form.submit()"
@@ -33,56 +32,7 @@
 										}
 										?>
 									</select>
-								</div>						
-								<!--
-								<div class="col-md-3">
-									<label for="AprovadoDespesas">Desp.Aprov.?</label>
-									<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
-											id="AprovadoDespesas" name="AprovadoDespesas">
-										<?php
-										foreach ($select['AprovadoDespesas'] as $key => $row) {
-											if ($query['AprovadoDespesas'] == $key) {
-												echo '<option value="' . $key . '" selected="selected">' . $row . '</option>';
-											} else {
-												echo '<option value="' . $key . '">' . $row . '</option>';
-											}
-										}
-										?>
-									</select>
-								</div>
-								
-								<div class="col-md-2">
-									<label for="ServicoConcluidoDespesas">Desp. Concl.?</label>
-									<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
-											id="ServicoConcluidoDespesas" name="ServicoConcluidoDespesas">
-										<?php
-										foreach ($select['ServicoConcluidoDespesas'] as $key => $row) {
-											if ($query['ServicoConcluidoDespesas'] == $key) {
-												echo '<option value="' . $key . '" selected="selected">' . $row . '</option>';
-											} else {
-												echo '<option value="' . $key . '">' . $row . '</option>';
-											}
-										}
-										?>
-									</select>
-								</div>
-								
-								<div class="col-md-2">
-									<label for="QuitadoDespesas">Desp.Quit.?</label>
-									<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
-											id="QuitadoDespesas" name="QuitadoDespesas">
-										<?php
-										foreach ($select['QuitadoDespesas'] as $key => $row) {
-											if ($query['QuitadoDespesas'] == $key) {
-												echo '<option value="' . $key . '" selected="selected">' . $row . '</option>';
-											} else {
-												echo '<option value="' . $key . '">' . $row . '</option>';
-											}
-										}
-										?>
-									</select>
-								</div>
-								-->																
+								</div>																						
 								<div class="col-md-4">
 									<label for="Ordenamento">Ordenamento:</label>
 									<div class="form-group">
@@ -124,30 +74,6 @@
 						</div>
 						<div class="form-group">
 							<div class="row">
-								<!--
-								<div class="col-md-2">
-									<label for="DataInicio3">Orç.- Data Inc.</label>
-									<div class="input-group DatePicker">
-										<span class="input-group-addon" disabled>
-											<span class="glyphicon glyphicon-calendar"></span>
-										</span>
-										<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"
-											    name="DataInicio3" value="<?php echo set_value('DataInicio3', $query['DataInicio3']); ?>">
-										
-									</div>
-								</div>
-								<div class="col-md-2">
-									<label for="DataFim3">Orç.- Data Fim</label>
-									<div class="input-group DatePicker">
-										<span class="input-group-addon" disabled>
-											<span class="glyphicon glyphicon-calendar"></span>
-										</span>
-										<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"
-											    name="DataFim3" value="<?php echo set_value('DataFim3', $query['DataFim3']); ?>">
-										
-									</div>
-								</div>
-								-->
 								<div class="col-md-2">
 									<label for="DataInicio">Venc.- Data Inc.</label>
 									<div class="input-group DatePicker">
@@ -203,27 +129,24 @@
 											<span class="glyphicon glyphicon-calendar"></span>
 										</span>
 										<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"
-											    name="DataFim2" value="<?php echo set_value('DataFim2', $query['DataFim2']); ?>">
-										
+											    name="DataFim2" value="<?php echo set_value('DataFim2', $query['DataFim2']); ?>">										
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="row">
-								<br>
+								
 								<div class="text-left">
 									<span class="glyphicon glyphicon-search"></span>
-									<button class="btn btn-lg btn-primary" name="pesquisar" value="0" type="submit">
-										<span class="glyphicon glyphicon-search"></span> Pesq.
-									</button>											
-									<!--
-									<a class="btn btn-lg btn-danger" href="<?php echo base_url() ?>relatorio/despesas" role="button"> 
-										<span class="glyphicon glyphicon-plus"></span> Mensais/ Expor.
+									<button class="btn btn-sm btn-primary" name="pesquisar" value="0" type="submit">
+										<span class="glyphicon glyphicon-search"></span> Todas
+									</button>
+									<a class="btn btn-sm btn-warning" href="<?php echo base_url() ?>relatorio/despesas" role="button"> 
+										<span class="glyphicon glyphicon-search"></span> Mensais
 									</a>
-									-->
-									<button  class="btn btn-lg btn-danger" type="button" data-toggle="modal" data-loading-text="Aguarde..." data-target=".bs-excluir-modal-sm">
-										<span class="glyphicon glyphicon-plus"></span> Nova Despesa
+									<button  class="btn btn-sm btn-danger" type="button" data-toggle="modal" data-loading-text="Aguarde..." data-target=".bs-excluir-modal-sm">
+										<span class="glyphicon glyphicon-plus"></span> Nova Desp.
 									</button>
 									<div class="modal fade bs-excluir-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
 										<div class="modal-dialog" role="document">
@@ -241,7 +164,7 @@
 												-->
 												<div class="modal-footer">
 													<div class="col-md-6 text-left">
-														<a class="btn btn-lg btn-warning" href="<?php echo base_url() ?>relatorio/despesas" role="button"> 
+														<a class="btn btn-md btn-warning" href="<?php echo base_url() ?>relatorio/despesas" role="button"> 
 															<span class="glyphicon glyphicon-list"></span> Desp. Mensais Cads.
 														</a>
 													</div>

@@ -87,7 +87,7 @@ class Despesas extends CI_Controller {
 		#(!$data['despesas']['DataConclusaoDespesas']) ? $data['despesas']['DataConclusaoDespesas'] = date('d/m/Y', time()) : FALSE;
 		(!$data['despesas']['DataVencimentoDespesas']) ? $data['despesas']['DataVencimentoDespesas'] = date('d/m/Y', time()) : FALSE;
 		(!$data['despesas']['TipoProduto']) ? $data['despesas']['TipoProduto'] = 'D' : FALSE;
-		(!$data['despesas']['QtdParcelasDespesas']) ? $data['despesas']['QtdParcelasDespesas'] = '1' : FALSE;
+		#(!$data['despesas']['QtdParcelasDespesas']) ? $data['despesas']['QtdParcelasDespesas'] = '1' : FALSE;
 
         $j = 1;
         for ($i = 1; $i <= $data['count']['SCount']; $i++) {
@@ -147,12 +147,14 @@ class Despesas extends CI_Controller {
         #$this->form_validation->set_rules('DataDespesas', 'Data da Despesa', 'required|trim|valid_date');
         #$this->form_validation->set_rules('Despesa', 'Despesa', 'required|trim');
         #$this->form_validation->set_rules('TipoDespesa', 'Tipo de Despesa', 'required|trim');
-        #$this->form_validation->set_rules('ProfissionalDespesas', 'Profissional', 'required|trim');
-		$this->form_validation->set_rules('ModalidadeDespesas', 'Tipo de Pagamento', 'required|trim');
+        #$this->form_validation->set_rules('ProfissionalDespesas', 'Profissional', 'required|trim');		
 		#$this->form_validation->set_rules('AVAPDespesas', 'À Vista ou À Prazo', 'required|trim');
+		$this->form_validation->set_rules('ValorRestanteDespesas', 'Valor da Despesa', 'required|trim');
+		$this->form_validation->set_rules('ModalidadeDespesas', 'Tipo de Pagamento', 'required|trim');
 		$this->form_validation->set_rules('FormaPagamentoDespesas', 'Forma de Pagamento', 'required|trim');
 		$this->form_validation->set_rules('QtdParcelasDespesas', 'Qtd de Parcelas', 'required|trim');
 		$this->form_validation->set_rules('DataVencimentoDespesas', 'Data do 1ºVenc.', 'required|trim|valid_date');
+		
 		$data['select']['TipoDespesa'] = $this->Tipodespesa_model->select_tipodespesa();
         $data['select']['AprovadoDespesas'] = $this->Basico_model->select_status_sn();
         $data['select']['FormaPagamentoDespesas'] = $this->Formapag_model->select_formapag();
@@ -529,6 +531,7 @@ class Despesas extends CI_Controller {
         #$this->form_validation->set_rules('Despesa', 'Despesa', 'required|trim');
         #$this->form_validation->set_rules('TipoDespesa', 'Tipo de Despesa', 'required|trim');
         #$this->form_validation->set_rules('ProfissionalDespesas', 'Profissional', 'required|trim');
+		$this->form_validation->set_rules('ValorRestanteDespesas', 'Valor da Despesa', 'required|trim');
 		$this->form_validation->set_rules('FormaPagamentoDespesas', 'Forma de Pagamento', 'required|trim');
 		$this->form_validation->set_rules('QtdParcelasDespesas', 'Qtd de Parcelas', 'required|trim');
 		$this->form_validation->set_rules('DataVencimentoDespesas', 'Data do 1ºVenc.', 'required|trim|valid_date');

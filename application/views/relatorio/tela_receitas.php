@@ -19,39 +19,6 @@
 
 						<div class="form-group">
 							<div class="row">
-								<!--
-								<div class="col-md-4">
-									<label for="Ordenamento">Nome do Cliente:</label>
-									<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
-											id="NomeCliente" name="NomeCliente">
-										<?php
-										foreach ($select['NomeCliente'] as $key => $row) {
-											if ($query['NomeCliente'] == $key) {
-												echo '<option value="' . $key . '" selected="selected">' . $row . '</option>';
-											} else {
-												echo '<option value="' . $key . '">' . $row . '</option>';
-											}
-										}
-										?>
-									</select>
-								</div>
-								
-								<div class="col-md-2">
-									<label for="AprovadoOrca">Orç.Aprov.?</label>
-									<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
-											id="AprovadoOrca" name="AprovadoOrca">
-										<?php
-										foreach ($select['AprovadoOrca'] as $key => $row) {
-											if ($query['AprovadoOrca'] == $key) {
-												echo '<option value="' . $key . '" selected="selected">' . $row . '</option>';
-											} else {
-												echo '<option value="' . $key . '">' . $row . '</option>';
-											}
-										}
-										?>
-									</select>
-								</div>
-								-->
 								<div class="col-md-4">
 									<label for="Ordenamento">Receitas:</label>
 									<select data-placeholder="Selecione uma opção..." class="form-control Chosen" onchange="this.form.submit()"
@@ -66,39 +33,7 @@
 										}
 										?>
 									</select>
-								</div>
-								<!--
-								<div class="col-md-2">
-									<label for="ServicoConcluido">Receita. Concl.?</label>
-									<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
-											id="ServicoConcluido" name="ServicoConcluido">
-										<?php
-										foreach ($select['ServicoConcluido'] as $key => $row) {
-											if ($query['ServicoConcluido'] == $key) {
-												echo '<option value="' . $key . '" selected="selected">' . $row . '</option>';
-											} else {
-												echo '<option value="' . $key . '">' . $row . '</option>';
-											}
-										}
-										?>
-									</select>
-								</div>
-								<div class="col-md-2">
-									<label for="QuitadoOrca">Receita.Quit.?</label>
-									<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
-											id="QuitadoOrca" name="QuitadoOrca">
-										<?php
-										foreach ($select['QuitadoOrca'] as $key => $row) {
-											if ($query['QuitadoOrca'] == $key) {
-												echo '<option value="' . $key . '" selected="selected">' . $row . '</option>';
-											} else {
-												echo '<option value="' . $key . '">' . $row . '</option>';
-											}
-										}
-										?>
-									</select>
-								</div>
-								-->																
+								</div>														
 								<div class="col-md-4">
 									<label for="Ordenamento">Ordenamento:</label>
 
@@ -135,36 +70,11 @@
 											</div>
 										</div>
 									</div>
-								</div>
-								
+								</div>								
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="row">
-								<!--
-								<div class="col-md-2">
-									<label for="DataInicio3">Receita - Data Inc.</label>
-									<div class="input-group DatePicker">
-										<span class="input-group-addon" disabled>
-											<span class="glyphicon glyphicon-calendar"></span>
-										</span>
-										<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"
-											    name="DataInicio3" value="<?php echo set_value('DataInicio3', $query['DataInicio3']); ?>">
-										
-									</div>
-								</div>
-								<div class="col-md-2">
-									<label for="DataFim3">Receita - Data Fim</label>
-									<div class="input-group DatePicker">
-										<span class="input-group-addon" disabled>
-											<span class="glyphicon glyphicon-calendar"></span>
-										</span>
-										<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"
-											    name="DataFim3" value="<?php echo set_value('DataFim3', $query['DataFim3']); ?>">
-										
-									</div>
-								</div>
-								-->
 								<div class="col-md-2">
 									<label for="DataInicio">Venc.- Data Inc.</label>
 									<div class="input-group DatePicker">
@@ -172,8 +82,7 @@
 											<span class="glyphicon glyphicon-calendar"></span>
 										</span>
 										<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"
-											   name="DataInicio" value="<?php echo set_value('DataInicio', $query['DataInicio']); ?>">
-										
+											   name="DataInicio" value="<?php echo set_value('DataInicio', $query['DataInicio']); ?>">										
 									</div>
 								</div>
 								<div class="col-md-2">
@@ -183,8 +92,7 @@
 											<span class="glyphicon glyphicon-calendar"></span>
 										</span>
 										<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"
-											    name="DataFim" value="<?php echo set_value('DataFim', $query['DataFim']); ?>">
-										
+											    name="DataFim" value="<?php echo set_value('DataFim', $query['DataFim']); ?>">										
 									</div>
 								</div>
 								<div class="col-md-2">
@@ -209,8 +117,7 @@
 											<span class="glyphicon glyphicon-calendar"></span>
 										</span>
 										<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"
-											   autofocus name="DataInicio2" value="<?php echo set_value('DataInicio2', $query['DataInicio2']); ?>">
-										
+											   autofocus name="DataInicio2" value="<?php echo set_value('DataInicio2', $query['DataInicio2']); ?>">										
 									</div>
 								</div>
 								<div class="col-md-2">
@@ -220,8 +127,7 @@
 											<span class="glyphicon glyphicon-calendar"></span>
 										</span>
 										<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"
-											    name="DataFim2" value="<?php echo set_value('DataFim2', $query['DataFim2']); ?>">
-										
+											    name="DataFim2" value="<?php echo set_value('DataFim2', $query['DataFim2']); ?>">										
 									</div>
 								</div>
 							</div>
@@ -231,16 +137,14 @@
 								<br>							
 								<div class="text-left">
 									<span class="glyphicon glyphicon-search"></span>
-									<button class="btn btn-lg btn-primary" name="pesquisar" value="0" type="submit">
-										<span class="glyphicon glyphicon-search"></span> Pesq.
+									<button class="btn btn-sm btn-primary" name="pesquisar" value="0" type="submit">
+										<span class="glyphicon glyphicon-search"></span> Todas
 									</button>											
-									<!--
-									<a class="btn btn-lg btn-danger" href="<?php echo base_url() ?>relatorio/orcamento" role="button"> 
-										<span class="glyphicon glyphicon-plus"></span> Mensais/ Nova
+									<a class="btn btn-sm btn-warning" href="<?php echo base_url() ?>relatorio/orcamento" role="button"> 
+										<span class="glyphicon glyphicon-search"></span> Mensais
 									</a>
-									-->
-									<button  class="btn btn-lg btn-danger" type="button" data-toggle="modal" data-loading-text="Aguarde..." data-target=".bs-excluir-modal-sm">
-										<span class="glyphicon glyphicon-plus"></span> Nova Receita
+									<button  class="btn btn-sm btn-danger" type="button" data-toggle="modal" data-loading-text="Aguarde..." data-target=".bs-excluir-modal-sm">
+										<span class="glyphicon glyphicon-plus"></span> Nova Rec.
 									</button>
 									<div class="modal fade bs-excluir-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
 										<div class="modal-dialog" role="document">
@@ -261,13 +165,13 @@
 												-->
 												<div class="modal-footer">
 													<div class="col-md-6 text-left">
-														<a class="btn btn-lg btn-warning" href="<?php echo base_url() ?>relatorio/orcamento" role="button"> 
+														<a class="btn btn-md btn-warning" href="<?php echo base_url() ?>relatorio/orcamento" role="button"> 
 															<span class="glyphicon glyphicon-list"></span> Rec. Mensais Cads
 														</a>
 													</div>
 													<div class="col-md-6 text-left">
 														<a class="btn btn-danger" href="<?php echo base_url() ?>orcatrata2/cadastrar" role="button">
-															<span class="glyphicon glyphicon-plus"></span> Nova Receita
+															<span class="glyphicon glyphicon-plus"></span> Nova Rec.
 														</a>
 													</div>
 												</div>

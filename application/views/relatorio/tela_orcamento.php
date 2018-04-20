@@ -18,39 +18,6 @@
 
 						<div class="form-group">
 							<div class="row">
-								<!--
-								<div class="col-md-4">
-									<label for="Ordenamento">Nome do Cliente:</label>
-									<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
-											id="NomeCliente" name="NomeCliente">
-										<?php
-										foreach ($select['NomeCliente'] as $key => $row) {
-											if ($query['NomeCliente'] == $key) {
-												echo '<option value="' . $key . '" selected="selected">' . $row . '</option>';
-											} else {
-												echo '<option value="' . $key . '">' . $row . '</option>';
-											}
-										}
-										?>
-									</select>
-								</div>
-								
-								<div class="col-md-2">
-									<label for="AprovadoOrca">Aprovado?</label>
-									<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
-											id="AprovadoOrca" name="AprovadoOrca">
-										<?php
-										foreach ($select['AprovadoOrca'] as $key => $row) {
-											if ($query['AprovadoOrca'] == $key) {
-												echo '<option value="' . $key . '" selected="selected">' . $row . '</option>';
-											} else {
-												echo '<option value="' . $key . '">' . $row . '</option>';
-											}
-										}
-										?>
-									</select>
-								</div>
-								-->
 								<div class="col-md-3">
 									<label for="Ordenamento">Receitas:</label>
 									<select data-placeholder="Selecione uma opção..." class="form-control Chosen" onchange="this.form.submit()"
@@ -81,39 +48,6 @@
 										?>
 									</select>
 								</div>
-								<!--
-								<div class="col-md-2">
-									<label for="QuitadoOrca">Quit.?</label>
-									<select data-placeholder="Selecione uma opção..." class="form-control Chosen"
-											id="QuitadoOrca" name="QuitadoOrca">
-										<?php
-										foreach ($select['QuitadoOrca'] as $key => $row) {
-											if ($query['QuitadoOrca'] == $key) {
-												echo '<option value="' . $key . '" selected="selected">' . $row . '</option>';
-											} else {
-												echo '<option value="' . $key . '">' . $row . '</option>';
-											}
-										}
-										?>
-									</select>
-								</div>
-								
-								<div class="col-md-2">
-									<label for="Ordenamento">Forma de Pag.</label>
-									<select data-placeholder="Selecione uma opção..." class="form-control Chosen" onchange="this.form.submit()"
-											id="FormaPag" name="FormaPag">
-										<?php
-										foreach ($select['FormaPag'] as $key => $row) {
-											if ($query['FormaPag'] == $key) {
-												echo '<option value="' . $key . '" selected="selected">' . $row . '</option>';
-											} else {
-												echo '<option value="' . $key . '">' . $row . '</option>';
-											}
-										}
-										?>
-									</select>
-								</div>
-								-->
 								<div class="col-md-4">
 									<label for="Ordenamento">Ordenamento:</label>
 									<div class="form-group">
@@ -152,106 +86,18 @@
 								</div>								
 							</div>
 						</div>
-						<!--
 						<div class="form-group">
 							<div class="row">
-								<div class="col-md-2">
-									<label for="DataInicio">Receita - Data Inc.</label>
-									<div class="input-group DatePicker">
-										<span class="input-group-addon" disabled>
-											<span class="glyphicon glyphicon-calendar"></span>
-										</span>
-										<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"
-											    name="DataInicio" value="<?php echo set_value('DataInicio', $query['DataInicio']); ?>">										
-									</div>
-								</div>
-								<div class="col-md-2">
-									<label for="DataFim">Receita - Data Fim</label>
-									<div class="input-group DatePicker">
-										<span class="input-group-addon" disabled>
-											<span class="glyphicon glyphicon-calendar"></span>
-										</span>
-										<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"
-											    name="DataFim" value="<?php echo set_value('DataFim', $query['DataFim']); ?>">										
-									</div>
-								</div>
-								
-								<div class="col-md-2">
-									<label for="DataInicio2">Concl. - Data Inc.</label>
-									<div class="input-group DatePicker">
-										<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"
-											    name="DataInicio2" value="<?php echo set_value('DataInicio2', $query['DataInicio2']); ?>">
-										<span class="input-group-addon" disabled>
-											<span class="glyphicon glyphicon-calendar"></span>
-										</span>
-									</div>
-								</div>
-								<div class="col-md-2">
-									<label for="DataFim2">Concl. - Data Fim</label>
-									<div class="input-group DatePicker">
-										<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"
-											    name="DataFim2" value="<?php echo set_value('DataFim2', $query['DataFim2']); ?>">
-										<span class="input-group-addon" disabled>
-											<span class="glyphicon glyphicon-calendar"></span>
-										</span>
-									</div>
-								</div>
-								<div class="col-md-2">
-									<label for="DataInicio4">Quit. - Data Inc.</label>
-									<div class="input-group DatePicker">
-										<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"
-											    name="DataInicio4" value="<?php echo set_value('DataInicio4', $query['DataInicio4']); ?>">
-										<span class="input-group-addon" disabled>
-											<span class="glyphicon glyphicon-calendar"></span>
-										</span>
-									</div>
-								</div>
-								<div class="col-md-2">
-									<label for="DataFim4">Quit. - Data Fim</label>
-									<div class="input-group DatePicker">
-										<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"
-											    name="DataFim4" value="<?php echo set_value('DataFim4', $query['DataFim4']); ?>">
-										<span class="input-group-addon" disabled>
-											<span class="glyphicon glyphicon-calendar"></span>
-										</span>
-									</div>
-								</div>
-								
-							</div>
-						</div>
-						-->
-						<div class="form-group">
-							<div class="row">
-								<!--
-								<div class="col-md-2">
-									<label for="DataInicio3">Retorno - Data Inc.</label>
-									<div class="input-group DatePicker">
-										<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"
-											    name="DataInicio3" value="<?php echo set_value('DataInicio3', $query['DataInicio3']); ?>">
-										<span class="input-group-addon" disabled>
-											<span class="glyphicon glyphicon-calendar"></span>
-										</span>
-									</div>
-								</div>
-								<div class="col-md-2">
-									<label for="DataFim3">Retorno - Data Fim</label>
-									<div class="input-group DatePicker">
-										<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"
-											    name="DataFim3" value="<?php echo set_value('DataFim3', $query['DataFim3']); ?>">
-										<span class="input-group-addon" disabled>
-											<span class="glyphicon glyphicon-calendar"></span>
-										</span>
-									</div>
-								</div>
-								-->
 								<br>								
 								<div class="text-left">
 									<span class="glyphicon glyphicon-search"></span> 
-									<button class="btn btn-lg btn-primary" name="pesquisar" value="0" type="submit">
-										<span class="glyphicon glyphicon-search"></span> Pesq.
+									<button class="btn btn-sm btn-primary" name="pesquisar" value="0" type="submit">
+										<span class="glyphicon glyphicon-search"></span> Mensais
 									</button>
-											
-									<a class="btn btn-lg btn-danger" href="<?php echo base_url() ?>orcatrata2/cadastrar" role="button"> 
+									<a class="btn btn-sm btn-warning" href="<?php echo base_url() ?>relatorio/receitas" role="button"> 
+										<span class="glyphicon glyphicon-search"></span> Todas
+									</a>		
+									<a class="btn btn-sm btn-danger" href="<?php echo base_url() ?>orcatrata2/cadastrar" role="button"> 
 										<span class="glyphicon glyphicon-plus"></span> Nova Rec.
 									</a>
 								</div>

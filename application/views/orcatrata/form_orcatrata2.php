@@ -375,11 +375,12 @@
 														
 														<div class="col-md-3">
 															<label for="FormaPagamento">Forma de Pagam.:</label>
-															<select data-placeholder="Selecione uma opção..." class="form-control" onchange="calculaParcelas()" <?php echo $readonly; ?>
+															<select data-placeholder="Selecione uma opção..." class="form-control" <?php echo $readonly; ?>
 																	id="FormaPagamento" name="FormaPagamento">
-																<option value="">-- Selecione uma opção --</option>
+																<!--<option value="">-- Selecione uma opção --</option>-->
 																<?php
 																foreach ($select['FormaPagamento'] as $key => $row) {
+																	(!$orcatrata['FormaPagamento']) ? $orcatrata['FormaPagamento'] = '1' : FALSE;
 																	if ($orcatrata['FormaPagamento'] == $key) {
 																		echo '<option value="' . $key . '" selected="selected">' . $row . '</option>';
 																	} else {
@@ -394,7 +395,7 @@
 															<div class="form-group" id="txtHint">
 																<?php
 																$options = array(
-																	''	=> '-- Selecione uma opção --',
+																	#''	=> '-- Selecione uma opção --',
 																	'P'	=> 'PARCELADO',
 																	'M'	=> 'MENSALIDADE',																																		
 																);
@@ -453,6 +454,8 @@
 															<div class="col-md-3">
 																<label for="QtdParcelasOrca">Qtd. Parc.:</label><br>
 																<input type="text" class="form-control Numero" id="QtdParcelasOrca" maxlength="3" placeholder="0"
+																	   data-toggle="collapse" onkeyup="calculaParcelas()"
+																			data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas"
 																	   name="QtdParcelasOrca" value="<?php echo $orcatrata['QtdParcelasOrca'] ?>">
 															</div>
 															<div class="col-md-3">

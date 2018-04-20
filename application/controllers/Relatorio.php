@@ -749,9 +749,8 @@ class Relatorio extends CI_Controller {
 			'DS.idApp_Despesas' => 'Número da Despesa',
             'DS.ValorDespesas' => 'Valor da Despesa',
 			'DS.Despesa' => 'Despesa',
-			'CD.Categoriadesp' => 'Categoria',
 			'DS.TipoDespesa' => 'Tipo de Despesa',
-
+			'DS.ModalidadeDespesas' => 'Modalidade',
         );
 
         $data['select']['Ordenamento'] = array(
@@ -864,12 +863,10 @@ class Relatorio extends CI_Controller {
         );
 
         $data['select']['Campo'] = array(
-            'CD.Categoriadesp' => 'Categoria ',
 			'OT.TipoDespesa' => 'Tipo',
 			'OT.Despesa' => 'Despesa',
-            'OT.ServicoConcluidoDespesas' => 'Despesa Concluída?',	
-			'OT.ValorRestanteDespesas' => 'Valor a Pagar',
-
+			'OT.ValorRestanteDespesas' => 'Valor',
+            'OT.ServicoConcluidoDespesas' => 'Concluída?',				
         );
 
         $data['select']['Ordenamento'] = array(
@@ -2033,7 +2030,6 @@ class Relatorio extends CI_Controller {
         $this->load->view('basico/footer');
 
     }
-
 
 	public function devolucao1() {
 

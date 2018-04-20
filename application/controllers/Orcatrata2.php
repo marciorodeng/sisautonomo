@@ -95,7 +95,7 @@ class Orcatrata2 extends CI_Controller {
 		(!$data['orcatrata']['DataVencimentoOrca']) ? $data['orcatrata']['DataVencimentoOrca'] = date('d/m/Y', time()) : FALSE;
 		#(!$data['orcatrata']['DataPrazo']) ? $data['orcatrata']['DataPrazo'] = date('d/m/Y', time()) : FALSE;
         (!$data['orcatrata']['TipoRD']) ? $data['orcatrata']['TipoRD'] = 'R' : FALSE;
-		(!$data['orcatrata']['QtdParcelasOrca']) ? $data['orcatrata']['QtdParcelasOrca'] = '1' : FALSE;
+		#(!$data['orcatrata']['QtdParcelasOrca']) ? $data['orcatrata']['QtdParcelasOrca'] = '1' : FALSE;
 		
 		$j = 1;
         for ($i = 1; $i <= $data['count']['SCount']; $i++) {
@@ -171,8 +171,9 @@ class Orcatrata2 extends CI_Controller {
         #$this->form_validation->set_rules('ParcelaRecebiveis', 'ParcelaRecebiveis', 'required|trim');
         #$this->form_validation->set_rules('ProfissionalOrca', 'Profissional', 'required|trim');
 		#$this->form_validation->set_rules('idApp_Cliente', 'Cliente', 'required|trim');
-		$this->form_validation->set_rules('Modalidade', 'Tipo de Recebimento', 'required|trim');
 		#$this->form_validation->set_rules('AVAP', 'À Vista ou À Prazo', 'required|trim');
+		$this->form_validation->set_rules('Modalidade', 'Tipo de Recebimento', 'required|trim');		
+		$this->form_validation->set_rules('ValorRestanteOrca', 'Valor da Receita', 'required|trim');
 		$this->form_validation->set_rules('FormaPagamento', 'Forma de Pagamento', 'required|trim');
 		$this->form_validation->set_rules('QtdParcelasOrca', 'Qtd de Parcelas', 'required|trim');
 		$this->form_validation->set_rules('DataVencimentoOrca', 'Data do 1ºVenc.', 'required|trim|valid_date');
@@ -193,7 +194,7 @@ class Orcatrata2 extends CI_Controller {
         #$data['select']['Servico'] = $this->Basico_model->select_servicos();
         $data['select']['Produto'] = $this->Basico_model->select_produtos();		
 
-        $data['titulo'] = 'Cadastar Orçamento';
+        $data['titulo'] = 'Cadastar Receita';
         $data['form_open_path'] = 'orcatrata2/cadastrar';
         $data['readonly'] = '';
         $data['disabled'] = '';
@@ -573,6 +574,7 @@ class Orcatrata2 extends CI_Controller {
 		#$this->form_validation->set_rules('DataProcedimento', 'DataProcedimento', 'required|trim');
         #$this->form_validation->set_rules('ParcelaRecebiveis', 'ParcelaRecebiveis', 'required|trim');
         #$this->form_validation->set_rules('ProfissionalOrca', 'Profissional', 'required|trim');
+		$this->form_validation->set_rules('ValorRestanteOrca', 'Valor da Receita', 'required|trim');
 		$this->form_validation->set_rules('FormaPagamento', 'Forma de Pagamento', 'required|trim');
 		$this->form_validation->set_rules('QtdParcelasOrca', 'Qtd de Parcelas', 'required|trim');
 		$this->form_validation->set_rules('DataVencimentoOrca', 'Data do 1ºVenc.', 'required|trim|valid_date');
@@ -592,7 +594,7 @@ class Orcatrata2 extends CI_Controller {
         #$data['select']['Servico'] = $this->Basico_model->select_servicos();
         $data['select']['Produto'] = $this->Basico_model->select_produtos();		
 
-        $data['titulo'] = 'Editar Orçamento';
+        $data['titulo'] = 'Editar Receita';
         $data['form_open_path'] = 'orcatrata2/alterar';
         $data['readonly'] = '';
         $data['disabled'] = '';

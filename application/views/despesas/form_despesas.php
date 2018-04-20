@@ -430,11 +430,11 @@
 														<div class="col-md-3">
 															<label for="FormaPagamentoDespesas">Forma de Pagamento:</label>
 															<select data-placeholder="Selecione uma opção..." class="form-control" <?php echo $readonly; ?>
-																	id="FormaPagamentoDespesas" name="FormaPagamentoDespesas" onchange="calculaParcelasPagaveis()">
-																<option value="">-- Selecione uma opção --</option>
+																	id="FormaPagamentoDespesas" name="FormaPagamentoDespesas">
+																<!--<option value="">-- Selecione uma opção --</option>-->
 																<?php
 																foreach ($select['FormaPagamentoDespesas'] as $key => $row) {
-																	#(!$despesas['FormaPagamentoDespesas']) ? $despesas['FormaPagamentoDespesas'] = '1' : FALSE;
+																	(!$despesas['FormaPagamentoDespesas']) ? $despesas['FormaPagamentoDespesas'] = '1' : FALSE;
 																	if ($despesas['FormaPagamentoDespesas'] == $key) {
 																		echo '<option value="' . $key . '" selected="selected">' . $row . '</option>';
 																	} else {
@@ -449,7 +449,7 @@
 															<div class="form-group" id="txtHint" >
 																<?php
 																$options = array(
-																	''	=> '-- Selecione uma opção --',
+																	#''	=> '-- Selecione uma opção --',
 																	'P'	=> 'PARCELADO',
 																	'M'	=> 'MENSALIDADE',																	
 																);
@@ -508,6 +508,8 @@
 															<div class="col-md-3">
 																<label for="QtdParcelasDespesas">Qtd.Prc:</label><br>
 																<input type="text" class="form-control Numero" id="QtdParcelasDespesas" maxlength="3" placeholder="0"
+																	   data-toggle="collapse" onkeyup="calculaParcelasPagaveis()"
+																			data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas"
 																	   name="QtdParcelasDespesas" value="<?php echo $despesas['QtdParcelasDespesas'] ?>">
 															</div>
 															<div class="col-md-3">
