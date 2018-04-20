@@ -143,7 +143,7 @@
 										<span class="glyphicon glyphicon-search"></span> Todas
 									</button>
 									<a class="btn btn-sm btn-warning" href="<?php echo base_url() ?>relatorio/despesas" role="button"> 
-										<span class="glyphicon glyphicon-search"></span> Mensais
+										<span class="glyphicon glyphicon-pencil"></span> Mensais
 									</a>
 									<button  class="btn btn-sm btn-danger" type="button" data-toggle="modal" data-loading-text="Aguarde..." data-target=".bs-excluir-modal-sm">
 										<span class="glyphicon glyphicon-plus"></span> Nova Desp.
@@ -153,8 +153,11 @@
 											<div class="modal-content">
 												<div class="modal-header bg-danger">
 													<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-													<h4 class="modal-title">Antes de cadastrar uma despesa<br> do tipo "Mensalidade",<br> 
-																			confira as "Dep. Mensais Cads."!</h4>
+													<h4 class="modal-title">Antes de cadastrar uma<br> 
+																			Nova Despesa<br> 
+																			do tipo "Mensalidade",<br> 
+																			confira as<br>
+																			"Dep. Mensais Cads."!</h4>
 												</div>
 												<!--
 												<div class="modal-body">

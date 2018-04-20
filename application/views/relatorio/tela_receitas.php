@@ -134,14 +134,14 @@
 						</div>
 						<div class="form-group">
 							<div class="row">
-								<br>							
+															
 								<div class="text-left">
 									<span class="glyphicon glyphicon-search"></span>
 									<button class="btn btn-sm btn-primary" name="pesquisar" value="0" type="submit">
 										<span class="glyphicon glyphicon-search"></span> Todas
 									</button>											
 									<a class="btn btn-sm btn-warning" href="<?php echo base_url() ?>relatorio/orcamento" role="button"> 
-										<span class="glyphicon glyphicon-search"></span> Mensais
+										<span class="glyphicon glyphicon-pencil"></span> Mensais
 									</a>
 									<button  class="btn btn-sm btn-danger" type="button" data-toggle="modal" data-loading-text="Aguarde..." data-target=".bs-excluir-modal-sm">
 										<span class="glyphicon glyphicon-plus"></span> Nova Rec.

@@ -84,11 +84,11 @@
 																
 								<div class="text-left">
 									<span class="glyphicon glyphicon-search"></span>
-									<button class="btn btn-sm btn-primary" name="pesquisar" value="0" type="submit">
+									<button class="btn btn-sm btn-warning" name="pesquisar" value="0" type="submit">
 										<span class="glyphicon glyphicon-search"></span> Mensais
 									</button>
-									<a class="btn btn-sm btn-warning" href="<?php echo base_url() ?>relatorio/despesaspag" role="button"> 
-										<span class="glyphicon glyphicon-search"></span> Todas
+									<a class="btn btn-sm btn-primary" href="<?php echo base_url() ?>relatorio/despesaspag" role="button"> 
+										<span class="glyphicon glyphicon-pencil"></span> Todas
 									</a>
 									<a class="btn btn-sm btn-danger" href="<?php echo base_url() ?>despesas/cadastrar" role="button"> 
 										<span class="glyphicon glyphicon-plus"></span> Nova Desp.
