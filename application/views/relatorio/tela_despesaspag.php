@@ -59,7 +59,10 @@
 															<span class="glyphicon glyphicon-list"></span> Desp. Mensais Cads.
 														</a>
 													</div>
-		
+												</div>
+											</div>	
+											<div class="form-group text-left">
+												<div class="row">		
 													<div class="col-md-6 text-left">
 														<a class="btn btn-danger btn-block text-left" href="<?php echo base_url() ?>despesas/cadastrar" role="button">
 															<span class="glyphicon glyphicon-plus"></span> Nova Despesa

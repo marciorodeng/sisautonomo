@@ -77,7 +77,7 @@
 														<label for="Ordenamento">Ordenamento:</label>
 														<div class="form-group">
 															<div class="row">
-																<div class="col-md-6">
+																<div class="col-md-8">
 																	<select data-placeholder="Selecione uma opção..." class="form-control Chosen" onchange="this.form.submit()"
 																			id="Campo" autofocus name="Campo">
 																		<?php
@@ -108,7 +108,13 @@
 																</div>
 															</div>
 														</div>
-													</div>								
+													</div>
+													<div class="col-md-4 text-left">
+														<label for="Ordenamento">Pesquisar:</label>
+														<button class="btn btn-md btn-primary btn-block" name="pesquisar" value="0" type="submit">
+															<span class="glyphicon glyphicon-search"></span> Pesquisar
+														</button>
+													</div>
 												</div>
 											</div>	
 										</div>
