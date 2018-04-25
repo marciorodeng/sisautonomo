@@ -43,9 +43,9 @@
 										<div class="modal-footer">
 											<div class="form-group">
 												<div class="row">
-													<div class="col-md-3 btn-block text-left">
+													<div class="col-md-8 text-left">
 														<label for="Ordenamento">Receitas:</label>
-														<select data-placeholder="Selecione uma opção..." class="form-control Chosen" onchange="this.form.submit()"
+														<select data-placeholder="Selecione uma opção..." class="form-control Chosen btn-block" onchange="this.form.submit()"
 																id="ObsOrca" name="ObsOrca">
 															<?php
 															foreach ($select['ObsOrca'] as $key => $row) {
@@ -58,9 +58,9 @@
 															?>
 														</select>
 													</div>
-													<div class="col-md-3 btn-block text-left">
+													<div class="col-md-4 text-left">
 														<label for="ServicoConcluido">Concl.?</label>
-														<select data-placeholder="Selecione uma opção..." class="form-control Chosen" onchange="this.form.submit()"
+														<select data-placeholder="Selecione uma opção..." class="form-control Chosen btn-block" onchange="this.form.submit()"
 																id="ServicoConcluido" name="ServicoConcluido">
 															<?php
 															foreach ($select['ServicoConcluido'] as $key => $row) {
@@ -73,9 +73,11 @@
 															?>
 														</select>
 													</div>
-													<div class="col-md-3 btn-block text-left">
+												</div>
+												<div class="row">	
+													<div class="col-md-12 text-left">
 														<label for="Ordenamento">Ordenamento:</label>
-														<div class="form-group">
+														<div class="form-group btn-block">
 															<div class="row">
 																<div class="col-md-8">
 																	<select data-placeholder="Selecione uma opção..." class="form-control Chosen" onchange="this.form.submit()"
@@ -109,11 +111,20 @@
 															</div>
 														</div>
 													</div>
-													<div class="col-md-4 text-left">
-														<label for="Ordenamento">Pesquisar:</label>
-														<button class="btn btn-md btn-primary btn-block" name="pesquisar" value="0" type="submit">
-															<span class="glyphicon glyphicon-search"></span> Pesquisar
-														</button>
+												</div>
+												<div class="row">
+													<br>
+													<div class="col-md-3 text-left">
+														<div class="form-footer btn-block">
+															<button class="btn btn-primary" name="pesquisar" value="0" type="submit">
+															<span class="glyphicon glyphicon-search"></span> Pesquisar</button>
+														</div>
+													</div>
+													<div class="col-md-2 text-left">
+														<div class="form-footer btn-block">
+															<button type="button" class="btn btn-default " data-dismiss="modal">
+															<span class="glyphicon glyphicon-remove"> Fechar</button>
+														</div>
 													</div>
 												</div>
 											</div>	

@@ -26,7 +26,7 @@
 								</a>
 								
 								<div class="modal fade bs-excluir-modal2-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-									<div class="modal-dialog" role="document">
+									<div class="modal-dialog modal-md" role="document">
 										<div class="modal-content">
 											<div class="modal-header bg-danger">
 												<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -35,30 +35,26 @@
 											<div class="modal-footer">
 												<div class="form-group">
 													<div class="row">
-														<div class="col-md-3 btn-block text-left">
+														<div class="col-md-12 text-left">
 															<label for="Ordenamento">Nome do Cliente:</label>
-															<div class="form-group">
-																<div class="row">
-																	<div class="col-md-12">
-																		<select data-placeholder="Selecione uma opção..." class="form-control Chosen" onchange="this.form.submit()"
-																				id="NomeCliente" autofocus name="NomeCliente">
-																			<?php
-																			foreach ($select['NomeCliente'] as $key => $row) {
-																				if ($query['NomeCliente'] == $key) {
-																					echo '<option value="' . $key . '" selected="selected">' . $row . '</option>';
-																				} else {
-																					echo '<option value="' . $key . '">' . $row . '</option>';
-																				}
-																			}
-																			?>
-																		</select>
-																	</div>
-																</div>
-															</div>
-														</div>					
-														<div class="col-md-3 btn-block text-left">
+															<select data-placeholder="Selecione uma opção..." class="form-control Chosen btn-block" onchange="this.form.submit()"
+																	id="NomeCliente" autofocus name="NomeCliente">
+																<?php
+																foreach ($select['NomeCliente'] as $key => $row) {
+																	if ($query['NomeCliente'] == $key) {
+																		echo '<option value="' . $key . '" selected="selected">' . $row . '</option>';
+																	} else {
+																		echo '<option value="' . $key . '">' . $row . '</option>';
+																	}
+																}
+																?>
+															</select>
+														</div>
+													</div>	
+													<div class="row">	
+														<div class="col-md-9 text-left">
 															<label for="Ordenamento">Ordenamento:</label>
-															<div class="form-group">
+															<div class="form-group btn-block">
 																<div class="row">
 																	<div class="col-md-8">
 																		<select data-placeholder="Selecione uma opção..." class="form-control Chosen" onchange="this.form.submit()"
@@ -90,8 +86,8 @@
 																	</div>
 																</div>
 															</div>
-														</div>
-														<div class="col-md-4 text-left">
+														</div>														
+														<div class="col-md-3 text-left">
 															<label for="Ativo">Ativo?</label>
 															<select data-placeholder="Selecione uma opção..." class="form-control Chosen btn-block"
 																	id="Ativo" name="Ativo">
@@ -105,24 +101,30 @@
 																}
 																?>
 															</select>
-														</div>	
-														<div class="col-md-4 text-left">
-															<label for="Ordenamento">Pesquisar:</label>
-															<button class="btn btn-md btn-primary btn-block" name="pesquisar" value="0" type="submit">
-																<span class="glyphicon glyphicon-search"></span> Pesquisar
-															</button>
+														</div>
+													</div>	
+													<div class="row">	
+														<br>
+														<div class="col-md-3 text-left">
+															<div class="form-footer btn-block">
+																<button class="btn btn-primary " name="pesquisar" value="0" type="submit">
+																<span class="glyphicon glyphicon-search"></span> Pesquisar</button>
+															</div>
+														</div>
+														<div class="col-md-2 text-left">
+															<div class="form-footer btn-block">
+																<button type="button" class="btn btn-default" data-dismiss="modal">
+																<span class="glyphicon glyphicon-remove"> Fechar</button>
+															</div>
 														</div>
 													</div>
-												</div>
-											
+												</div>											
 											</div>
 										</div>
 									</div>
 								</div>
-
 							</div>
 						</div>
-
 						</form>
 						<br>
 						<?php echo (isset($list)) ? $list : FALSE ?>
