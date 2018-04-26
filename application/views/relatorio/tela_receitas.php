@@ -12,27 +12,30 @@
 
 				<div class="panel panel-primary">
 
-					<div class="panel-heading"><strong><?php echo $titulo; ?></strong></div>
-					<div class="panel-body">
-
+					<div class="panel-heading"><strong><?php echo $titulo; ?></strong>
+					
 						<?php echo form_open('relatorio/receitas', 'role="form"'); ?>
-
-						<div class="form-group">
-							<button class="btn btn-sm btn-primary" name="pesquisar" value="0" type="submit">
-								<span class="glyphicon glyphicon-search"></span> Todas
-							</button>											
-							<!--
-							<a class="btn btn-sm btn-warning" href="<?php echo base_url() ?>relatorio/orcamento" role="button"> 
-								<span class="glyphicon glyphicon-pencil"></span> Mensais
-							</a>
-							-->
-							<button  class="btn btn-sm btn-success" type="button" data-toggle="modal" data-loading-text="Aguarde..." data-target=".bs-excluir-modal2-sm">
-								<span class="glyphicon glyphicon-filter"></span> Filtros
-							</button>
-							<button  class="btn btn-sm btn-danger" type="button" data-toggle="modal" data-loading-text="Aguarde..." data-target=".bs-excluir-modal-sm">
-								<span class="glyphicon glyphicon-plus"></span> Nova Rec.
-							</button>
 							
+						<button class="btn btn-sm btn-info" name="pesquisar" value="0" type="submit">
+							<span class="glyphicon glyphicon-search"></span> Pesq.
+						</button>											
+						<!--
+						<a class="btn btn-sm btn-warning" href="<?php echo base_url() ?>relatorio/orcamento" role="button"> 
+							<span class="glyphicon glyphicon-pencil"></span> Mensais
+						</a>
+						-->
+						<button  class="btn btn-sm btn-success" type="button" data-toggle="modal" data-loading-text="Aguarde..." data-target=".bs-excluir-modal2-sm">
+							<span class="glyphicon glyphicon-filter"></span> Filtros
+						</button>
+						<button  class="btn btn-sm btn-danger" type="button" data-toggle="modal" data-loading-text="Aguarde..." data-target=".bs-excluir-modal-sm">
+							<span class="glyphicon glyphicon-plus"></span> Nova Rec.
+						</button>
+					
+					</div>
+					<div class="panel-body">
+						
+						<div class="form-group">
+														
 							<div class="modal fade bs-excluir-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
 								<div class="modal-dialog" role="document">
 									<div class="modal-content">
@@ -214,8 +217,9 @@
 								</div>
 							</div>								
 						</div>
+						
 						</form>
-						<br>
+
 						<?php echo (isset($list)) ? $list : FALSE ?>
 					</div>
 				</div>				

@@ -712,11 +712,11 @@ class Relatorio extends CI_Controller {
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
         #$this->form_validation->set_rules('Pesquisa', 'Pesquisa', 'required|trim');
         $this->form_validation->set_rules('DataInicio', 'Data Início do Venc.', 'trim|valid_date');
-        $this->form_validation->set_rules('DataFim', 'Data Fim do Venc.', 'trim|valid_date');
-		$this->form_validation->set_rules('DataInicio2', 'Data Início do Pagam.', 'trim|valid_date');
-        $this->form_validation->set_rules('DataFim2', 'Data Fim do Pagam.', 'trim|valid_date');
-		$this->form_validation->set_rules('DataInicio3', 'Data Início do Orçamento', 'trim|valid_date');
-        $this->form_validation->set_rules('DataFim3', 'Data Fim do Orçamento', 'trim|valid_date');
+        #$this->form_validation->set_rules('DataFim', 'Data Fim do Venc.', 'trim|valid_date');
+		#$this->form_validation->set_rules('DataInicio2', 'Data Início do Pagam.', 'trim|valid_date');
+        #$this->form_validation->set_rules('DataFim2', 'Data Fim do Pagam.', 'trim|valid_date');
+		#$this->form_validation->set_rules('DataInicio3', 'Data Início do Orçamento', 'trim|valid_date');
+        #$this->form_validation->set_rules('DataFim3', 'Data Fim do Orçamento', 'trim|valid_date');
 
 		$data['select']['AprovadoDespesas'] = array(
             '#' => 'TODOS',

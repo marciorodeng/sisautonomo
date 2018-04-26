@@ -11,28 +11,30 @@
 
 				<div class="panel panel-primary">
 
-					<div class="panel-heading"><strong><?php echo $titulo; ?></strong></div>
-					<div class="panel-body">
-
+					<div class="panel-heading"><strong><?php echo $titulo; ?></strong>
+					
 						<?php echo form_open('relatorio/orcamento', 'role="form"'); ?>
-												
+						
+						<button class="btn btn-sm btn-info" name="pesquisar" value="0" type="submit">
+							<span class="glyphicon glyphicon-search"></span> Pesq.
+						</button>
+						<!--
+						<a class="btn btn-sm btn-primary" href="<?php echo base_url() ?>relatorio/receitas" role="button"> 
+							<span class="glyphicon glyphicon-pencil"></span> Todas
+						</a>		
+						-->
+						<button  class="btn btn-sm btn-success" type="button" data-toggle="modal" data-loading-text="Aguarde..." data-target=".bs-excluir-modal2-sm">
+							<span class="glyphicon glyphicon-filter"></span> Filtros
+						</button>
+						<a class="btn btn-sm btn-danger" href="<?php echo base_url() ?>orcatrata2/cadastrar" role="button"> 
+							<span class="glyphicon glyphicon-plus"></span> Nova Rec.
+						</a>
+										
+					</div>
+					<div class="panel-body">
+																		
 						<div class="form-group">
-
-							<button class="btn btn-sm btn-warning" name="pesquisar" value="0" type="submit">
-								<span class="glyphicon glyphicon-search"></span> Mensais
-							</button>
-							<!--
-							<a class="btn btn-sm btn-primary" href="<?php echo base_url() ?>relatorio/receitas" role="button"> 
-								<span class="glyphicon glyphicon-pencil"></span> Todas
-							</a>		
-							-->
-							<button  class="btn btn-sm btn-success" type="button" data-toggle="modal" data-loading-text="Aguarde..." data-target=".bs-excluir-modal2-sm">
-								<span class="glyphicon glyphicon-filter"></span> Filtros
-							</button>
-							<a class="btn btn-sm btn-danger" href="<?php echo base_url() ?>orcatrata2/cadastrar" role="button"> 
-								<span class="glyphicon glyphicon-plus"></span> Nova Rec.
-							</a>
-							
+														
 							<div class="modal fade bs-excluir-modal2-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
 								<div class="modal-dialog" role="document">
 									<div class="modal-content">
@@ -135,7 +137,6 @@
 
 						</div>
 						</form>
-						<br>
 						<?php echo (isset($list)) ? $list : FALSE ?>
 					</div>
 				</div>			

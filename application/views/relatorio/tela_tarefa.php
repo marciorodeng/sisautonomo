@@ -11,30 +11,30 @@
 
 				<div class="panel panel-primary">
 
-					<div class="panel-heading"><strong><?php echo $titulo; ?></strong></div>
-					<div class="panel-body">
-
+					<div class="panel-heading"><strong><?php echo $titulo; ?></strong>
+					
 						<?php echo form_open('relatorio/tarefa', 'role="form"'); ?>
-						
+						<button class="btn btn-sm btn-info " name="pesquisar" value="0" type="submit">
+							<span class="glyphicon glyphicon-search"></span> Pesq.
+						</button>
+
+						<button  class="btn btn-sm btn-success" type="button" data-toggle="modal" data-loading-text="Aguarde..." data-target=".bs-excluir-modal2-sm">
+							<span class="glyphicon glyphicon-filter"></span> Filtros
+						</button>
+								
+						<a class="btn btn-sm btn-danger" href="<?php echo base_url() ?>tarefa/cadastrar" role="button"> 
+							<span class="glyphicon glyphicon-plus"></span> Nova Tarefa
+						</a>
+						<!--			
+						<a class="btn btn-lg btn-warning" href="<?php echo base_url() ?>agenda" role="button"> 
+							<span class="glyphicon glyphicon-calendar"></span> Agenda
+						</a>
+						-->
+					</div>
+					<div class="panel-body">
+												
 						<div class="form-group">
-
-							<button class="btn btn-sm btn-primary " name="pesquisar" value="0" type="submit">
-								<span class="glyphicon glyphicon-search"></span> Pesq.
-							</button>
-
-							<button  class="btn btn-sm btn-success" type="button" data-toggle="modal" data-loading-text="Aguarde..." data-target=".bs-excluir-modal2-sm">
-								<span class="glyphicon glyphicon-filter"></span> Filtros
-							</button>
-									
-							<a class="btn btn-sm btn-danger" href="<?php echo base_url() ?>tarefa/cadastrar" role="button"> 
-								<span class="glyphicon glyphicon-plus"></span> Nova Tarefa
-							</a>
-							<!--			
-							<a class="btn btn-lg btn-warning" href="<?php echo base_url() ?>agenda" role="button"> 
-								<span class="glyphicon glyphicon-calendar"></span> Agenda
-							</a>
-							-->
-							
+														
 							<div class="modal fade bs-excluir-modal2-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
 								<div class="modal-dialog" role="document">
 									<div class="modal-content">
@@ -45,7 +45,7 @@
 										<div class="modal-footer">
 											<div class="form-group">
 												<div class="row">
-													<div class="col-md-6 text-left">
+													<div class="col-md-4 text-left">
 														<label for="TarefaConcluida">Trf. Concl.?</label>
 														<select data-placeholder="Selecione uma opção..." class="form-control Chosen btn-block" onchange="this.form.submit()"
 																id="TarefaConcluida" name="TarefaConcluida">
@@ -60,7 +60,7 @@
 															?>
 														</select>
 													</div>					
-													<div class="col-md-6 text-left">
+													<div class="col-md-8 text-left">
 														<label for="Ordenamento">Ordenamento:</label>
 														<div class="form-group btn-block">
 															<div class="row">
@@ -118,7 +118,7 @@
 							</div>							
 						</div>
 						</form>
-						<br>
+
 						<?php echo (isset($list)) ? $list : FALSE ?>
 					</div>
 				</div>
