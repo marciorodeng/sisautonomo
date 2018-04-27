@@ -11,20 +11,24 @@
 
 				<div class="panel panel-primary">
 
-					<div class="panel-heading"><strong><?php echo $titulo; ?> - Ano</strong>
-						
+					<div class="panel-heading"><strong><?php echo $titulo; ?></strong> - Ano						
 						<?php echo form_open('relatorio/balanco', 'role="form"'); ?>
 
-						<button class="btn btn-sm">
-							<input type="text" class="form-control" maxlength="4" placeholder="AAAA"
-								   autofocus name="Ano" value="<?php echo set_value('Ano', $query['Ano']); ?>">
-						</button>
+							<div class="row">
+								<div class="col-md-2">		
+									<div>
+										<input type="text" class="form-control Numero" maxlength="4" placeholder="AAAA"
+											   autofocus name="Ano" value="<?php echo set_value('Ano', $query['Ano']); ?>">
+									</div>
 
-						<button class="btn btn-sm btn-info" name="pesquisar" value="0" type="submit">
-							<span class="glyphicon glyphicon-search"></span> Pesquisar
-						</button>
+									<button class="btn btn-sm btn-info" name="pesquisar" value="0" type="submit">
+										<span class="glyphicon glyphicon-search"></span> Pesquisar
+									</button>
+								</div>
+							</div>
 					
 					</div>
+					
 					<div class="panel-body">
 						
 						</form>
