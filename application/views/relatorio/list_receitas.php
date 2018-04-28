@@ -75,7 +75,7 @@
 							#echo '<td>' . $row['QuitadoOrca'] . '</td>';						
                             echo '<td>' . $row['ParcelaRecebiveis'] . '</td>';
                             echo '<td>' . $row['DataVencimentoRecebiveis'] . '</td>';
-                            echo '<td class="text-right">R$ ' . $row['ValorParcelaRecebiveis'] . '</td>';
+                            echo '<td class="text-left">R$ ' . $row['ValorParcelaRecebiveis'] . '</td>';
                             #echo '<td>' . $row['DataPagoRecebiveis'] . '</td>';
                             #echo '<td class="text-right">R$ ' . $row['ValorPagoRecebiveis'] . '</td>';                           
                         echo '</tr>';
