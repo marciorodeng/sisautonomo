@@ -1,8 +1,8 @@
 <?php if ($msg) echo $msg; ?>
 
 
-	<div class="col-md-1"></div>
-	<div class="col-md-10">
+	<div class="col-md-3"></div>
+	<div class="col-md-6">
 		<div class="row">
 
 			<div class="main">
@@ -218,18 +218,17 @@
 							</div>
 																								
 						</div>
-
-						</form>
-
-						<?php echo (isset($list)) ? $list : FALSE ?>
-
+					</form>							
+					
 					</div>
-
+					
+					
+					<?php echo (isset($list)) ? $list : FALSE ?>
 				</div>
 
 			</div>
 
 		</div>
 	</div>
-	<div class="col-md-1"></div>
+	<div class="col-md-3"></div>
 

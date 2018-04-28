@@ -62,17 +62,17 @@
 
                 <thead>
                     <tr>
-                        <!--<th class="active">Tipo</th>-->
+                        <!--<th class="active">Tipo</th>
 						<th class="active">Nº</th>
 						<th class="active">Mod.</th>
-						<th class="active">Tipo</th>
+						<th class="active">Tipo</th>-->
 						<th class="active">Despesa</th>
-						<th class="active">Quit.?</th>						
-                        <th class="active">Parcela</th>
-                        <th class="active">Data do Venc.</th>
-                        <th class="active">Valor À Pagar</th>
-                        <th class="active">Data do Pagam.</th>
-                        <th class="active">Valor Pago</th>
+						<th class="active">Quit.</th>						
+                        <th class="active">Par.</th>
+                        <th class="active">Venc.</th>
+                        <th class="active">Valor</th>
+                        <!--<th class="active">Data do Pagam.</th>
+                        <th class="active">Valor Pago</th>-->
                         
                     </tr>
                 </thead>
@@ -85,16 +85,17 @@
                         #echo '<tr>';
                         echo '<tr class="clickable-row" data-href="' . base_url() . 'despesas/alterar/' . $row['idApp_Despesas'] . '">';
                             #echo '<td>' . $row['TipoProduto'] . '</td>';
-							echo '<td>' . $row['idApp_Despesas'] . '</td>';							
-							echo '<td>' . $row['ModalidadeDespesas'] . '</td>';
-							echo '<td>' . $row['TipoDespesa'] . '</td>';
+							#echo '<td>' . $row['idApp_Despesas'] . '</td>';							
+							#echo '<td>' . $row['ModalidadeDespesas'] . '</td>';
+							#echo '<td>' . $row['TipoDespesa'] . '</td>';
 							echo '<td>' . $row['Despesa'] . '</td>';
 							echo '<td>' . $row['QuitadoPagaveis'] . '</td>';							
                             echo '<td>' . $row['ParcelaPagaveis'] . '</td>';
                             echo '<td>' . $row['DataVencimentoPagaveis'] . '</td>';
                             echo '<td class="text-left">R$ ' . $row['ValorParcelaPagaveis'] . '</td>';
-                            echo '<td>' . $row['DataPagoPagaveis'] . '</td>';
-                            echo '<td class="text-left">R$ ' . $row['ValorPagoPagaveis'] . '</td>';
+							#echo '<td class="text-left">R$ ' . $row['ValorParcelaPagaveis'] . '</td>';
+                            #echo '<td>' . $row['DataPagoPagaveis'] . '</td>';
+                            #echo '<td class="text-left">R$ ' . $row['ValorPagoPagaveis'] . '</td>';
                             
                         echo '</tr>';
                     }
