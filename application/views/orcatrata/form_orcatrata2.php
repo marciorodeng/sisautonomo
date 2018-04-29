@@ -15,12 +15,12 @@
 				<div class="panel-body">
 
 					<?php echo form_open_multipart($form_open_path); ?>
-
+					<!--
 					<div class="form-group">
 						<div class="panel panel-info">
 							<div class="panel-heading">
 								<div class="row">
-									<!--
+									
 									<div class="col-md-3">
 										<label for="DataOrca">Receita em:</label>
 										<div class="input-group <?php echo $datepicker; ?>">
@@ -31,23 +31,18 @@
 													name="DataOrca" value="<?php echo $orcatrata['DataOrca']; ?>">																	
 										</div>
 									</div>
-									-->
-									<div class="col-md-3">
-										<label for="ObsOrca">Receita</label><br>
-										<input type="text" class="form-control" maxlength="200"
-												name="ObsOrca" value="<?php echo $orcatrata['ObsOrca'] ?>">
-									</div>
+									
 								</div>
 							</div>
 						</div>
 					</div>
-
+					-->
 					<div class="panel-group" id="accordion4" role="tablist" aria-multiselectable="true">
 						<div class="panel panel-primary">
 							<div class="panel-heading collapsed" role="tab" id="heading4" data-toggle="collapse" data-parent="#accordion4" data-target="#collapse4" aria-expanded="false">								<h4 class="panel-title">
 									<a class="accordion-toggle">
 										<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-										Orçamento & Forma de Pagam.
+										Receita & Forma de Pagam.
 									</a>
 								</h4>
 							</div>
@@ -59,6 +54,11 @@
 											<div class="panel-heading">
 												<div class="row">
 													<div class="col-md-2">
+														<label for="ObsOrca">Receita</label><br>
+														<input type="text" class="form-control" maxlength="200"
+																name="ObsOrca" value="<?php echo $orcatrata['ObsOrca'] ?>">
+													</div>
+													<div class="col-md-2">
 														<label for="ValorRestanteOrca">Valor da Receita:</label><br>
 														<div class="input-group" id="txtHint">
 															<span class="input-group-addon" id="basic-addon1">R$</span>
@@ -66,6 +66,7 @@
 																   name="ValorRestanteOrca" value="<?php echo $orcatrata['ValorRestanteOrca'] ?>">
 														</div>
 													</div>														
+													<!--
 													<div class="col-md-2">
 														<label for="Modalidade">Modalidade:</label><br>
 														<div class="form-group" id="txtHint">
@@ -81,6 +82,7 @@
 															?>
 														</div>
 													</div>
+													-->
 													<div class="col-md-2">
 														<label for="FormaPagamento">Forma de Pagam.:</label>
 														<select data-placeholder="Selecione uma opção..." class="form-control" <?php echo $readonly; ?>
@@ -125,6 +127,37 @@
 																   name="DataVencimentoOrca" value="<?php echo $orcatrata['DataVencimentoOrca']; ?>">															
 														</div>
 													</div>
+													<div class="col-md-2">
+														<label for="Modalidade">Modalidade</label><br>
+														<div class="form-group">
+															<div class="btn-block" data-toggle="buttons">
+																<?php
+																foreach ($select['Modalidade'] as $key => $row) {
+																	(!$orcatrata['Modalidade']) ? $orcatrata['Modalidade'] = 'P' : FALSE;
+
+																	if ($orcatrata['Modalidade'] == $key) {
+																		echo ''
+																		. '<label class="btn btn-warning active" name="radiobutton_Modalidade" id="radiobutton_Modalidade' .  $key . '">'
+																		. '<input type="radio" name="Modalidade" id="radiobuttondinamico" '
+																		. 'onchange="calculaParcelas()" '
+																		. 'autocomplete="off" value="' . $key . '" checked>' . $row
+																		. '</label>'
+																		;
+																	} else {
+																		echo ''
+																		. '<label class="btn btn-default" name="radiobutton_Modalidade" id="radiobutton_Modalidade' .  $key . '">'
+																		. '<input type="radio" name="Modalidade" id="radiobuttondinamico" '
+																		. 'onchange="calculaParcelasMensais()" '
+																		. 'autocomplete="off" value="' . $key . '" >' . $row
+																		. '</label>'
+																		;
+																	}
+																}
+																?>
+															</div>
+														</div>
+													</div>
+													<!--
 													<br>
 													<div class="form-group">
 														<div class="col-md-1 text-left">
@@ -139,7 +172,8 @@
 																<span class="glyphicon glyphicon-menu-down"></span>Mensal
 															</button>
 														</div>														
-													</div>															
+													</div>
+													-->
 												</div>
 											</div>
 										</div>

@@ -193,23 +193,10 @@ class Despesas extends CI_Controller {
 
       
 
-
-        #Ver uma solução melhor para este campo
-        #Ver uma solução melhor para este campo
         (!$data['despesas']['ModalidadeDespesas']) ? $data['despesas']['ModalidadeDespesas'] = 'P' : FALSE;
 
-        $data['radio'] = array(
-            'ModalidadeDespesas' => $this->basico->radio_checked($data['despesas']['ModalidadeDespesas'], 'Tarefa Aprovado', 'APM'),
-        );
-
-        ($data['despesas']['ModalidadeDespesas'] == 'P') ?
-            $data['div']['ModalidadeDespesas'] = '' : $data['div']['ModalidadeDespesas'] = 'style="display: none;"';		
-		
-        (!$data['despesas']['AprovadoDespesas']) ? $data['despesas']['AprovadoDespesas'] = 'P' : FALSE;
-		
-		($data['despesas']['ModalidadeDespesas'] == 'M') ?
-            $data['div']['ModalidadeDespesas'] = '' : $data['div']['ModalidadeDespesas'] = 'style="display: none;"';		
-		
+        #Ver uma solução melhor para este campo
+			
         (!$data['despesas']['AprovadoDespesas']) ? $data['despesas']['AprovadoDespesas'] = 'M' : FALSE;
 		
 /*
@@ -542,7 +529,7 @@ class Despesas extends CI_Controller {
         $data['select']['ServicoConcluidoDespesas'] = $this->Basico_model->select_status_sn();
         $data['select']['ConcluidoServico'] = $this->Basico_model->select_status_sn();
         $data['select']['ConcluidoProcedimento'] = $this->Basico_model->select_status_sn();
-		#$data['select']['ModalidadeDespesas'] = $this->Basico_model->select_modalidade();
+		$data['select']['ModalidadeDespesas'] = $this->Basico_model->select_modalidade();
 		$data['select']['AVAPDespesas'] = $this->Basico_model->select_avap();
 		$data['select']['QuitadoDespesas'] = $this->Basico_model->select_status_sn();
         $data['select']['QuitadoPagaveis'] = $this->Basico_model->select_status_sn();

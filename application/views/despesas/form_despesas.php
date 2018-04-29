@@ -16,12 +16,12 @@
 					<?php echo form_open_multipart($form_open_path); ?>
 
 					<!--App_Despesas-->
-
+						<!--
 						<div class="form-group">
 							<div class="panel panel-danger">
 								<div class="panel-heading">
 									<div class="row">														
-										<!--<div class="col-md-2">
+										<div class="col-md-2">
 											<label for="DataEntradaDespesas">Validade do Orç.:</label>
 											<div class="input-group <?php echo $datepicker; ?>">
 												<input type="text" class="form-control Date" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
@@ -100,11 +100,7 @@
 											</select>
 										</div>
 										-->
-										<div class="col-md-3">
-											<label for="Despesa">Despesa</label><br>
-											<input type="text" class="form-control" maxlength="200"
-													name="Despesa" value="<?php echo $despesas['Despesa'] ?>">
-										</div>																				
+																														
 										<!--
 										<div class="col-md-4">
 											<label for="idApp_OrcaTrata">Orçam</label>
@@ -128,12 +124,12 @@
 											<input type="text" class="form-control" maxlength="200"
 													name="Despesa" value="<?php echo $despesas['Despesa'] ?>">
 										</div>
-										-->
+										
 									</div>
 								</div>
 							</div>
 						</div>	
-						
+						-->
 						<!--					
 						<div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true">
 							<div class="panel panel-primary">
@@ -390,7 +386,7 @@
 								<div class="panel-heading collapsed" role="tab" id="heading4" data-toggle="collapse" data-parent="#accordion4" data-target="#collapse4" aria-expanded="false">								<h4 class="panel-title">
 										<a class="accordion-toggle">
 											<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-											Orçamento & Forma de Pagam.
+											Despesa & Forma de Pagam.
 										</a>
 									</h4>
 								</div>
@@ -401,26 +397,12 @@
 											<div class="panel panel-danger">
 												<div class="panel-heading">
 													<div class="row">
-														<!--
-														<div class="col-md-3">
-															<label for="ValorDespesas">Valor Despesas:</label><br>
-															<div class="input-group" id="txtHint">
-																<span class="input-group-addon" id="basic-addon1">R$</span>
-																<input type="text" class="form-control Valor" id="ValorDespesas" maxlength="10" placeholder="0,00" 
-																	   name="ValorDespesas" value="<?php echo $despesas['ValorDespesas'] ?>">
-															</div>
+
+														<div class="col-md-2">
+															<label for="Despesa">Despesa</label><br>
+															<input type="text" class="form-control" maxlength="200"
+																	name="Despesa" value="<?php echo $despesas['Despesa'] ?>">
 														</div>
-														
-														<div class="col-md-3">
-															<label for="ValorEntradaDespesas">Desconto</label><br>
-															<div class="input-group" id="txtHint">
-																<span class="input-group-addon" id="basic-addon1">R$</span>
-																<input type="text" class="form-control Valor" id="ValorEntradaDespesas" maxlength="10" placeholder="0,00"
-																	onkeyup="calculaRestaDespesas(this.value)"
-																	name="ValorEntradaDespesas" value="<?php echo $despesas['ValorEntradaDespesas'] ?>">
-															</div>
-														</div>
-														-->
 														<div class="col-md-2">
 															<label for="ValorRestanteDespesas">Valor da Despesa:</label><br>
 															<div class="input-group" id="txtHint">
@@ -429,6 +411,7 @@
 																	   name="ValorRestanteDespesas" value="<?php echo $despesas['ValorRestanteDespesas'] ?>">
 															</div>
 														</div>
+														<!--
 														<div class="col-md-2">
 															<label for="ModalidadeDespesas"> Modalidade:</label><br>
 															<div class="form-group" id="txtHint" >
@@ -444,6 +427,7 @@
 																?>
 															</div>
 														</div>
+														-->
 														<div class="col-md-2">
 															<label for="FormaPagamentoDespesas">Forma de Pag.</label>
 															<select data-placeholder="Selecione uma opção..." class="form-control" <?php echo $readonly; ?>
@@ -461,7 +445,35 @@
 																?>
 															</select>
 														</div>
-														<div class="col-md-1">
+														<!--
+														<br>
+														
+														<div class="col-md-1 text-left">
+															<button class="btn btn-danger" type="button" data-toggle="collapse" onclick="calculaParcelasPagaveis()"
+																	data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas">
+																<span class="glyphicon glyphicon-menu-down"></span> Parcel
+															</button>
+														</div>
+													
+														<div class="col-md-1 text-left">
+															<button class="btn btn-danger" type="button" data-toggle="collapse" onclick="calculaParcelasPagaveisMensais()"
+																	data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas">
+																<span class="glyphicon glyphicon-menu-down"></span> Mensal
+															</button>
+														</div>
+														-->
+													</div>
+												</div>
+											</div>	
+										</div>		
+									</div>
+									
+									<div class="panel-body">	
+										<div class="form-group">
+											<div class="panel panel-danger">
+												<div class="panel-heading">
+													<div class="row">																																																										
+														<div class="col-md-2">
 															<label for="QtdParcelasDespesas">Qtd.Prc</label><br>
 															<input type="text" class="form-control Numero" id="QtdParcelasDespesas" maxlength="3" placeholder="0"
 																   data-toggle="collapse" onkeyup="calculaParcelasPagaveis()"
@@ -478,6 +490,37 @@
 																	   name="DataVencimentoDespesas" value="<?php echo $despesas['DataVencimentoDespesas']; ?>">															
 															</div>
 														</div>
+														<div class="col-md-2">
+															<label for="ModalidadeDespesas">Modalidade</label><br>
+															<div class="form-group">
+																<div class="btn-block" data-toggle="buttons">
+																	<?php
+																	foreach ($select['ModalidadeDespesas'] as $key => $row) {
+																		(!$despesas['ModalidadeDespesas']) ? $despesas['ModalidadeDespesas'] = 'P' : FALSE;
+
+																		if ($despesas['ModalidadeDespesas'] == $key) {
+																			echo ''
+																			. '<label class="btn btn-warning active" name="radiobutton_ModalidadeDespesas" id="radiobutton_ModalidadeDespesas' .  $key . '">'
+																			. '<input type="radio" name="ModalidadeDespesas" id="radiobuttondinamico" '
+																			. 'onchange="calculaParcelasPagaveis()" '
+																			. 'autocomplete="off" value="' . $key . '" checked>' . $row
+																			. '</label>'
+																			;
+																		} else {
+																			echo ''
+																			. '<label class="btn btn-default" name="radiobutton_ModalidadeDespesas" id="radiobutton_ModalidadeDespesas' .  $key . '">'
+																			. '<input type="radio" name="ModalidadeDespesas" id="radiobuttondinamico" '
+																			. 'onchange="calculaParcelasPagaveisMensais()" '
+																			. 'autocomplete="off" value="' . $key . '" >' . $row
+																			. '</label>'
+																			;
+																		}
+																	}
+																	?>
+																</div>
+															</div>
+														</div>
+														<!--
 														<br>
 														
 														<div class="col-md-1 text-left">
@@ -493,94 +536,13 @@
 																<span class="glyphicon glyphicon-menu-down"></span> Mensal
 															</button>
 														</div>
-														
-													</div>
-												</div>
-											</div>	
-										</div>		
-									</div>
-									<!--
-									<div class="panel-body">	
-										<div class="form-group">
-											<div class="panel panel-danger">
-												<div class="panel-heading">
-													<div class="row">																																										
-														
-														<div class="col-md-2 text-left form-inline">
-															<label for="AVAPDespesas">A Vista/Prazo?</label><br>
-															<div class="form-group">
-																<div class="btn-block" data-toggle="buttons">
-																	<?php
-																	foreach ($select['AVAPDespesas'] as $key => $row) {
-																		(!$despesas['AVAPDespesas']) ? $despesas['AVAPDespesas'] = 'S' : FALSE;
-																		
-
-																		($key == 'N') ? $hideshow = 'showradio' : $hideshow = 'hideradio';
-																													
-																		if ($despesas['AVAPDespesas'] == $key) {
-																			echo ''
-																			. '<label class="btn btn-warning active" name="AVAPDespesas_' . $hideshow . '">'
-																			. '<input type="radio" name="AVAPDespesas" id="' . $hideshow . '" '
-																			. 'autocomplete="off" value="' . $key . '" checked>' . $row
-																			. '</label>'
-																			;
-																		} else {
-																			echo ''
-																			. '<label class="btn btn-default" name="AVAPDespesas_' . $hideshow . '">'
-																			. '<input type="radio" name="AVAPDespesas" id="' . $hideshow . '" '
-																			. 'autocomplete="off" value="' . $key . '" >' . $row
-																			. '</label>'
-																			;
-																		}
-																		
-																	}
-																	?>
-																</div>
-															</div>
-														</div>
-														
-														<div id="AVAPDespesas" <?php echo $div['AVAPDespesas']; ?>>
-																														
-															<div class="col-md-1">
-																<label for="QtdParcelasDespesas">Qtd.Prc</label><br>
-																<input type="text" class="form-control Numero" id="QtdParcelasDespesas" maxlength="3" placeholder="0"
-																	   data-toggle="collapse" onkeyup="calculaParcelasPagaveis()"
-																			data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas"
-																	   name="QtdParcelasDespesas" value="<?php echo $despesas['QtdParcelasDespesas'] ?>">
-															</div>
-															<div class="col-md-2">
-																<label for="DataVencimentoDespesas">Dt. Desp./ 1º Venc.</label>
-																<div class="input-group <?php echo $datepicker; ?>">
-																	<span class="input-group-addon" disabled>
-																		<span class="glyphicon glyphicon-calendar"></span>
-																	</span>
-																	<input type="text" class="form-control Date" id="DataVencimentoDespesas" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
-																		   name="DataVencimentoDespesas" value="<?php echo $despesas['DataVencimentoDespesas']; ?>">															
-																</div>
-															</div>
-															<br>
-															
-															<div class="col-md-1 text-left">
-																<button class="btn btn-danger" type="button" data-toggle="collapse" onclick="calculaParcelasPagaveis()"
-																		data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas">
-																	<span class="glyphicon glyphicon-menu-down"></span> Parcel
-																</button>
-															</div>
-														
-															<div class="col-md-1 text-left">
-																<button class="btn btn-danger" type="button" data-toggle="collapse" onclick="calculaParcelasPagaveisMensais()"
-																		data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas">
-																	<span class="glyphicon glyphicon-menu-down"></span> Mensal
-																</button>
-															</div>
-															
+														-->	
 														
 													</div>
 												</div>
 											</div>
 										</div>
-									</div>
-									-->	
+									</div>									
 								</div>
 							</div>
 						</div>
