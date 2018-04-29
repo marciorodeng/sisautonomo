@@ -58,7 +58,7 @@
 										<div class="panel panel-info">
 											<div class="panel-heading">
 												<div class="row">
-													<div class="col-md-3">
+													<div class="col-md-2">
 														<label for="ValorRestanteOrca">Valor da Receita:</label><br>
 														<div class="input-group" id="txtHint">
 															<span class="input-group-addon" id="basic-addon1">R$</span>
@@ -66,7 +66,22 @@
 																   name="ValorRestanteOrca" value="<?php echo $orcatrata['ValorRestanteOrca'] ?>">
 														</div>
 													</div>														
-													<div class="col-md-3">
+													<div class="col-md-2">
+														<label for="Modalidade">Modalidade:</label><br>
+														<div class="form-group" id="txtHint">
+															<?php
+															$options = array(
+																#''	=> '-- Selecione uma opção --',
+																'P'	=> 'PARCELADO',
+																'M'	=> 'MENSALIDADE',																																		
+															);
+															$cfg = 'data-placeholder="Selecione uma opção..." class="form-control" ' . $readonly . '
+																	id="Modalidade"';
+															echo form_dropdown('Modalidade', $options, $orcatrata['Modalidade'], $cfg);
+															?>
+														</div>
+													</div>
+													<div class="col-md-2">
 														<label for="FormaPagamento">Forma de Pagam.:</label>
 														<select data-placeholder="Selecione uma opção..." class="form-control" <?php echo $readonly; ?>
 																id="FormaPagamento" name="FormaPagamento">
@@ -82,22 +97,7 @@
 															}
 															?>
 														</select>
-													</div>
-													<div class="col-md-3">
-														<label for="Modalidade">Modalidade:</label><br>
-														<div class="form-group" id="txtHint">
-															<?php
-															$options = array(
-																#''	=> '-- Selecione uma opção --',
-																'P'	=> 'PARCELADO',
-																'M'	=> 'MENSALIDADE',																																		
-															);
-															$cfg = 'data-placeholder="Selecione uma opção..." class="form-control" ' . $readonly . '
-																	id="Modalidade"';
-															echo form_dropdown('Modalidade', $options, $orcatrata['Modalidade'], $cfg);
-															?>
-														</div>
-													</div>
+													</div>													
 												</div>
 											</div>
 										</div>
@@ -108,14 +108,14 @@
 										<div class="panel panel-info">
 											<div class="panel-heading">
 												<div class="row">																												
-													<div class="col-md-3">
+													<div class="col-md-2">
 														<label for="QtdParcelasOrca">Qtd. Parc.:</label><br>
 														<input type="text" class="form-control Numero" id="QtdParcelasOrca" maxlength="3" placeholder="0"
 															   data-toggle="collapse" onkeyup="calculaParcelas()"
 																	data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas"
 															   name="QtdParcelasOrca" value="<?php echo $orcatrata['QtdParcelasOrca'] ?>">
 													</div>
-													<div class="col-md-3">
+													<div class="col-md-2">
 														<label for="DataVencimentoOrca"> Dt Receita/ 1º Venc.</label>
 														<div class="input-group <?php echo $datepicker; ?>">
 															<span class="input-group-addon" disabled>
@@ -127,12 +127,18 @@
 													</div>
 													<br>
 													<div class="form-group">
-														<div class="col-md-3 text-left">
+														<div class="col-md-1 text-left">
 															<button class="btn btn-danger" type="button" data-toggle="collapse" onclick="calculaParcelas()"
 																	data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas">
-																<span class="glyphicon glyphicon-menu-down"></span> Novas Parcelas
+																<span class="glyphicon glyphicon-menu-down"></span>Parcel
 															</button>
 														</div>
+														<div class="col-md-1 text-left">
+															<button class="btn btn-danger" type="button" data-toggle="collapse" onclick="calculaParcelasMensais()"
+																	data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas">
+																<span class="glyphicon glyphicon-menu-down"></span>Mensal
+															</button>
+														</div>														
 													</div>															
 												</div>
 											</div>

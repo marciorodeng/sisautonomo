@@ -28,9 +28,9 @@
                     <tr>
 						<th class="active">Nº</th>
                         <th class="active">Receita</th>
-						<th class="active">Concl.?</th>
-						<th class="active">Valor A Receber</th>					
-						<th class="active">Forma de Pag.</th>
+						<th class="active">Concl.</th>
+						<th class="active">Valor</th>					
+						<th class="active">Forma Pag</th>
                     </tr>
                 </thead>
 				<tbody>

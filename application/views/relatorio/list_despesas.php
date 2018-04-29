@@ -27,11 +27,10 @@
                 <thead>
                     <tr>
 						<th class="active">Nº</th>
-						<th class="active">Tipo</th>
 						<th class="active">Despesa</th>
-						<th class="active">Concl.?</th>
-						<th class="active">Valor A Pagar</th>
-						<th class="active">Forma de Pag.</th>
+						<th class="active">Concl.</th>
+						<th class="active">Valor</th>
+						<th class="active">Forma Pag</th>
                     </tr>
                 </thead>
 				<tbody>
@@ -39,7 +38,6 @@
                     foreach ($report->result_array() as $row) {
                         echo '<tr class="clickable-row" data-href="' . base_url() . 'despesas/alterar/' . $row['idApp_Despesas'] . '">';
 							echo '<td>' . $row['idApp_Despesas'] . '</td>';
-							echo '<td>' . $row['TipoDespesa'] . '</td>';
 							echo '<td>' . $row['Despesa'] . '</td>';
 							echo '<td>' . $row['ServicoConcluidoDespesas'] . '</td>';
 							echo '<td class="text-left">R$ ' . $row['ValorRestanteDespesas'] . '</td>';

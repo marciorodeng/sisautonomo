@@ -445,10 +445,18 @@
 																			<div class="col-md-3 text-left">
 																				<button class="btn btn-danger" type="button" data-toggle="collapse" onclick="calculaParcelas()"
 																						data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas">
-																					<span class="glyphicon glyphicon-menu-down"></span> Gerar Parcelas
+																					<span class="glyphicon glyphicon-menu-down"></span>Parcel
 																				</button>
 																			</div>
+																			<div class="col-md-3 text-left">
+																				<button class="btn btn-danger" type="button" data-toggle="collapse" onclick="calculaParcelasMensais()"
+																						data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas">
+																					<span class="glyphicon glyphicon-menu-down"></span>Mensal
+																				</button>
+																			</div>
+																			
 																		</div>
+																		
 																	</div>
 																</div>
 															</div>

@@ -79,11 +79,12 @@
 											</div>
 										</div>
 										-->
+										<!--
 										<div class="col-md-3">
 											<label for="TipoDespesa">Tipo de Despesa</label>
-											<!--<a class="btn btn-xs btn-info" href="<?php echo base_url() ?>tipodespesa/cadastrar/tipodespesa" role="button">
+											<a class="btn btn-xs btn-info" href="<?php echo base_url() ?>tipodespesa/cadastrar/tipodespesa" role="button">
 												<span class="glyphicon glyphicon-plus"></span> <b>Forma Pag</b>
-											</a>-->
+											</a>
 											<select data-placeholder="Selecione uma opção..." class="form-control Chosen" <?php echo $readonly; ?>
 													id="TipoDespesa" name="TipoDespesa">
 												<option value="">-- Sel. Tipo Despesa --</option>
@@ -98,11 +99,12 @@
 												?>
 											</select>
 										</div>
+										-->
 										<div class="col-md-3">
-											<label for="Despesa">Descrição</label><br>
+											<label for="Despesa">Despesa</label><br>
 											<input type="text" class="form-control" maxlength="200"
 													name="Despesa" value="<?php echo $despesas['Despesa'] ?>">
-										</div>										
+										</div>																				
 										<!--
 										<div class="col-md-4">
 											<label for="idApp_OrcaTrata">Orçam</label>
@@ -419,7 +421,7 @@
 															</div>
 														</div>
 														-->
-														<div class="col-md-3">
+														<div class="col-md-2">
 															<label for="ValorRestanteDespesas">Valor da Despesa:</label><br>
 															<div class="input-group" id="txtHint">
 																<span class="input-group-addon" id="basic-addon1">R$</span>
@@ -427,8 +429,23 @@
 																	   name="ValorRestanteDespesas" value="<?php echo $despesas['ValorRestanteDespesas'] ?>">
 															</div>
 														</div>
-														<div class="col-md-3">
-															<label for="FormaPagamentoDespesas">Forma de Pagamento:</label>
+														<div class="col-md-2">
+															<label for="ModalidadeDespesas"> Modalidade:</label><br>
+															<div class="form-group" id="txtHint" >
+																<?php
+																$options = array(
+																	#''	=> '-- Selecione uma opção --',
+																	'P'	=> 'PARCELADO',
+																	'M'	=> 'MENSALIDADE',																	
+																);
+																$cfg = 'data-placeholder="Selecione uma opção..." class="form-control" ' . $readonly . '
+																		id="ModalidadeDespesas"';
+																echo form_dropdown('ModalidadeDespesas', $options, $despesas['ModalidadeDespesas'], $cfg);
+																?>
+															</div>
+														</div>
+														<div class="col-md-2">
+															<label for="FormaPagamentoDespesas">Forma de Pag.</label>
 															<select data-placeholder="Selecione uma opção..." class="form-control" <?php echo $readonly; ?>
 																	id="FormaPagamentoDespesas" name="FormaPagamentoDespesas">
 																<!--<option value="">-- Selecione uma opção --</option>-->
@@ -444,32 +461,51 @@
 																?>
 															</select>
 														</div>
-														<div class="col-md-3">
-															<label for="ModalidadeDespesas"> Modalidade:</label><br>
-															<div class="form-group" id="txtHint" >
-																<?php
-																$options = array(
-																	#''	=> '-- Selecione uma opção --',
-																	'P'	=> 'PARCELADO',
-																	'M'	=> 'MENSALIDADE',																	
-																);
-																$cfg = 'data-placeholder="Selecione uma opção..." class="form-control" ' . $readonly . '
-																		id="ModalidadeDespesas"';
-																echo form_dropdown('ModalidadeDespesas', $options, $despesas['ModalidadeDespesas'], $cfg);
-																?>
+														<div class="col-md-1">
+															<label for="QtdParcelasDespesas">Qtd.Prc</label><br>
+															<input type="text" class="form-control Numero" id="QtdParcelasDespesas" maxlength="3" placeholder="0"
+																   data-toggle="collapse" onkeyup="calculaParcelasPagaveis()"
+																		data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas"
+																   name="QtdParcelasDespesas" value="<?php echo $despesas['QtdParcelasDespesas'] ?>">
+														</div>
+														<div class="col-md-2">
+															<label for="DataVencimentoDespesas">Dt. Desp./ 1º Venc.</label>
+															<div class="input-group <?php echo $datepicker; ?>">
+																<span class="input-group-addon" disabled>
+																	<span class="glyphicon glyphicon-calendar"></span>
+																</span>
+																<input type="text" class="form-control Date" id="DataVencimentoDespesas" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
+																	   name="DataVencimentoDespesas" value="<?php echo $despesas['DataVencimentoDespesas']; ?>">															
 															</div>
 														</div>
+														<br>
+														
+														<div class="col-md-1 text-left">
+															<button class="btn btn-danger" type="button" data-toggle="collapse" onclick="calculaParcelasPagaveis()"
+																	data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas">
+																<span class="glyphicon glyphicon-menu-down"></span> Parcel
+															</button>
+														</div>
+													
+														<div class="col-md-1 text-left">
+															<button class="btn btn-danger" type="button" data-toggle="collapse" onclick="calculaParcelasPagaveisMensais()"
+																	data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas">
+																<span class="glyphicon glyphicon-menu-down"></span> Mensal
+															</button>
+														</div>
+														
 													</div>
 												</div>
 											</div>	
 										</div>		
 									</div>
+									<!--
 									<div class="panel-body">	
 										<div class="form-group">
 											<div class="panel panel-danger">
 												<div class="panel-heading">
 													<div class="row">																																										
-														<!--
+														
 														<div class="col-md-2 text-left form-inline">
 															<label for="AVAPDespesas">A Vista/Prazo?</label><br>
 															<div class="form-group">
@@ -504,15 +540,15 @@
 														</div>
 														
 														<div id="AVAPDespesas" <?php echo $div['AVAPDespesas']; ?>>
-														-->																
-															<div class="col-md-3">
-																<label for="QtdParcelasDespesas">Qtd.Prc:</label><br>
+																														
+															<div class="col-md-1">
+																<label for="QtdParcelasDespesas">Qtd.Prc</label><br>
 																<input type="text" class="form-control Numero" id="QtdParcelasDespesas" maxlength="3" placeholder="0"
 																	   data-toggle="collapse" onkeyup="calculaParcelasPagaveis()"
 																			data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas"
 																	   name="QtdParcelasDespesas" value="<?php echo $despesas['QtdParcelasDespesas'] ?>">
 															</div>
-															<div class="col-md-3">
+															<div class="col-md-2">
 																<label for="DataVencimentoDespesas">Dt. Desp./ 1º Venc.</label>
 																<div class="input-group <?php echo $datepicker; ?>">
 																	<span class="input-group-addon" disabled>
@@ -523,20 +559,28 @@
 																</div>
 															</div>
 															<br>
-															<div class="form-group">
-																<div class="col-md-2 text-left">
-																	<button class="btn btn-danger" type="button" data-toggle="collapse" onclick="calculaParcelasPagaveis()"
-																			data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas">
-																		<span class="glyphicon glyphicon-menu-down"></span> Novas Parcelas
-																	</button>
-																</div>
+															
+															<div class="col-md-1 text-left">
+																<button class="btn btn-danger" type="button" data-toggle="collapse" onclick="calculaParcelasPagaveis()"
+																		data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas">
+																	<span class="glyphicon glyphicon-menu-down"></span> Parcel
+																</button>
+															</div>
+														
+															<div class="col-md-1 text-left">
+																<button class="btn btn-danger" type="button" data-toggle="collapse" onclick="calculaParcelasPagaveisMensais()"
+																		data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas">
+																	<span class="glyphicon glyphicon-menu-down"></span> Mensal
+																</button>
 															</div>
 															
+														
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
+									-->	
 								</div>
 							</div>
 						</div>
