@@ -515,7 +515,7 @@ function calculaParcelasMensais() {
  * informados no formulário (valor restante / parcelas e datas do vencimento)
  */
 function adicionaParcelas() {
-/*
+
     //captura os valores dos campos indicados
     var resta = $("#ValorRestanteOrca").val();
     var parcelas = $("#QtdParcelasOrca").val();
@@ -538,8 +538,8 @@ function adicionaParcelas() {
     //caso as parcelas já tenham sido geradas elas serão excluídas para que
     //sejam geradas novas parcelas
     
-	$(".input_fields_parcelas").empty();
-*/
+	//$(".input_fields_parcelas").empty();
+
     //gera os campos de parcelas
     for (i=1; i<=parcelas; i++) {
 		/*	
@@ -555,10 +555,10 @@ function adicionaParcelas() {
 				<div class="panel panel-info">\
 					<div class="panel-heading">\
 						<div class="row">\
-							<div class="col-md-2">\
+							<div class="col-md-1">\
 								<label for="ParcelaRecebiveis">Parcela:</label><br>\
-								<input type="text" class="form-control" maxlength="6" readonly=""\
-									   name="ParcelaRecebiveis'+i+'" value="'+i+'/'+parcelas+'">\
+								<input type="text" class="form-control" maxlength="6"\
+									   name="ParcelaRecebiveis'+i+'" value="">\
 							</div>\
 							<div class="col-md-2">\
 								<label for="ValorParcelaRecebiveis">Valor Parcela:</label><br>\
@@ -684,11 +684,11 @@ function calculaParcelasPagaveis() {
             futureMonth = futureMonth.add(i-1, 'd');
 
         $(".input_fields_parcelas").append('\
-			<div class="form-group">\
+			<div class="form-group" id="21div'+i+'">\
 				<div class="panel panel-danger">\
 					<div class="panel-heading">\
 						<div class="row">\
-							<div class="col-md-2">\
+							<div class="col-md-1">\
 								<label for="ParcelaPagaveis">Parcela:</label><br>\
 								<input type="text" class="form-control" maxlength="6" readonly=""\
 									   name="ParcelaPagaveis'+i+'" value="'+i+'/'+parcelas+'">\
@@ -743,6 +743,12 @@ function calculaParcelasPagaveis() {
 										</label>\
 									</div>\
 								</div>\
+							</div>\
+							<div class="col-md-1">\
+								<label><br></label><br>\
+								<a href="#" id="'+i+'" class="remove_field21 btn btn-danger">\
+									<span class="glyphicon glyphicon-trash"></span>\
+								</a>\
 							</div>\
 						</div>\
 					</div>\
@@ -810,11 +816,11 @@ function calculaParcelasPagaveisMensais() {
             futureMonth = futureMonth.add(i-1, 'd');
 
         $(".input_fields_parcelas").append('\
-			<div class="form-group">\
+			<div class="form-group" id="21div'+i+'">\
 				<div class="panel panel-danger">\
 					<div class="panel-heading">\
 						<div class="row">\
-							<div class="col-md-2">\
+							<div class="col-md-1">\
 								<label for="ParcelaPagaveis">Parcela:</label><br>\
 								<input type="text" class="form-control" maxlength="6" readonly=""\
 									   name="ParcelaPagaveis'+i+'" value="'+i+'/'+parcelas+'">\
@@ -869,6 +875,145 @@ function calculaParcelasPagaveisMensais() {
 										</label>\
 									</div>\
 								</div>\
+							</div>\
+							<div class="col-md-1">\
+								<label><br></label><br>\
+								<a href="#" id="'+i+'" class="remove_field21 btn btn-danger">\
+									<span class="glyphicon glyphicon-trash"></span>\
+								</a>\
+							</div>\
+						</div>\
+					</div>\
+				</div>\
+			</div>'
+        );
+
+    }
+    //habilita o botão de calendário após a geração dos campos dinâmicos
+    $('.DatePicker').datetimepicker(dateTimePickerOptions);
+
+    //permite o uso de radio buttons nesse bloco dinâmico
+    $('input:radio[id="radiogeraldinamico"]').change(function() {
+
+        var value = $(this).val();
+        var name = $(this).attr("name");
+
+        //console.log(value + ' <<>> ' + name);
+
+        $('label[name="radio_' + name + '"]').removeClass();
+        $('label[name="radio_' + name + '"]').addClass("btn btn-default");
+        $('#radio_' + name + value).addClass("btn btn-warning active");
+        //$('#radiogeral'+ value).addClass("btn btn-warning active");
+
+    });
+}
+
+/*
+ * Função responsável por ADICIONAR PARCELASPAGÁVEIS EXTRAS do orçamento em função do dados
+ * informados no formulário (valor restante / parcelas e datas do vencimento)
+ */
+function adicionaParcelasPagaveis() {
+/*
+    //captura os valores dos campos indicados
+    var resta = $("#ValorRestanteOrca").val();
+    var parcelas = $("#QtdParcelasOrca").val();
+    var vencimento = $("#DataVencimentoOrca").val();
+
+    //valor de cada parcela
+    var parcorca = (resta.replace(".","").replace(",",".") / parcelas);
+    parcorca = mascaraValorReal(parcorca);
+
+    //pega a data do primeiro vencimento e separa em dia, mês e ano
+    var split = vencimento.split("/");
+
+    //define a data do primeiro vencimento no formato do momentjs
+    var currentDate = moment(split[2]+'-'+split[1]+'-'+split[0]);
+
+    //console.log(currentDate.format('DD-MM-YYYY'));
+    //console.log(futureMonth.format('DD-MM-YYYY'));
+    //alert('>>v '+vencimento+'::d1 '+currentDate.format('DD/MM/YYYY')+'::d2 '+futureMonth.format('DD/MM/YYYY')+'::d3 '+futureMonthEnd.format('DD/MM/YYYY')+'<<');
+
+    //caso as parcelas já tenham sido geradas elas serão excluídas para que
+    //sejam geradas novas parcelas
+    
+	$(".input_fields_parcelas").empty();
+*/
+    //gera os campos de parcelas
+    for (i=1; i<=parcelas; i++) {
+		/*	
+        //calcula as datas das próximas parcelas
+        var futureMonth = moment(currentDate).add(i-1, 'M');
+        var futureMonthEnd = moment(futureMonth).endOf('month');
+
+        if(currentDate.date() != futureMonth.date() && futureMonth.isSame(futureMonthEnd.format('YYYY-MM-DD')))
+            futureMonth = futureMonth.add(i-1, 'd');
+		*/
+        $(".input_fields_parcelas").append('\
+            <div class="form-group" id="20div'+i+'">\
+				<div class="panel panel-info">\
+					<div class="panel-heading">\
+						<div class="row">\
+							<div class="col-md-2">\
+								<label for="ParcelaRecebiveis">Parcela:</label><br>\
+								<input type="text" class="form-control" maxlength="6" readonly=""\
+									   name="ParcelaRecebiveis'+i+'" value="'+i+'/'+parcelas+'">\
+							</div>\
+							<div class="col-md-2">\
+								<label for="ValorParcelaRecebiveis">Valor Parcela:</label><br>\
+								<div class="input-group" id="txtHint">\
+									<span class="input-group-addon" id="basic-addon1">R$</span>\
+									<input type="text" class="form-control Valor" maxlength="10" placeholder="0,00"\
+										    id="ValorParcelaRecebiveis'+i+'" name="ValorParcelaRecebiveis'+i+'" value="">\
+								</div>\
+							</div>\
+							<div class="col-md-2">\
+								<label for="DataVencimentoRecebiveis">Data Venc. Parc.</label>\
+								<div class="input-group DatePicker">\
+									<input type="text" class="form-control Date" id="DataVencimentoRecebiveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
+										   name="DataVencimentoRecebiveis'+i+'" value="">\
+									<span class="input-group-addon" disabled>\
+										<span class="glyphicon glyphicon-calendar"></span>\
+									</span>\
+								</div>\
+							</div>\
+							<div class="col-md-2">\
+								<label for="ValorPagoRecebiveis">Valor Pago:</label><br>\
+								<div class="input-group" id="txtHint">\
+									<span class="input-group-addon" id="basic-addon1">R$</span>\
+									<input type="text" class="form-control Valor" maxlength="10" placeholder="0,00"\
+										    id="ValorPagoRecebiveis'+i+'" name="ValorPagoRecebiveis'+i+'" value="">\
+								</div>\
+							</div>\
+							<div class="col-md-2">\
+								<label for="DataPagoRecebiveis">Data Pag.</label>\
+								<div class="input-group DatePicker">\
+									<input type="text" class="form-control Date" id="DataPagoRecebiveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
+										   name="DataPagoRecebiveis'+i+'" value="">\
+									<span class="input-group-addon" disabled>\
+										<span class="glyphicon glyphicon-calendar"></span>\
+									</span>\
+								</div>\
+							</div>\
+							<div class="col-md-2">\
+								<label for="QuitadoRecebiveis">Quitado????</label><br>\
+								<div class="form-group">\
+									<div class="btn-group" data-toggle="buttons">\
+										<label class="btn btn-warning active" name="radio_QuitadoRecebiveis'+i+'" id="radio_QuitadoRecebiveis'+i+'N">\
+										<input type="radio" name="QuitadoRecebiveis'+i+'" id="radiogeraldinamico"\
+											onchange="carregaQuitado(this.value,this.name,'+i+',1)" autocomplete="off" value="N" checked>Não\
+										</label>\
+										<label class="btn btn-default" name="radio_QuitadoRecebiveis'+i+'" id="radio_QuitadoRecebiveis'+i+'S">\
+										<input type="radio" name="QuitadoRecebiveis'+i+'" id="radiogeraldinamico"\
+											onchange="carregaQuitado(this.value,this.name,'+i+',1)" autocomplete="off" value="S">Sim\
+										</label>\
+									</div>\
+								</div>\
+							</div>\
+							<div class="col-md-1">\
+								<label><br></label><br>\
+								<a href="#" id="'+i+'" class="remove_field20 btn btn-danger">\
+									<span class="glyphicon glyphicon-trash"></span>\
+								</a>\
 							</div>\
 						</div>\
 					</div>\
@@ -2445,14 +2590,7 @@ $(document).ready(function () {
         //após remover o campo refaz o cálculo do orçamento e total restante
         calculaOrcamento();
     })
-	
-    //Remove os campos adicionados dinamicamente
-    $(".input_fields_parcelas").on("click",".remove_field20", function(e){ //user click on remove text
-        $("#20div"+$(this).attr("id")).remove();
-        //após remover o campo refaz o cálculo do orçamento e total restante
-        calculaOrcamento();
-    })	
-
+		
     //Remove os campos adicionados dinamicamente
     $(".input_fields_wrap2").on("click",".remove_field2", function(e){ //user click on remove text
         $("#2div"+$(this).attr("id")).remove();
@@ -2493,15 +2631,20 @@ $(document).ready(function () {
         $("#3div"+$(this).attr("id")).remove();
     })
 
+    //Remove as PARCELAS RECEBÍVEIS dinamicamente
+    $(".input_fields_parcelas").on("click",".remove_field20", function(e){ //user click on remove text
+        $("#20div"+$(this).attr("id")).remove();
+        //após remover o campo refaz o cálculo do orçamento e total restante
+        calculaOrcamento();
+    })
 	
-    //Remove aS PARCELAS RECEBÍVEIS  dinamicamente
+    //Remove as PARCELAS Pagáveis  dinamicamente
     $(".input_fields_wrap21").on("click",".remove_field21", function(e){ //user click on remove text
         $("#21div"+$(this).attr("id")).remove();
         //após remover o campo refaz o cálculo do orçamento e total restante
         //calculaOrcamento();
     })
-	
-	
+		
     /*
      * Função para capturar o valor escolhido no campo select (Serviço e Produto, por exemplo)
      */

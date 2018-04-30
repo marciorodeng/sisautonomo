@@ -571,11 +571,11 @@
 											<?php if ($metodo > 1) { ?>
 											<input type="hidden" name="idApp_ParcelasPagaveis<?php echo $i ?>" value="<?php echo $parcelaspag[$i]['idApp_ParcelasPagaveis']; ?>"/>
 											<?php } ?>
-											<div class="form-group">
+											<div class="form-group" id="21div<?php echo $i ?>">
 												<div class="panel panel-danger">
 													<div class="panel-heading">
 														<div class="row">
-															<div class="col-md-2">
+															<div class="col-md-1">
 																<label for="ParcelaPagaveis">Parcela:</label><br>
 																<input type="text" class="form-control" maxlength="6" readonly=""
 																	   name="ParcelaPagaveis<?php echo $i ?>" value="<?php echo $parcelaspag[$i]['ParcelaPagaveis'] ?>">
@@ -647,6 +647,12 @@
 																		?>
 																	</div>
 																</div>
+															</div>
+															<div class="col-md-1">
+																<label><br></label><br>
+																<button type="button" id="<?php echo $i ?>" class="remove_field21 btn btn-danger">
+																	<span class="glyphicon glyphicon-trash"></span>
+																</button>
 															</div>
 														</div>
 													</div>
