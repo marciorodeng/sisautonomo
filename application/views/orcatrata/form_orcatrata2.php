@@ -127,7 +127,7 @@
 																   name="DataVencimentoOrca" value="<?php echo $orcatrata['DataVencimentoOrca']; ?>">															
 														</div>
 													</div>
-													<div class="col-md-2">
+													<div class="col-md-3">
 														<label for="Modalidade">Modalidade</label><br>
 														<div class="form-group">
 															<div class="btn-block" data-toggle="buttons">
@@ -208,11 +208,11 @@
 										<?php } ?>
 
 
-										<div class="form-group">
+										<div class="form-group" id="20div<?php echo $i ?>">
 											<div class="panel panel-info">
 												<div class="panel-heading">
 													<div class="row">
-														<div class="col-md-2">
+														<div class="col-md-1">
 															<label for="ParcelaRecebiveis">Parcela:</label><br>
 															<input type="text" class="form-control" maxlength="6" readonly=""
 																   name="ParcelaRecebiveis<?php echo $i ?>" value="<?php echo $parcelasrec[$i]['ParcelaRecebiveis'] ?>">
@@ -284,7 +284,13 @@
 																	?>
 																</div>
 															</div>
-														</div>															
+														</div>
+														<div class="col-md-1">
+															<label><br></label><br>
+															<button type="button" id="<?php echo $i ?>" class="remove_field20 btn btn-danger">
+																<span class="glyphicon glyphicon-trash"></span>
+															</button>
+														</div>
 													</div>
 												</div>
 											</div>
@@ -293,6 +299,15 @@
 									<?php
 									}
 									?>
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-md-4">
+												<a class="btn btn-xs btn-warning" onclick="adicionaParcelas()">
+													<span class="glyphicon glyphicon-plus"></span> Adicionar Parcela
+												</a>
+											</div>
+										</div>
 									</div>
 
 								</div>
