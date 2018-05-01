@@ -90,7 +90,7 @@
 																	data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas"
 															   name="QtdParcelasDespesas" value="<?php echo $despesas['QtdParcelasDespesas'] ?>">
 													</div>														
-													<div class="col-md-2">
+													<div class="col-md-3">
 														<label for="ModalidadeDespesas">Modalidade</label><br>
 														<div class="form-group">
 															<div class="btn-block" data-toggle="buttons">

@@ -88,7 +88,7 @@
 														<input type="text" class="form-control Numero" id="QtdParcelasDespesas" maxlength="3" placeholder="0"
 															   name="QtdParcelasDespesas" value="<?php echo $despesas['QtdParcelasDespesas'] ?>">
 													</div>														
-													<div class="col-md-2">
+													<div class="col-md-3">
 														<label for="ModalidadeDespesas">Modalidade</label><br>
 														<div class="form-group">
 															<div class="btn-block" data-toggle="buttons">
