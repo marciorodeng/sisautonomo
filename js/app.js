@@ -111,6 +111,32 @@ function carregaQuitado2(value, name, i, cadastrar = 0) {
 
 }
 
+ /*Carrega Quitado, nas parcelas adicionadas, a Data do Dia do lançamento*/
+function carregaQuitadoAd(value, name, ad, cadastrar = 0) {
+
+    if (value == "S") {
+
+        if (!$("#ValorPagoRecebiveis"+ad).val() || $("#ValorPagoRecebiveis"+ad).val() == "0,00")
+            $("#ValorPagoRecebiveis"+ad).val($("#ValorParcelaRecebiveis"+ad).val())
+
+        if (!$("#DataPagoRecebiveis"+ad).val()) {
+            if (cadastrar == 1)
+                $("#DataPagoRecebiveis"+ad).val($("#DataVencimentoRecebiveis"+ad).val())
+            else
+                $("#DataPagoRecebiveis"+ad).val(currentDate.format('DD/MM/YYYY'))
+        }
+
+
+    }
+    else {
+
+        $("#ValorPagoRecebiveis"+ad).val("")
+        $("#DataPagoRecebiveis"+ad).val("")
+
+    }
+
+}
+
 /*
  * Função responsável por carregar valores nos respectivos campos do despesas
  * caso o botão Quitado seja alterado para SIM
@@ -285,7 +311,7 @@ function calculaParcelas() {
             futureMonth = futureMonth.add(i-1, 'd');
 
         $(".input_fields_parcelas").append('\
-            <div class="form-group" id="20div'+i+'">\
+            <div class="form-group">\
 				<div class="panel panel-info">\
 					<div class="panel-heading">\
 						<div class="row">\
@@ -344,12 +370,6 @@ function calculaParcelas() {
 										</label>\
 									</div>\
 								</div>\
-							</div>\
-							<div class="col-md-1">\
-								<label><br></label><br>\
-								<a href="#" id="'+i+'" class="remove_field20 btn btn-danger">\
-									<span class="glyphicon glyphicon-trash"></span>\
-								</a>\
 							</div>\
 						</div>\
 					</div>\
@@ -418,7 +438,7 @@ function calculaParcelasMensais() {
             futureMonth = futureMonth.add(i-1, 'd');
 
         $(".input_fields_parcelas").append('\
-            <div class="form-group" id="20div'+i+'">\
+            <div class="form-group">\
 				<div class="panel panel-info">\
 					<div class="panel-heading">\
 						<div class="row">\
@@ -478,12 +498,6 @@ function calculaParcelasMensais() {
 									</div>\
 								</div>\
 							</div>\
-							<div class="col-md-1">\
-								<label><br></label><br>\
-								<a href="#" id="'+i+'" class="remove_field20 btn btn-danger">\
-									<span class="glyphicon glyphicon-trash"></span>\
-								</a>\
-							</div>\
 						</div>\
 					</div>\
 				</div>\
@@ -542,7 +556,7 @@ function adicionaParcelas() {
 	//$(".input_fields_parcelas").empty();
 
     //gera os campos de parcelas
-    for (i=1; i<=parcelas; i++) {
+    for (ad=500; ad<=500; ad++) {
 		/*	
         //calcula as datas das próximas parcelas
         var futureMonth = moment(currentDate).add(i-1, 'M');
@@ -552,21 +566,21 @@ function adicionaParcelas() {
             futureMonth = futureMonth.add(i-1, 'd');
 		*/
         $(".input_fields_parcelas").append('\
-            <div class="form-group" id="20div'+i+'">\
+            <div class="form-group" id="21div'+ad+'">\
 				<div class="panel panel-info">\
 					<div class="panel-heading">\
 						<div class="row">\
 							<div class="col-md-1">\
 								<label for="ParcelaRecebiveis">Parcela:</label><br>\
 								<input type="text" class="form-control" maxlength="6"\
-									   name="ParcelaRecebiveis'+i+'" value="">\
+									   name="ParcelaRecebiveis'+ad+'" value="Ex.">\
 							</div>\
 							<div class="col-md-2">\
 								<label for="ValorParcelaRecebiveis">Valor Parcela:</label><br>\
 								<div class="input-group" id="txtHint">\
 									<span class="input-group-addon" id="basic-addon1">R$</span>\
 									<input type="text" class="form-control Valor" maxlength="10" placeholder="0,00"\
-										    id="ValorParcelaRecebiveis'+i+'" name="ValorParcelaRecebiveis'+i+'" value="">\
+										    id="ValorParcelaRecebiveis'+ad+'" name="ValorParcelaRecebiveis'+ad+'" value="">\
 								</div>\
 							</div>\
 							<div class="col-md-2">\
@@ -575,8 +589,8 @@ function adicionaParcelas() {
 									<span class="input-group-addon" disabled>\
 										<span class="glyphicon glyphicon-calendar"></span>\
 									</span>\
-									<input type="text" class="form-control Date" id="DataVencimentoRecebiveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
-										   name="DataVencimentoRecebiveis'+i+'" value="">\
+									<input type="text" class="form-control Date" id="DataVencimentoRecebiveis'+ad+'" maxlength="10" placeholder="DD/MM/AAAA"\
+										   name="DataVencimentoRecebiveis'+ad+'" value="">\
 								</div>\
 							</div>\
 							<div class="col-md-2">\
@@ -584,7 +598,7 @@ function adicionaParcelas() {
 								<div class="input-group" id="txtHint">\
 									<span class="input-group-addon" id="basic-addon1">R$</span>\
 									<input type="text" class="form-control Valor" maxlength="10" placeholder="0,00"\
-										    id="ValorPagoRecebiveis'+i+'" name="ValorPagoRecebiveis'+i+'" value="">\
+										    id="ValorPagoRecebiveis'+ad+'" name="ValorPagoRecebiveis'+ad+'" value="">\
 								</div>\
 							</div>\
 							<div class="col-md-2">\
@@ -593,28 +607,28 @@ function adicionaParcelas() {
 									<span class="input-group-addon" disabled>\
 										<span class="glyphicon glyphicon-calendar"></span>\
 									</span>\
-									<input type="text" class="form-control Date" id="DataPagoRecebiveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
-										   name="DataPagoRecebiveis'+i+'" value="">\
+									<input type="text" class="form-control Date" id="DataPagoRecebiveis'+ad+'" maxlength="10" placeholder="DD/MM/AAAA"\
+										   name="DataPagoRecebiveis'+ad+'" value="">\
 								</div>\
 							</div>\
 							<div class="col-md-2">\
 								<label for="QuitadoRecebiveis">Quitado????</label><br>\
 								<div class="form-group">\
 									<div class="btn-group" data-toggle="buttons">\
-										<label class="btn btn-warning active" name="radio_QuitadoRecebiveis'+i+'" id="radio_QuitadoRecebiveis'+i+'N">\
-										<input type="radio" name="QuitadoRecebiveis'+i+'" id="radiogeraldinamico"\
-											onchange="carregaQuitado(this.value,this.name,'+i+',1)" autocomplete="off" value="N" checked>Não\
+										<label class="btn btn-warning active" name="radio_QuitadoRecebiveis'+ad+'" id="radio_QuitadoRecebiveis'+ad+'N">\
+										<input type="radio" name="QuitadoRecebiveis'+ad+'" id="radiogeraldinamico"\
+											onchange="carregaQuitado(this.value,this.name,'+ad+',1)" autocomplete="off" value="N" checked>Não\
 										</label>\
-										<label class="btn btn-default" name="radio_QuitadoRecebiveis'+i+'" id="radio_QuitadoRecebiveis'+i+'S">\
-										<input type="radio" name="QuitadoRecebiveis'+i+'" id="radiogeraldinamico"\
-											onchange="carregaQuitado(this.value,this.name,'+i+',1)" autocomplete="off" value="S">Sim\
+										<label class="btn btn-default" name="radio_QuitadoRecebiveis'+ad+'" id="radio_QuitadoRecebiveis'+ad+'S">\
+										<input type="radio" name="QuitadoRecebiveis'+ad+'" id="radiogeraldinamico"\
+											onchange="carregaQuitado(this.value,this.name,'+ad+',1)" autocomplete="off" value="S">Sim\
 										</label>\
 									</div>\
 								</div>\
 							</div>\
 							<div class="col-md-1">\
 								<label><br></label><br>\
-								<a href="#" id="'+i+'" class="remove_field20 btn btn-danger">\
+								<a href="#" id="'+ad+'" class="remove_field21 btn btn-danger">\
 									<span class="glyphicon glyphicon-trash"></span>\
 								</a>\
 							</div>\
@@ -2582,6 +2596,127 @@ $(document).ready(function () {
         });
 
     });
+
+    //adiciona PARCELAS ADICIONAIS dinamicamente
+    var pc = $("#PRCount").val(); //initlal text box count
+    $(".add_field_button21").click(function(e){ //on add input button click
+        e.preventDefault();
+
+        pc++; //text box increment
+        $("#PRCount").val(pc);
+
+        $(".input_fields_wrap21").append('\
+            <div class="form-group" id="21div'+pc+'">\
+                <div class="panel panel-info">\
+                    <div class="panel-heading">\
+                        <div class="row">\
+                            <div class="col-md-1">\
+								<label for="ParcelaRecebiveis">Parcela:</label><br>\
+								<input type="text" class="form-control" maxlength="6"\
+									   name="ParcelaRecebiveis'+pc+'" value="Ex.">\
+							</div>\
+							<div class="col-md-2">\
+								<label for="ValorParcelaRecebiveis">Valor Parcela:</label><br>\
+								<div class="input-group" id="txtHint">\
+									<span class="input-group-addon" id="basic-addon1">R$</span>\
+									<input type="text" class="form-control Valor" maxlength="10" placeholder="0,00"\
+										    id="ValorParcelaRecebiveis'+pc+'" name="ValorParcelaRecebiveis'+pc+'" value="">\
+								</div>\
+							</div>\
+							<div class="col-md-2">\
+								<label for="DataVencimentoRecebiveis">Data Venc. Parc.</label>\
+								<div class="input-group DatePicker">\
+									<span class="input-group-addon" disabled>\
+										<span class="glyphicon glyphicon-calendar"></span>\
+									</span>\
+									<input type="text" class="form-control Date" id="DataVencimentoRecebiveis'+pc+'" maxlength="10" placeholder="DD/MM/AAAA"\
+										   name="DataVencimentoRecebiveis'+pc+'" value="">\
+								</div>\
+							</div>\
+							<div class="col-md-2">\
+								<label for="ValorPagoRecebiveis">Valor Pago:</label><br>\
+								<div class="input-group" id="txtHint">\
+									<span class="input-group-addon" id="basic-addon1">R$</span>\
+									<input type="text" class="form-control Valor" maxlength="10" placeholder="0,00"\
+										    id="ValorPagoRecebiveis'+pc+'" name="ValorPagoRecebiveis'+pc+'" value="">\
+								</div>\
+							</div>\
+							<div class="col-md-2">\
+								<label for="DataPagoRecebiveis">Data Pag.</label>\
+								<div class="input-group DatePicker">\
+									<span class="input-group-addon" disabled>\
+										<span class="glyphicon glyphicon-calendar"></span>\
+									</span>\
+									<input type="text" class="form-control Date" id="DataPagoRecebiveis'+pc+'" maxlength="10" placeholder="DD/MM/AAAA"\
+										   name="DataPagoRecebiveis'+pc+'" value="">\
+								</div>\
+							</div>\
+							<div class="col-md-2">\
+								<label for="QuitadoRecebiveis">Quitado????</label><br>\
+								<div class="form-group">\
+									<div class="btn-group" data-toggle="buttons">\
+										<label class="btn btn-warning active" name="radio_QuitadoRecebiveis'+pc+'" id="radio_QuitadoRecebiveis'+pc+'N">\
+										<input type="radio" name="QuitadoRecebiveis'+pc+'" id="radiogeraldinamico"\
+											onchange="carregaQuitado(this.value,this.name,'+pc+',1)" autocomplete="off" value="N" checked>Não\
+										</label>\
+										<label class="btn btn-default" name="radio_QuitadoRecebiveis'+pc+'" id="radio_QuitadoRecebiveis'+pc+'S">\
+										<input type="radio" name="QuitadoRecebiveis'+pc+'" id="radiogeraldinamico"\
+											onchange="carregaQuitado(this.value,this.name,'+pc+',1)" autocomplete="off" value="S">Sim\
+										</label>\
+									</div>\
+								</div>\
+							</div>\
+							<div class="col-md-1">\
+                                <label><br></label><br>\
+                                <a href="#" id="'+pc+'" class="remove_field21 btn btn-danger">\
+                                    <span class="glyphicon glyphicon-trash"></span>\
+                                </a>\
+                            </div>\
+						</div>\
+                    </div>\
+                </div>\
+            </div>'
+        ); //add input box
+
+        
+		//habilita o botão de calendário após a geração dos campos dinâmicos
+		$('.DatePicker').datetimepicker(dateTimePickerOptions);
+		
+		//get a reference to the select element
+        $select = $('#listadinamicab'+pc);
+
+        //request the JSON data and parse into the select element
+        $.ajax({
+            url: window.location.origin+ '/' + app + '/Getvalues_json.php?q=2',
+            dataType: 'JSON',
+            type: "GET",
+            success: function (data) {
+                //clear the current content of the select
+                $select.html('');
+                //iterate over the data and append a select option
+                $select.append('<option value="">-- Selecione uma opção --</option>');
+                $.each(data, function (key, val) {
+                    //alert(val.id);
+                    $select.append('<option value="' + val.id + '">' + val.name + '</option>');
+                })
+                $('.Chosen').chosen({
+                    disable_search_threshold: 10,
+                    multiple_text: "Selecione uma ou mais opções",
+                    single_text: "Selecione uma opção",
+                    no_results_text: "Nenhum resultado para",
+                    width: "100%"
+                });
+            },
+            error: function () {
+                //alert('erro listadinamicaB');
+                //if there is an error append a 'none available' option
+                $select.html('<option id="-1">ERRO</option>');
+            }
+
+        });
+
+    });
+
 	
     //Remove os campos adicionados dinamicamente
     $(".input_fields_wrap").on("click",".remove_field", function(e){ //user click on remove text
@@ -2630,15 +2765,15 @@ $(document).ready(function () {
         $("#3div"+$(this).attr("id")).remove();
     })
 
-    //Remove as PARCELAS RECEBÍVEIS dinamicamente
+    //Remove as PARCELAS  dinamicamente
     $(".input_fields_parcelas").on("click",".remove_field20", function(e){ //user click on remove text
         $("#20div"+$(this).attr("id")).remove();
         //após remover o campo refaz o cálculo do orçamento e total restante
         //calculaOrcamento();
     })
 	
-    //Remove as PARCELAS PAGÁVEIS  dinamicamente
-    $(".input_fields_parcelas2").on("click",".remove_field21", function(e){ //user click on remove text
+    //Remove as PARCELAS ADICIONADAS  dinamicamente
+    $(".input_fields_wrap21").on("click",".remove_field21", function(e){ //user click on remove text
         $("#21div"+$(this).attr("id")).remove();
         //após remover o campo refaz o cálculo do orçamento e total restante
         //calculaOrcamento();

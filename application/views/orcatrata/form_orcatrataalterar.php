@@ -66,23 +66,6 @@
 																   name="ValorRestanteOrca" value="<?php echo $orcatrata['ValorRestanteOrca'] ?>">
 														</div>
 													</div>														
-													<!--
-													<div class="col-md-2">
-														<label for="Modalidade">Modalidade:</label><br>
-														<div class="form-group" id="txtHint">
-															<?php
-															$options = array(
-																#''	=> '-- Selecione uma opção --',
-																'P'	=> 'PARCELADO',
-																'M'	=> 'MENSALIDADE',																																		
-															);
-															$cfg = 'data-placeholder="Selecione uma opção..." class="form-control" ' . $readonly . '
-																	id="Modalidade"';
-															echo form_dropdown('Modalidade', $options, $orcatrata['Modalidade'], $cfg);
-															?>
-														</div>
-													</div>
-													-->
 													<div class="col-md-2">
 														<label for="DataVencimentoOrca"> Dt Receita/ 1º Venc.</label>
 														<div class="input-group <?php echo $datepicker; ?>">
@@ -123,8 +106,7 @@
 													<div class="col-md-2">
 														<label for="QtdParcelasOrca">Qtd. Parc.:</label><br>
 														<input type="text" class="form-control Numero" id="QtdParcelasOrca" maxlength="3" placeholder="0"
-															   data-toggle="collapse" onkeyup="calculaParcelas()"
-																	data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas"
+															   
 															   name="QtdParcelasOrca" value="<?php echo $orcatrata['QtdParcelasOrca'] ?>">
 													</div>													
 													<div class="col-md-3">
@@ -139,7 +121,7 @@
 																		echo ''
 																		. '<label class="btn btn-warning active" name="radiobutton_Modalidade" id="radiobutton_Modalidade' .  $key . '">'
 																		. '<input type="radio" name="Modalidade" id="radiobuttondinamico" '
-																		. 'onchange="calculaParcelas()" '
+																		
 																		. 'autocomplete="off" value="' . $key . '" checked>' . $row
 																		. '</label>'
 																		;
@@ -147,7 +129,7 @@
 																		echo ''
 																		. '<label class="btn btn-default" name="radiobutton_Modalidade" id="radiobutton_Modalidade' .  $key . '">'
 																		. '<input type="radio" name="Modalidade" id="radiobuttondinamico" '
-																		. 'onchange="calculaParcelasMensais()" '
+																		
 																		. 'autocomplete="off" value="' . $key . '" >' . $row
 																		. '</label>'
 																		;
@@ -157,23 +139,6 @@
 															</div>
 														</div>
 													</div>
-													<!--
-													<br>
-													<div class="form-group">
-														<div class="col-md-1 text-left">
-															<button class="btn btn-danger" type="button" data-toggle="collapse" onclick="calculaParcelas()"
-																	data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas">
-																<span class="glyphicon glyphicon-menu-down"></span>Parcel
-															</button>
-														</div>
-														<div class="col-md-1 text-left">
-															<button class="btn btn-danger" type="button" data-toggle="collapse" onclick="calculaParcelasMensais()"
-																	data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas">
-																<span class="glyphicon glyphicon-menu-down"></span>Mensal
-															</button>
-														</div>														
-													</div>
-													-->
 												</div>
 											</div>
 										</div>
@@ -198,12 +163,12 @@
 								<div class="panel-body">
 									<!--App_parcelasRec-->
 									
-									<input type="hidden" name="SCount" id="SCount" value="<?php echo $count['SCount']; ?>"/>
-									
-									<div class="input_fields_parcelas">
+									<input type="hidden" name="PRCount" id="PRCount" value="<?php echo $count['PRCount']; ?>"/>
+
+									<div class="input_fields_wrap21">
 
 									<?php
-									for ($i=1; $i <= $orcatrata['QtdParcelasOrca']; $i++) {
+									for ($i=1; $i <= $count['PRCount']; $i++) {
 									?>
 
 										<?php if ($metodo > 1) { ?>
@@ -211,7 +176,7 @@
 										<?php } ?>
 
 
-										<div class="form-group">
+										<div class="form-group" id="21div<?php echo $i ?>">
 											<div class="panel panel-info">
 												<div class="panel-heading">
 													<div class="row">
@@ -290,7 +255,7 @@
 														</div>
 														<div class="col-md-1">
 															<label><br></label><br>
-															<button type="button" id="<?php echo $i ?>" class="remove_field20 btn btn-danger">
+															<button type="button" id="<?php echo $i ?>" class="remove_field21 btn btn-danger">
 																<span class="glyphicon glyphicon-trash"></span>
 															</button>
 														</div>
@@ -303,6 +268,17 @@
 									}
 									?>
 									</div>
+
+									<div class="form-group">
+										<div class="row">
+											<div class="col-md-4">
+												<a class="add_field_button21 btn btn-danger">
+													<span class="glyphicon glyphicon-plus"></span> Ad. Parcelas Extras
+												</a>
+											</div>
+										</div>
+									</div>
+									
 								</div>
 							</div>
 						</div>

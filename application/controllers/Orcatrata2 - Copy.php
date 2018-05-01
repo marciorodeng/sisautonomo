@@ -418,7 +418,6 @@ class Orcatrata2 extends CI_Controller {
         (!$this->input->post('SCount')) ? $data['count']['SCount'] = 0 : $data['count']['SCount'] = $this->input->post('SCount');
         (!$this->input->post('PCount')) ? $data['count']['PCount'] = 0 : $data['count']['PCount'] = $this->input->post('PCount');
         (!$this->input->post('PMCount')) ? $data['count']['PMCount'] = 0 : $data['count']['PMCount'] = $this->input->post('PMCount');
-		(!$this->input->post('PRCount')) ? $data['count']['PRCount'] = 0 : $data['count']['PRCount'] = $this->input->post('PRCount');
 		
 		#(!$data['orcatrata']['TipoRD']) ? $data['orcatrata']['TipoRD'] = 'R' : FALSE;
 		
@@ -466,33 +465,31 @@ class Orcatrata2 extends CI_Controller {
                 $data['procedimento'][$j]['DataProcedimento'] = $this->input->post('DataProcedimento' . $i);
                 $data['procedimento'][$j]['Profissional'] = $this->input->post('Profissional' . $i);
                 $data['procedimento'][$j]['Procedimento'] = $this->input->post('Procedimento' . $i);
-				$data['procedimento'][$j]['ConcluidoProcedimento'] = $this->input->post('ConcluidoProcedimento' . $i);				
+				$data['procedimento'][$j]['ConcluidoProcedimento'] = $this->input->post('ConcluidoProcedimento' . $i);
+				
                 $j++;
             }
 
         }
         $data['count']['PMCount'] = $j - 1;
 
-        $j = 1;
-        for ($i = 1; $i <= $data['count']['PRCount']; $i++) {
+        if ($data['orcatrata']['QtdParcelasOrca'] > 0) {
 
-            if ($this->input->post('ParcelaRecebiveis' . $i) || $this->input->post('ValorParcelaRecebiveis' . $i) || 
-					$this->input->post('DataVencimentoRecebiveis' . $i) || $this->input->post('ValorPagoRecebiveis' . $i) || 
-					$this->input->post('DataPagoRecebiveis' . $i) || $this->input->post('QuitadoRecebiveis' . $i)) {
-                $data['parcelasrec'][$j]['idApp_ParcelasRecebiveis'] = $this->input->post('idApp_ParcelasRecebiveis' . $i);
-                $data['parcelasrec'][$j]['ParcelaRecebiveis'] = $this->input->post('ParcelaRecebiveis' . $i);
-                $data['parcelasrec'][$j]['ValorParcelaRecebiveis'] = $this->input->post('ValorParcelaRecebiveis' . $i);
-                $data['parcelasrec'][$j]['DataVencimentoRecebiveis'] = $this->input->post('DataVencimentoRecebiveis' . $i);
-                $data['parcelasrec'][$j]['ValorPagoRecebiveis'] = $this->input->post('ValorPagoRecebiveis' . $i);
-                $data['parcelasrec'][$j]['DataPagoRecebiveis'] = $this->input->post('DataPagoRecebiveis' . $i);
-                $data['parcelasrec'][$j]['QuitadoRecebiveis'] = $this->input->post('QuitadoRecebiveis' . $i);
-				$j++;
+            for ($i = 1; $i <= $data['orcatrata']['QtdParcelasOrca']; $i++) {
+
+                $data['parcelasrec'][$i]['idApp_ParcelasRecebiveis'] = $this->input->post('idApp_ParcelasRecebiveis' . $i);
+                $data['parcelasrec'][$i]['ParcelaRecebiveis'] = $this->input->post('ParcelaRecebiveis' . $i);
+                $data['parcelasrec'][$i]['ValorParcelaRecebiveis'] = $this->input->post('ValorParcelaRecebiveis' . $i);
+                $data['parcelasrec'][$i]['DataVencimentoRecebiveis'] = $this->input->post('DataVencimentoRecebiveis' . $i);
+                $data['parcelasrec'][$i]['ValorPagoRecebiveis'] = $this->input->post('ValorPagoRecebiveis' . $i);
+                $data['parcelasrec'][$i]['DataPagoRecebiveis'] = $this->input->post('DataPagoRecebiveis' . $i);
+                $data['parcelasrec'][$i]['QuitadoRecebiveis'] = $this->input->post('QuitadoRecebiveis' . $i);
+
             }
+
         }
-		$data['count']['PRCount'] = $j - 1;
-        
-		
-		//Fim do trecho de código que dá pra melhorar
+
+        //Fim do trecho de código que dá pra melhorar
 
         if ($id) {
             #### App_OrcaTrata ####
@@ -542,11 +539,10 @@ class Orcatrata2 extends CI_Controller {
             $data['parcelasrec'] = $this->Orcatrata2_model->get_parcelasrec($id);
             if (count($data['parcelasrec']) > 0) {
                 $data['parcelasrec'] = array_combine(range(1, count($data['parcelasrec'])), array_values($data['parcelasrec']));
-				$data['count']['PRCount'] = count($data['parcelasrec']);
-				
+
                 if (isset($data['parcelasrec'])) {
 
-                    for($j=1; $j <= $data['count']['PRCount']; $j++) {
+                    for($j=1; $j <= $data['orcatrata']['QtdParcelasOrca']; $j++) {
                         $data['parcelasrec'][$j]['DataVencimentoRecebiveis'] = $this->basico->mascara_data($data['parcelasrec'][$j]['DataVencimentoRecebiveis'], 'barras');
                         $data['parcelasrec'][$j]['DataPagoRecebiveis'] = $this->basico->mascara_data($data['parcelasrec'][$j]['DataPagoRecebiveis'], 'barras');
                     }
@@ -610,13 +606,12 @@ class Orcatrata2 extends CI_Controller {
             $data['orcamentoin'] = 'in';
         else
             $data['orcamentoin'] = '';
-/*
-        //if ($data['orcatrata']['FormaPagamento'] || $data['orcatrata']['QtdParcelasOrca'] || $data['orcatrata']['DataVencimentoOrca'])
-		if ($data['count']['PRCount'] > 0)	
+
+        if ($data['orcatrata']['FormaPagamento'] || $data['orcatrata']['QtdParcelasOrca'] || $data['orcatrata']['DataVencimentoOrca'])
             $data['parcelasin'] = 'in';
         else
             $data['parcelasin'] = '';
-*/
+
         //if (isset($data['procedimento']) && ($data['procedimento'][0]['DataProcedimento'] || $data['procedimento'][0]['Profissional']))
         if ($data['count']['PMCount'] > 0)
             $data['tratamentosin'] = 'in';
