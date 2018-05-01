@@ -38,7 +38,7 @@ class Despesas extends CI_Controller {
         $this->load->view('basico/footer');
     }
 
-    public function cadastrar($idApp_Cliente = NULL) {
+    public function cadastrar() {
 
         if ($this->input->get('m') == 1)
             $data['msg'] = $this->basico->msg('<strong>Informações salvas com sucesso</strong>', 'sucesso', TRUE, TRUE, TRUE);
@@ -391,7 +391,8 @@ class Despesas extends CI_Controller {
 
         (!$this->input->post('SCount')) ? $data['count']['SCount'] = 0 : $data['count']['SCount'] = $this->input->post('SCount');
         (!$this->input->post('PCount')) ? $data['count']['PCount'] = 0 : $data['count']['PCount'] = $this->input->post('PCount');
-
+		(!$this->input->post('PRCount')) ? $data['count']['PRCount'] = 0 : $data['count']['PRCount'] = $this->input->post('PRCount');
+		
 		#(!$data['despesas']['TipoProduto']) ? $data['despesas']['TipoProduto'] = 'D' : FALSE;
 		
         $j = 1;
@@ -429,23 +430,26 @@ class Despesas extends CI_Controller {
         }
         $data['count']['PCount'] = $j - 1;
       
+        $j = 1;
+        for ($i = 1; $i <= $data['count']['PRCount']; $i++) {
 
-        if ($data['despesas']['QtdParcelasDespesas'] > 0) {
-
-            for ($i = 1; $i <= $data['despesas']['QtdParcelasDespesas']; $i++) {
-
-                $data['parcelaspag'][$i]['idApp_ParcelasPagaveis'] = $this->input->post('idApp_ParcelasPagaveis' . $i);
-                $data['parcelaspag'][$i]['ParcelaPagaveis'] = $this->input->post('ParcelaPagaveis' . $i);
-                $data['parcelaspag'][$i]['ValorParcelaPagaveis'] = $this->input->post('ValorParcelaPagaveis' . $i);
-                $data['parcelaspag'][$i]['DataVencimentoPagaveis'] = $this->input->post('DataVencimentoPagaveis' . $i);
-                $data['parcelaspag'][$i]['ValorPagoPagaveis'] = $this->input->post('ValorPagoPagaveis' . $i);
-                $data['parcelaspag'][$i]['DataPagoPagaveis'] = $this->input->post('DataPagoPagaveis' . $i);
-                $data['parcelaspag'][$i]['QuitadoPagaveis'] = $this->input->post('QuitadoPagaveis' . $i);
-
+            if ($this->input->post('ParcelaPagaveis' . $i) || $this->input->post('ValorParcelaPagaveis' . $i) || 
+					$this->input->post('DataVencimentoPagaveis' . $i) || $this->input->post('ValorPagoPagaveis' . $i) || 
+					$this->input->post('DataPagoPagaveis' . $i) || $this->input->post('QuitadoPagaveis' . $i)) {
+                $data['parcelaspag'][$j]['idApp_ParcelasPagaveis'] = $this->input->post('idApp_ParcelasPagaveis' . $i);
+                $data['parcelaspag'][$j]['ParcelaPagaveis'] = $this->input->post('ParcelaPagaveis' . $i);
+                $data['parcelaspag'][$j]['ValorParcelaPagaveis'] = $this->input->post('ValorParcelaPagaveis' . $i);
+                $data['parcelaspag'][$j]['DataVencimentoPagaveis'] = $this->input->post('DataVencimentoPagaveis' . $i);
+                $data['parcelaspag'][$j]['ValorPagoPagaveis'] = $this->input->post('ValorPagoPagaveis' . $i);
+                $data['parcelaspag'][$j]['DataPagoPagaveis'] = $this->input->post('DataPagoPagaveis' . $i);
+                $data['parcelaspag'][$j]['QuitadoPagaveis'] = $this->input->post('QuitadoPagaveis' . $i);
+				$j++;
+				
             }
 
         }
-
+		$data['count']['PRCount'] = $j - 1;
+		
         //Fim do trecho de código que dá pra melhorar
 
         if ($id) {
@@ -498,10 +502,11 @@ class Despesas extends CI_Controller {
             $data['parcelaspag'] = $this->Despesas_model->get_parcelaspag($id);
             if (count($data['parcelaspag']) > 0) {
                 $data['parcelaspag'] = array_combine(range(1, count($data['parcelaspag'])), array_values($data['parcelaspag']));
-
+				$data['count']['PRCount'] = count($data['parcelaspag']);
+				
                 if (isset($data['parcelaspag'])) {
 
-                    for($j=1; $j <= $data['despesas']['QtdParcelasDespesas']; $j++) {
+                    for($j=1; $j <= $data['count']['PRCount']; $j++) {
                         $data['parcelaspag'][$j]['DataVencimentoPagaveis'] = $this->basico->mascara_data($data['parcelaspag'][$j]['DataVencimentoPagaveis'], 'barras');
                         $data['parcelaspag'][$j]['DataPagoPagaveis'] = $this->basico->mascara_data($data['parcelaspag'][$j]['DataPagoPagaveis'], 'barras');
                     }
@@ -555,14 +560,12 @@ class Despesas extends CI_Controller {
             $data['orcamentoin'] = 'in';
         else
             $data['orcamentoin'] = '';
-
+/*
         if ($data['despesas']['FormaPagamentoDespesas'] || $data['despesas']['QtdParcelasDespesas'] || $data['despesas']['DataVencimentoDespesas'])
             $data['parcelasin'] = 'in';
         else
             $data['parcelasin'] = '';
-
-
-
+*/
         #Ver uma solução melhor para este campo
         (!$data['despesas']['AprovadoDespesas']) ? $data['despesas']['AprovadoDespesas'] = 'S' : FALSE;
 /*
@@ -609,7 +612,7 @@ class Despesas extends CI_Controller {
 
         #run form validation
         if ($this->form_validation->run() === FALSE) {
-            $this->load->view('despesas/form_despesas', $data);
+            $this->load->view('despesas/form_despesasalterar', $data);
         } else {
 
             ////////////////////////////////Preparar Dados para Inserção Ex. Datas "mysql" //////////////////////////////////////////////
@@ -779,7 +782,7 @@ class Despesas extends CI_Controller {
                 $msg = "<strong>Erro no Banco de dados. Entre em contato com o administrador deste sistema.</strong>";
 
                 $this->basico->erro($msg);
-                $this->load->view('despesas/form_despesas', $data);
+                $this->load->view('despesas/form_despesasalterar', $data);
             } else {
 
                 //$data['auditoriaitem'] = $this->basico->set_log($data['anterior'], $data['query'], $data['campos'], $data['idApp_Despesas'], FALSE);

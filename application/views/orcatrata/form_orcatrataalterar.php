@@ -161,7 +161,6 @@
 							<div id="collapse2" class="panel-collapse" role="tabpanel" aria-labelledby="heading2" aria-expanded="false">
 								
 								<div class="panel-body">
-									<!--App_parcelasRec-->
 									
 									<input type="hidden" name="PRCount" id="PRCount" value="<?php echo $count['PRCount']; ?>"/>
 
@@ -174,7 +173,6 @@
 										<?php if ($metodo > 1) { ?>
 										<input type="hidden" name="idApp_ParcelasRecebiveis<?php echo $i ?>" value="<?php echo $parcelasrec[$i]['idApp_ParcelasRecebiveis']; ?>"/>
 										<?php } ?>
-
 
 										<div class="form-group" id="21div<?php echo $i ?>">
 											<div class="panel panel-info">

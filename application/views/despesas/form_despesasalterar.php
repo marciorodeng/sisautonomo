@@ -14,7 +14,7 @@
 				<div class="panel-body">
 
 					<?php echo form_open_multipart($form_open_path); ?>
-							
+
 					<div class="panel-group" id="accordion4" role="tablist" aria-multiselectable="true">
 						<div class="panel panel-primary">
 							<div class="panel-heading collapsed" role="tab" id="heading4" data-toggle="collapse" data-parent="#accordion4" data-target="#collapse4" aria-expanded="false">								<h4 class="panel-title">
@@ -86,8 +86,6 @@
 													<div class="col-md-2">
 														<label for="QtdParcelasDespesas">Qtd.Prc</label><br>
 														<input type="text" class="form-control Numero" id="QtdParcelasDespesas" maxlength="3" placeholder="0"
-															   data-toggle="collapse" onkeyup="calculaParcelasPagaveis()"
-																	data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas"
 															   name="QtdParcelasDespesas" value="<?php echo $despesas['QtdParcelasDespesas'] ?>">
 													</div>														
 													<div class="col-md-2">
@@ -102,7 +100,7 @@
 																		echo ''
 																		. '<label class="btn btn-warning active" name="radiobutton_ModalidadeDespesas" id="radiobutton_ModalidadeDespesas' .  $key . '">'
 																		. '<input type="radio" name="ModalidadeDespesas" id="radiobuttondinamico" '
-																		. 'onchange="calculaParcelasPagaveis()" '
+
 																		. 'autocomplete="off" value="' . $key . '" checked>' . $row
 																		. '</label>'
 																		;
@@ -110,7 +108,7 @@
 																		echo ''
 																		. '<label class="btn btn-default" name="radiobutton_ModalidadeDespesas" id="radiobutton_ModalidadeDespesas' .  $key . '">'
 																		. '<input type="radio" name="ModalidadeDespesas" id="radiobuttondinamico" '
-																		. 'onchange="calculaParcelasPagaveisMensais()" '
+
 																		. 'autocomplete="off" value="' . $key . '" >' . $row
 																		. '</label>'
 																		;
@@ -141,24 +139,27 @@
 							</div>
 							<div id="collapse2" class="panel-collapse" role="tabpanel" aria-labelledby="heading2" aria-expanded="false">									
 								
-								<!--App_parcelasRec-->
 								<div class="panel-body">
-									<div class="input_fields_parcelas2">
+									
+									<input type="hidden" name="PRCount" id="PRCount" value="<?php echo $count['PRCount']; ?>"/>
+
+									<div class="input_fields_wrap22">
 
 									<?php
-									for ($i=1; $i <= $despesas['QtdParcelasDespesas']; $i++) {
+									for ($i=1; $i <= $count['PRCount']; $i++) {
 									?>
 
 										<?php if ($metodo > 1) { ?>
 										<input type="hidden" name="idApp_ParcelasPagaveis<?php echo $i ?>" value="<?php echo $parcelaspag[$i]['idApp_ParcelasPagaveis']; ?>"/>
 										<?php } ?>
-										<div class="form-group">
+										
+										<div class="form-group" id="22div<?php echo $i ?>">
 											<div class="panel panel-danger">
 												<div class="panel-heading">
 													<div class="row">
 														<div class="col-md-1">
 															<label for="ParcelaPagaveis">Parcela:</label><br>
-															<input type="text" class="form-control" maxlength="6" readonly=""
+															<input type="text" class="form-control" maxlength="6"
 																   name="ParcelaPagaveis<?php echo $i ?>" value="<?php echo $parcelaspag[$i]['ParcelaPagaveis'] ?>">
 														</div>
 														<div class="col-md-2">
@@ -229,6 +230,12 @@
 																</div>
 															</div>
 														</div>
+														<div class="col-md-1">
+															<label><br></label><br>
+															<button type="button" id="<?php echo $i ?>" class="remove_field22 btn btn-danger">
+																<span class="glyphicon glyphicon-trash"></span>
+															</button>
+														</div>
 													</div>
 												</div>
 											</div>	
@@ -237,11 +244,22 @@
 									}
 									?>
 									</div>
+									
+									<div class="form-group">
+										<div class="row">
+											<div class="col-md-4">
+												<a class="add_field_button22 btn btn-danger">
+													<span class="glyphicon glyphicon-plus"></span> Ad. Parcelas Extras
+												</a>
+											</div>
+										</div>
+									</div>
+									
 								</div>
 							</div>
 						</div>
 					</div>
-											
+										
 					<div class="panel-group" id="accordion8" role="tablist" aria-multiselectable="true">
 						<div class="panel panel-primary">
 							<div class="panel-heading collapsed" role="tab" id="heading8" data-toggle="collapse" data-parent="#accordion8" data-target="#collapse8" aria-expanded="false">								<h4 class="panel-title">
@@ -300,11 +318,12 @@
 
 					<div class="form-group">
 						<div class="row">
+							<!--<input type="hidden" name="idApp_Cliente" value="<?php echo $_SESSION['Cliente']['idApp_Cliente']; ?>">-->
 							<input type="hidden" name="idApp_Despesas" value="<?php echo $despesas['idApp_Despesas']; ?>">
-							
 							<?php if ($metodo > 1) { ?>
+							<!--<input type="hidden" name="idApp_Procedimento" value="<?php echo $procedimento['idApp_Procedimento']; ?>">
+							<input type="hidden" name="idApp_ParcelasRec" value="<?php echo $parcelaspag['idApp_ParcelasRec']; ?>">-->
 							<?php } ?>
-							
 							<?php if ($metodo == 2) { ?>
 
 								<div class="col-md-6">
