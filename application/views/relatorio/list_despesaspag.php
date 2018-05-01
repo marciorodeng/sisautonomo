@@ -67,8 +67,8 @@
 						<th class="active">Mod.</th>
 						<th class="active">Tipo</th>-->
 						<th class="active">Despesa</th>
-						<th class="active">Quit.</th>						
-                        <th class="active">Par.</th>
+						<!--<th class="active">Quit.</th>-->						
+                        <th class="active">Parcelas</th>
                         <th class="active">Venc.</th>
                         <th class="active">Valor</th>
                         <!--<th class="active">Data do Pagam.</th>
@@ -89,7 +89,7 @@
 							#echo '<td>' . $row['ModalidadeDespesas'] . '</td>';
 							#echo '<td>' . $row['TipoDespesa'] . '</td>';
 							echo '<td>' . $row['Despesa'] . '</td>';
-							echo '<td>' . $row['QuitadoPagaveis'] . '</td>';							
+							#echo '<td>' . $row['QuitadoPagaveis'] . '</td>';							
                             echo '<td>' . $row['ParcelaPagaveis'] . '</td>';
                             echo '<td>' . $row['DataVencimentoPagaveis'] . '</td>';
                             echo '<td class="text-left">R$ ' . $row['ValorParcelaPagaveis'] . '</td>';

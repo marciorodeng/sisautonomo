@@ -291,7 +291,7 @@ function calculaParcelas() {
 						<div class="row">\
 							<div class="col-md-1">\
 								<label for="ParcelaRecebiveis">Parcela:</label><br>\
-								<input type="text" class="form-control" maxlength="6" readonly=""\
+								<input type="text" class="form-control" maxlength="6"\
 									   name="ParcelaRecebiveis'+i+'" value="'+i+'/'+parcelas+'">\
 							</div>\
 							<div class="col-md-2">\
@@ -305,11 +305,11 @@ function calculaParcelas() {
 							<div class="col-md-2">\
 								<label for="DataVencimentoRecebiveis">Data Venc. Parc.</label>\
 								<div class="input-group DatePicker">\
-									<input type="text" class="form-control Date" id="DataVencimentoRecebiveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
-										   name="DataVencimentoRecebiveis'+i+'" value="'+futureMonth.format('DD/MM/YYYY')+'">\
 									<span class="input-group-addon" disabled>\
 										<span class="glyphicon glyphicon-calendar"></span>\
 									</span>\
+									<input type="text" class="form-control Date" id="DataVencimentoRecebiveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
+										   name="DataVencimentoRecebiveis'+i+'" value="'+futureMonth.format('DD/MM/YYYY')+'">\
 								</div>\
 							</div>\
 							<div class="col-md-2">\
@@ -323,11 +323,11 @@ function calculaParcelas() {
 							<div class="col-md-2">\
 								<label for="DataPagoRecebiveis">Data Pag.</label>\
 								<div class="input-group DatePicker">\
-									<input type="text" class="form-control Date" id="DataPagoRecebiveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
-										   name="DataPagoRecebiveis'+i+'" value="">\
 									<span class="input-group-addon" disabled>\
 										<span class="glyphicon glyphicon-calendar"></span>\
 									</span>\
+									<input type="text" class="form-control Date" id="DataPagoRecebiveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
+										   name="DataPagoRecebiveis'+i+'" value="">\
 								</div>\
 							</div>\
 							<div class="col-md-2">\
@@ -424,7 +424,7 @@ function calculaParcelasMensais() {
 						<div class="row">\
 							<div class="col-md-1">\
 								<label for="ParcelaRecebiveis">Parcela:</label><br>\
-								<input type="text" class="form-control" maxlength="6" readonly=""\
+								<input type="text" class="form-control" maxlength="6"\
 									   name="ParcelaRecebiveis'+i+'" value="'+i+'/'+parcelas+'">\
 							</div>\
 							<div class="col-md-2">\
@@ -438,11 +438,11 @@ function calculaParcelasMensais() {
 							<div class="col-md-2">\
 								<label for="DataVencimentoRecebiveis">Data Venc. Parc.</label>\
 								<div class="input-group DatePicker">\
-									<input type="text" class="form-control Date" id="DataVencimentoRecebiveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
-										   name="DataVencimentoRecebiveis'+i+'" value="'+futureMonth.format('DD/MM/YYYY')+'">\
 									<span class="input-group-addon" disabled>\
 										<span class="glyphicon glyphicon-calendar"></span>\
 									</span>\
+									<input type="text" class="form-control Date" id="DataVencimentoRecebiveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
+										   name="DataVencimentoRecebiveis'+i+'" value="'+futureMonth.format('DD/MM/YYYY')+'">\
 								</div>\
 							</div>\
 							<div class="col-md-2">\
@@ -456,11 +456,11 @@ function calculaParcelasMensais() {
 							<div class="col-md-2">\
 								<label for="DataPagoRecebiveis">Data Pag.</label>\
 								<div class="input-group DatePicker">\
-									<input type="text" class="form-control Date" id="DataPagoRecebiveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
-										   name="DataPagoRecebiveis'+i+'" value="">\
 									<span class="input-group-addon" disabled>\
 										<span class="glyphicon glyphicon-calendar"></span>\
 									</span>\
+									<input type="text" class="form-control Date" id="DataPagoRecebiveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
+										   name="DataPagoRecebiveis'+i+'" value="">\
 								</div>\
 							</div>\
 							<div class="col-md-2">\
@@ -514,6 +514,7 @@ function calculaParcelasMensais() {
  * Função responsável por ADICIONAR PARCELAS EXTRAS do orçamento em função do dados
  * informados no formulário (valor restante / parcelas e datas do vencimento)
  */
+
 function adicionaParcelas() {
 
     //captura os valores dos campos indicados
@@ -571,11 +572,11 @@ function adicionaParcelas() {
 							<div class="col-md-2">\
 								<label for="DataVencimentoRecebiveis">Data Venc. Parc.</label>\
 								<div class="input-group DatePicker">\
-									<input type="text" class="form-control Date" id="DataVencimentoRecebiveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
-										   name="DataVencimentoRecebiveis'+i+'" value="">\
 									<span class="input-group-addon" disabled>\
 										<span class="glyphicon glyphicon-calendar"></span>\
 									</span>\
+									<input type="text" class="form-control Date" id="DataVencimentoRecebiveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
+										   name="DataVencimentoRecebiveis'+i+'" value="">\
 								</div>\
 							</div>\
 							<div class="col-md-2">\
@@ -589,11 +590,11 @@ function adicionaParcelas() {
 							<div class="col-md-2">\
 								<label for="DataPagoRecebiveis">Data Pag.</label>\
 								<div class="input-group DatePicker">\
-									<input type="text" class="form-control Date" id="DataPagoRecebiveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
-										   name="DataPagoRecebiveis'+i+'" value="">\
 									<span class="input-group-addon" disabled>\
 										<span class="glyphicon glyphicon-calendar"></span>\
 									</span>\
+									<input type="text" class="form-control Date" id="DataPagoRecebiveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
+										   name="DataPagoRecebiveis'+i+'" value="">\
 								</div>\
 							</div>\
 							<div class="col-md-2">\
@@ -643,7 +644,6 @@ function adicionaParcelas() {
     });
 }
  
- 
 /*
  * Função responsável por calcular as parcelas PAGAVEIS do orçamento em função do dados
  * informados no formulário (valor restante / parcelas e datas do vencimento)
@@ -671,7 +671,7 @@ function calculaParcelasPagaveis() {
 
     //caso as parcelas já tenham sido geradas elas serão excluídas para que
     //sejam geradas novas parcelas
-    $(".input_fields_parcelas").empty();
+    $(".input_fields_parcelas2").empty();
 
     //gera os campos de parcelas
     for (i=1; i<=parcelas; i++) {
@@ -683,7 +683,7 @@ function calculaParcelasPagaveis() {
         if(currentDate.date() != futureMonth.date() && futureMonth.isSame(futureMonthEnd.format('YYYY-MM-DD')))
             futureMonth = futureMonth.add(i-1, 'd');
 
-        $(".input_fields_parcelas").append('\
+        $(".input_fields_parcelas2").append('\
 			<div class="form-group" id="21div'+i+'">\
 				<div class="panel panel-danger">\
 					<div class="panel-heading">\
@@ -704,11 +704,11 @@ function calculaParcelasPagaveis() {
 							<div class="col-md-2">\
 								<label for="DataVencimentoPagaveis">Data Venc. Parc.</label>\
 								<div class="input-group DatePicker">\
-									<input type="text" class="form-control Date" id="DataVencimentoPagaveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
-										   name="DataVencimentoPagaveis'+i+'" value="'+futureMonth.format('DD/MM/YYYY')+'">\
 									<span class="input-group-addon" disabled>\
 										<span class="glyphicon glyphicon-calendar"></span>\
 									</span>\
+									<input type="text" class="form-control Date" id="DataVencimentoPagaveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
+										   name="DataVencimentoPagaveis'+i+'" value="'+futureMonth.format('DD/MM/YYYY')+'">\
 								</div>\
 							</div>\
 							<div class="col-md-2">\
@@ -722,11 +722,11 @@ function calculaParcelasPagaveis() {
 							<div class="col-md-2">\
 								<label for="DataPagoPagaveis">Data Pag.</label>\
 								<div class="input-group DatePicker">\
-									<input type="text" class="form-control Date" id="DataPagoPagaveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
-										   name="DataPagoPagaveis'+i+'" value="">\
 									<span class="input-group-addon" disabled>\
 										<span class="glyphicon glyphicon-calendar"></span>\
 									</span>\
+									<input type="text" class="form-control Date" id="DataPagoPagaveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
+										   name="DataPagoPagaveis'+i+'" value="">\
 								</div>\
 							</div>\
 							<div class="col-md-2">\
@@ -803,7 +803,7 @@ function calculaParcelasPagaveisMensais() {
 
     //caso as parcelas já tenham sido geradas elas serão excluídas para que
     //sejam geradas novas parcelas
-    $(".input_fields_parcelas").empty();
+    $(".input_fields_parcelas2").empty();
 
     //gera os campos de parcelas
     for (i=1; i<=parcelas; i++) {
@@ -815,7 +815,7 @@ function calculaParcelasPagaveisMensais() {
         if(currentDate.date() != futureMonth.date() && futureMonth.isSame(futureMonthEnd.format('YYYY-MM-DD')))
             futureMonth = futureMonth.add(i-1, 'd');
 
-        $(".input_fields_parcelas").append('\
+        $(".input_fields_parcelas2").append('\
 			<div class="form-group" id="21div'+i+'">\
 				<div class="panel panel-danger">\
 					<div class="panel-heading">\
@@ -836,11 +836,11 @@ function calculaParcelasPagaveisMensais() {
 							<div class="col-md-2">\
 								<label for="DataVencimentoPagaveis">Data Venc. Parc.</label>\
 								<div class="input-group DatePicker">\
-									<input type="text" class="form-control Date" id="DataVencimentoPagaveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
-										   name="DataVencimentoPagaveis'+i+'" value="'+futureMonth.format('DD/MM/YYYY')+'">\
 									<span class="input-group-addon" disabled>\
 										<span class="glyphicon glyphicon-calendar"></span>\
 									</span>\
+									<input type="text" class="form-control Date" id="DataVencimentoPagaveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
+										   name="DataVencimentoPagaveis'+i+'" value="'+futureMonth.format('DD/MM/YYYY')+'">\
 								</div>\
 							</div>\
 							<div class="col-md-2">\
@@ -854,11 +854,11 @@ function calculaParcelasPagaveisMensais() {
 							<div class="col-md-2">\
 								<label for="DataPagoPagaveis">Data Pag.</label>\
 								<div class="input-group DatePicker">\
-									<input type="text" class="form-control Date" id="DataPagoPagaveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
-										   name="DataPagoPagaveis'+i+'" value="">\
 									<span class="input-group-addon" disabled>\
 										<span class="glyphicon glyphicon-calendar"></span>\
 									</span>\
+									<input type="text" class="form-control Date" id="DataPagoPagaveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
+										   name="DataPagoPagaveis'+i+'" value="">\
 								</div>\
 							</div>\
 							<div class="col-md-2">\
@@ -913,15 +913,15 @@ function calculaParcelasPagaveisMensais() {
  * informados no formulário (valor restante / parcelas e datas do vencimento)
  */
 function adicionaParcelasPagaveis() {
-/*
+
     //captura os valores dos campos indicados
-    var resta = $("#ValorRestanteOrca").val();
-    var parcelas = $("#QtdParcelasOrca").val();
-    var vencimento = $("#DataVencimentoOrca").val();
+    var resta = $("#ValorRestanteDespesas").val();
+    var parcelas = $("#QtdParcelasDespesas").val();
+    var vencimento = $("#DataVencimentoDespesas").val();
 
     //valor de cada parcela
-    var parcorca = (resta.replace(".","").replace(",",".") / parcelas);
-    parcorca = mascaraValorReal(parcorca);
+    var parcdesp = (resta.replace(".","").replace(",",".") / parcelas);
+    parcdesp = mascaraValorReal(parcdesp);
 
     //pega a data do primeiro vencimento e separa em dia, mês e ano
     var split = vencimento.split("/");
@@ -935,83 +935,82 @@ function adicionaParcelasPagaveis() {
 
     //caso as parcelas já tenham sido geradas elas serão excluídas para que
     //sejam geradas novas parcelas
-    
-	$(".input_fields_parcelas").empty();
-*/
+    //$(".input_fields_parcelas").empty();
+
     //gera os campos de parcelas
     for (i=1; i<=parcelas; i++) {
-		/*	
+
         //calcula as datas das próximas parcelas
         var futureMonth = moment(currentDate).add(i-1, 'M');
         var futureMonthEnd = moment(futureMonth).endOf('month');
 
         if(currentDate.date() != futureMonth.date() && futureMonth.isSame(futureMonthEnd.format('YYYY-MM-DD')))
             futureMonth = futureMonth.add(i-1, 'd');
-		*/
-        $(".input_fields_parcelas").append('\
-            <div class="form-group" id="20div'+i+'">\
-				<div class="panel panel-info">\
+
+        $(".input_fields_parcelas2").append('\
+			<div class="form-group" id="21div'+i+'">\
+				<div class="panel panel-danger">\
 					<div class="panel-heading">\
 						<div class="row">\
-							<div class="col-md-2">\
-								<label for="ParcelaRecebiveis">Parcela:</label><br>\
+							<div class="col-md-1">\
+								<label for="ParcelaPagaveis">Parcela:</label><br>\
 								<input type="text" class="form-control" maxlength="6" readonly=""\
-									   name="ParcelaRecebiveis'+i+'" value="'+i+'/'+parcelas+'">\
+									   name="ParcelaPagaveis'+i+'" value="'+i+'/'+parcelas+'">\
 							</div>\
 							<div class="col-md-2">\
-								<label for="ValorParcelaRecebiveis">Valor Parcela:</label><br>\
+								<label for="ValorParcelaPagaveis">Valor Parcela:</label><br>\
 								<div class="input-group" id="txtHint">\
 									<span class="input-group-addon" id="basic-addon1">R$</span>\
 									<input type="text" class="form-control Valor" maxlength="10" placeholder="0,00"\
-										    id="ValorParcelaRecebiveis'+i+'" name="ValorParcelaRecebiveis'+i+'" value="">\
+										    id="ValorParcelaPagaveis'+i+'" name="ValorParcelaPagaveis'+i+'" value="'+parcdesp+'">\
 								</div>\
 							</div>\
 							<div class="col-md-2">\
-								<label for="DataVencimentoRecebiveis">Data Venc. Parc.</label>\
+								<label for="DataVencimentoPagaveis">Data Venc. Parc.</label>\
 								<div class="input-group DatePicker">\
-									<input type="text" class="form-control Date" id="DataVencimentoRecebiveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
-										   name="DataVencimentoRecebiveis'+i+'" value="">\
 									<span class="input-group-addon" disabled>\
 										<span class="glyphicon glyphicon-calendar"></span>\
 									</span>\
+									<input type="text" class="form-control Date" id="DataVencimentoPagaveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
+										   name="DataVencimentoPagaveis'+i+'" value="'+futureMonth.format('DD/MM/YYYY')+'">\
 								</div>\
 							</div>\
 							<div class="col-md-2">\
-								<label for="ValorPagoRecebiveis">Valor Pago:</label><br>\
+								<label for="ValorPagoPagaveis">Valor Pago:</label><br>\
 								<div class="input-group" id="txtHint">\
 									<span class="input-group-addon" id="basic-addon1">R$</span>\
 									<input type="text" class="form-control Valor" maxlength="10" placeholder="0,00"\
-										    id="ValorPagoRecebiveis'+i+'" name="ValorPagoRecebiveis'+i+'" value="">\
+										    id="ValorPagoPagaveis'+i+'" name="ValorPagoPagaveis'+i+'" value="">\
 								</div>\
 							</div>\
 							<div class="col-md-2">\
-								<label for="DataPagoRecebiveis">Data Pag.</label>\
+								<label for="DataPagoPagaveis">Data Pag.</label>\
 								<div class="input-group DatePicker">\
-									<input type="text" class="form-control Date" id="DataPagoRecebiveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
-										   name="DataPagoRecebiveis'+i+'" value="">\
 									<span class="input-group-addon" disabled>\
 										<span class="glyphicon glyphicon-calendar"></span>\
 									</span>\
+									<input type="text" class="form-control Date" id="DataPagoPagaveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
+										   name="DataPagoPagaveis'+i+'" value="">\
 								</div>\
 							</div>\
 							<div class="col-md-2">\
-								<label for="QuitadoRecebiveis">Quitado????</label><br>\
+								<label for="QuitadoPagaveis">Quitado?</label><br>\
 								<div class="form-group">\
 									<div class="btn-group" data-toggle="buttons">\
-										<label class="btn btn-warning active" name="radio_QuitadoRecebiveis'+i+'" id="radio_QuitadoRecebiveis'+i+'N">\
-										<input type="radio" name="QuitadoRecebiveis'+i+'" id="radiogeraldinamico"\
-											onchange="carregaQuitado(this.value,this.name,'+i+',1)" autocomplete="off" value="N" checked>Não\
+										<label class="btn btn-warning active" name="radio_QuitadoPagaveis'+i+'" id="radio_QuitadoPagaveis'+i+'N">\
+										<input type="radio" name="QuitadoPagaveis'+i+'" id="radiogeraldinamico"\
+											onchange="carregaQuitadoDespesas(this.value,this.name,'+i+',1)" autocomplete="off" value="N" checked>Não\
 										</label>\
-										<label class="btn btn-default" name="radio_QuitadoRecebiveis'+i+'" id="radio_QuitadoRecebiveis'+i+'S">\
-										<input type="radio" name="QuitadoRecebiveis'+i+'" id="radiogeraldinamico"\
-											onchange="carregaQuitado(this.value,this.name,'+i+',1)" autocomplete="off" value="S">Sim\
+										<label class="btn btn-default" name="radio_QuitadoPagaveis'+i+'" id="radio_QuitadoPagaveis'+i+'S">\
+										<input type="radio" name="QuitadoPagaveis'+i+'" id="radiogeraldinamico"\
+											onchange="carregaQuitadoDespesas(this.value,this.name,'+i+',1)" autocomplete="off" value="S">Sim\
 										</label>\
 									</div>\
 								</div>\
 							</div>\
 							<div class="col-md-1">\
 								<label><br></label><br>\
-								<a href="#" id="'+i+'" class="remove_field20 btn btn-danger">\
+								<a href="#" id="'+i+'" class="remove_field21 btn btn-danger">\
 									<span class="glyphicon glyphicon-trash"></span>\
 								</a>\
 							</div>\
@@ -2635,11 +2634,11 @@ $(document).ready(function () {
     $(".input_fields_parcelas").on("click",".remove_field20", function(e){ //user click on remove text
         $("#20div"+$(this).attr("id")).remove();
         //após remover o campo refaz o cálculo do orçamento e total restante
-        calculaOrcamento();
+        //calculaOrcamento();
     })
 	
-    //Remove as PARCELAS Pagáveis  dinamicamente
-    $(".input_fields_wrap21").on("click",".remove_field21", function(e){ //user click on remove text
+    //Remove as PARCELAS PAGÁVEIS  dinamicamente
+    $(".input_fields_parcelas2").on("click",".remove_field21", function(e){ //user click on remove text
         $("#21div"+$(this).attr("id")).remove();
         //após remover o campo refaz o cálculo do orçamento e total restante
         //calculaOrcamento();

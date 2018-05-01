@@ -228,7 +228,7 @@ class Relatorio extends CI_Controller {
             'PR.DataVencimentoRecebiveis' => 'Data do Venc.',
 			'PR.DataPagoRecebiveis' => 'Data do Pagam.',
 			'PR.QuitadoRecebiveis' => 'Quit.Parc.',
-			#'C.NomeCliente' => 'Nome do Cliente',
+			'OT.Modalidade' => 'Modalidade',
             'OT.idApp_OrcaTrata' => 'Número da Receita',
             'OT.ValorOrca' => 'Valor da Receita',
             'OT.ServicoConcluido' => 'Receita Concluída?',

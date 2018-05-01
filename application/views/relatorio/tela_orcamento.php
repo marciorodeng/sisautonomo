@@ -137,8 +137,9 @@
 
 						</div>
 						</form>
-						<?php echo (isset($list)) ? $list : FALSE ?>
+						
 					</div>
+					<?php echo (isset($list)) ? $list : FALSE ?>
 				</div>			
 			</div>
 				

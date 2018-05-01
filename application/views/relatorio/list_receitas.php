@@ -43,14 +43,14 @@
                         <!--<th class="active">Cliente</th>
 						<th class="active">Nº</th>-->
 						<th class="active">Receita</th>
-						<th class="active">Quit</th>
-                        <!--<th class="active">Data Receita.</th>
+						<!--<th class="active">Quit</th>
+                        <th class="active">Data Receita.</th>
                         <th class="active">Data Entrada</th>
                         <th class="active">Valor Entrada</th>
 						<th class="active">Orç. Aprov.?</th>
 						<th class="active">Concl.?</th>
 						<th class="active">Quit.?</th>-->						
-                        <th class="active">Par.</th>
+                        <th class="active">Parcelas</th>
                         <th class="active">Venc.</th>
                         <th class="active">Valor</th>
                         <!--<th class="active">Data do Pagam.</th>
@@ -66,7 +66,7 @@
                            # echo '<td>' . $row['NomeCliente'] . '</td>';
 							#echo '<td>' . $row['idApp_OrcaTrata'] . '</td>';
 							echo '<td>' . $row['ObsOrca'] . '</td>';
-                            echo '<td>' . $row['QuitadoRecebiveis'] . '</td>';
+                            #echo '<td>' . $row['QuitadoRecebiveis'] . '</td>';
 							#echo '<td>' . $row['DataOrca'] . '</td>';
                            # echo '<td>' . $row['DataEntradaOrca'] . '</td>';
                            # echo '<td class="text-right">R$ ' . $row['ValorEntradaOrca'] . '</td>';

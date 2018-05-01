@@ -429,22 +429,15 @@
 														</div>
 														-->
 														<div class="col-md-2">
-															<label for="FormaPagamentoDespesas">Forma de Pag.</label>
-															<select data-placeholder="Selecione uma opção..." class="form-control" <?php echo $readonly; ?>
-																	id="FormaPagamentoDespesas" name="FormaPagamentoDespesas">
-																<!--<option value="">-- Selecione uma opção --</option>-->
-																<?php
-																foreach ($select['FormaPagamentoDespesas'] as $key => $row) {
-																	(!$despesas['FormaPagamentoDespesas']) ? $despesas['FormaPagamentoDespesas'] = '1' : FALSE;
-																	if ($despesas['FormaPagamentoDespesas'] == $key) {
-																		echo '<option value="' . $key . '" selected="selected">' . $row . '</option>';
-																	} else {
-																		echo '<option value="' . $key . '">' . $row . '</option>';
-																	}
-																}
-																?>
-															</select>
-														</div>
+															<label for="DataVencimentoDespesas">Dt. Desp./ 1º Venc.</label>
+															<div class="input-group <?php echo $datepicker; ?>">
+																<span class="input-group-addon" disabled>
+																	<span class="glyphicon glyphicon-calendar"></span>
+																</span>
+																<input type="text" class="form-control Date" id="DataVencimentoDespesas" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
+																	   name="DataVencimentoDespesas" value="<?php echo $despesas['DataVencimentoDespesas']; ?>">															
+															</div>
+														</div>														
 														<!--
 														<br>
 														
@@ -474,22 +467,29 @@
 												<div class="panel-heading">
 													<div class="row">																																																										
 														<div class="col-md-2">
+															<label for="FormaPagamentoDespesas">Forma de Pag.</label>
+															<select data-placeholder="Selecione uma opção..." class="form-control" <?php echo $readonly; ?>
+																	id="FormaPagamentoDespesas" name="FormaPagamentoDespesas">
+																<!--<option value="">-- Selecione uma opção --</option>-->
+																<?php
+																foreach ($select['FormaPagamentoDespesas'] as $key => $row) {
+																	(!$despesas['FormaPagamentoDespesas']) ? $despesas['FormaPagamentoDespesas'] = '1' : FALSE;
+																	if ($despesas['FormaPagamentoDespesas'] == $key) {
+																		echo '<option value="' . $key . '" selected="selected">' . $row . '</option>';
+																	} else {
+																		echo '<option value="' . $key . '">' . $row . '</option>';
+																	}
+																}
+																?>
+															</select>
+														</div>
+														<div class="col-md-2">
 															<label for="QtdParcelasDespesas">Qtd.Prc</label><br>
 															<input type="text" class="form-control Numero" id="QtdParcelasDespesas" maxlength="3" placeholder="0"
 																   data-toggle="collapse" onkeyup="calculaParcelasPagaveis()"
 																		data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas"
 																   name="QtdParcelasDespesas" value="<?php echo $despesas['QtdParcelasDespesas'] ?>">
-														</div>
-														<div class="col-md-2">
-															<label for="DataVencimentoDespesas">Dt. Desp./ 1º Venc.</label>
-															<div class="input-group <?php echo $datepicker; ?>">
-																<span class="input-group-addon" disabled>
-																	<span class="glyphicon glyphicon-calendar"></span>
-																</span>
-																<input type="text" class="form-control Date" id="DataVencimentoDespesas" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
-																	   name="DataVencimentoDespesas" value="<?php echo $despesas['DataVencimentoDespesas']; ?>">															
-															</div>
-														</div>
+														</div>														
 														<div class="col-md-2">
 															<label for="ModalidadeDespesas">Modalidade</label><br>
 															<div class="form-group">
@@ -562,7 +562,7 @@
 									
 									<!--App_parcelasRec-->
 									<div class="panel-body">
-										<div class="input_fields_parcelas">
+										<div class="input_fields_parcelas2">
 
 										<?php
 										for ($i=1; $i <= $despesas['QtdParcelasDespesas']; $i++) {
@@ -662,7 +662,17 @@
 										}
 										?>
 										</div>
-
+										<!--
+										<div class="form-group">
+											<div class="row">
+												<div class="col-md-4">
+													<a class="btn btn-xs btn-warning" onclick="adicionaParcelasPagaveis()">
+														<span class="glyphicon glyphicon-plus"></span> Adicionar Parcela
+													</a>
+												</div>
+											</div>
+										</div>
+										-->
 									</div>
 								</div>
 							</div>
