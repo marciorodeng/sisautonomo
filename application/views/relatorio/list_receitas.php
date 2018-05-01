@@ -50,7 +50,7 @@
 						<th class="active">Orç. Aprov.?</th>
 						<th class="active">Concl.?</th>
 						<th class="active">Quit.?</th>-->						
-                        <th class="active">Parcelas</th>
+                        <th class="active">Prcl.</th>
                         <th class="active">Venc.</th>
                         <th class="active">Valor</th>
                         <!--<th class="active">Data do Pagam.</th>
