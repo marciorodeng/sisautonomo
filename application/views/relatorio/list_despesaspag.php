@@ -68,7 +68,7 @@
 						<th class="active">Tipo</th>-->
 						<th class="active">Despesa</th>
 						<!--<th class="active">Quit.</th>-->						
-                        <th class="active">Parcelas</th>
+                        <th class="active">Prcl.</th>
                         <th class="active">Venc.</th>
                         <th class="active">Valor</th>
                         <!--<th class="active">Data do Pagam.</th>
