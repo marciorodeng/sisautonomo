@@ -15,28 +15,7 @@
 				<div class="panel-body">
 
 					<?php echo form_open_multipart($form_open_path); ?>
-					<!--
-					<div class="form-group">
-						<div class="panel panel-info">
-							<div class="panel-heading">
-								<div class="row">
-									
-									<div class="col-md-3">
-										<label for="DataOrca">Receita em:</label>
-										<div class="input-group <?php echo $datepicker; ?>">
-											<span class="input-group-addon" disabled>
-												<span class="glyphicon glyphicon-calendar"></span>
-											</span>
-											<input type="text" class="form-control Date" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
-													name="DataOrca" value="<?php echo $orcatrata['DataOrca']; ?>">																	
-										</div>
-									</div>
-									
-								</div>
-							</div>
-						</div>
-					</div>
-					-->
+
 					<div class="panel-group" id="accordion4" role="tablist" aria-multiselectable="true">
 						<div class="panel panel-primary">
 							<div class="panel-heading collapsed" role="tab" id="heading4" data-toggle="collapse" data-parent="#accordion4" data-target="#collapse4" aria-expanded="false">								<h4 class="panel-title">

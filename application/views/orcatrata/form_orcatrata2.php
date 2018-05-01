@@ -15,28 +15,7 @@
 				<div class="panel-body">
 
 					<?php echo form_open_multipart($form_open_path); ?>
-					<!--
-					<div class="form-group">
-						<div class="panel panel-info">
-							<div class="panel-heading">
-								<div class="row">
-									
-									<div class="col-md-3">
-										<label for="DataOrca">Receita em:</label>
-										<div class="input-group <?php echo $datepicker; ?>">
-											<span class="input-group-addon" disabled>
-												<span class="glyphicon glyphicon-calendar"></span>
-											</span>
-											<input type="text" class="form-control Date" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
-													name="DataOrca" value="<?php echo $orcatrata['DataOrca']; ?>">																	
-										</div>
-									</div>
-									
-								</div>
-							</div>
-						</div>
-					</div>
-					-->
+
 					<div class="panel-group" id="accordion4" role="tablist" aria-multiselectable="true">
 						<div class="panel panel-primary">
 							<div class="panel-heading collapsed" role="tab" id="heading4" data-toggle="collapse" data-parent="#accordion4" data-target="#collapse4" aria-expanded="false">								<h4 class="panel-title">
@@ -66,23 +45,6 @@
 																   name="ValorRestanteOrca" value="<?php echo $orcatrata['ValorRestanteOrca'] ?>">
 														</div>
 													</div>														
-													<!--
-													<div class="col-md-2">
-														<label for="Modalidade">Modalidade:</label><br>
-														<div class="form-group" id="txtHint">
-															<?php
-															$options = array(
-																#''	=> '-- Selecione uma opção --',
-																'P'	=> 'PARCELADO',
-																'M'	=> 'MENSALIDADE',																																		
-															);
-															$cfg = 'data-placeholder="Selecione uma opção..." class="form-control" ' . $readonly . '
-																	id="Modalidade"';
-															echo form_dropdown('Modalidade', $options, $orcatrata['Modalidade'], $cfg);
-															?>
-														</div>
-													</div>
-													-->
 													<div class="col-md-2">
 														<label for="DataVencimentoOrca"> Dt Receita/ 1º Venc.</label>
 														<div class="input-group <?php echo $datepicker; ?>">
@@ -157,23 +119,6 @@
 															</div>
 														</div>
 													</div>
-													<!--
-													<br>
-													<div class="form-group">
-														<div class="col-md-1 text-left">
-															<button class="btn btn-danger" type="button" data-toggle="collapse" onclick="calculaParcelas()"
-																	data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas">
-																<span class="glyphicon glyphicon-menu-down"></span>Parcel
-															</button>
-														</div>
-														<div class="col-md-1 text-left">
-															<button class="btn btn-danger" type="button" data-toggle="collapse" onclick="calculaParcelasMensais()"
-																	data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas">
-																<span class="glyphicon glyphicon-menu-down"></span>Mensal
-															</button>
-														</div>														
-													</div>
-													-->
 												</div>
 											</div>
 										</div>
