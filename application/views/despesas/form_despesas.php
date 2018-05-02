@@ -42,8 +42,6 @@
 														<div class="input-group" id="txtHint">
 															<span class="input-group-addon" id="basic-addon1">R$</span>
 															<input type="text" class="form-control Valor" id="ValorRestanteDespesas" maxlength="10" placeholder="0,00"
-																   data-toggle="collapse" onkeyup="calculaParcelasPagaveis()"
-																	data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas"
 																   name="ValorRestanteDespesas" value="<?php echo $despesas['ValorRestanteDespesas'] ?>">
 														</div>
 													</div>
