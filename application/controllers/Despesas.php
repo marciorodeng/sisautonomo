@@ -87,7 +87,7 @@ class Despesas extends CI_Controller {
 		#(!$data['despesas']['DataConclusaoDespesas']) ? $data['despesas']['DataConclusaoDespesas'] = date('d/m/Y', time()) : FALSE;
 		(!$data['despesas']['DataVencimentoDespesas']) ? $data['despesas']['DataVencimentoDespesas'] = date('d/m/Y', time()) : FALSE;
 		(!$data['despesas']['TipoProduto']) ? $data['despesas']['TipoProduto'] = 'D' : FALSE;
-		#(!$data['despesas']['QtdParcelasDespesas']) ? $data['despesas']['QtdParcelasDespesas'] = '1' : FALSE;
+		(!$data['despesas']['QtdParcelasDespesas']) ? $data['despesas']['QtdParcelasDespesas'] = '1' : FALSE;
 
         $j = 1;
         for ($i = 1; $i <= $data['count']['SCount']; $i++) {

@@ -42,6 +42,8 @@
 														<div class="input-group" id="txtHint">
 															<span class="input-group-addon" id="basic-addon1">R$</span>
 															<input type="text" class="form-control Valor" id="ValorRestanteOrca" maxlength="10" placeholder="0,00"
+																   data-toggle="collapse" onkeyup="calculaParcelas()"
+																	data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas"
 																   name="ValorRestanteOrca" value="<?php echo $orcatrata['ValorRestanteOrca'] ?>">
 														</div>
 													</div>														
