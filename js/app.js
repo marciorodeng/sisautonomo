@@ -201,11 +201,11 @@ function mascaraValorReal(value) {
  * @param {int} num
  * @returns {decimal}
  */
-function calculaResta() {
+function calculaResta(entrada) {
 
     //recebe o valor do orçamento
     var orcamento = $("#ValorOrca").val();
-    var resta = (orcamento.replace(".","").replace(",","."));
+    var resta = (orcamento.replace(".","").replace(",",".") - entrada.replace(".","").replace(",","."));
 
     resta = mascaraValorReal(resta);
 
@@ -213,35 +213,6 @@ function calculaResta() {
     $('#ValorRestanteOrca').val(resta);
 
 }
-
-function calculaParcelamento2(entrada) {
-
-    //recebe o valor do orçamento
-    var restante = $("#ValorRestanteOrca").val();
-	var entrada = $("#ValorEntradaOrca").val();
-    var parcelado = (restante.replace(".","").replace(",",".") - entrada.replace(".","").replace(",","."));
-
-    parcelado = mascaraValorReal(parcelado);
-
-    //o valor é escrito no seu campo no formulário
-    $('#ValorParceladoOrca').val(parcelado);
-
-}
-
-function calculaParcelamento(parcelado) {
-
-    //recebe o valor do orçamento
-    var restante = $("#ValorRestanteOrca").val();
-	var parcelado = $("#ValorParceladoOrca").val();
-    var entrada = (restante.replace(".","").replace(",",".") - parcelado.replace(".","").replace(",","."));
-
-    entrada = mascaraValorReal(entrada);
-
-    //o valor é escrito no seu campo no formulário
-    $('#ValorEntradaOrca').val(entrada);
-
-}
-
 
 function calculaRestaDespesas(entrada) {
 
@@ -281,12 +252,12 @@ $(document).on('focus',".input_fields_parcelas", function(){
 function calculaParcelas() {
 
     //captura os valores dos campos indicados
-    var parcelado = $("#ValorParceladoOrca").val();
+    var resta = $("#ValorRestanteOrca").val();
     var parcelas = $("#QtdParcelasOrca").val();
     var vencimento = $("#DataVencimentoOrca").val();
 
     //valor de cada parcela
-    var parcorca = (parcelado.replace(".","").replace(",",".") / parcelas);
+    var parcorca = (resta.replace(".","").replace(",",".") / parcelas);
     parcorca = mascaraValorReal(parcorca);
 
     //pega a data do primeiro vencimento e separa em dia, mês e ano
@@ -1622,7 +1593,7 @@ function calculaOrcamento() {
 
     //escreve o subtotal no campo do formulário
     $('#ValorOrca').val(subtotal);
-    calculaResta();
+    calculaResta($("#ValorEntradaOrca").val());
 }
 
 function calculaDespesas() {

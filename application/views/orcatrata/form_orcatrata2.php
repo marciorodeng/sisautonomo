@@ -42,7 +42,7 @@
 														<div class="input-group" id="txtHint">
 															<span class="input-group-addon" id="basic-addon1">R$</span>
 															<input type="text" class="form-control Valor" id="ValorRestanteOrca" maxlength="10" placeholder="0,00"
-																   data-toggle="collapse" onkeyup="calculaParcelamento()" 
+																   data-toggle="collapse" onkeyup="calculaParcelas()"
 																	data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas"
 																   name="ValorRestanteOrca" value="<?php echo $orcatrata['ValorRestanteOrca'] ?>">
 														</div>
@@ -83,26 +83,6 @@
 															}
 															?>
 														</select>
-													</div>
-													<div class="col-md-2">
-														<label for="ValorEntradaOrca">Valor À Vista:</label><br>
-														<div class="input-group" id="txtHint">
-															<span class="input-group-addon" id="basic-addon1">R$</span>
-															<input type="text" class="form-control Valor" id="ValorEntradaOrca" maxlength="10" placeholder="0,00"
-																   data-toggle="collapse" onkeyup="calculaParcelas()"
-																	data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas"
-																   name="ValorEntradaOrca" value="<?php echo $orcatrata['ValorEntradaOrca'] ?>">
-														</div>
-													</div>
-													<div class="col-md-2">
-														<label for="ValorParceladoOrca">Valor Parcelado:</label><br>
-														<div class="input-group" id="txtHint">
-															<span class="input-group-addon" id="basic-addon1">R$</span>
-															<input type="text" class="form-control Valor" id="ValorParceladoOrca" maxlength="10" placeholder="0,00"
-																   data-toggle="collapse" onkeyup="calculaParcelamento()"
-																	data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas"
-																   name="ValorParceladoOrca" value="<?php echo $orcatrata['ValorParceladoOrca'] ?>">
-														</div>
 													</div>
 													<div class="col-md-2">
 														<label for="QtdParcelasOrca">Qtd. Parc.:</label><br>
