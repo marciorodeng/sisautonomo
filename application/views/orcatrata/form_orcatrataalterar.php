@@ -27,10 +27,10 @@
 							</div>
 
 							<div id="collapse4" class="panel-collapse" role="tabpanel" aria-labelledby="heading4" aria-expanded="false">
-								<div class="panel-body">
-									<div class="form-group">
-										<div class="panel panel-info">
-											<div class="panel-heading">
+								<div class="panel-body">									
+									<div class="panel panel-info">
+										<div class="panel-heading">
+											<div class="form-group">	
 												<div class="row">
 													<div class="col-md-2">
 														<label for="ObsOrca">Receita</label><br>
@@ -57,13 +57,7 @@
 													</div>																										
 												</div>
 											</div>
-										</div>
-									</div>
-								</div>
-								<div class="panel-body">
-									<div class="form-group">
-										<div class="panel panel-info">
-											<div class="panel-heading">
+											<div class="form-group">
 												<div class="row">																												
 													<div class="col-md-2">
 														<label for="FormaPagamento">Forma de Pagam.:</label>

@@ -26,12 +26,11 @@
 							</div>
 
 							<div id="collapse4" class="panel-collapse" role="tabpanel" aria-labelledby="heading4" aria-expanded="false">
-								<div class="panel-body">
-									<div class="form-group">
-										<div class="panel panel-danger">
-											<div class="panel-heading">
+								<div class="panel-body">									
+									<div class="panel panel-danger">
+										<div class="panel-heading">
+											<div class="form-group">	
 												<div class="row">
-
 													<div class="col-md-2">
 														<label for="Despesa">Despesa</label><br>
 														<input type="text" class="form-control" maxlength="200"
@@ -56,15 +55,8 @@
 														</div>
 													</div>														
 												</div>
-											</div>
-										</div>	
-									</div>		
-								</div>
-								
-								<div class="panel-body">	
-									<div class="form-group">
-										<div class="panel panel-danger">
-											<div class="panel-heading">
+											</div>			
+											<div class="form-group">
 												<div class="row">																																																										
 													<div class="col-md-2">
 														<label for="FormaPagamentoDespesas">Forma de Pag.</label>

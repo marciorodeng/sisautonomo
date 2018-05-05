@@ -21,13 +21,13 @@
     <input type="hidden" name="modulo" value="<?php echo $modulo; ?>">
     <button class="btn btn-lg btn-primary btn-block" type="submit">Acesso do Usuário</button>	
     <p><a href="<?php echo base_url(); ?>login/recuperar/?usuario=<?php echo set_value('Usuario'); ?>">Esqueci usuário/senha!</a></p>
-    <br>
+    <!--<br>
 
-			<a class="btn btn-lg btn-danger btn-block" href="<?php echo base_url(); ?>loginfuncionario/registrar" role="button">Cadastrar Novo Usuário</a>
-			<!--<br>
-			<a class="btn btn btn-danger btn-block" href="<?php echo base_url(); ?>loginempresafilial/index" role="button">Acesso do Admin. da Empresa</a>	
-			<a class="btn btn btn-primary btn-danger btn-block" href="<?php echo base_url(); ?>loginempresafilial/registrar" role="button">Cadastrar Nova Empresa</a>	
-			<a class="btn btn btn-primary btn-danger" href="<?php echo base_url(); ?>login/registrar" role="button">Cadastrar Empresa</a>-->	
+	<a class="btn btn-lg btn-danger btn-block" href="<?php echo base_url(); ?>loginfuncionario/registrar" role="button">Cadastrar Novo Usuário</a>
+	<br>
+	<a class="btn btn btn-danger btn-block" href="<?php echo base_url(); ?>loginempresafilial/index" role="button">Acesso do Admin. da Empresa</a>	
+	<a class="btn btn btn-primary btn-danger btn-block" href="<?php echo base_url(); ?>loginempresafilial/registrar" role="button">Cadastrar Nova Empresa</a>	
+	<a class="btn btn btn-primary btn-danger" href="<?php echo base_url(); ?>login/registrar" role="button">Cadastrar Empresa</a>-->	
 	
 </form>
 

@@ -27,10 +27,10 @@
 							</div>
 
 							<div id="collapse4" class="panel-collapse" role="tabpanel" aria-labelledby="heading4" aria-expanded="false">
-								<div class="panel-body">
-									<div class="form-group">
-										<div class="panel panel-info">
-											<div class="panel-heading">
+								<div class="panel-body">									
+									<div class="panel panel-info">
+										<div class="panel-heading">
+											<div class="form-group">	
 												<div class="row">
 													<div class="col-md-2">
 														<label for="ObsOrca">Receita</label><br>
@@ -59,13 +59,7 @@
 													</div>																										
 												</div>
 											</div>
-										</div>
-									</div>
-								</div>
-								<div class="panel-body">
-									<div class="form-group">
-										<div class="panel panel-info">
-											<div class="panel-heading">
+											<div class="form-group">
 												<div class="row">																												
 													<div class="col-md-2">
 														<label for="FormaPagamento">Forma de Pagam.:</label>
@@ -234,12 +228,6 @@
 																	?>
 																</div>
 															</div>
-														</div>
-														<div class="col-md-1">
-															<label><br></label><br>
-															<button type="button" id="<?php echo $i ?>" class="remove_field20 btn btn-danger">
-																<span class="glyphicon glyphicon-trash"></span>
-															</button>
 														</div>
 													</div>
 												</div>
