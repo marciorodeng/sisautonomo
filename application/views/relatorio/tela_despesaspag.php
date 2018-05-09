@@ -99,7 +99,7 @@
 															}
 															?>
 														</select>
-													</div>	
+													</div>
 													<div class="col-md-6 text-left">
 														<label for="Ordenamento">Ordenamento:</label>
 														<div class="form-group btn-block">

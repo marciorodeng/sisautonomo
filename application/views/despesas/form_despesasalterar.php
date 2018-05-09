@@ -32,6 +32,23 @@
 											<div class="form-group">	
 												<div class="row">
 													<div class="col-md-2">
+														<label for="TipoDespesa">Tipo de Despesa</label>
+														<select data-placeholder="Selecione uma opção..." class="form-control" <?php echo $readonly; ?>
+																id="TipoDespesa" name="TipoDespesa">
+															<!--<option value="">-- Selecione uma opção --</option>-->
+															<?php
+															foreach ($select['TipoDespesa'] as $key => $row) {
+																(!$despesas['TipoDespesa']) ? $despesas['TipoDespesa'] = '1' : FALSE;
+																if ($despesas['TipoDespesa'] == $key) {
+																	echo '<option value="' . $key . '" selected="selected">' . $row . '</option>';
+																} else {
+																	echo '<option value="' . $key . '">' . $row . '</option>';
+																}
+															}
+															?>
+														</select>
+													</div>
+													<div class="col-md-2">
 														<label for="Despesa">Despesa</label><br>
 														<input type="text" class="form-control" maxlength="200"
 																name="Despesa" value="<?php echo $despesas['Despesa'] ?>">

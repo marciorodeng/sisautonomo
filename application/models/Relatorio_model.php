@@ -754,6 +754,7 @@ class Relatorio_model extends CI_Model {
             SELECT
                 DS.idApp_Despesas,				
 				DS.Despesa,
+				CONCAT(IFNULL(TD.TipoDespesa,""), " / ", IFNULL(DS.Despesa,"")) AS Despesa,
 				TD.TipoDespesa,
 				CD.Categoriadesp,
 				DS.TipoProduto,
@@ -902,6 +903,7 @@ class Relatorio_model extends CI_Model {
 				TD.TipoDespesa,
 				CD.Categoriadesp,
 				OT.Despesa,
+				CONCAT(IFNULL(TD.TipoDespesa,""), " / ", IFNULL(OT.Despesa,"")) AS Despesa,
 				OT.DataEntradaDespesas,
                 OT.ValorDespesas,
 				OT.ValorEntradaDespesas,
@@ -4363,7 +4365,7 @@ exit();*/
         $query = $this->db->query('
             SELECT
 				TD.idTab_TipoDespesa,
-				CONCAT(CD.Abrevcategoriadesp, " " , "--" , " " , TD.TipoDespesa) AS TipoDespesa,
+				CONCAT(TD.TipoDespesa) AS TipoDespesa,
 				CD.Categoriadesp,
 				CD.idTab_Categoriadesp,
 				CD.Abrevcategoriadesp
@@ -4374,7 +4376,6 @@ exit();*/
 				TD.Empresa = ' . $_SESSION['log']['Empresa'] . ' AND
 				TD.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . '
 			ORDER BY
-				CD.idTab_Categoriadesp,
 				TD.TipoDespesa
         ');
 
@@ -4612,7 +4613,7 @@ exit();*/
         return $array;
     }
 	
-		public function select_obsorca() {
+	public function select_obsorca() {
 
         $query = $this->db->query('
             SELECT
