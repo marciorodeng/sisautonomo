@@ -33,7 +33,7 @@
 									<div class="input-inline">
 										<label for="Obs">Evento</label>
 										<textarea class="form-control" id="Obs"
-												  name="Obs"><?php echo $query['Obs']; ?></textarea>
+												 autofocus name="Obs"><?php echo $query['Obs']; ?></textarea>
 									</div>																					
 		
 									<label for="Data">Data: </label>												

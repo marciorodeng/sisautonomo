@@ -92,8 +92,8 @@ class Tarefa extends CI_Controller {
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
 
         #### App_Tarefa ####
-        $this->form_validation->set_rules('DataTarefa', 'Tarefa Criada em', 'required|trim|valid_date');
-        $this->form_validation->set_rules('DataPrazoTarefa', 'Prazo para Conclusão', 'required|trim');
+        $this->form_validation->set_rules('DataTarefa', 'Tarefa Criada em', 'trim|valid_date');
+        $this->form_validation->set_rules('DataPrazoTarefa', 'Prazo para Conclusão', 'trim|valid_date');
         #$this->form_validation->set_rules('ProfissionalTarefa', 'Profissional', 'required|trim');
 
         $data['select']['TarefaConcluida'] = $this->Basico_model->select_status_sn();
@@ -238,8 +238,11 @@ class Tarefa extends CI_Controller {
         //Dá pra melhorar/encurtar esse trecho (que vai daqui até onde estiver
         //comentado fim) mas por enquanto, se está funcionando, vou deixar assim.
 
+        //Data de hoje como default
+        (!$data['tarefa']['DataTarefa']) ? $data['tarefa']['DataTarefa'] = date('d/m/Y', time()) : FALSE;
+		(!$data['tarefa']['DataPrazoTarefa']) ? $data['tarefa']['DataPrazoTarefa'] = date('d/m/Y', time()) : FALSE;
         
-        (!$this->input->post('PTCount')) ? $data['count']['PTCount'] = 0 : $data['count']['PTCount'] = $this->input->post('PTCount');
+		(!$this->input->post('PTCount')) ? $data['count']['PTCount'] = 0 : $data['count']['PTCount'] = $this->input->post('PTCount');
 
         $j = 1;
         for ($i = 1; $i <= $data['count']['PTCount']; $i++) {
@@ -293,8 +296,8 @@ class Tarefa extends CI_Controller {
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
 
         #### App_Tarefa ####
-        $this->form_validation->set_rules('DataTarefa', 'Tarefa Criada em', 'required|trim|valid_date');        
-		$this->form_validation->set_rules('DataPrazoTarefa', 'Prazo para Conclusão', 'required|trim');      
+        $this->form_validation->set_rules('DataTarefa', 'Tarefa Criada em', 'trim|valid_date');        
+		$this->form_validation->set_rules('DataPrazoTarefa', 'Prazo para Conclusão', 'trim|valid_date');      
         #$this->form_validation->set_rules('ProfissionalTarefa', 'Profissional', 'required|trim');
 
         $data['select']['TarefaConcluida'] = $this->Basico_model->select_status_sn();        
