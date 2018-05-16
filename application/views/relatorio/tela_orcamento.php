@@ -46,6 +46,22 @@
 											<div class="form-group">
 												<div class="row">
 													<div class="col-md-8 text-left">
+														<label for="Ordenamento">Tipo de Receita:</label>
+														<select data-placeholder="Selecione uma opção..." class="form-control Chosen btn-block" onchange="this.form.submit()"
+																id="TipoReceita" name="TipoReceita">
+															<?php
+															foreach ($select['TipoReceita'] as $key => $row) {
+																if ($query['TipoReceita'] == $key) {
+																	echo '<option value="' . $key . '" selected="selected">' . $row . '</option>';
+																} else {
+																	echo '<option value="' . $key . '">' . $row . '</option>';
+																}
+															}
+															?>
+														</select>
+													</div>
+													<!--
+													<div class="col-md-8 text-left">
 														<label for="Ordenamento">Receitas:</label>
 														<select data-placeholder="Selecione uma opção..." class="form-control Chosen btn-block" onchange="this.form.submit()"
 																id="ObsOrca" name="ObsOrca">
@@ -60,9 +76,10 @@
 															?>
 														</select>
 													</div>
+													-->
 													<div class="col-md-4 text-left">
 														<label for="ServicoConcluido">Concl.?</label>
-														<select data-placeholder="Selecione uma opção..." class="form-control Chosen btn-block" onchange="this.form.submit()"
+														<select data-placeholder="Selecione uma opção..." class="form-control Chosen btn-block" 
 																id="ServicoConcluido" name="ServicoConcluido">
 															<?php
 															foreach ($select['ServicoConcluido'] as $key => $row) {
@@ -82,7 +99,7 @@
 														<div class="form-group btn-block">
 															<div class="row">
 																<div class="col-md-8">
-																	<select data-placeholder="Selecione uma opção..." class="form-control Chosen" onchange="this.form.submit()"
+																	<select data-placeholder="Selecione uma opção..." class="form-control Chosen" 
 																			id="Campo" autofocus name="Campo">
 																		<?php
 																		foreach ($select['Campo'] as $key => $row) {
@@ -97,7 +114,7 @@
 																</div>
 
 																<div class="col-md-4">
-																	<select data-placeholder="Selecione uma opção..." class="form-control Chosen" onchange="this.form.submit()"
+																	<select data-placeholder="Selecione uma opção..." class="form-control Chosen" 
 																			id="Ordenamento" name="Ordenamento">
 																		<?php
 																		foreach ($select['Ordenamento'] as $key => $row) {

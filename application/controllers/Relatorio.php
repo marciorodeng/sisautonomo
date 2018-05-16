@@ -164,6 +164,7 @@ class Relatorio extends CI_Controller {
 
         $data['query'] = quotes_to_entities($this->input->post(array(
             #'NomeCliente',
+			'TipoReceita',
             'DataInicio',
             'DataFim',
 			'DataInicio2',
@@ -232,6 +233,7 @@ class Relatorio extends CI_Controller {
             'OT.idApp_OrcaTrata' => 'Número da Receita',
             'OT.ValorOrca' => 'Valor da Receita',
             'OT.ServicoConcluido' => 'Receita Concluída?',
+			'OT.TipoReceita' => 'Tipo de Receita',
 
         );
 
@@ -242,6 +244,7 @@ class Relatorio extends CI_Controller {
 
 		#$data['select']['NomeCliente'] = $this->Relatorio_model->select_cliente();
 		$data['select']['ObsOrca'] = $this->Relatorio_model->select_obsorca();
+		$data['select']['TipoReceita'] = $this->Relatorio_model->select_tiporeceita();
 		/*
         $data['select']['Pesquisa'] = array(
             'DataEntradaOrca' => 'Data de Entrada',
@@ -257,7 +260,8 @@ class Relatorio extends CI_Controller {
 
             #$data['bd']['Pesquisa'] = $data['query']['Pesquisa'];
            # $data['bd']['NomeCliente'] = $data['query']['NomeCliente'];
-            $data['bd']['ObsOrca'] = $data['query']['ObsOrca'];
+            $data['bd']['TipoReceita'] = $data['query']['TipoReceita'];
+			$data['bd']['ObsOrca'] = $data['query']['ObsOrca'];
 			$data['bd']['DataInicio'] = $this->basico->mascara_data($data['query']['DataInicio'], 'mysql');
             $data['bd']['DataFim'] = $this->basico->mascara_data($data['query']['DataFim'], 'mysql');
 			$data['bd']['DataInicio2'] = $this->basico->mascara_data($data['query']['DataInicio2'], 'mysql');
@@ -301,7 +305,8 @@ class Relatorio extends CI_Controller {
 
         $data['query'] = quotes_to_entities($this->input->post(array(
             #'NomeCliente',
-            'DataInicio',
+            'TipoReceita',
+			'DataInicio',
             'DataFim',
 			'DataInicio',
             'DataFim2',
@@ -358,6 +363,7 @@ class Relatorio extends CI_Controller {
             #'OT.FormaPag' => 'Forma de Pagam.',
 			'OT.ValorRestanteOrca' => 'Valor a Receber',			
             'OT.ServicoConcluido' => 'Serviço Concluído?',
+			'OT.TipoReceita' => 'Tipo de Receita',
         );
 
         $data['select']['Ordenamento'] = array(
@@ -368,6 +374,7 @@ class Relatorio extends CI_Controller {
         #$data['select']['NomeCliente'] = $this->Relatorio_model->select_cliente();
 		$data['select']['ObsOrca'] = $this->Relatorio_model->select_obsorca();
 		$data['select']['FormaPag'] = $this->Relatorio_model->select_formapag();
+		$data['select']['TipoReceita'] = $this->Relatorio_model->select_tiporeceita();
 
         $data['titulo'] = 'Receitas Mensais';
 
@@ -376,6 +383,7 @@ class Relatorio extends CI_Controller {
 
             #$data['bd']['Pesquisa'] = $data['query']['Pesquisa'];
             #$data['bd']['NomeCliente'] = $data['query']['NomeCliente'];
+			$data['bd']['TipoReceita'] = $data['query']['TipoReceita'];
 			$data['bd']['ObsOrca'] = $data['query']['ObsOrca'];
 			$data['bd']['FormaPag'] = $data['query']['FormaPag'];			
             $data['bd']['DataInicio'] = $this->basico->mascara_data($data['query']['DataInicio'], 'mysql');

@@ -181,6 +181,7 @@ class Relatorio_model extends CI_Model {
         }
 
 		#$data['NomeCliente'] = ($data['NomeCliente']) ? ' AND C.idApp_Cliente = ' . $data['NomeCliente'] : FALSE;
+		$data['TipoReceita'] = ($data['TipoReceita']) ? ' AND TD.idTab_TipoReceita = ' . $data['TipoReceita'] : FALSE;
 		$data['ObsOrca'] = ($data['ObsOrca']) ? ' AND OT.idApp_OrcaTrata = ' . $data['ObsOrca'] : FALSE;
 		$data['Campo'] = (!$data['Campo']) ? 'OT.idApp_OrcaTrata' : $data['Campo'];
         $data['Ordenamento'] = (!$data['Ordenamento']) ? 'ASC' : $data['Ordenamento'];
@@ -196,6 +197,8 @@ class Relatorio_model extends CI_Model {
 				OT.TipoRD,
                 OT.AprovadoOrca,
 				OT.ObsOrca,
+				CONCAT(IFNULL(TD.TipoReceita,""), " / ", IFNULL(OT.ObsOrca,"")) AS ObsOrca,
+				TD.TipoReceita,
                 OT.DataOrca,
                 OT.DataEntradaOrca,
                 OT.ValorEntradaOrca,
@@ -215,12 +218,13 @@ class Relatorio_model extends CI_Model {
                 
                 App_OrcaTrata AS OT
                     LEFT JOIN App_ParcelasRecebiveis AS PR ON OT.idApp_OrcaTrata = PR.idApp_OrcaTrata
+					LEFT JOIN Tab_TipoReceita AS TD ON TD.idTab_TipoReceita = OT.TipoReceita
             WHERE
                 OT.Empresa = ' . $_SESSION['log']['Empresa'] . ' AND
 				OT.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' AND
 				OT.idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND
 				((' . $filtro4 . ' (' . $consulta . ')) OR (' . $consulta2 . '))
-                ' . $data['ObsOrca'] . ' AND OT.TipoRD = "R"
+                ' . $data['TipoReceita'] . ' AND OT.TipoRD = "R"
 
             ORDER BY
 				' . $data['Campo'] . ' ' . $data['Ordenamento'] . '
@@ -299,6 +303,7 @@ class Relatorio_model extends CI_Model {
     public function list_orcamento($data, $completo) {
 
         #$data['NomeCliente'] = ($data['NomeCliente']) ? ' AND C.idApp_Cliente = ' . $data['NomeCliente'] : FALSE;
+		$data['TipoReceita'] = ($data['TipoReceita']) ? ' AND TD.idTab_TipoReceita = ' . $data['TipoReceita'] : FALSE;
 		$data['Campo'] = (!$data['Campo']) ? 'OT.idApp_OrcaTrata' : $data['Campo'];
         $data['Ordenamento'] = (!$data['Ordenamento']) ? 'ASC' : $data['Ordenamento'];
 		$data['ObsOrca'] = ($data['ObsOrca']) ? ' AND OT.idApp_OrcaTrata = ' . $data['ObsOrca'] : FALSE;
@@ -350,6 +355,8 @@ class Relatorio_model extends CI_Model {
                 OT.idApp_OrcaTrata,
                 OT.AprovadoOrca,
 				OT.ObsOrca,
+				CONCAT(IFNULL(TD.TipoReceita,""), " / ", IFNULL(OT.ObsOrca,"")) AS ObsOrca,
+				TD.TipoReceita,
                 OT.DataOrca,
 				OT.DataEntradaOrca,
 				OT.DataPrazo,
@@ -371,12 +378,13 @@ class Relatorio_model extends CI_Model {
                 App_OrcaTrata AS OT
 				LEFT JOIN Sis_Usuario AS TSU ON TSU.idSis_Usuario = OT.idSis_Usuario
 				LEFT JOIN Tab_FormaPag AS TFP ON TFP.idTab_FormaPag = OT.FormaPagamento
+				LEFT JOIN Tab_TipoReceita AS TD ON TD.idTab_TipoReceita = OT.TipoReceita
 
             WHERE
 				OT.Empresa = ' . $_SESSION['log']['Empresa'] . ' AND
 				OT.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' AND
 				OT.idSis_Usuario = ' . $_SESSION['log']['id'] . ' 
-                ' . $data['ObsOrca'] . ' AND
+				' . $data['TipoReceita'] . ' AND
 				' . $filtro3 . '                 
 				OT.TipoRD = "R" AND
 
@@ -4387,6 +4395,31 @@ exit();*/
 
         return $array;
     }
+	
+	public function select_tiporeceita() {
+
+        $query = $this->db->query('
+            SELECT
+				TD.idTab_TipoReceita,
+				CONCAT(TD.TipoReceita) AS TipoReceita
+			FROM
+				Tab_TipoReceita AS TD
+
+			WHERE
+				TD.Empresa = ' . $_SESSION['log']['Empresa'] . ' AND
+				TD.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . '
+			ORDER BY
+				TD.TipoReceita
+        ');
+
+        $array = array();
+        $array[0] = ':: Todos ::';
+        foreach ($query->result() as $row) {
+            $array[$row->idTab_TipoReceita] = $row->TipoReceita;
+        }
+
+        return $array;
+    }	
 
 	public function select_categoriadesp() {
 

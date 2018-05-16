@@ -33,6 +33,23 @@
 											<div class="form-group">	
 												<div class="row">
 													<div class="col-md-2">
+														<label for="TipoReceita">Tipo de Receita</label>
+														<select data-placeholder="Selecione uma opção..." class="form-control" <?php echo $readonly; ?>
+																id="TipoReceita" name="TipoReceita">
+															<!--<option value="">-- Selecione uma opção --</option>-->
+															<?php
+															foreach ($select['TipoReceita'] as $key => $row) {
+																(!$orcatrata['TipoReceita']) ? $orcatrata['TipoReceita'] = '1' : FALSE;
+																if ($orcatrata['TipoReceita'] == $key) {
+																	echo '<option value="' . $key . '" selected="selected">' . $row . '</option>';
+																} else {
+																	echo '<option value="' . $key . '">' . $row . '</option>';
+																}
+															}
+															?>
+														</select>
+													</div>
+													<div class="col-md-2">
 														<label for="ObsOrca">Receita</label><br>
 														<input type="text" class="form-control" maxlength="200"
 																name="ObsOrca" value="<?php echo $orcatrata['ObsOrca'] ?>">
