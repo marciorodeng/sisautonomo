@@ -1179,5 +1179,5 @@ class Basico_model extends CI_Model {
         }
 
         return $array;
-    }	
+    }
 }

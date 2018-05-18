@@ -28,18 +28,19 @@
 							<div class="col-md-12 col-lg-12">
 								<label for="">Agendamento:</label>
 								<div class="form-group">
-									<!--
+									
 									<div class="row">
-										<button type="button" id="MarcarConsulta" onclick="redirecionar(2)" class="btn btn-primary"> C/ Contato
+										<button type="button" id="MarcarConsulta" onclick="redirecionar(2)" class="btn btn-primary"> Evento
 										</button>
 									</div>
+									<!--
 									<br>
-									-->
+									
 									<div class="row">
-										<button type="button" id="AgendarEvento" onclick="redirecionar(1)" class="btn btn-info"> Evento
+										<button type="button" id="AgendarEvento" onclick="redirecionar(1)" class="btn btn-info"> Evento2
 										</button>
 									</div>
-									<!--
+									
 									<br>
 									<div class="row">
 										<button type="button" id="AgendarEvento" onclick="redirecionar2(3)" class="btn btn-danger">Evento Particular

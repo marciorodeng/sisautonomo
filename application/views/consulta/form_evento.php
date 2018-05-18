@@ -64,7 +64,7 @@
 									</div>
 								</div>
 							</div>							
-							<!--
+							
 							<div class="form-group">
 								<div class="row">
 									<div class="col-md-9 form-inline">
@@ -98,7 +98,7 @@
 									</div>							
 								</div>
 							</div>
-							-->
+							
 							<div class="form-group">
 								<div class="row">
 									<input type="hidden" name="idApp_Consulta" value="<?php echo $query['idApp_Consulta']; ?>">
@@ -153,6 +153,7 @@
 									<?php } ?>
 								</div>
 							</div>
+							
 							</form>
 						</div>
 					</div>
