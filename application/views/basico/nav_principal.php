@@ -28,16 +28,16 @@
 						</li>
 						-->
 						<li class="btn-toolbar navbar-form" role="toolbar" aria-label="...">
-							<div class="btn-group">
-								<button type="button" class="btn btn-md btn-primary  dropdown-toggle" data-toggle="dropdown">
-									<span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['log']['Usuario']; ?> <span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="<?php echo base_url() ?>acesso/index"><span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['log']['Usuario']; ?></a></li>
-									<li role="separator" class="divider"></li>
-									<li><a href="<?php echo base_url(); ?>login/sair"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
-								</ul>
+							<div class="btn-group btn-dander" role="group" aria-label="...">
+								<a href="<?php echo base_url() ?>acesso/index">
+									<button type="button" class="btn btn-md btn-success ">
+										<span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['log']['Usuario']; ?>
+									</button>
+								</a>
 							</div>
+							<div class="btn-group" role="group" aria-label="..."> </div>
+						</li>
+						<li class="btn-toolbar navbar-form" role="toolbar" aria-label="...">
 							<div class="btn-group">
 								<button type="button" class="btn btn-md btn-warning  dropdown-toggle" data-toggle="dropdown">
 									<span class="glyphicon glyphicon-calendar"></span> Agendas <span class="caret"></span>
@@ -52,13 +52,6 @@
 						</li>
 						
 						<li class="btn-toolbar navbar-form" role="toolbar" aria-label="...">														
-							<div class="btn-group" role="group" aria-label="...">
-								<a href="<?php echo base_url(); ?>relatorio/clientes">
-									<button type="button" class="btn btn-md btn-success ">
-										<span class="glyphicon glyphicon-user"></span> Contatos
-									</button>
-								</a>
-							</div>
 							<div class="btn-group">
 								<button type="button" class="btn btn-md btn-primary  dropdown-toggle" data-toggle="dropdown">
 									<span class="glyphicon glyphicon-pencil"></span> Transações <span class="caret"></span>
@@ -75,6 +68,16 @@
 									<li><a href="<?php echo base_url() ?>relatorio/balanco"><span class="glyphicon glyphicon-usd"></span> Balanço</a></li>
 
 								</ul>
+							</div>
+							<div class="btn-group" role="group" aria-label="..."> </div>
+						</li>
+						<li class="btn-toolbar navbar-form" role="toolbar" aria-label="...">														
+							<div class="btn-group" role="group" aria-label="...">
+								<a href="<?php echo base_url(); ?>login/sair">
+									<button type="button" class="btn btn-md btn-danger ">
+										<span class="glyphicon glyphicon-log-out"></span> Sair
+									</button>
+								</a>
 							</div>
 							<div class="btn-group" role="group" aria-label="..."> </div>
 						</li>

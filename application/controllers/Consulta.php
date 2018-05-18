@@ -499,8 +499,9 @@ class Consulta extends CI_Controller {
             unset($_SESSION['Agenda']);
 
             if ($data['auditoriaitem'] && $this->Consulta_model->update_consulta($data['query'], $data['query']['idApp_Consulta']) === FALSE) {
-                $data['msg'] = '?m=2';
-                redirect(base_url() . 'consulta/listar/' . $data['query']['idApp_Consulta'] . $data['msg']);
+                $data['msg'] = '?m=1';
+                #redirect(base_url() . 'consulta/listar/' . $data['query']['idApp_Consulta'] . $data['msg']);
+				redirect(base_url() . 'agenda' . $data['msg'] . $data['redirect']);
                 exit();
             } else {
 
