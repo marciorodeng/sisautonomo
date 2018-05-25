@@ -8,7 +8,7 @@
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar1">
 						<span class="sr-only">MENU</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand"> <?php echo $_SESSION['log']['NomeEmpresa']; ?></a>
+					<a href="<?php echo base_url() ?>acesso/index" class="navbar-brand"><?php echo $_SESSION['log']['NomeEmpresa']; ?>- <?php echo $_SESSION['log']['Usuario']; ?></a>
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar1">
 
@@ -26,7 +26,7 @@
 							</div>
 							</form>
 						</li>
-						-->
+						
 						<li class="btn-toolbar navbar-form" role="toolbar" aria-label="...">
 							<div class="btn-group btn-dander" role="group" aria-label="...">
 								<a href="<?php echo base_url() ?>acesso/index">
@@ -37,6 +37,28 @@
 							</div>
 							<div class="btn-group" role="group" aria-label="..."> </div>
 						</li>
+						-->
+						<li class="btn-toolbar navbar-form" role="toolbar" aria-label="...">
+							<div class="btn-group btn-dander" role="group" aria-label="...">
+								<a href="<?php echo base_url(); ?>agenda">
+									<button type="button" class="btn btn-md btn-warning ">
+										<span class="glyphicon glyphicon-calendar"></span> Agenda
+									</button>
+								</a>
+							</div>
+							<div class="btn-group" role="group" aria-label="..."> </div>
+						</li>
+						<li class="btn-toolbar navbar-form" role="toolbar" aria-label="...">
+							<div class="btn-group btn-dander" role="group" aria-label="...">
+								<a href="<?php echo base_url() ?>relatorio/tarefa">
+									<button type="button" class="btn btn-md btn-success ">
+										<span class="glyphicon glyphicon-pencil"></span> Tarefas
+									</button>
+								</a>
+							</div>
+							<div class="btn-group" role="group" aria-label="..."> </div>
+						</li>
+						<!--
 						<li class="btn-toolbar navbar-form" role="toolbar" aria-label="...">
 							<div class="btn-group">
 								<button type="button" class="btn btn-md btn-warning  dropdown-toggle" data-toggle="dropdown">
@@ -50,11 +72,11 @@
 							</div>
 							<div class="btn-group" role="group" aria-label="..."> </div>
 						</li>
-						
+						-->
 						<li class="btn-toolbar navbar-form" role="toolbar" aria-label="...">														
 							<div class="btn-group">
 								<button type="button" class="btn btn-md btn-primary  dropdown-toggle" data-toggle="dropdown">
-									<span class="glyphicon glyphicon-pencil"></span> Transações <span class="caret"></span>
+									<span class="glyphicon glyphicon-usd"></span> Transações <span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu" role="menu">
 									<li><a href="<?php echo base_url() ?>relatorio/receitas"><span class="glyphicon glyphicon-pencil"></span> Receitas</a></li>							

@@ -197,7 +197,7 @@ class Despesas extends CI_Controller {
 
         #Ver uma solução melhor para este campo
 			
-        (!$data['despesas']['AprovadoDespesas']) ? $data['despesas']['AprovadoDespesas'] = 'M' : FALSE;
+        (!$data['despesas']['AprovadoDespesas']) ? $data['despesas']['AprovadoDespesas'] = 'S' : FALSE;
 		
 /*
         $data['radio'] = array(
