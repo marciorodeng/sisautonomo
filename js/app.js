@@ -880,22 +880,26 @@ function adicionaProcedtarefa() {
 			<div class="panel panel-info">\
 				<div class="panel-heading">\
 					<div class="row">\
-						<div class="col-md-4">\
+						<div class="col-md-12">\
 							<label for="Procedtarefa'+pt+'">Ação:</label>\
 							<textarea class="form-control" id="Procedtarefa'+pt+'"\
 									  name="Procedtarefa'+pt+'"></textarea>\
 						</div>\
-						<div class="col-md-3">\
+					</div>\
+					<div class="row">\
+						<div class="col-md-12">\
 							<label for="DataProcedtarefa'+pt+'">Data da Ação:</label>\
 							<div class="input-group DatePicker">\
-								<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"\
-									   name="DataProcedtarefa'+pt+'" value="'+currentDate.format('DD/MM/YYYY')+'">\
 								<span class="input-group-addon" disabled>\
 									<span class="glyphicon glyphicon-calendar"></span>\
 								</span>\
+								<input type="text" class="form-control Date" maxlength="10" placeholder="DD/MM/AAAA"\
+									   name="DataProcedtarefa'+pt+'" value="'+currentDate.format('DD/MM/YYYY')+'">\
 							</div>\
 						</div>\
-						<div class="col-md-3">\
+					</div>\
+					<div class="row">\
+						<div class="col-md-6">\
 							<label for="ConcluidoProcedtarefa">Ação Concl.? </label><br>\
 							<div class="form-group">\
 								<div class="btn-group" data-toggle="buttons">\
@@ -910,8 +914,9 @@ function adicionaProcedtarefa() {
 								</div>\
 							</div>\
 						</div>\
-						<div class="col-md-2">\
-							<label><br></label><br>\
+					</div>\
+					<div class="row">\
+						<div class="col-md-1">\
 							<button type="button" id="'+pt+'" class="remove_field3 btn btn-danger">\
 								<span class="glyphicon glyphicon-trash"></span>\
 							</button>\

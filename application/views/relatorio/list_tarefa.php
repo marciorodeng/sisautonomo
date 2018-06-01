@@ -13,12 +13,12 @@
 
                 <thead>
                     <tr>                       											
-						<!--<th class="active">Responsável da Tarefa</th>-->
-						<th class="active">Nº</th>
+						<!--<th class="active">Responsável da Tarefa</th>
+						<th class="active">Nº</th>-->
 						<th class="active">Tarefa</th>																	                       
 						<th class="active">Data</th>
 						<!--<th class="active">Prazo de Conclusão</th>-->
-						<th class="active">Concl.</th>
+						<th class="active">Cl.</th>
 						<!--<th class="active">Data da Conclusão da Tarefa</th>
 						<th class="active">Rotina?:</th>
 						<th class="active">Prioridade?</th>						
@@ -41,7 +41,7 @@
                         echo '<tr class="clickable-row" data-href="' . base_url() . 'tarefa/alterar/' . $row['idApp_Tarefa'] . '">';
                            
 							#echo '<td>' . $row['NomeProfissional'] . '</td>';
-							echo '<td>' . $row['idApp_Tarefa'] . '</td>';
+							#echo '<td>' . $row['idApp_Tarefa'] . '</td>';
 							echo '<td>' . $row['ObsTarefa'] . '</td>'; //  = Tarefa
 							echo '<td>' . $row['DataTarefa'] . '</td>';
 							#echo '<td>' . $row['DataPrazoTarefa'] . '</td>';

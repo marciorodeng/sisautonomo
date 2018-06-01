@@ -17,7 +17,7 @@
 						<?php echo form_open('relatorio/receitas', 'role="form"'); ?>
 							
 						<button class="btn btn-sm btn-info" name="pesquisar" value="0" type="submit">
-							<span class="glyphicon glyphicon-search"></span> Pesquisar
+							<span class="glyphicon glyphicon-search"></span>Pesquise
 						</button>											
 						<!--
 						<a class="btn btn-sm btn-warning" href="<?php echo base_url() ?>relatorio/orcamento" role="button"> 
@@ -25,16 +25,14 @@
 						</a>
 						-->
 						<button  class="btn btn-sm btn-success" type="button" data-toggle="modal" data-loading-text="Aguarde..." data-target=".bs-excluir-modal2-sm">
-							<span class="glyphicon glyphicon-filter"></span> Filtros
+							<span class="glyphicon glyphicon-filter"></span>Filtro
 						</button>
 						<button  class="btn btn-sm btn-danger" type="button" data-toggle="modal" data-loading-text="Aguarde..." data-target=".bs-excluir-modal-sm">
-							<span class="glyphicon glyphicon-plus"></span> Nova Rec.
+							<span class="glyphicon glyphicon-plus"></span>Receita
 						</button>
 					</div>
 					<div class="panel-body">
 						
-						<div class="form-group">
-														
 							<div class="modal fade bs-excluir-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
 								<div class="modal-dialog" role="document">
 									<div class="modal-content">
@@ -65,7 +63,7 @@
 											<div class="form-group col-md-3 text-left">
 												<div class="form-footer">
 													<button class="btn btn-info btn-block" name="pesquisar" value="0" type="submit">
-														<span class="glyphicon glyphicon-search"></span> Pesquisar
+														<span class="glyphicon glyphicon-search"></span> Pesquise
 													</button>
 												</div>
 											</div>
@@ -239,14 +237,16 @@
 									</div>
 								</div>
 							</div>								
-						</div>
+						
+						<?php echo (isset($list)) ? $list : FALSE ?>
 					</div>
 					</form>	
 					
-					<?php echo (isset($list)) ? $list : FALSE ?>
 					
-				</div>				
+				</div>
+				
 			</div>
+			
 		</div>		
 	</div>
 	<div class="col-md-2"></div>	
