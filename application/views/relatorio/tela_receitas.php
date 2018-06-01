@@ -17,7 +17,7 @@
 						<?php echo form_open('relatorio/receitas', 'role="form"'); ?>
 							
 						<button class="btn btn-sm btn-info" name="pesquisar" value="0" type="submit">
-							<span class="glyphicon glyphicon-search"></span> Pesq.
+							<span class="glyphicon glyphicon-search"></span> Pesquisar
 						</button>											
 						<!--
 						<a class="btn btn-sm btn-warning" href="<?php echo base_url() ?>relatorio/orcamento" role="button"> 
@@ -30,7 +30,6 @@
 						<button  class="btn btn-sm btn-danger" type="button" data-toggle="modal" data-loading-text="Aguarde..." data-target=".bs-excluir-modal-sm">
 							<span class="glyphicon glyphicon-plus"></span> Nova Rec.
 						</button>
-					
 					</div>
 					<div class="panel-body">
 						
@@ -41,11 +40,9 @@
 									<div class="modal-content">
 										<div class="modal-header bg-danger">
 											<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-											<h4 class="modal-title">Antes de cadastrar uma <br>
-																	Nova Receita, <br>
-																	 do tipo "Mensalidade",<br>
-																	 confira as <br>
-																	 "Rec. Mensais Cads."!</h4>
+											<h4 class="modal-title">Antes de cadastrar uma<br>
+																	Nova Receita, "Pesquise"<br>
+																	as Receitas Cadastradas!</h4>
 										</div>
 										<!--
 										<div class="modal-body">
@@ -54,22 +51,29 @@
 										</div>
 										-->
 										<div class="modal-footer">
+											<!--
 											<div class="form-group text-left">
 												<div class="row">	
 													<div class="col-md-6 text-left">
 														<a class="btn btn-md btn-warning btn-block" href="<?php echo base_url() ?>relatorio/orcamento" role="button"> 
-															<span class="glyphicon glyphicon-list"></span> Rec. Mensais Cads
+															<span class="glyphicon glyphicon-list"></span> Rec. Cads.
 														</a>														
 													</div>
 												</div>
-											</div>	
-											<div class="form-group text-left">
-												<div class="row">		
-													<div class="col-md-6 text-left">
-														<a class="btn btn-danger btn-block" href="<?php echo base_url() ?>orcatrata2/cadastrar" role="button">
-															<span class="glyphicon glyphicon-plus"></span> Nova Rec.
-														</a>
-													</div>
+											</div>
+											-->
+											<div class="form-group col-md-3 text-left">
+												<div class="form-footer">
+													<button class="btn btn-info btn-block" name="pesquisar" value="0" type="submit">
+														<span class="glyphicon glyphicon-search"></span> Pesquisar
+													</button>
+												</div>
+											</div>
+											<div class="form-group col-md-3 text-left">
+												<div class="form-footer">		
+													<a class="btn btn-danger btn-block" href="<?php echo base_url() ?>orcatrata2/cadastrar" role="button">
+														<span class="glyphicon glyphicon-plus"></span> Nova Rec.
+													</a>
 												</div>	
 											</div>		
 										</div>
@@ -215,16 +219,18 @@
 												</div>
 												<div class="row">
 													<br>
-													<div class="col-md-3 text-left">
-														<div class="form-footer btn-block">
-															<button class="btn btn-primary" name="pesquisar" value="0" type="submit">
-															<span class="glyphicon glyphicon-search"></span> Pesquisar</button>
+													<div class="form-group col-md-3 text-left">
+														<div class="form-footer ">
+															<button class="btn btn-info btn-block" name="pesquisar" value="0" type="submit">
+																<span class="glyphicon glyphicon-search"></span> Pesquisar
+															</button>
 														</div>
 													</div>
-													<div class="col-md-2 text-left">
-														<div class="form-footer btn-block">
-															<button type="button" class="btn btn-default " data-dismiss="modal">
-															<span class="glyphicon glyphicon-remove"> Fechar</button>
+													<div class="form-group col-md-3 text-left">
+														<div class="form-footer ">
+															<button type="button" class="btn btn-primary btn-block" data-dismiss="modal">
+																<span class="glyphicon glyphicon-remove"> Fechar
+															</button>
 														</div>
 													</div>
 												</div>
@@ -234,12 +240,9 @@
 								</div>
 							</div>								
 						</div>
-					
-						
 					</div>
 					</form>	
 					
-
 					<?php echo (isset($list)) ? $list : FALSE ?>
 					
 				</div>				

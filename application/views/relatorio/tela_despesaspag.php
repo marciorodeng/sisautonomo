@@ -16,7 +16,7 @@
 						<?php echo form_open('relatorio/despesaspag', 'role="form"'); ?>
 						
 						<button class="btn btn-sm btn-info" name="pesquisar" value="0" type="submit">
-							<span class="glyphicon glyphicon-search"></span> Pesq.
+							<span class="glyphicon glyphicon-search"></span> Pesquisar
 						</button>
 						<!--
 						<a class="btn btn-sm btn-warning" href="<?php echo base_url() ?>relatorio/despesas" role="button"> 
@@ -39,11 +39,9 @@
 									<div class="modal-content">
 										<div class="modal-header bg-danger">
 											<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-											<h4 class="modal-title">Antes de cadastrar uma<br> 
-																	Nova Despesa,<br> 
-																	do tipo "Mensalidade",<br> 
-																	confira as<br>
-																	"Dep. Mensais Cads."!</h4>
+											<h4 class="modal-title">Antes de cadastrar uma<br>
+																	Nova Despesa, "Pesquise"<br>
+																	as Despesas Cadastradas!</h4>
 										</div>
 										<!--
 										<div class="modal-body">
@@ -52,6 +50,7 @@
 										</div>
 										-->
 										<div class="modal-footer text-left">
+											<!--
 											<div class="form-group text-left">
 												<div class="row">		
 													<div class="col-md-6 text-left">
@@ -60,14 +59,20 @@
 														</a>
 													</div>
 												</div>
-											</div>	
-											<div class="form-group text-left">
-												<div class="row">		
-													<div class="col-md-6 text-left">
-														<a class="btn btn-danger btn-block text-left" href="<?php echo base_url() ?>despesas/cadastrar" role="button">
-															<span class="glyphicon glyphicon-plus"></span> Nova Despesa
-														</a>
-													</div>
+											</div>
+											-->
+											<div class="form-group col-md-3 text-left">
+												<div class="form-footer">
+													<button class="btn btn-info btn-block" name="pesquisar" value="0" type="submit">
+														<span class="glyphicon glyphicon-search"></span> Pesquisar
+													</button>
+												</div>
+											</div>
+											<div class="form-group col-md-3 text-left">
+												<div class="form-footer">		
+													<a class="btn btn-danger btn-block " href="<?php echo base_url() ?>despesas/cadastrar" role="button">
+														<span class="glyphicon glyphicon-plus"></span> Nova Desp.
+													</a>
 												</div>
 											</div>	
 										</div>
@@ -198,16 +203,18 @@
 												</div>
 												<div class="row">
 													<br>
-													<div class="col-md-3 text-left">
-														<div class="form-footer btn-block">
-															<button class="btn btn-primary" name="pesquisar" value="0" type="submit">
-															<span class="glyphicon glyphicon-search"></span> Pesquisar</button>
+													<div class="form-group col-md-3 text-left">
+														<div class="form-footer">
+															<button class="btn btn-info btn-block" name="pesquisar" value="0" type="submit">
+																<span class="glyphicon glyphicon-search"></span> Pesquisar
+															</button>
 														</div>
 													</div>
-													<div class="col-md-2 text-left">
-														<div class="form-footer btn-block">
-															<button type="button" class="btn btn-default " data-dismiss="modal">
-															<span class="glyphicon glyphicon-remove"> Fechar</button>
+													<div class="form-group col-md-3 text-left">
+														<div class="form-footer ">
+															<button type="button" class="btn btn-primary btn-block" data-dismiss="modal">
+																<span class="glyphicon glyphicon-remove"> Fechar
+															</button>
 														</div>
 													</div>
 												</div>
@@ -216,12 +223,9 @@
 									</div>
 								</div>
 							</div>
-																								
 						</div>
-					</form>							
-					
 					</div>
-					
+					</form>	
 					
 					<?php echo (isset($list)) ? $list : FALSE ?>
 				</div>
