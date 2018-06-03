@@ -166,7 +166,7 @@
 										<input type="hidden" name="idApp_ParcelasPagaveis<?php echo $i ?>" value="<?php echo $parcelaspag[$i]['idApp_ParcelasPagaveis']; ?>"/>
 										<?php } ?>
 										<div class="form-group">
-											<div class="panel panel-danger">
+											<div class="panel panel-warning">
 												<div class="panel-heading">
 													<div class="row">
 														<div class="col-md-1">
@@ -273,6 +273,7 @@
 												
 												<div class="form-group text-left">
 													<div class="row">									
+														<!--
 														<div class="col-md-3 text-left form-inline">
 															<label for="ServicoConcluidoDespesas">Concluída?</label><br>
 															<div class="form-group">
@@ -292,6 +293,35 @@
 																			echo ''
 																			. '<label class="btn btn-default" name="radiobutton_ServicoConcluidoDespesas" id="radiobutton_ServicoConcluidoDespesas' . $key . '">'
 																			. '<input type="radio" name="ServicoConcluidoDespesas" id="radiobutton" '
+																			. 'autocomplete="off" value="' . $key . '" >' . $row
+																			. '</label>'
+																			;
+																		}
+																	}
+																	?>
+																</div>
+															</div>
+														</div>
+														-->
+														<div class="col-md-3 form-inline">
+															<label for="QuitadoDespesas">Despesa Quit.?</label><br>
+															<div class="form-group">
+																<div class="btn-group" data-toggle="buttons">
+																	<?php
+																	foreach ($select['QuitadoDespesas'] as $key => $row) {
+																		(!$despesas['QuitadoDespesas']) ? $despesas['QuitadoDespesas'] = 'N' : FALSE;
+
+																		if ($despesas['QuitadoDespesas'] == $key) {
+																			echo ''
+																			. '<label class="btn btn-warning active" name="radiobutton_QuitadoDespesas" id="radiobutton_QuitadoDespesas' . $key . '">'
+																			. '<input type="radio" name="QuitadoDespesas" id="radiobutton" '
+																			. 'autocomplete="off" value="' . $key . '" checked>' . $row
+																			. '</label>'
+																			;
+																		} else {
+																			echo ''
+																			. '<label class="btn btn-default" name="radiobutton_QuitadoDespesas" id="radiobutton_QuitadoDespesas' . $key . '">'
+																			. '<input type="radio" name="QuitadoDespesas" id="radiobutton" '
 																			. 'autocomplete="off" value="' . $key . '" >' . $row
 																			. '</label>'
 																			;

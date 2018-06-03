@@ -178,6 +178,7 @@ class Relatorio extends CI_Controller {
             'QuitadoOrca',
 			'ServicoConcluido',
 			'QuitadoRecebiveis',
+			'Modalidade',
         ), TRUE));
 
 		if (!$data['query']['DataInicio2'])
@@ -223,6 +224,12 @@ class Relatorio extends CI_Controller {
             'N' => 'Não',
             'S' => 'Sim',
 			'#' => 'TODOS',						            
+        );
+		
+		$data['select']['Modalidade'] = array(
+            '#' => 'TODOS',
+            'P' => 'Parcelas',
+            'M' => 'Mensal',
         );
 
         $data['select']['Campo'] = array(
@@ -274,7 +281,7 @@ class Relatorio extends CI_Controller {
             $data['bd']['QuitadoOrca'] = $data['query']['QuitadoOrca'];
 			$data['bd']['ServicoConcluido'] = $data['query']['ServicoConcluido'];
 			$data['bd']['QuitadoRecebiveis'] = $data['query']['QuitadoRecebiveis'];
-
+			$data['bd']['Modalidade'] = $data['query']['Modalidade'];
             $data['report'] = $this->Relatorio_model->list_receitas($data['bd'],TRUE);
 
             /*
@@ -702,7 +709,7 @@ class Relatorio extends CI_Controller {
 			'ServicoConcluidoDespesas',
             'QuitadoDespesas',
 			'QuitadoPagaveis',
-
+			'ModalidadeDespesas',
         ), TRUE));
 		
         if (!$data['query']['DataInicio2'])
@@ -749,6 +756,12 @@ class Relatorio extends CI_Controller {
             'S' => 'Sim',
 			'#' => 'TODOS', 						           
         );
+		
+		$data['select']['ModalidadeDespesas'] = array(
+            '#' => 'TODOS',
+            'P' => 'Parcelas',
+            'M' => 'Mensal',
+        );
 
         $data['select']['Campo'] = array(
 			'PP.DataVencimentoPagaveis' => 'Data do Venc.',
@@ -789,7 +802,7 @@ class Relatorio extends CI_Controller {
 			$data['bd']['ServicoConcluidoDespesas'] = $data['query']['ServicoConcluidoDespesas'];
             $data['bd']['QuitadoDespesas'] = $data['query']['QuitadoDespesas'];
 			$data['bd']['QuitadoPagaveis'] = $data['query']['QuitadoPagaveis'];
-
+			$data['bd']['ModalidadeDespesas'] = $data['query']['ModalidadeDespesas'];
             $data['report'] = $this->Relatorio_model->list_despesaspag($data['bd'],TRUE);
 
             /*

@@ -46,17 +46,7 @@ class Orcatrata2 extends CI_Controller {
             $data['msg'] = $this->basico->msg('<strong>Erro no Banco de dados. Entre em contato com o administrador deste sistema.</strong>', 'erro', TRUE, TRUE, TRUE);
         else
             $data['msg'] = '';
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/*		
-		$data['select']['Convenio'] = $this->Relatorio_model->select_convenio();
-
-        $data['query'] = quotes_to_entities($this->input->post(array(
-            'Convenio',
-        ), TRUE));
-
-        $_SESSION['log']['Convenio'] = ($data['query']['Convenio']) ?
-            $data['query']['Convenio'] : FALSE;        
-*/		
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 		$data['orcatrata'] = quotes_to_entities($this->input->post(array(
             #### App_OrcaTrata ####
             'idApp_OrcaTrata',

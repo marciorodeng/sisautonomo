@@ -170,7 +170,7 @@
 
 
 										<div class="form-group">
-											<div class="panel panel-info">
+											<div class="panel panel-warning">
 												<div class="panel-heading">
 													<div class="row">
 														<div class="col-md-1">
@@ -275,10 +275,9 @@
 									<div class="form-group">
 										<div class="panel panel-info">
 											<div class="panel-heading">
-												
 												<div class="form-group text-left">
 													<div class="row">
-													
+														<!--
 														<div class="col-md-3 form-inline">
 															<label for="ServicoConcluido">Concluída?</label><br>
 															<div class="form-group">
@@ -306,8 +305,36 @@
 																	?>
 																</div>
 															</div>
-														</div>								
+														</div>
+														-->
+														<div class="col-md-3 form-inline">
+															<label for="QuitadoOrca">Receita Quit.?</label><br>
+															<div class="form-group">
+																<div class="btn-group" data-toggle="buttons">
+																	<?php
+																	foreach ($select['QuitadoOrca'] as $key => $row) {
+																		(!$orcatrata['QuitadoOrca']) ? $orcatrata['QuitadoOrca'] = 'N' : FALSE;
 
+																		if ($orcatrata['QuitadoOrca'] == $key) {
+																			echo ''
+																			. '<label class="btn btn-warning active" name="radiobutton_QuitadoOrca" id="radiobutton_QuitadoOrca' . $key . '">'
+																			. '<input type="radio" name="QuitadoOrca" id="radiobutton" '
+																			. 'autocomplete="off" value="' . $key . '" checked>' . $row
+																			. '</label>'
+																			;
+																		} else {
+																			echo ''
+																			. '<label class="btn btn-default" name="radiobutton_QuitadoOrca" id="radiobutton_QuitadoOrca' . $key . '">'
+																			. '<input type="radio" name="QuitadoOrca" id="radiobutton" '
+																			. 'autocomplete="off" value="' . $key . '" >' . $row
+																			. '</label>'
+																			;
+																		}
+																	}
+																	?>
+																</div>
+															</div>
+														</div>
 													</div>
 												</div>
 											</div>

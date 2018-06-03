@@ -76,7 +76,7 @@
 															?>
 														</select>
 													</div>
-													-->
+													
 													<div class="col-md-4 text-left">
 														<label for="ServicoConcluido">Concl.?</label>
 														<select data-placeholder="Selecione uma opção..." class="form-control Chosen btn-block" 
@@ -84,6 +84,22 @@
 															<?php
 															foreach ($select['ServicoConcluido'] as $key => $row) {
 																if ($query['ServicoConcluido'] == $key) {
+																	echo '<option value="' . $key . '" selected="selected">' . $row . '</option>';
+																} else {
+																	echo '<option value="' . $key . '">' . $row . '</option>';
+																}
+															}
+															?>
+														</select>
+													</div>
+													-->
+													<div class="col-md-3 text-left">
+														<label for="QuitadoOrca">Quitada?</label>
+														<select data-placeholder="Selecione uma opção..." class="form-control Chosen btn-block " 
+																id="QuitadoOrca" name="QuitadoOrca">
+															<?php
+															foreach ($select['QuitadoOrca'] as $key => $row) {
+																if ($query['QuitadoOrca'] == $key) {
 																	echo '<option value="' . $key . '" selected="selected">' . $row . '</option>';
 																} else {
 																	echo '<option value="' . $key . '">' . $row . '</option>';

@@ -189,7 +189,8 @@ class Relatorio_model extends CI_Model {
         $filtro2 = ($data['QuitadoOrca'] != '#') ? 'OT.QuitadoOrca = "' . $data['QuitadoOrca'] . '" AND ' : FALSE;
 		$filtro3 = ($data['ServicoConcluido'] != '#') ? 'OT.ServicoConcluido = "' . $data['ServicoConcluido'] . '" AND ' : FALSE;
 		$filtro4 = ($data['QuitadoRecebiveis'] != '#') ? 'PR.QuitadoRecebiveis = "' . $data['QuitadoRecebiveis'] . '" AND ' : FALSE;
-
+		$filtro5 = ($data['Modalidade'] != '#') ? 'OT.Modalidade = "' . $data['Modalidade'] . '" AND ' : FALSE;
+		
         $query = $this->db->query(
             'SELECT
                 
@@ -223,6 +224,8 @@ class Relatorio_model extends CI_Model {
                 OT.Empresa = ' . $_SESSION['log']['Empresa'] . ' AND
 				OT.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' AND
 				OT.idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND
+				' . $filtro2 . '
+				' . $filtro5 . '
 				((' . $filtro4 . ' (' . $consulta . ')) OR (' . $consulta2 . '))
                 ' . $data['TipoReceita'] . ' AND OT.TipoRD = "R"
 
@@ -385,7 +388,7 @@ class Relatorio_model extends CI_Model {
 				OT.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' AND
 				OT.idSis_Usuario = ' . $_SESSION['log']['id'] . ' 
 				' . $data['TipoReceita'] . ' AND
-				' . $filtro3 . '                 
+				' . $filtro2 . '                 
 				OT.TipoRD = "R" AND
 
 				OT.Modalidade = "M"
@@ -730,7 +733,8 @@ class Relatorio_model extends CI_Model {
 		$filtro3 = ($data['ServicoConcluidoDespesas'] != '#') ? 'DS.ServicoConcluidoDespesas = "' . $data['ServicoConcluidoDespesas'] . '" AND ' : FALSE;
         $filtro2 = ($data['QuitadoDespesas'] != '#') ? 'DS.QuitadoDespesas = "' . $data['QuitadoDespesas'] . '" AND ' : FALSE;
 		$filtro4 = ($data['QuitadoPagaveis'] != '#') ? 'PP.QuitadoPagaveis = "' . $data['QuitadoPagaveis'] . '" AND ' : FALSE;	
-
+		$filtro5 = ($data['ModalidadeDespesas'] != '#') ? 'DS.ModalidadeDespesas = "' . $data['ModalidadeDespesas'] . '" AND ' : FALSE;
+		
         if ($data['DataFim']) {
             $consulta =
                 '(PP.DataVencimentoPagaveis >= "' . $data['DataInicio'] . '" AND PP.DataVencimentoPagaveis <= "' . $data['DataFim'] . '")';
@@ -789,6 +793,8 @@ class Relatorio_model extends CI_Model {
                 DS.Empresa = ' . $_SESSION['log']['Empresa'] . ' AND
 				DS.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' AND
 				DS.idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND
+				' . $filtro2 . '
+				' . $filtro5 . '
 				((' . $filtro4 . ' (' . $consulta . ')) OR (' . $consulta2 . ')) 
 				' . $data['TipoDespesa'] . ' AND (DS.TipoProduto = "D" OR DS.TipoProduto = "E")
             ORDER BY

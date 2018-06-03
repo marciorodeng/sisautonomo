@@ -89,7 +89,7 @@
 										<div class="modal-footer">
 											<div class="form-group">
 												<div class="row">
-													<div class="col-md-3 text-left">
+													<div class="col-md-6 text-left">
 														<label for="Ordenamento">Tipo de Receita:</label>
 														<select data-placeholder="Selecione uma opção..." class="form-control Chosen btn-block" onchange="this.form.submit()"
 																id="TipoReceita" name="TipoReceita">
@@ -157,7 +157,39 @@
 															</div>
 														</div>
 													</div>
-													<div class="col-md-3 text-left">
+												</div>	
+												<div class="row">	
+													<div class="col-md-4 text-left">
+														<label for="Modalidade">Modalidade</label>
+														<select data-placeholder="Selecione uma opção..." class="form-control Chosen btn-block " 
+																id="Modalidade" name="Modalidade">
+															<?php
+															foreach ($select['Modalidade'] as $key => $row) {
+																if ($query['Modalidade'] == $key) {
+																	echo '<option value="' . $key . '" selected="selected">' . $row . '</option>';
+																} else {
+																	echo '<option value="' . $key . '">' . $row . '</option>';
+																}
+															}
+															?>
+														</select>
+													</div>
+													<div class="col-md-4 text-left">
+														<label for="QuitadoOrca">Receita Quit?</label>
+														<select data-placeholder="Selecione uma opção..." class="form-control Chosen btn-block " 
+																id="QuitadoOrca" name="QuitadoOrca">
+															<?php
+															foreach ($select['QuitadoOrca'] as $key => $row) {
+																if ($query['QuitadoOrca'] == $key) {
+																	echo '<option value="' . $key . '" selected="selected">' . $row . '</option>';
+																} else {
+																	echo '<option value="' . $key . '">' . $row . '</option>';
+																}
+															}
+															?>
+														</select>
+													</div>
+													<div class="col-md-4 text-left">
 														<label for="QuitadoRecebiveis">Parc. Quit.?</label>
 														<select data-placeholder="Selecione uma opção..." class="form-control Chosen btn-block" 
 																id="QuitadoRecebiveis" name="QuitadoRecebiveis">
