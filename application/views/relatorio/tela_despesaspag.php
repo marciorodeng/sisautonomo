@@ -222,10 +222,10 @@
 									</div>
 								</div>
 							</div>
-						<?php echo (isset($list)) ? $list : FALSE ?>
+						
 					</div>
 					</form>	
-					
+					<?php echo (isset($list)) ? $list : FALSE ?>
 					
 				</div>
 					

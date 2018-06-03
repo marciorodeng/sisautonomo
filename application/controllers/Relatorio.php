@@ -751,9 +751,9 @@ class Relatorio extends CI_Controller {
         );
 
         $data['select']['Campo'] = array(
-            'PP.QuitadoPagaveis' => 'Quit.Parc.',
 			'PP.DataVencimentoPagaveis' => 'Data do Venc.',
-			'PP.DataPagoPagaveis' => 'Data do Pagam.',			
+			'PP.DataPagoPagaveis' => 'Data do Pagam.',
+			'PP.QuitadoPagaveis' => 'Quit.Parc.',
 			'DS.idApp_Despesas' => 'Número da Despesa',
             'DS.ValorDespesas' => 'Valor da Despesa',
 			'DS.Despesa' => 'Despesa',
