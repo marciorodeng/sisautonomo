@@ -1143,7 +1143,7 @@ class Relatorio_model extends CI_Model {
 
     }
 
-    public function list_balanco($data) {
+    public function list_balanco2($data) {
 
         ####################################################################
         #SOMATÓRIO DAS RECEITAS DO ANO
@@ -1279,6 +1279,220 @@ class Relatorio_model extends CI_Model {
 
     }
 
+    public function list_balanco($data) {
+
+        ####################################################################
+        #SOMATÓRIO DAS RECEITASPago DO ANO
+        $somareceitas='';
+        for ($i=1;$i<=12;$i++){
+            $somareceitas .= 'SUM(IF(PR.DataPagoRecebiveis BETWEEN "' . $data['Ano'] . '-' . $i . '-1" AND
+                LAST_DAY("' . $data['Ano'] . '-' . $i . '-1"), PR.ValorPagoRecebiveis, 0)) AS M' . $i . ', ';
+        }
+        $somareceitas = substr($somareceitas, 0 ,-2);
+
+        $query['RecPago'] = $this->db->query(
+        #$receitas = $this->db->query(
+            'SELECT
+                ' . $somareceitas . '
+            FROM
+
+                App_OrcaTrata AS OT
+                    LEFT JOIN App_ParcelasRecebiveis AS PR ON OT.idApp_OrcaTrata = PR.idApp_OrcaTrata
+            WHERE
+                OT.Empresa = ' . $_SESSION['log']['Empresa'] . ' AND
+                OT.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' AND
+				OT.idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND
+
+				OT.TipoRD = "R" AND
+            	YEAR(PR.DataPagoRecebiveis) = ' . $data['Ano']
+        );
+
+        #$query['RecPago'] = $query['RecPago']->result_array();
+        $query['RecPago'] = $query['RecPago']->result();
+        $query['RecPago'][0]->Balancopago = 'RecPago';
+
+        ####################################################################
+        #SOMATÓRIO DAS RECEITASVenc. DO ANO
+        $somareceitasvenc='';
+        for ($i=1;$i<=12;$i++){
+            $somareceitasvenc .= 'SUM(IF(PR.DataVencimentoRecebiveis BETWEEN "' . $data['Ano'] . '-' . $i . '-1" AND
+                LAST_DAY("' . $data['Ano'] . '-' . $i . '-1"), PR.ValorParcelaRecebiveis, 0)) AS M' . $i . ', ';
+        }
+        $somareceitasvenc = substr($somareceitasvenc, 0 ,-2);
+
+        $query['RecVenc'] = $this->db->query(
+        #$receitas = $this->db->query(
+            'SELECT
+                ' . $somareceitasvenc . '
+            FROM
+
+                App_OrcaTrata AS OT
+                    LEFT JOIN App_ParcelasRecebiveis AS PR ON OT.idApp_OrcaTrata = PR.idApp_OrcaTrata
+            WHERE
+                OT.Empresa = ' . $_SESSION['log']['Empresa'] . ' AND
+                OT.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' AND
+				OT.idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND
+
+				OT.TipoRD = "R" AND
+            	YEAR(PR.DataVencimentoRecebiveis) = ' . $data['Ano']
+        );
+
+        #$query['RecVenc'] = $query['RecVenc']->result_array();
+        $query['RecVenc'] = $query['RecVenc']->result();
+        $query['RecVenc'][0]->Balancovenc = 'RecVenc';
+
+
+		####################################################################
+        #SOMATÓRIO DAS DEVOLUÇÕES DO ANO
+        $somadevolucoes='';
+        for ($i=1;$i<=12;$i++){
+            $somadevolucoes .= 'SUM(IF(PR.DataPagoRecebiveis BETWEEN "' . $data['Ano'] . '-' . $i . '-1" AND
+                LAST_DAY("' . $data['Ano'] . '-' . $i . '-1"), PR.ValorPagoRecebiveis, 0)) AS M' . $i . ', ';
+        }
+        $somadevolucoes = substr($somadevolucoes, 0 ,-2);
+
+        $query['Devolucoes'] = $this->db->query(
+        #$devolucoes = $this->db->query(
+            'SELECT
+                ' . $somadevolucoes . '
+            FROM
+                App_OrcaTrata AS OT
+                    LEFT JOIN App_ParcelasRecebiveis AS PR ON OT.idApp_OrcaTrata = PR.idApp_OrcaTrata
+            WHERE
+                OT.Empresa = ' . $_SESSION['log']['Empresa'] . ' AND
+                OT.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' AND
+				OT.idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND
+				OT.TipoRD = "D" AND
+            	YEAR(PR.DataPagoRecebiveis) = ' . $data['Ano']
+        );
+
+        #$query['Devolucoes'] = $query['Devolucoes']->result_array();
+        $query['Devolucoes'] = $query['Devolucoes']->result();
+        $query['Devolucoes'][0]->Balancopago = 'Devolucoes';
+
+
+        ####################################################################
+        #SOMATÓRIO DAS DESPESAS DO ANO
+        $somadespesas='';
+        for ($i=1;$i<=12;$i++){
+            $somadespesas .= 'SUM(IF(PP.DataPagoPagaveis BETWEEN "' . $data['Ano'] . '-' . $i . '-1" AND
+                LAST_DAY("' . $data['Ano'] . '-' . $i . '-1"), PP.ValorPagoPagaveis, 0)) AS M' . $i . ', ';
+        }
+        $somadespesas = substr($somadespesas, 0 ,-2);
+
+        $query['DesPago'] = $this->db->query(
+        #$despesas = $this->db->query(
+            'SELECT
+                ' . $somadespesas . '
+            FROM
+                App_Despesas AS DS
+                    LEFT JOIN App_ParcelasPagaveis AS PP ON DS.idApp_Despesas = PP.idApp_Despesas
+                    LEFT JOIN Tab_TipoDespesa AS TD ON TD.idTab_TipoDespesa = DS.TipoDespesa
+            WHERE
+                DS.Empresa = ' . $_SESSION['log']['Empresa'] . ' AND
+                DS.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' AND
+				DS.idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND
+                (DS.TipoProduto = "D") AND
+            	YEAR(PP.DataPagoPagaveis) = ' . $data['Ano']
+        );
+
+        #$query['DesPago'] = $query['DesPago']->result_array();
+        $query['DesPago'] = $query['DesPago']->result();
+        $query['DesPago'][0]->Balancopago = 'DesPago';
+
+        ####################################################################
+        #SOMATÓRIO DAS DESPESASVenc DO ANO
+        $somadespesasvenc='';
+        for ($i=1;$i<=12;$i++){
+            $somadespesasvenc .= 'SUM(IF(PP.DataVencimentoPagaveis BETWEEN "' . $data['Ano'] . '-' . $i . '-1" AND
+                LAST_DAY("' . $data['Ano'] . '-' . $i . '-1"), PP.ValorParcelaPagaveis, 0)) AS M' . $i . ', ';
+        }
+        $somadespesasvenc = substr($somadespesasvenc, 0 ,-2);
+
+        $query['DesVenc'] = $this->db->query(
+        #$despesas = $this->db->query(
+            'SELECT
+                ' . $somadespesasvenc . '
+            FROM
+                App_Despesas AS DS
+                    LEFT JOIN App_ParcelasPagaveis AS PP ON DS.idApp_Despesas = PP.idApp_Despesas
+                    LEFT JOIN Tab_TipoDespesa AS TD ON TD.idTab_TipoDespesa = DS.TipoDespesa
+            WHERE
+                DS.Empresa = ' . $_SESSION['log']['Empresa'] . ' AND
+                DS.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' AND
+				DS.idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND
+                (DS.TipoProduto = "D") AND
+            	YEAR(PP.DataVencimentoPagaveis) = ' . $data['Ano']
+        );
+
+        #$query['DesVenc'] = $query['DesVenc']->result_array();
+        $query['DesVenc'] = $query['DesVenc']->result();
+        $query['DesVenc'][0]->Balancovenc = 'DesVenc';
+		
+        /*
+        echo $this->db->last_query();
+        echo "<pre>";
+        print_r($query);
+        echo "</pre>";
+        exit();
+        */
+
+        $query['TotalPago'] = new stdClass();
+        $query['TotalGeralpago'] = new stdClass();
+        $query['TotalVenc'] = new stdClass();
+        $query['TotalGeralvenc'] = new stdClass();
+
+		
+        $query['TotalPago']->Balancopago = 'TotalPago';
+        $query['TotalGeralpago']->RecPago = $query['TotalGeralpago']->Devolucoes = $query['TotalGeralpago']->DesPago = $query['TotalGeralpago']->BalancoGeralpago = 0;
+        $query['TotalVenc']->Balancovenc = 'TotalVenc';
+        $query['TotalGeralvenc']->RecVenc = $query['TotalGeralvenc']->DesVenc = $query['TotalGeralvenc']->BalancoGeralvenc = 0;
+		
+        for ($i=1;$i<=12;$i++) {
+            $query['TotalPago']->{'M'.$i} = $query['RecPago'][0]->{'M'.$i} - $query['Devolucoes'][0]->{'M'.$i} - $query['DesPago'][0]->{'M'.$i};
+
+            $query['TotalGeralpago']->RecPago += $query['RecPago'][0]->{'M'.$i};
+			$query['TotalGeralpago']->Devolucoes += $query['Devolucoes'][0]->{'M'.$i};
+            $query['TotalGeralpago']->DesPago += $query['DesPago'][0]->{'M'.$i};
+
+            $query['RecPago'][0]->{'M'.$i} = number_format($query['RecPago'][0]->{'M'.$i}, 2, ',', '.');
+            $query['Devolucoes'][0]->{'M'.$i} = number_format($query['Devolucoes'][0]->{'M'.$i}, 2, ',', '.');
+			$query['DesPago'][0]->{'M'.$i} = number_format($query['DesPago'][0]->{'M'.$i}, 2, ',', '.');
+            $query['TotalPago']->{'M'.$i} = number_format($query['TotalPago']->{'M'.$i}, 2, ',', '.');
+        }		
+        $query['TotalGeralpago']->BalancoGeralpago = $query['TotalGeralpago']->RecPago - $query['TotalGeralpago']->Devolucoes - $query['TotalGeralpago']->DesPago;
+
+        $query['TotalGeralpago']->RecPago = number_format($query['TotalGeralpago']->RecPago, 2, ',', '.');
+        $query['TotalGeralpago']->Devolucoes = number_format($query['TotalGeralpago']->Devolucoes, 2, ',', '.');
+		$query['TotalGeralpago']->DesPago = number_format($query['TotalGeralpago']->DesPago, 2, ',', '.');
+        $query['TotalGeralpago']->BalancoGeralpago = number_format($query['TotalGeralpago']->BalancoGeralpago, 2, ',', '.');
+
+        for ($i=1;$i<=12;$i++) {
+            $query['TotalVenc']->{'M'.$i} = $query['RecVenc'][0]->{'M'.$i} - $query['DesVenc'][0]->{'M'.$i};
+
+            $query['TotalGeralvenc']->RecVenc += $query['RecVenc'][0]->{'M'.$i};
+            $query['TotalGeralvenc']->DesVenc += $query['DesVenc'][0]->{'M'.$i};
+
+            $query['RecVenc'][0]->{'M'.$i} = number_format($query['RecVenc'][0]->{'M'.$i}, 2, ',', '.');
+			$query['DesVenc'][0]->{'M'.$i} = number_format($query['DesVenc'][0]->{'M'.$i}, 2, ',', '.');
+            $query['TotalVenc']->{'M'.$i} = number_format($query['TotalVenc']->{'M'.$i}, 2, ',', '.');
+        }		
+        $query['TotalGeralvenc']->BalancoGeralvenc = $query['TotalGeralvenc']->RecVenc - $query['TotalGeralvenc']->DesVenc;
+
+        $query['TotalGeralvenc']->RecVenc = number_format($query['TotalGeralvenc']->RecVenc, 2, ',', '.');
+		$query['TotalGeralvenc']->DesVenc = number_format($query['TotalGeralvenc']->DesVenc, 2, ',', '.');
+        $query['TotalGeralvenc']->BalancoGeralvenc = number_format($query['TotalGeralvenc']->BalancoGeralvenc, 2, ',', '.');		
+        /*
+        echo $this->db->last_query();
+        echo "<pre>";
+        print_r($query);
+        echo "</pre>";
+        exit();
+        */
+        return $query;
+
+    }
+	
     public function list_estoque($data) {
 
         $data['Produtos'] = ($data['Produtos']) ? ' AND TP.idTab_Produtos = ' . $data['Produtos'] : FALSE;
