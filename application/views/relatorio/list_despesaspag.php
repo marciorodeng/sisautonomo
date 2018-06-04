@@ -88,7 +88,7 @@
 							#echo '<td>' . $row['idApp_Despesas'] . '</td>';							
 							#echo '<td>' . $row['ModalidadeDespesas'] . '</td>';
 							#echo '<td>' . $row['TipoDespesa'] . '</td>';
-							echo '<td>' . $row['Despesa'] . '</td>';
+							echo '<td>' . $row['Despesa'] . '/ Des.Quit.=' . $row['QuitadoDespesas'] . '</td>';
 							#echo '<td>' . $row['QuitadoPagaveis'] . '</td>';							
                             echo '<td>' . $row['ParcelaPagaveis'] . '</td>';
                             echo '<td>' . $row['DataVencimentoPagaveis'] . ' R$' . $row['ValorParcelaPagaveis'] . '</td>';
