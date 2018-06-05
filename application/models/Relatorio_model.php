@@ -1454,9 +1454,9 @@ class Relatorio_model extends CI_Model {
 		$query['TotalResDes'] = new stdClass();
         $query['TotalGeralResDes'] = new stdClass();
 		
-        $query['TotalPago']->Balancopago = 'Real';
+        $query['TotalPago']->Balancopago = 'Bal.Real';
         $query['TotalGeralpago']->RecPago = $query['TotalGeralpago']->Devolucoes = $query['TotalGeralpago']->DesPago = $query['TotalGeralpago']->BalancoGeralpago = 0;
-        $query['TotalVenc']->Balancovenc = 'Esperado';
+        $query['TotalVenc']->Balancovenc = 'Bal.Espe.';
         $query['TotalGeralvenc']->RecVenc = $query['TotalGeralvenc']->DesVenc = $query['TotalGeralvenc']->BalancoGeralvenc = 0;
 		$query['TotalResRec']->BalancoResRec = 'TotalResRec';
         $query['TotalGeralResRec']->RecVenc = $query['TotalGeralResRec']->RecPago = $query['TotalGeralResRec']->BalancoGeralResRec = 0;
