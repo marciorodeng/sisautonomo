@@ -1309,7 +1309,7 @@ class Relatorio_model extends CI_Model {
 
         #$query['RecPago'] = $query['RecPago']->result_array();
         $query['RecPago'] = $query['RecPago']->result();
-        $query['RecPago'][0]->Balancopago = 'RecPago';
+        $query['RecPago'][0]->Balancopago = 'Recebido';
 
         ####################################################################
         #SOMATÓRIO DAS RECEITASVenc. DO ANO
@@ -1339,7 +1339,7 @@ class Relatorio_model extends CI_Model {
 
         #$query['RecVenc'] = $query['RecVenc']->result_array();
         $query['RecVenc'] = $query['RecVenc']->result();
-        $query['RecVenc'][0]->Balancovenc = 'RecVenc';
+        $query['RecVenc'][0]->Balancovenc = 'A Receb.';
 
 
 		####################################################################
@@ -1398,7 +1398,7 @@ class Relatorio_model extends CI_Model {
 
         #$query['DesPago'] = $query['DesPago']->result_array();
         $query['DesPago'] = $query['DesPago']->result();
-        $query['DesPago'][0]->Balancopago = 'DesPago';
+        $query['DesPago'][0]->Balancopago = 'Pago';
 
         ####################################################################
         #SOMATÓRIO DAS DESPESASVenc DO ANO
@@ -1427,7 +1427,7 @@ class Relatorio_model extends CI_Model {
 
         #$query['DesVenc'] = $query['DesVenc']->result_array();
         $query['DesVenc'] = $query['DesVenc']->result();
-        $query['DesVenc'][0]->Balancovenc = 'DesVenc';
+        $query['DesVenc'][0]->Balancovenc = 'A Pagar';
 		
         /*
         echo $this->db->last_query();
@@ -1436,18 +1436,49 @@ class Relatorio_model extends CI_Model {
         echo "</pre>";
         exit();
         */
-
+		#$query['RecVenc'] = $query['RecVenc']->result();
+		$query['RecVenc'][0]->BalancoResRec = 'RecVenc';
+		#$query['RecPago'] = $query['RecPago']->result();
+		$query['RecPago'][0]->BalancoResRec = 'RecPago';
+		#$query['DesVenc'] = $query['DesVenc']->result();
+		$query['DesVenc'][0]->BalancoResDes = 'DesVenc';
+		#$query['DesPago'] = $query['DesPago']->result();
+		$query['DesPago'][0]->BalancoResDes = 'DesPago';
+		
         $query['TotalPago'] = new stdClass();
         $query['TotalGeralpago'] = new stdClass();
         $query['TotalVenc'] = new stdClass();
         $query['TotalGeralvenc'] = new stdClass();
-
+		$query['TotalResRec'] = new stdClass();
+        $query['TotalGeralResRec'] = new stdClass();
+		$query['TotalResDes'] = new stdClass();
+        $query['TotalGeralResDes'] = new stdClass();
 		
-        $query['TotalPago']->Balancopago = 'TotalPago';
+        $query['TotalPago']->Balancopago = 'Real';
         $query['TotalGeralpago']->RecPago = $query['TotalGeralpago']->Devolucoes = $query['TotalGeralpago']->DesPago = $query['TotalGeralpago']->BalancoGeralpago = 0;
-        $query['TotalVenc']->Balancovenc = 'TotalVenc';
+        $query['TotalVenc']->Balancovenc = 'Esperado';
         $query['TotalGeralvenc']->RecVenc = $query['TotalGeralvenc']->DesVenc = $query['TotalGeralvenc']->BalancoGeralvenc = 0;
+		$query['TotalResRec']->BalancoResRec = 'TotalResRec';
+        $query['TotalGeralResRec']->RecVenc = $query['TotalGeralResRec']->RecPago = $query['TotalGeralResRec']->BalancoGeralResRec = 0;
+		$query['TotalResDes']->BalancoResDes = 'TotalResDes';
+        $query['TotalGeralResDes']->DesVenc = $query['TotalGeralResDes']->DesPago = $query['TotalGeralResDes']->BatancoGeralResDes = 0;
 		
+        for ($i=1;$i<=12;$i++) {
+            $query['TotalVenc']->{'M'.$i} = $query['RecVenc'][0]->{'M'.$i} - $query['DesVenc'][0]->{'M'.$i};
+
+            $query['TotalGeralvenc']->RecVenc += $query['RecVenc'][0]->{'M'.$i};
+            $query['TotalGeralvenc']->DesVenc += $query['DesVenc'][0]->{'M'.$i};
+
+            $query['RecVenc'][0]->{'M'.$i} = number_format($query['RecVenc'][0]->{'M'.$i}, 2, ',', '.');
+			$query['DesVenc'][0]->{'M'.$i} = number_format($query['DesVenc'][0]->{'M'.$i}, 2, ',', '.');
+            $query['TotalVenc']->{'M'.$i} = number_format($query['TotalVenc']->{'M'.$i}, 2, ',', '.');
+        }		
+        $query['TotalGeralvenc']->BalancoGeralvenc = $query['TotalGeralvenc']->RecVenc - $query['TotalGeralvenc']->DesVenc;
+
+        $query['TotalGeralvenc']->RecVenc = number_format($query['TotalGeralvenc']->RecVenc, 2, ',', '.');
+		$query['TotalGeralvenc']->DesVenc = number_format($query['TotalGeralvenc']->DesVenc, 2, ',', '.');
+        $query['TotalGeralvenc']->BalancoGeralvenc = number_format($query['TotalGeralvenc']->BalancoGeralvenc, 2, ',', '.');
+
         for ($i=1;$i<=12;$i++) {
             $query['TotalPago']->{'M'.$i} = $query['RecPago'][0]->{'M'.$i} - $query['Devolucoes'][0]->{'M'.$i} - $query['DesPago'][0]->{'M'.$i};
 
@@ -1468,20 +1499,37 @@ class Relatorio_model extends CI_Model {
         $query['TotalGeralpago']->BalancoGeralpago = number_format($query['TotalGeralpago']->BalancoGeralpago, 2, ',', '.');
 
         for ($i=1;$i<=12;$i++) {
-            $query['TotalVenc']->{'M'.$i} = $query['RecVenc'][0]->{'M'.$i} - $query['DesVenc'][0]->{'M'.$i};
+            $query['TotalResRec']->{'M'.$i} = $query['RecVenc'][0]->{'M'.$i} - $query['RecPago'][0]->{'M'.$i};
 
-            $query['TotalGeralvenc']->RecVenc += $query['RecVenc'][0]->{'M'.$i};
-            $query['TotalGeralvenc']->DesVenc += $query['DesVenc'][0]->{'M'.$i};
+            $query['TotalGeralResRec']->RecVenc += $query['RecVenc'][0]->{'M'.$i};
+            $query['TotalGeralResRec']->RecPago += $query['RecPago'][0]->{'M'.$i};
 
-            $query['RecVenc'][0]->{'M'.$i} = number_format($query['RecVenc'][0]->{'M'.$i}, 2, ',', '.');
-			$query['DesVenc'][0]->{'M'.$i} = number_format($query['DesVenc'][0]->{'M'.$i}, 2, ',', '.');
-            $query['TotalVenc']->{'M'.$i} = number_format($query['TotalVenc']->{'M'.$i}, 2, ',', '.');
+            #$query['RecVenc'][0]->{'M'.$i} = number_format($query['RecVenc'][0]->{'M'.$i}, 2, ',', '.');
+			#$query['RecPago'][0]->{'M'.$i} = number_format($query['RecPago'][0]->{'M'.$i}, 2, ',', '.');
+            #$query['TotalResRec']->{'M'.$i} = number_format($query['TotalResRec']->{'M'.$i}, 2, ',', '.');
         }		
-        $query['TotalGeralvenc']->BalancoGeralvenc = $query['TotalGeralvenc']->RecVenc - $query['TotalGeralvenc']->DesVenc;
+        $query['TotalGeralResRec']->BalancoGeralResRec = $query['TotalGeralResRec']->RecVenc - $query['TotalGeralResRec']->RecPago;
 
-        $query['TotalGeralvenc']->RecVenc = number_format($query['TotalGeralvenc']->RecVenc, 2, ',', '.');
-		$query['TotalGeralvenc']->DesVenc = number_format($query['TotalGeralvenc']->DesVenc, 2, ',', '.');
-        $query['TotalGeralvenc']->BalancoGeralvenc = number_format($query['TotalGeralvenc']->BalancoGeralvenc, 2, ',', '.');		
+        #$query['TotalGeralResRec']->RecVenc = number_format($query['TotalGeralResRec']->RecVenc, 2, ',', '.');
+		#$query['TotalGeralResRec']->RecPago = number_format($query['TotalGeralResRec']->RecPago, 2, ',', '.');
+        $query['TotalGeralResRec']->BalancoGeralResRec = number_format($query['TotalGeralResRec']->BalancoGeralResRec, 2, ',', '.');
+		
+        for ($i=1;$i<=12;$i++) {
+            $query['TotalResDes']->{'M'.$i} = $query['DesVenc'][0]->{'M'.$i} - $query['DesPago'][0]->{'M'.$i};
+
+            $query['TotalGeralResDes']->DesVenc += $query['DesVenc'][0]->{'M'.$i};
+            $query['TotalGeralResDes']->DesPago += $query['DesPago'][0]->{'M'.$i};
+
+            #$query['DesVenc'][0]->{'M'.$i} = number_format($query['DesVenc'][0]->{'M'.$i}, 2, ',', '.');
+			#$query['DesPago'][0]->{'M'.$i} = number_format($query['DesPago'][0]->{'M'.$i}, 2, ',', '.');
+            #$query['TotalResDes']->{'M'.$i} = number_format($query['TotalResDes']->{'M'.$i}, 2, ',', '.');
+        }		
+        $query['TotalGeralResDes']->BalancoGeralResDes = $query['TotalGeralResDes']->DesVenc - $query['TotalGeralResDes']->DesPago;
+
+        #$query['TotalGeralResDes']->DesVenc = number_format($query['TotalGeralResDes']->DesVenc, 2, ',', '.');
+		#$query['TotalGeralResDes']->DesPago = number_format($query['TotalGeralResDes']->DesPago, 2, ',', '.');
+        $query['TotalGeralResDes']->BalancoGeralResDes = number_format($query['TotalGeralResDes']->BalancoGeralResDes, 2, ',', '.');
+		
         /*
         echo $this->db->last_query();
         echo "<pre>";

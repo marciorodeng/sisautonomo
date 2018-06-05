@@ -37,7 +37,7 @@
 							</div>
 							<div class="btn-group" role="group" aria-label="..."> </div>
 						</li>
-						-->
+						
 						<li class="btn-toolbar navbar-form" role="toolbar" aria-label="...">
 							<div class="btn-group btn-dander" role="group" aria-label="...">
 								<a href="<?php echo base_url(); ?>agenda">
@@ -58,24 +58,24 @@
 							</div>
 							<div class="btn-group" role="group" aria-label="..."> </div>
 						</li>
-						<!--
+						-->
 						<li class="btn-toolbar navbar-form" role="toolbar" aria-label="...">
 							<div class="btn-group">
-								<button type="button" class="btn btn-md btn-warning  dropdown-toggle" data-toggle="dropdown">
-									<span class="glyphicon glyphicon-calendar"></span> Agendas <span class="caret"></span>
+								<button type="button" class="btn btn-md btn-info  dropdown-toggle" data-toggle="dropdown">
+									<span class="glyphicon glyphicon-book"></span> Agendas <span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu" role="menu">									
-									<li><a href="<?php echo base_url(); ?>agenda"><span class="glyphicon glyphicon-calendar"></span> Agendas</a></li>
+									<li><a href="<?php echo base_url(); ?>agenda"><span class="glyphicon glyphicon-calendar"></span> Calendário</a></li>
 									<li role="separator" class="divider"></li>
-									<li><a href="<?php echo base_url() ?>relatorio/tarefa"><span class="glyphicon glyphicon-pencil"></span> Tarefas</a></li>
+									<li><a href="<?php echo base_url() ?>relatorio/tarefa"><span class="glyphicon glyphicon-pencil"></span> Anotações</a></li>
 								</ul>
 							</div>
 							<div class="btn-group" role="group" aria-label="..."> </div>
 						</li>
-						-->
+						
 						<li class="btn-toolbar navbar-form" role="toolbar" aria-label="...">														
 							<div class="btn-group">
-								<button type="button" class="btn btn-md btn-primary  dropdown-toggle" data-toggle="dropdown">
+								<button type="button" class="btn btn-md btn-warning  dropdown-toggle" data-toggle="dropdown">
 									<span class="glyphicon glyphicon-usd"></span> Transações <span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu" role="menu">
