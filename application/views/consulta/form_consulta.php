@@ -40,7 +40,7 @@
 										</div>		
 										
 										<div class="col-md-12">	
-											<label for="Data">Data: </label>												
+											<label for="Data">Data Início: </label>												
 											<!--<div class="input-group <?php echo $datepicker; ?>">-->
 												<input type="text" class="form-control Date" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
 													   name="Data" value="<?php echo $query['Data']; ?>">
@@ -57,6 +57,17 @@
 													   accept=""name="HoraInicio" value="<?php echo $query['HoraInicio']; ?>">
 												<!--<span class="input-group-addon">
 													<span class="glyphicon glyphicon-time"></span>
+												</span>
+											</div>-->
+										</div>
+										
+										<div class="col-md-12">	
+											<label for="Data2">Data Fim: </label>												
+											<!--<div class="input-group <?php echo $datepicker; ?>">-->
+												<input type="text" class="form-control Date" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
+													   name="Data2" value="<?php echo $query['Data2']; ?>">
+												<!--<span class="input-group-addon" disabled>
+													<span class="glyphicon glyphicon-calendar"></span>
 												</span>
 											</div>-->
 										</div>
