@@ -34,7 +34,16 @@
                         echo '<td class="text-left">' . $report['TotalGeralvenc']->RecVenc . '</td>';
                         ?>
                     </tr>
-
+					<tr>
+                        <?php
+                        echo '<td><b>' . $report['RecPago'][0]->Balancopago . '</b></td>';
+                        for($i=1;$i<=12;$i++) {
+                            echo '<td class="text-left">' . $report['RecPago'][0]->{'M'.$i} . '</td>';
+                        }
+                        echo '<td class="text-left">' . $report['TotalGeralpago']->RecPago . '</td>';
+                        ?>
+                    </tr>
+				
                     <tr>
                         <?php
                         echo '<td><b>' . $report['DesVenc'][0]->Balancovenc . '</b></td>';
@@ -42,6 +51,15 @@
 							echo '<td class="text-left">' . $report['DesVenc'][0]->{'M'.$i} . '</td>';
                         }
                         echo '<td class="text-left">' . $report['TotalGeralvenc']->DesVenc . '</td>';
+                        ?>
+                    </tr>
+					<tr>
+                        <?php
+                        echo '<td><b>' . $report['DesPago'][0]->Balancopago . '</b></td>';
+                        for($i=1;$i<=12;$i++) {
+							echo '<td class="text-left">' . $report['DesPago'][0]->{'M'.$i} . '</td>';
+                        }
+                        echo '<td class="text-left">' . $report['TotalGeralpago']->DesPago . '</td>';
                         ?>
                     </tr>
 
@@ -56,6 +74,17 @@
                         echo '<td class="text-left ' . $bgcolor . '">' . $report['TotalGeralvenc']->BalancoGeralvenc . '</td>';
                         ?>
                     </tr>
+					<tr>
+                        <?php
+                        echo '<td><b>' . $report['TotalPago']->Balancopago . '</b></td>';
+                        for($i=1;$i<=12;$i++) {
+                            $bgcolor = ($report['TotalPago']->{'M'.$i} < 0) ? 'bg-danger' : 'bg-info';
+                            echo '<td class="text-left ' . $bgcolor . '">' . $report['TotalPago']->{'M'.$i} . '</td>';
+                        }
+                        $bgcolor = ($report['TotalGeralpago']->BalancoGeralpago < 0) ? 'bg-danger' : 'bg-success';
+                        echo '<td class="text-left ' . $bgcolor . '">' . $report['TotalGeralpago']->BalancoGeralpago . '</td>';
+                        ?>
+                    </tr>
 
 
                 </tbody>
@@ -65,7 +94,7 @@
         </div>
 
     </div>
-
+<!--
     <div class="row">
 
         <div>
@@ -132,7 +161,7 @@
         </div>
 
     </div>
-<!--
+
     <div class="row">
 
         <div>
