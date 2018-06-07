@@ -61,7 +61,7 @@ var dateTimePickerOptions = {
  */
 
  /*Carrega a Data do Dia do lançamento*/
-function carregaQuitado(value, name, i, cadastrar = 0) {
+function carregaQuitado2(value, name, i, cadastrar = 0) {
 
     if (value == "S") {
 
@@ -87,7 +87,7 @@ function carregaQuitado(value, name, i, cadastrar = 0) {
 }
 
 /*Carrega a Data do Dia do Vencimento*/
-function carregaQuitado2(value, name, i, cadastrar = 0) {
+function carregaQuitado(value, name, i, cadastrar = 0) {
 
     if (value == "S") {
 
@@ -122,7 +122,7 @@ function carregaQuitado2(value, name, i, cadastrar = 0) {
  */
 
  /*Carrega a Data do Dia do lançamento*/
-function carregaQuitadoDespesas(value, name, i, cadastrar = 0) {
+function carregaQuitadoDespesas2(value, name, i, cadastrar = 0) {
 
     if (value == "S") {
 
@@ -147,7 +147,7 @@ function carregaQuitadoDespesas(value, name, i, cadastrar = 0) {
 }
 
 /*Carrega a Data do Dia do Vencimento*/
-function carregaQuitadoDespesas2(value, name, i, cadastrar = 0) {
+function carregaQuitadoDespesas(value, name, i, cadastrar = 0) {
 
     if (value == "S") {
 
