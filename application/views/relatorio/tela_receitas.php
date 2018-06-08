@@ -128,7 +128,23 @@
 														</select>
 													</div>
 												</div>
-												
+												<div class="row">
+													<br>
+													<div class="form-group col-md-4 text-left">
+														<div class="form-footer ">
+															<button class="btn btn-info btn-block" name="pesquisar" value="0" type="submit">
+																<span class="glyphicon glyphicon-search"></span> Pesquisar
+															</button>
+														</div>
+													</div>
+													<div class="form-group col-md-4 text-left">
+														<div class="form-footer ">
+															<button type="button" class="btn btn-primary btn-block" data-dismiss="modal">
+																<span class="glyphicon glyphicon-remove"> Fechar
+															</button>
+														</div>
+													</div>
+												</div>
 
 												<div class="row">	
 													<div class="col-md-4 text-left" >
@@ -293,24 +309,6 @@
 													</div>
 												</div>
 												-->
-												<div class="row">
-													<br>
-													<div class="form-group col-md-3 text-left">
-														<div class="form-footer ">
-															<button class="btn btn-info btn-block" name="pesquisar" value="0" type="submit">
-																<span class="glyphicon glyphicon-search"></span> Pesquisar
-															</button>
-														</div>
-													</div>
-													<div class="form-group col-md-3 text-left">
-														<div class="form-footer ">
-															<button type="button" class="btn btn-primary btn-block" data-dismiss="modal">
-																<span class="glyphicon glyphicon-remove"> Fechar
-															</button>
-														</div>
-													</div>
-												</div>
-												
 										</div>
 									</div>
 								</div>

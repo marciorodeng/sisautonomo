@@ -5236,7 +5236,7 @@ exit();*/
         ');
 
         $array = array();
-        $array[0] = ':: Todos ::';
+        $array[0] = 'TODOS';
         foreach ($query->result() as $row) {
             $array[$row->idTab_TipoDespesa] = $row->TipoDespesa;
         }
@@ -5284,7 +5284,7 @@ exit();*/
         ');
 
         $array = array();
-        $array[0] = ':: Todos ::';
+        $array[0] = 'TODOS';
         foreach ($query->result() as $row) {
             $array[$row->idTab_TipoReceita] = $row->TipoReceita;
         }

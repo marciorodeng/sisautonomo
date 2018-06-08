@@ -36,21 +36,21 @@
                     </tr>
 					<tr>
                         <?php
-                        echo '<td><b>' . $report['DesVenc'][0]->Balancovenc . '</b></td>';
-                        for($i=1;$i<=12;$i++) {
-							echo '<td class="text-left">' . $report['DesVenc'][0]->{'M'.$i} . '</td>';
-                        }
-                        echo '<td class="text-left">' . $report['TotalGeralvenc']->DesVenc . '</td>';
-                        ?>
-                    </tr>
-					
-					<tr>
-                        <?php
                         echo '<td><b>' . $report['RecPago'][0]->Balancopago . '</b></td>';
                         for($i=1;$i<=12;$i++) {
                             echo '<td class="text-left">' . $report['RecPago'][0]->{'M'.$i} . '</td>';
                         }
                         echo '<td class="text-left">' . $report['TotalGeralpago']->RecPago . '</td>';
+                        ?>
+                    </tr>
+					
+					<tr>
+                        <?php
+                        echo '<td><b>' . $report['DesVenc'][0]->Balancovenc . '</b></td>';
+                        for($i=1;$i<=12;$i++) {
+							echo '<td class="text-left">' . $report['DesVenc'][0]->{'M'.$i} . '</td>';
+                        }
+                        echo '<td class="text-left">' . $report['TotalGeralvenc']->DesVenc . '</td>';
                         ?>
                     </tr>
 					<tr>

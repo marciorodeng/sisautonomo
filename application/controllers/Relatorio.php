@@ -239,9 +239,9 @@ class Relatorio extends CI_Controller {
         );
 
 		$data['select']['QuitadoRecebiveis'] = array(
-            'N' => 'Não',
+            '#' => 'TODOS',
+			'N' => 'Não',
             'S' => 'Sim',
-			'#' => 'TODOS',						            
         );
 		
 		$data['select']['Modalidade'] = array(
