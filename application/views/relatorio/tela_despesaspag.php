@@ -232,6 +232,13 @@
 														</div>
 													</div>
 												</div>
+												
+												<div class="row">
+													<div>
+														<input type="text" class="form-control Numero" maxlength="2" placeholder="AA"
+															   autofocus name="Mes" value="<?php echo set_value('Mes', $query['Mes']); ?>">
+													</div>
+												</div>
 												<div class="row">
 													<br>
 													<div class="form-group col-md-3 text-left">

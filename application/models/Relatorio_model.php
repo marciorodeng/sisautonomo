@@ -724,7 +724,7 @@ class Relatorio_model extends CI_Model {
 
     }
 
-	public function list_despesaspag($data, $completo) {
+	public function list_despesaspag1($data, $completo) {
 
 		$data['TipoDespesa'] = ($data['TipoDespesa']) ? ' AND TD.idTab_TipoDespesa = ' . $data['TipoDespesa'] : FALSE;
 		$data['Campo'] = (!$data['Campo']) ? 'DS.idApp_Despesas' : $data['Campo'];
@@ -868,6 +868,153 @@ class Relatorio_model extends CI_Model {
 
     }
 
+	public function list_despesaspag($data, $completo) {
+
+		$data['Mes'] = ($data['Mes']) ? ' AND MONTH(PP.DataVencimentoPagaveis) = ' . $data['Mes'] : FALSE;
+		$data['TipoDespesa'] = ($data['TipoDespesa']) ? ' AND TD.idTab_TipoDespesa = ' . $data['TipoDespesa'] : FALSE;
+		$data['Campo'] = (!$data['Campo']) ? 'DS.idApp_Despesas' : $data['Campo'];
+        $data['Ordenamento'] = (!$data['Ordenamento']) ? 'ASC' : $data['Ordenamento'];
+		$filtro1 = ($data['AprovadoDespesas'] != '#') ? 'DS.AprovadoDespesas = "' . $data['AprovadoDespesas'] . '" AND ' : FALSE;
+		$filtro3 = ($data['ServicoConcluidoDespesas'] != '#') ? 'DS.ServicoConcluidoDespesas = "' . $data['ServicoConcluidoDespesas'] . '" AND ' : FALSE;
+        $filtro2 = ($data['QuitadoDespesas'] != '#') ? 'DS.QuitadoDespesas = "' . $data['QuitadoDespesas'] . '" AND ' : FALSE;
+		$filtro4 = ($data['QuitadoPagaveis'] != '#') ? 'PP.QuitadoPagaveis = "' . $data['QuitadoPagaveis'] . '" AND ' : FALSE;	
+		$filtro5 = ($data['ModalidadeDespesas'] != '#') ? 'DS.ModalidadeDespesas = "' . $data['ModalidadeDespesas'] . '" AND ' : FALSE;
+		
+        if ($data['DataFim']) {
+            $consulta =
+                '(PP.DataVencimentoPagaveis >= "' . $data['DataInicio'] . '" AND PP.DataVencimentoPagaveis <= "' . $data['DataFim'] . '")';
+        }
+        else {
+            $consulta =
+                '(PP.DataVencimentoPagaveis >= "' . $data['DataInicio'] . '")';
+        }
+
+		if ($data['DataFim2']) {
+            $consulta2 =
+                '(PP.DataPagoPagaveis >= "' . $data['DataInicio2'] . '" AND PP.DataPagoPagaveis <= "' . $data['DataFim2'] . '")';
+        }
+        else {
+            $consulta2 =
+                '(PP.DataPagoPagaveis >= "' . $data['DataInicio2'] . '")';
+        }
+
+        if ($data['DataFim3']) {
+            $consulta3 =
+                '(DS.DataDespesas >= "' . $data['DataInicio3'] . '" AND DS.DataDespesas <= "' . $data['DataFim3'] . '")';
+        }
+        else {
+            $consulta3 =
+                '(DS.DataDespesas >= "' . $data['DataInicio3'] . '")';
+        }
+
+        $query = $this->db->query('
+            SELECT
+                DS.idApp_Despesas,				
+				DS.Despesa,
+				CONCAT(IFNULL(TD.TipoDespesa,""), " / ", IFNULL(DS.Despesa,"")) AS Despesa,
+				TD.TipoDespesa,
+				CD.Categoriadesp,
+				DS.TipoProduto,
+                DS.DataDespesas,
+                DS.DataEntradaDespesas,
+                DS.ValorEntradaDespesas,
+				DS.AprovadoDespesas,
+				DS.ServicoConcluidoDespesas,
+				DS.QuitadoDespesas,
+				DS.ModalidadeDespesas,
+                PP.ParcelaPagaveis,
+				CONCAT(PP.ParcelaPagaveis," ", DS.ModalidadeDespesas,"/",PP.QuitadoPagaveis) AS ParcelaPagaveis,
+                PP.DataVencimentoPagaveis,
+                PP.ValorParcelaPagaveis,
+                PP.DataPagoPagaveis,
+				PP.ValorPagoPagaveis,
+                PP.QuitadoPagaveis
+            FROM
+                App_Despesas AS DS
+                    LEFT JOIN App_ParcelasPagaveis AS PP ON DS.idApp_Despesas = PP.idApp_Despesas
+                    LEFT JOIN Tab_TipoDespesa AS TD ON TD.idTab_TipoDespesa = DS.TipoDespesa
+					LEFT JOIN Tab_Categoriadesp AS CD ON CD.idTab_Categoriadesp = TD.Categoriadesp
+            WHERE
+                DS.Empresa = ' . $_SESSION['log']['Empresa'] . ' AND
+				DS.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' AND
+				DS.idSis_Usuario = ' . $_SESSION['log']['id'] . ' 
+
+				' . $data['TipoDespesa'] . ' AND 
+				(DS.TipoProduto = "D" OR DS.TipoProduto = "E") AND
+				(YEAR(DataVencimentoPagaveis) = ' . date('Y', time()) . ') 
+				' . $data['Mes'] . '
+				
+            ORDER BY
+				' . $data['Campo'] . ' ' . $data['Ordenamento'] . '
+        ');
+
+        /*
+          echo $this->db->last_query();
+          echo "<pre>";
+          print_r($query);
+          echo "</pre>";
+          exit();
+          */
+
+        if ($completo === FALSE) {
+            return TRUE;
+        } else {
+
+            $somapago=$somapagar=$somaentrada=$somareceber=$somarecebido=$somareal=$balanco=$ant=0;
+            foreach ($query->result() as $row) {
+				$row->DataDespesas = $this->basico->mascara_data($row->DataDespesas, 'barras');
+                $row->DataEntradaDespesas = $this->basico->mascara_data($row->DataEntradaDespesas, 'barras');
+                $row->DataVencimentoPagaveis = $this->basico->mascara_data($row->DataVencimentoPagaveis, 'barras');
+                $row->DataPagoPagaveis = $this->basico->mascara_data($row->DataPagoPagaveis, 'barras');
+				$row->AprovadoDespesas = $this->basico->mascara_palavra_completa($row->AprovadoDespesas, 'NS');
+				$row->ServicoConcluidoDespesas = $this->basico->mascara_palavra_completa($row->ServicoConcluidoDespesas, 'NS');
+				$row->QuitadoDespesas = $this->basico->mascara_palavra_completa($row->QuitadoDespesas, 'NS');
+                $row->QuitadoPagaveis = $this->basico->mascara_palavra_completa($row->QuitadoPagaveis, 'NS');
+
+                #esse trecho pode ser melhorado, serve para somar apenas uma vez
+                #o valor da entrada que pode aparecer mais de uma vez
+                if ($ant != $row->idApp_Despesas) {
+                    $ant = $row->idApp_Despesas;
+                    $somaentrada += $row->ValorEntradaDespesas;
+                }
+                else {
+                    $row->ValorEntradaDespesas = FALSE;
+                    $row->DataEntradaDespesas = FALSE;
+                }
+
+                $somarecebido += $row->ValorPagoPagaveis;
+                $somareceber += $row->ValorParcelaPagaveis;
+				$somapago += $row->ValorPagoPagaveis;
+				$somapagar += $row->ValorParcelaPagaveis;
+
+                $row->ValorEntradaDespesas = number_format($row->ValorEntradaDespesas, 2, ',', '.');
+                $row->ValorParcelaPagaveis = number_format($row->ValorParcelaPagaveis, 2, ',', '.');
+                $row->ValorPagoPagaveis = number_format($row->ValorPagoPagaveis, 2, ',', '.');
+            }
+            $somareceber -= $somarecebido;
+            $somareal = $somarecebido;
+            $balanco = $somarecebido + $somareceber;
+
+			$somapagar -= $somapago;
+			$somareal2 = $somapago;
+			$balanco2 = $somapago + $somapagar;
+
+            $query->soma = new stdClass();
+            $query->soma->somareceber = number_format($somareceber, 2, ',', '.');
+            $query->soma->somarecebido = number_format($somarecebido, 2, ',', '.');
+            $query->soma->somareal = number_format($somareal, 2, ',', '.');
+            $query->soma->somaentrada = number_format($somaentrada, 2, ',', '.');
+            $query->soma->balanco = number_format($balanco, 2, ',', '.');
+			$query->soma->somapagar = number_format($somapagar, 2, ',', '.');
+            $query->soma->somapago = number_format($somapago, 2, ',', '.');
+            $query->soma->somareal2 = number_format($somareal2, 2, ',', '.');
+            $query->soma->balanco2 = number_format($balanco2, 2, ',', '.');
+
+            return $query;
+        }
+
+    }
+	
 	public function list_despesas($data, $completo) {
 
         if ($data['DataFim']) {

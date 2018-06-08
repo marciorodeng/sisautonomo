@@ -695,7 +695,8 @@ class Relatorio extends CI_Controller {
             $data['msg'] = '';
 
         $data['query'] = quotes_to_entities($this->input->post(array(
-            'TipoDespesa',
+            'Mes',
+			'TipoDespesa',
 			'TipoProduto',
             'DataInicio',
             'DataFim',
@@ -726,7 +727,9 @@ class Relatorio extends CI_Controller {
 	   
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
         #$this->form_validation->set_rules('Pesquisa', 'Pesquisa', 'required|trim');
-        $this->form_validation->set_rules('DataInicio', 'Data Início do Venc.', 'trim|valid_date');
+        $this->form_validation->set_rules('Mes', 'Mes', 'required|trim');
+		
+		$this->form_validation->set_rules('DataInicio', 'Data Início do Venc.', 'trim|valid_date');
         #$this->form_validation->set_rules('DataFim', 'Data Fim do Venc.', 'trim|valid_date');
 		#$this->form_validation->set_rules('DataInicio2', 'Data Início do Pagam.', 'trim|valid_date');
         #$this->form_validation->set_rules('DataFim2', 'Data Fim do Pagam.', 'trim|valid_date');
@@ -794,6 +797,7 @@ class Relatorio extends CI_Controller {
             $data['bd']['DataFim2'] = $this->basico->mascara_data($data['query']['DataFim2'], 'mysql');
 			$data['bd']['DataInicio3'] = $this->basico->mascara_data($data['query']['DataInicio3'], 'mysql');
             $data['bd']['DataFim3'] = $this->basico->mascara_data($data['query']['DataFim3'], 'mysql');
+			$data['bd']['Mes'] = $data['query']['Mes'];
 			$data['bd']['TipoDespesa'] = $data['query']['TipoDespesa'];
 			$data['bd']['TipoProduto'] = $data['query']['TipoProduto'];
 			$data['bd']['Ordenamento'] = $data['query']['Ordenamento'];
