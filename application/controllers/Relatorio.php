@@ -164,6 +164,9 @@ class Relatorio extends CI_Controller {
 
         $data['query'] = quotes_to_entities($this->input->post(array(
             #'NomeCliente',
+			'Ano',
+			'Mesvenc',
+			'Mespag',
 			'TipoReceita',
             'DataInicio',
             'DataFim',
@@ -192,9 +195,24 @@ class Relatorio extends CI_Controller {
 		
 		if (!$data['query']['DataFim'])
            $data['query']['DataFim'] = date("t/m/Y", mktime(0,0,0,date('m'),'01',date('Y')));
+	   
+/*	   
+		if (!$data['query']['Mesvenc'])
+           $data['query']['Mesvenc'] = date('m', time());
+	   
+	   if (!$data['query']['Mespag'])
+           $data['query']['Mespag'] = date('m', time());
+*/
+		if (!$data['query']['Ano'])
+           $data['query']['Ano'] = date('Y', time());	   
 
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
         #$this->form_validation->set_rules('Pesquisa', 'Pesquisa', 'required|trim');
+		
+		#$this->form_validation->set_rules('Mesvenc', 'Mês do Vencimento', 'required|trim');
+		#$this->form_validation->set_rules('Mespag', 'Mês do Pagamento', 'required|trim');
+		#$this->form_validation->set_rules('Ano', 'Ano', 'required|trim');
+		
         $this->form_validation->set_rules('DataInicio', 'Data Início do Vencimento', 'trim|valid_date');
         $this->form_validation->set_rules('DataFim', 'Data Fim do Vencimento', 'trim|valid_date');
 		$this->form_validation->set_rules('DataInicio2', 'Data Início do Pagamento', 'trim|valid_date');
@@ -252,6 +270,8 @@ class Relatorio extends CI_Controller {
 		#$data['select']['NomeCliente'] = $this->Relatorio_model->select_cliente();
 		$data['select']['ObsOrca'] = $this->Relatorio_model->select_obsorca();
 		$data['select']['TipoReceita'] = $this->Relatorio_model->select_tiporeceita();
+		$data['select']['Mesvenc'] = $this->Relatorio_model->select_mes();
+		$data['select']['Mespag'] = $this->Relatorio_model->select_mes();		
 		/*
         $data['select']['Pesquisa'] = array(
             'DataEntradaOrca' => 'Data de Entrada',
@@ -268,6 +288,9 @@ class Relatorio extends CI_Controller {
             #$data['bd']['Pesquisa'] = $data['query']['Pesquisa'];
            # $data['bd']['NomeCliente'] = $data['query']['NomeCliente'];
             $data['bd']['TipoReceita'] = $data['query']['TipoReceita'];
+			$data['bd']['Ano'] = $data['query']['Ano'];
+			$data['bd']['Mesvenc'] = $data['query']['Mesvenc'];
+			$data['bd']['Mespag'] = $data['query']['Mespag'];			
 			$data['bd']['ObsOrca'] = $data['query']['ObsOrca'];
 			$data['bd']['DataInicio'] = $this->basico->mascara_data($data['query']['DataInicio'], 'mysql');
             $data['bd']['DataFim'] = $this->basico->mascara_data($data['query']['DataFim'], 'mysql');
@@ -695,7 +718,9 @@ class Relatorio extends CI_Controller {
             $data['msg'] = '';
 
         $data['query'] = quotes_to_entities($this->input->post(array(
-            'Mes',
+            'Ano',
+			'Mesvenc',
+			'Mespag',
 			'TipoDespesa',
 			'TipoProduto',
             'DataInicio',
@@ -724,17 +749,29 @@ class Relatorio extends CI_Controller {
 		
 		if (!$data['query']['DataFim'])
            $data['query']['DataFim'] = date("t/m/Y", mktime(0,0,0,date('m'),'01',date('Y')));
+/*	   
+		if (!$data['query']['Mesvenc'])
+           $data['query']['Mesvenc'] = date('m', time());
 	   
+	   if (!$data['query']['Mespag'])
+           $data['query']['Mespag'] = date('m', time());
+*/
+		if (!$data['query']['Ano'])
+           $data['query']['Ano'] = date('Y', time());
+	   
+  	   
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
         #$this->form_validation->set_rules('Pesquisa', 'Pesquisa', 'required|trim');
-        $this->form_validation->set_rules('Mes', 'Mes', 'required|trim');
+        #$this->form_validation->set_rules('Mesvenc', 'Mês do Vencimento', 'required|trim');
+		#$this->form_validation->set_rules('Mespag', 'Mês do Pagamento', 'required|trim');
+		#$this->form_validation->set_rules('Ano', 'Ano', 'required|trim');
 		
 		$this->form_validation->set_rules('DataInicio', 'Data Início do Venc.', 'trim|valid_date');
-        #$this->form_validation->set_rules('DataFim', 'Data Fim do Venc.', 'trim|valid_date');
-		#$this->form_validation->set_rules('DataInicio2', 'Data Início do Pagam.', 'trim|valid_date');
-        #$this->form_validation->set_rules('DataFim2', 'Data Fim do Pagam.', 'trim|valid_date');
-		#$this->form_validation->set_rules('DataInicio3', 'Data Início do Orçamento', 'trim|valid_date');
-        #$this->form_validation->set_rules('DataFim3', 'Data Fim do Orçamento', 'trim|valid_date');
+        $this->form_validation->set_rules('DataFim', 'Data Fim do Venc.', 'trim|valid_date');
+		$this->form_validation->set_rules('DataInicio2', 'Data Início do Pagam.', 'trim|valid_date');
+        $this->form_validation->set_rules('DataFim2', 'Data Fim do Pagam.', 'trim|valid_date');
+		$this->form_validation->set_rules('DataInicio3', 'Data Início do Orçamento', 'trim|valid_date');
+        $this->form_validation->set_rules('DataFim3', 'Data Fim do Orçamento', 'trim|valid_date');
 
 		$data['select']['AprovadoDespesas'] = array(
             '#' => 'TODOS',
@@ -755,9 +792,9 @@ class Relatorio extends CI_Controller {
         );
 
 		$data['select']['QuitadoPagaveis'] = array(
-            'N' => 'Não',
+            '#' => 'TODOS',
+			'N' => 'Não',
             'S' => 'Sim',
-			'#' => 'TODOS', 						           
         );
 		
 		$data['select']['ModalidadeDespesas'] = array(
@@ -783,6 +820,8 @@ class Relatorio extends CI_Controller {
         );
 
 		$data['select']['TipoDespesa'] = $this->Relatorio_model->select_tipodespesa();
+		$data['select']['Mesvenc'] = $this->Relatorio_model->select_mes();
+		$data['select']['Mespag'] = $this->Relatorio_model->select_mes();
 
         $data['titulo'] = 'Despesas & Pagamentos';
 
@@ -797,7 +836,9 @@ class Relatorio extends CI_Controller {
             $data['bd']['DataFim2'] = $this->basico->mascara_data($data['query']['DataFim2'], 'mysql');
 			$data['bd']['DataInicio3'] = $this->basico->mascara_data($data['query']['DataInicio3'], 'mysql');
             $data['bd']['DataFim3'] = $this->basico->mascara_data($data['query']['DataFim3'], 'mysql');
-			$data['bd']['Mes'] = $data['query']['Mes'];
+			$data['bd']['Ano'] = $data['query']['Ano'];
+			$data['bd']['Mesvenc'] = $data['query']['Mesvenc'];
+			$data['bd']['Mespag'] = $data['query']['Mespag'];
 			$data['bd']['TipoDespesa'] = $data['query']['TipoDespesa'];
 			$data['bd']['TipoProduto'] = $data['query']['TipoProduto'];
 			$data['bd']['Ordenamento'] = $data['query']['Ordenamento'];
@@ -1088,10 +1129,12 @@ class Relatorio extends CI_Controller {
         ), TRUE));
 
 		
-		
+		/*
 		if (!$data['query']['Ano'])
            $data['query']['Ano'] = '2018';
-				
+		*/
+		if (!$data['query']['Ano'])
+           $data['query']['Ano'] = date('Y', time());
 		
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
         #$this->form_validation->set_rules('Pesquisa', 'Pesquisa', 'required|trim');
