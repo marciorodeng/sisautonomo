@@ -1889,7 +1889,7 @@ class Relatorio_model extends CI_Model {
 
         #$query['RecPago'] = $query['RecPago']->result_array();
         $query['RecPago'] = $query['RecPago']->result();
-        $query['RecPago'][0]->Balancopago = 'Real.Rec.';
+        $query['RecPago'][0]->Balancopago = 'Rec.Real';
 
         ####################################################################
         #SOMATÓRIO DAS RECEITASVenc. DO ANO
@@ -1919,7 +1919,7 @@ class Relatorio_model extends CI_Model {
 
         #$query['RecVenc'] = $query['RecVenc']->result_array();
         $query['RecVenc'] = $query['RecVenc']->result();
-        $query['RecVenc'][0]->Balancovenc = 'Esp.Rec.';
+        $query['RecVenc'][0]->Balancovenc = 'Rec.Esp';
 
 
 		####################################################################
@@ -1978,7 +1978,7 @@ class Relatorio_model extends CI_Model {
 
         #$query['DesPago'] = $query['DesPago']->result_array();
         $query['DesPago'] = $query['DesPago']->result();
-        $query['DesPago'][0]->Balancopago = 'Real.Pago';
+        $query['DesPago'][0]->Balancopago = 'Desp.Real';
 
         ####################################################################
         #SOMATÓRIO DAS DESPESASVenc DO ANO
@@ -2007,7 +2007,7 @@ class Relatorio_model extends CI_Model {
 
         #$query['DesVenc'] = $query['DesVenc']->result_array();
         $query['DesVenc'] = $query['DesVenc']->result();
-        $query['DesVenc'][0]->Balancovenc = 'Esp.Pagar';
+        $query['DesVenc'][0]->Balancovenc = 'Desp.Esp';
 		
         /*
         echo $this->db->last_query();
