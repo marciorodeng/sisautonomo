@@ -5266,7 +5266,7 @@ exit();*/
 
         return $array;
     }	
-	
+
 	public function select_tiporeceita() {
 
         $query = $this->db->query('

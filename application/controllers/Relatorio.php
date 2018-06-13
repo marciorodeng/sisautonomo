@@ -208,11 +208,9 @@ class Relatorio extends CI_Controller {
 
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
         #$this->form_validation->set_rules('Pesquisa', 'Pesquisa', 'required|trim');
-		
 		#$this->form_validation->set_rules('Mesvenc', 'Mês do Vencimento', 'required|trim');
 		#$this->form_validation->set_rules('Mespag', 'Mês do Pagamento', 'required|trim');
 		#$this->form_validation->set_rules('Ano', 'Ano', 'required|trim');
-		
         $this->form_validation->set_rules('DataInicio', 'Data Início do Vencimento', 'trim|valid_date');
         $this->form_validation->set_rules('DataFim', 'Data Fim do Vencimento', 'trim|valid_date');
 		$this->form_validation->set_rules('DataInicio2', 'Data Início do Pagamento', 'trim|valid_date');
