@@ -4,8 +4,8 @@
 <div class="container-fluid">
 	<div class="row">
 
-		<div class="col-md-2"></div>
-		<div class="col-md-8 ">
+		<div class="col-md-1"></div>
+		<div class="col-md-10 ">
 
 			<?php echo validation_errors(); ?>
 
@@ -173,12 +173,12 @@
 											<div class="panel panel-warning">
 												<div class="panel-heading">
 													<div class="row">
-														<div class="col-md-2">
+														<div class="col-md-1">
 															<label for="ParcelaRecebiveis">Parcela:</label><br>
 															<input type="text" class="form-control" maxlength="6" 
 																   name="ParcelaRecebiveis<?php echo $i ?>" value="<?php echo $parcelasrec[$i]['ParcelaRecebiveis'] ?>">
 														</div>
-														<div class="col-md-3">
+														<div class="col-md-2">
 															<label for="ValorParcelaRecebiveis">Valor Parcela:</label><br>
 															<div class="input-group" id="txtHint">
 																<span class="input-group-addon" id="basic-addon1">R$</span>
@@ -186,7 +186,7 @@
 																	   name="ValorParcelaRecebiveis<?php echo $i ?>" value="<?php echo $parcelasrec[$i]['ValorParcelaRecebiveis'] ?>">
 															</div>
 														</div>
-														<div class="col-md-3">
+														<div class="col-md-2">
 															<label for="DataVencimentoRecebiveis">Data Venc. Parc.</label>
 															<div class="input-group DatePicker">
 																<span class="input-group-addon" disabled>
@@ -197,12 +197,12 @@
 																
 															</div>
 														</div>
-														<!--
+														
 														<div class="col-md-2">
 															<label for="ValorPagoRecebiveis">Valor Pago:</label><br>
 															<div class="input-group" id="txtHint">
 																<span class="input-group-addon" id="basic-addon1">R$</span>
-																<input type="text" class="form-control Valor" maxlength="10" placeholder="0,00" id="ValorPagoRecebiveis<?php echo $i ?>"
+																<input type="text" class="form-control Valor" maxlength="10" placeholder="0,00" readonly="" id="ValorPagoRecebiveis<?php echo $i ?>"
 																	   name="ValorPagoRecebiveis<?php echo $i ?>" value="<?php echo $parcelasrec[$i]['ValorPagoRecebiveis'] ?>">
 															</div>
 														</div>
@@ -212,13 +212,13 @@
 																<span class="input-group-addon" disabled>
 																	<span class="glyphicon glyphicon-calendar"></span>
 																</span>
-																<input type="text" class="form-control Date" id="DataPagoRecebiveis<?php echo $i ?>" maxlength="10" placeholder="DD/MM/AAAA"
+																<input type="text" class="form-control Date" readonly="" id="DataPagoRecebiveis<?php echo $i ?>" maxlength="10" placeholder="DD/MM/AAAA"
 																	   name="DataPagoRecebiveis<?php echo $i ?>" value="<?php echo $parcelasrec[$i]['DataPagoRecebiveis'] ?>">
 																
 															</div>
 														</div>
-														-->
-														<div class="col-md-3">
+														
+														<div class="col-md-2">
 															<label for="QuitadoRecebiveis">Quitado?</label><br>
 															<div class="form-group">
 																<div class="btn-group" data-toggle="buttons">
@@ -406,6 +406,6 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-2"></div>
+		<div class="col-md-1"></div>
 	</div>
 </div>

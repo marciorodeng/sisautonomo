@@ -251,7 +251,6 @@ class Relatorio extends CI_Controller {
 
         $data['select']['Campo'] = array(
             'PR.DataVencimentoRecebiveis' => 'Data do Venc.',
-			'PR.DataPagoRecebiveis' => 'Data do Pagam.',
 			'PR.QuitadoRecebiveis' => 'Quit.Parc.',
 			'OT.Modalidade' => 'Modalidade',
             'OT.idApp_OrcaTrata' => 'Número da Receita',
@@ -807,13 +806,12 @@ class Relatorio extends CI_Controller {
 
         $data['select']['Campo'] = array(
 			'PP.DataVencimentoPagaveis' => 'Data do Venc.',
-			'PP.DataPagoPagaveis' => 'Data do Pagam.',
 			'PP.QuitadoPagaveis' => 'Quit.Parc.',
+			'DS.ModalidadeDespesas' => 'Modalidade',
 			'DS.idApp_Despesas' => 'Número da Despesa',
             'DS.ValorDespesas' => 'Valor da Despesa',
 			'DS.Despesa' => 'Despesa',
 			'DS.TipoDespesa' => 'Tipo de Despesa',
-			'DS.ModalidadeDespesas' => 'Modalidade',
         );
 
         $data['select']['Ordenamento'] = array(

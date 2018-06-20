@@ -51,10 +51,10 @@
 						<th class="active">Concl.?</th>
 						<th class="active">Quit.?</th>-->						
                         <th class="active">Prcl.</th>
-                        <th class="active">Venc/Valor</th>
-                        <th class="active">Pago</th>
-                        <!--<th class="active">Data do Pagam.</th>
-                        <th class="active">Valor Recebido</th>-->
+                        <th class="active">Venc.</th>
+                        <!--<th class="active">Pago</th>
+                        <th class="active">Data do Pagam.</th>-->
+                        <th class="active">Valor</th>
                         
                     </tr>
                 </thead>

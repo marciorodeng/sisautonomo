@@ -316,7 +316,7 @@ function calculaParcelas() {
 								<label for="ValorPagoRecebiveis">Valor Pago:</label><br>\
 								<div class="input-group" id="txtHint">\
 									<span class="input-group-addon" id="basic-addon1">R$</span>\
-									<input type="text" class="form-control Valor" maxlength="10" placeholder="0,00" readonly=""\
+									<input type="text" class="form-control Valor" maxlength="10" placeholder="0,00"\
 										    id="ValorPagoRecebiveis'+i+'" name="ValorPagoRecebiveis'+i+'" value="">\
 								</div>\
 							</div>\
@@ -326,7 +326,7 @@ function calculaParcelas() {
 									<span class="input-group-addon" disabled>\
 										<span class="glyphicon glyphicon-calendar"></span>\
 									</span>\
-									<input type="text" class="form-control Date" id="DataPagoRecebiveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA" readonly=""\
+									<input type="text" class="form-control Date" id="DataPagoRecebiveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
 										   name="DataPagoRecebiveis'+i+'" value="">\
 								</div>\
 							</div>\
@@ -442,7 +442,7 @@ function calculaParcelasMensais() {
 								<label for="ValorPagoRecebiveis">Valor Pago:</label><br>\
 								<div class="input-group" id="txtHint">\
 									<span class="input-group-addon" id="basic-addon1">R$</span>\
-									<input type="text" class="form-control Valor" maxlength="10" placeholder="0,00" readonly=""\
+									<input type="text" class="form-control Valor" maxlength="10" placeholder="0,00"\
 										    id="ValorPagoRecebiveis'+i+'" name="ValorPagoRecebiveis'+i+'" value="">\
 								</div>\
 							</div>\
@@ -452,7 +452,7 @@ function calculaParcelasMensais() {
 									<span class="input-group-addon" disabled>\
 										<span class="glyphicon glyphicon-calendar"></span>\
 									</span>\
-									<input type="text" class="form-control Date" id="DataPagoRecebiveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA" readonly=""\
+									<input type="text" class="form-control Date" id="DataPagoRecebiveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
 										   name="DataPagoRecebiveis'+i+'" value="">\
 								</div>\
 							</div>\
@@ -568,7 +568,7 @@ function calculaParcelasPagaveis() {
 								<label for="ValorPagoPagaveis">Valor Pago:</label><br>\
 								<div class="input-group" id="txtHint">\
 									<span class="input-group-addon" id="basic-addon1">R$</span>\
-									<input type="text" class="form-control Valor" maxlength="10" placeholder="0,00" readonly=""\
+									<input type="text" class="form-control Valor" maxlength="10" placeholder="0,00"\
 										    id="ValorPagoPagaveis'+i+'" name="ValorPagoPagaveis'+i+'" value="">\
 								</div>\
 							</div>\
@@ -578,7 +578,7 @@ function calculaParcelasPagaveis() {
 									<span class="input-group-addon" disabled>\
 										<span class="glyphicon glyphicon-calendar"></span>\
 									</span>\
-									<input type="text" class="form-control Date" id="DataPagoPagaveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA" readonly=""\
+									<input type="text" class="form-control Date" id="DataPagoPagaveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
 										   name="DataPagoPagaveis'+i+'" value="">\
 								</div>\
 							</div>\
@@ -694,7 +694,7 @@ function calculaParcelasPagaveisMensais() {
 								<label for="ValorPagoPagaveis">Valor Pago:</label><br>\
 								<div class="input-group" id="txtHint">\
 									<span class="input-group-addon" id="basic-addon1">R$</span>\
-									<input type="text" class="form-control Valor" maxlength="10" placeholder="0,00" readonly=""\
+									<input type="text" class="form-control Valor" maxlength="10" placeholder="0,00"\
 										    id="ValorPagoPagaveis'+i+'" name="ValorPagoPagaveis'+i+'" value="">\
 								</div>\
 							</div>\
@@ -704,7 +704,7 @@ function calculaParcelasPagaveisMensais() {
 									<span class="input-group-addon" disabled>\
 										<span class="glyphicon glyphicon-calendar"></span>\
 									</span>\
-									<input type="text" class="form-control Date" id="DataPagoPagaveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA" readonly=""\
+									<input type="text" class="form-control Date" id="DataPagoPagaveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
 										   name="DataPagoPagaveis'+i+'" value="">\
 								</div>\
 							</div>\
@@ -2337,7 +2337,7 @@ $(document).ready(function () {
 								<label for="ValorPagoRecebiveis">Valor Pago:</label><br>\
 								<div class="input-group" id="txtHint">\
 									<span class="input-group-addon" id="basic-addon1">R$</span>\
-									<input type="text" class="form-control Valor" maxlength="10" placeholder="0,00" readonly=""\
+									<input type="text" class="form-control Valor" maxlength="10" placeholder="0,00"\
 										    id="ValorPagoRecebiveis'+pc+'" name="ValorPagoRecebiveis'+pc+'" value="">\
 								</div>\
 							</div>\
@@ -2347,7 +2347,7 @@ $(document).ready(function () {
 									<span class="input-group-addon" disabled>\
 										<span class="glyphicon glyphicon-calendar"></span>\
 									</span>\
-									<input type="text" class="form-control Date" id="DataPagoRecebiveis'+pc+'" maxlength="10" placeholder="DD/MM/AAAA" readonly=""\
+									<input type="text" class="form-control Date" id="DataPagoRecebiveis'+pc+'" maxlength="10" placeholder="DD/MM/AAAA"\
 										   name="DataPagoRecebiveis'+pc+'" value="">\
 								</div>\
 							</div>\
@@ -2457,7 +2457,7 @@ $(document).ready(function () {
 								<label for="ValorPagoPagaveis">Valor Pago:</label><br>\
 								<div class="input-group" id="txtHint">\
 									<span class="input-group-addon" id="basic-addon1">R$</span>\
-									<input type="text" class="form-control Valor" maxlength="10" placeholder="0,00" readonly=""\
+									<input type="text" class="form-control Valor" maxlength="10" placeholder="0,00"\
 										    id="ValorPagoPagaveis'+pc+'" name="ValorPagoPagaveis'+pc+'" value="">\
 								</div>\
 							</div>\
@@ -2467,7 +2467,7 @@ $(document).ready(function () {
 									<span class="input-group-addon" disabled>\
 										<span class="glyphicon glyphicon-calendar"></span>\
 									</span>\
-									<input type="text" class="form-control Date" id="DataPagoPagaveis'+pc+'" maxlength="10" placeholder="DD/MM/AAAA" readonly=""\
+									<input type="text" class="form-control Date" id="DataPagoPagaveis'+pc+'" maxlength="10" placeholder="DD/MM/AAAA"\
 										   name="DataPagoPagaveis'+pc+'" value="">\
 								</div>\
 							</div>\

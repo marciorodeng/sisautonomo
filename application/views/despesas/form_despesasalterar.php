@@ -3,8 +3,8 @@
 <div class="container-fluid">	
 	<div class="row">
 	
-		<div class="col-md-2"></div>
-		<div class="col-md-8 ">
+		<div class="col-md-1"></div>
+		<div class="col-md-10 ">
 
 			<?php echo validation_errors(); ?>
 
@@ -166,12 +166,12 @@
 											<div class="panel panel-warning">
 												<div class="panel-heading">
 													<div class="row">
-														<div class="col-md-2">
+														<div class="col-md-1">
 															<label for="ParcelaPagaveis">Parcela:</label><br>
 															<input type="text" class="form-control" maxlength="6"
 																   name="ParcelaPagaveis<?php echo $i ?>" value="<?php echo $parcelaspag[$i]['ParcelaPagaveis'] ?>">
 														</div>
-														<div class="col-md-3">
+														<div class="col-md-2">
 															<label for="ValorParcelaPagaveis">Valor Parcela:</label><br>
 															<div class="input-group" id="txtHint">
 																<span class="input-group-addon" id="basic-addon1">R$</span>
@@ -179,7 +179,7 @@
 																	   name="ValorParcelaPagaveis<?php echo $i ?>" value="<?php echo $parcelaspag[$i]['ValorParcelaPagaveis'] ?>">
 															</div>
 														</div>
-														<div class="col-md-3">
+														<div class="col-md-2">
 															<label for="DataVencimentoPagaveis">Data Venc. Parc.</label>
 															<div class="input-group DatePicker">
 																<span class="input-group-addon" disabled>
@@ -190,12 +190,12 @@
 																
 															</div>
 														</div>
-														<!--
+														
 														<div class="col-md-2">
 															<label for="ValorPagoPagaveis">Valor Pago:</label><br>
 															<div class="input-group" id="txtHint">
 																<span class="input-group-addon" id="basic-addon1">R$</span>
-																<input type="text" class="form-control Valor" maxlength="10" placeholder="0,00" id="ValorPagoPagaveis<?php echo $i ?>"
+																<input type="text" class="form-control Valor" maxlength="10" placeholder="0,00" readonly="" id="ValorPagoPagaveis<?php echo $i ?>"
 																	   name="ValorPagoPagaveis<?php echo $i ?>" value="<?php echo $parcelaspag[$i]['ValorPagoPagaveis'] ?>">
 															</div>
 														</div>
@@ -205,13 +205,13 @@
 																<span class="input-group-addon" disabled>
 																	<span class="glyphicon glyphicon-calendar"></span>
 																</span>
-																<input type="text" class="form-control Date" id="DataPagoPagaveis<?php echo $i ?>" maxlength="10" placeholder="DD/MM/AAAA"
+																<input type="text" class="form-control Date" readonly="" id="DataPagoPagaveis<?php echo $i ?>" maxlength="10" placeholder="DD/MM/AAAA"
 																	   name="DataPagoPagaveis<?php echo $i ?>" value="<?php echo $parcelaspag[$i]['DataPagoPagaveis'] ?>">
 																
 															</div>
 														</div>
-														-->
-														<div class="col-md-3">
+														
+														<div class="col-md-2">
 															<label for="QuitadoPagaveis">Quitado?</label><br>
 															<div class="form-group">
 																<div class="btn-group" data-toggle="buttons">
@@ -223,7 +223,7 @@
 																			echo ''
 																			. '<label class="btn btn-warning active" name="radiobutton_QuitadoPagaveis' . $i . '" id="radiobutton_QuitadoPagaveis' . $i .  $key . '">'
 																			. '<input type="radio" name="QuitadoPagaveis' . $i . '" id="radiobuttondinamico" '
-																			#. 'onchange="carregaQuitadoDespesas(this.value,this.name,'.$i.')" '
+																			. 'onchange="carregaQuitadoDespesas(this.value,this.name,'.$i.')" '
 																			. 'autocomplete="off" value="' . $key . '" checked>' . $row
 																			. '</label>'
 																			;
@@ -231,7 +231,7 @@
 																			echo ''
 																			. '<label class="btn btn-default" name="radiobutton_QuitadoPagaveis' . $i . '" id="radiobutton_QuitadoPagaveis' . $i .  $key . '">'
 																			. '<input type="radio" name="QuitadoPagaveis' . $i . '" id="radiobuttondinamico" '
-																			#. 'onchange="carregaQuitadoDespesas(this.value,this.name,'.$i.')" '
+																			. 'onchange="carregaQuitadoDespesas(this.value,this.name,'.$i.')" '
 																			. 'autocomplete="off" value="' . $key . '" >' . $row
 																			. '</label>'
 																			;
@@ -422,6 +422,6 @@
 			</div>
 
 		</div>
-		<div class="col-md-2"></div>
+		<div class="col-md-1"></div>
 	</div>
 </div>
