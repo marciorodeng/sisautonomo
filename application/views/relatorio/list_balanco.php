@@ -62,7 +62,7 @@
                         echo '<td class="text-left">' . $report['TotalGeralpago']->DesPago . '</td>';
                         ?>
                     </tr>
-					
+					<!--
                     <tr>
                         <?php
                         echo '<td><b>' . $report['TotalVenc']->Balancovenc . '</b></td>';
@@ -74,6 +74,7 @@
                         echo '<td class="text-left ' . $bgcolor . '">' . $report['TotalGeralvenc']->BalancoGeralvenc . '</td>';
                         ?>
                     </tr>
+					-->
 					<tr>
                         <?php
                         echo '<td><b>' . $report['TotalPago']->Balancopago . '</b></td>';

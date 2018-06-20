@@ -164,6 +164,7 @@ class Relatorio extends CI_Controller {
 
         $data['query'] = quotes_to_entities($this->input->post(array(
             #'NomeCliente',
+			'Dia',
 			'Ano',
 			'Mesvenc',
 			'Mespag',
@@ -269,7 +270,8 @@ class Relatorio extends CI_Controller {
 		$data['select']['ObsOrca'] = $this->Relatorio_model->select_obsorca();
 		$data['select']['TipoReceita'] = $this->Relatorio_model->select_tiporeceita();
 		$data['select']['Mesvenc'] = $this->Relatorio_model->select_mes();
-		$data['select']['Mespag'] = $this->Relatorio_model->select_mes();		
+		$data['select']['Mespag'] = $this->Relatorio_model->select_mes();
+		$data['select']['Dia'] = $this->Relatorio_model->select_dia();
 		/*
         $data['select']['Pesquisa'] = array(
             'DataEntradaOrca' => 'Data de Entrada',
@@ -287,6 +289,7 @@ class Relatorio extends CI_Controller {
            # $data['bd']['NomeCliente'] = $data['query']['NomeCliente'];
             $data['bd']['TipoReceita'] = $data['query']['TipoReceita'];
 			$data['bd']['Ano'] = $data['query']['Ano'];
+			$data['bd']['Dia'] = $data['query']['Dia'];
 			$data['bd']['Mesvenc'] = $data['query']['Mesvenc'];
 			$data['bd']['Mespag'] = $data['query']['Mespag'];			
 			$data['bd']['ObsOrca'] = $data['query']['ObsOrca'];
@@ -716,7 +719,8 @@ class Relatorio extends CI_Controller {
             $data['msg'] = '';
 
         $data['query'] = quotes_to_entities($this->input->post(array(
-            'Ano',
+            'Dia',
+			'Ano',
 			'Mesvenc',
 			'Mespag',
 			'TipoDespesa',
@@ -820,6 +824,7 @@ class Relatorio extends CI_Controller {
 		$data['select']['TipoDespesa'] = $this->Relatorio_model->select_tipodespesa();
 		$data['select']['Mesvenc'] = $this->Relatorio_model->select_mes();
 		$data['select']['Mespag'] = $this->Relatorio_model->select_mes();
+		$data['select']['Dia'] = $this->Relatorio_model->select_dia();
 
         $data['titulo'] = 'Despesas & Pagamentos';
 
@@ -834,6 +839,7 @@ class Relatorio extends CI_Controller {
             $data['bd']['DataFim2'] = $this->basico->mascara_data($data['query']['DataFim2'], 'mysql');
 			$data['bd']['DataInicio3'] = $this->basico->mascara_data($data['query']['DataInicio3'], 'mysql');
             $data['bd']['DataFim3'] = $this->basico->mascara_data($data['query']['DataFim3'], 'mysql');
+			$data['bd']['Dia'] = $data['query']['Dia'];
 			$data['bd']['Ano'] = $data['query']['Ano'];
 			$data['bd']['Mesvenc'] = $data['query']['Mesvenc'];
 			$data['bd']['Mespag'] = $data['query']['Mespag'];
@@ -1113,7 +1119,7 @@ class Relatorio extends CI_Controller {
 
     }
 
-    public function balanco() {
+    public function balanco5() {
 
         if ($this->input->get('m') == 1)
             $data['msg'] = $this->basico->msg('<strong>Informações salvas com sucesso</strong>', 'sucesso', TRUE, TRUE, TRUE);
@@ -1162,6 +1168,55 @@ class Relatorio extends CI_Controller {
 
     }
 
+    public function balanco() {
+
+        if ($this->input->get('m') == 1)
+            $data['msg'] = $this->basico->msg('<strong>Informações salvas com sucesso</strong>', 'sucesso', TRUE, TRUE, TRUE);
+        elseif ($this->input->get('m') == 2)
+            $data['msg'] = $this->basico->msg('<strong>Erro no Banco de dados. Entre em contato com o administrador deste sistema.</strong>', 'erro', TRUE, TRUE, TRUE);
+        else
+            $data['msg'] = '';
+
+        $data['query'] = quotes_to_entities($this->input->post(array(
+            'Ano',
+        ), TRUE));
+
+		
+		/*
+		if (!$data['query']['Ano'])
+           $data['query']['Ano'] = '2018';
+		*/
+		if (!$data['query']['Ano'])
+           $data['query']['Ano'] = date('Y', time());
+		
+        $this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
+        #$this->form_validation->set_rules('Pesquisa', 'Pesquisa', 'required|trim');
+        $this->form_validation->set_rules('Ano', 'Ano', 'required|trim|integer|greater_than[1900]');
+
+        $data['titulo'] = 'Relatório de Balanço';
+
+        #run form validation
+        if ($this->form_validation->run() !== FALSE) {
+
+            $data['report'] = $this->Relatorio_model->list_balanco($data['query']);
+
+            /*
+              echo "<pre>";
+              print_r($data['report']);
+              echo "</pre>";
+              exit();
+              */
+
+            $data['list'] = $this->load->view('relatorio/list_balanco', $data, TRUE);
+            //$data['nav_secundario'] = $this->load->view('cliente/nav_secundario', $data, TRUE);
+        }
+
+        $this->load->view('relatorio/tela_balanco', $data);
+
+        $this->load->view('basico/footer');
+
+    }
+	
     public function estoque() {
 
         if ($this->input->get('m') == 1)

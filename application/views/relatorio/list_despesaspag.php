@@ -67,12 +67,12 @@
 						<th class="active">Mod.</th>
 						<th class="active">Tipo</th>-->
 						<th class="active">Despesa</th>
-						<!--<th class="active">Quit.</th>-->						
                         <th class="active">Prcl.</th>
                         <th class="active">Venc.</th>
-                        <th class="active">Pago</th>
-                        <!--<th class="active">Data do Pagam.</th>
-                        <th class="active">Valor Pago</th>-->
+                        <!--<th class="active">Pago</th>
+						<th class="active">Quit.</th>
+                        <th class="active">Data do Pagam.</th>-->
+                        <th class="active">Valor</th>
                         
                     </tr>
                 </thead>
@@ -88,13 +88,13 @@
 							#echo '<td>' . $row['idApp_Despesas'] . '</td>';							
 							#echo '<td>' . $row['ModalidadeDespesas'] . '</td>';
 							#echo '<td>' . $row['TipoDespesa'] . '</td>';
-							echo '<td>' . $row['Despesa'] . '/ Quit.=' . $row['QuitadoDespesas'] . '</td>';
-							#echo '<td>' . $row['QuitadoPagaveis'] . '</td>';							
-                            echo '<td>' . $row['ParcelaPagaveis'] . '</td>';
-                            echo '<td>' . $row['DataVencimentoPagaveis'] . ' R$' . $row['ValorParcelaPagaveis'] . '</td>';
-							echo '<td>' . $row['DataPagoPagaveis'] . ' R$' . $row['ValorPagoPagaveis'] . '</td>';
-                            #echo '<td class="text-left">R$ ' . $row['ValorParcelaPagaveis'] . '</td>';
-							#echo '<td class="text-left">R$ ' . $row['ValorParcelaPagaveis'] . '</td>';
+							echo '<td>' . $row['Despesa'] . '</td>';
+														
+                            echo '<td>' . $row['ParcelaPagaveis'] . ' Pg-' . $row['QuitadoPagaveis'] . '</td>';
+                            echo '<td>' . $row['DataVencimentoPagaveis'] . ' ' . $row['Modalidade'] . '</td>';
+							#echo '<td>' . $row['DataPagoPagaveis'] . ' R$' . $row['ValorPagoPagaveis'] . '</td>';
+                            #echo '<td>' . $row['QuitadoPagaveis'] . '</td>';
+							echo '<td class="text-left">' . $row['ValorParcelaPagaveis'] . '</td>';
                             #echo '<td>' . $row['DataPagoPagaveis'] . '</td>';
                             #echo '<td class="text-left">R$ ' . $row['ValorPagoPagaveis'] . '</td>';
                             

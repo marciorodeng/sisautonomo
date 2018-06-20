@@ -51,7 +51,7 @@
 						<th class="active">Concl.?</th>
 						<th class="active">Quit.?</th>-->						
                         <th class="active">Prcl.</th>
-                        <th class="active">Venc.</th>
+                        <th class="active">Venc/Valor</th>
                         <th class="active">Pago</th>
                         <!--<th class="active">Data do Pagam.</th>
                         <th class="active">Valor Recebido</th>-->
@@ -65,18 +65,18 @@
                         echo '<tr class="clickable-row" data-href="' . base_url() . 'orcatrata2/alterar/' . $row['idApp_OrcaTrata'] . '">';
                            # echo '<td>' . $row['NomeCliente'] . '</td>';
 							#echo '<td>' . $row['idApp_OrcaTrata'] . '</td>';
-							echo '<td>' . $row['ObsOrca'] . '/ Quit.=' . $row['QuitadoOrca'] . '</td>';
-                            #echo '<td>' . $row['QuitadoRecebiveis'] . '</td>';
+							echo '<td>' . $row['ObsOrca'] . '</td>';
 							#echo '<td>' . $row['DataOrca'] . '</td>';
                            # echo '<td>' . $row['DataEntradaOrca'] . '</td>';
                            # echo '<td class="text-right">R$ ' . $row['ValorEntradaOrca'] . '</td>';
 						    #echo '<td>' . $row['AprovadoOrca'] . '</td>';
 							#echo '<td>' . $row['ServicoConcluido'] . '</td>';
 							#echo '<td>' . $row['QuitadoOrca'] . '</td>';						
-                            echo '<td>' . $row['ParcelaRecebiveis'] . '</td>';
-                            echo '<td>' . $row['DataVencimentoRecebiveis'] . ' R$' . $row['ValorParcelaRecebiveis'] . '</td>';
-                            echo '<td>' . $row['DataPagoRecebiveis'] . ' R$' . $row['ValorPagoRecebiveis'] . '</td>';
-							#echo '<td class="text-left">R$ ' . $row['ValorParcelaRecebiveis'] . '</td>';
+                            echo '<td>' . $row['ParcelaRecebiveis'] . ' Pg-' . $row['QuitadoRecebiveis'] . '</td>';
+                            echo '<td>' . $row['DataVencimentoRecebiveis'] . ' ' . $row['Modalidade'] . '</td>';
+                            #echo '<td>' . $row['DataPagoRecebiveis'] . ' R$' . $row['ValorPagoRecebiveis'] . '</td>';
+							#echo '<td>' . $row['QuitadoRecebiveis'] . '</td>';
+							echo '<td class="text-left">' . $row['ValorParcelaRecebiveis'] . '</td>';
                             #echo '<td>' . $row['DataPagoRecebiveis'] . '</td>';
                             #echo '<td class="text-right">R$ ' . $row['ValorPagoRecebiveis'] . '</td>';                           
                         echo '</tr>';

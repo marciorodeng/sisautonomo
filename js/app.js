@@ -289,12 +289,12 @@ function calculaParcelas() {
 				<div class="panel panel-warning">\
 					<div class="panel-heading">\
 						<div class="row">\
-							<div class="col-md-1">\
+							<div class="col-md-2">\
 								<label for="ParcelaRecebiveis">Parcela:</label><br>\
 								<input type="text" class="form-control" maxlength="6"\
 									   name="ParcelaRecebiveis'+i+'" value="'+i+'/'+parcelas+'">\
 							</div>\
-							<div class="col-md-2">\
+							<div class="col-md-3">\
 								<label for="ValorParcelaRecebiveis">Valor Parcela:</label><br>\
 								<div class="input-group" id="txtHint">\
 									<span class="input-group-addon" id="basic-addon1">R$</span>\
@@ -302,7 +302,7 @@ function calculaParcelas() {
 										    id="ValorParcelaRecebiveis'+i+'" name="ValorParcelaRecebiveis'+i+'" value="'+parcorca+'">\
 								</div>\
 							</div>\
-							<div class="col-md-2">\
+							<div class="col-md-3">\
 								<label for="DataVencimentoRecebiveis">Data Venc. Parc.</label>\
 								<div class="input-group DatePicker">\
 									<span class="input-group-addon" disabled>\
@@ -312,26 +312,8 @@ function calculaParcelas() {
 										   name="DataVencimentoRecebiveis'+i+'" value="'+futureMonth.format('DD/MM/YYYY')+'">\
 								</div>\
 							</div>\
-							<div class="col-md-2">\
-								<label for="ValorPagoRecebiveis">Valor Pago:</label><br>\
-								<div class="input-group" id="txtHint">\
-									<span class="input-group-addon" id="basic-addon1">R$</span>\
-									<input type="text" class="form-control Valor" maxlength="10" placeholder="0,00"\
-										    id="ValorPagoRecebiveis'+i+'" name="ValorPagoRecebiveis'+i+'" value="">\
-								</div>\
-							</div>\
-							<div class="col-md-2">\
-								<label for="DataPagoRecebiveis">Data Pag.</label>\
-								<div class="input-group DatePicker">\
-									<span class="input-group-addon" disabled>\
-										<span class="glyphicon glyphicon-calendar"></span>\
-									</span>\
-									<input type="text" class="form-control Date" id="DataPagoRecebiveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
-										   name="DataPagoRecebiveis'+i+'" value="">\
-								</div>\
-							</div>\
-							<div class="col-md-2">\
-								<label for="QuitadoRecebiveis">Quitado????</label><br>\
+							<div class="col-md-3">\
+								<label for="QuitadoRecebiveis">Quitado?</label><br>\
 								<div class="form-group">\
 									<div class="btn-group" data-toggle="buttons">\
 										<label class="btn btn-warning active" name="radio_QuitadoRecebiveis'+i+'" id="radio_QuitadoRecebiveis'+i+'N">\
@@ -340,7 +322,7 @@ function calculaParcelas() {
 										</label>\
 										<label class="btn btn-default" name="radio_QuitadoRecebiveis'+i+'" id="radio_QuitadoRecebiveis'+i+'S">\
 										<input type="radio" name="QuitadoRecebiveis'+i+'" id="radiogeraldinamico"\
-											onchange="carregaQuitado(this.value,this.name,'+i+',1)" autocomplete="off" value="S">Sim\
+											 autocomplete="off" value="S">Sim\
 										</label>\
 									</div>\
 								</div>\
@@ -415,12 +397,12 @@ function calculaParcelasMensais() {
 				<div class="panel panel-warning">\
 					<div class="panel-heading">\
 						<div class="row">\
-							<div class="col-md-1">\
+							<div class="col-md-2">\
 								<label for="ParcelaRecebiveis">Parcela:</label><br>\
 								<input type="text" class="form-control" maxlength="6"\
 									   name="ParcelaRecebiveis'+i+'" value="'+i+'/'+parcelas+'">\
 							</div>\
-							<div class="col-md-2">\
+							<div class="col-md-3">\
 								<label for="ValorParcelaRecebiveis">Valor Parcela:</label><br>\
 								<div class="input-group" id="txtHint">\
 									<span class="input-group-addon" id="basic-addon1">R$</span>\
@@ -428,7 +410,7 @@ function calculaParcelasMensais() {
 										    id="ValorParcelaRecebiveis'+i+'" name="ValorParcelaRecebiveis'+i+'" value="'+parcorca+'">\
 								</div>\
 							</div>\
-							<div class="col-md-2">\
+							<div class="col-md-3">\
 								<label for="DataVencimentoRecebiveis">Data Venc. Parc.</label>\
 								<div class="input-group DatePicker">\
 									<span class="input-group-addon" disabled>\
@@ -438,26 +420,8 @@ function calculaParcelasMensais() {
 										   name="DataVencimentoRecebiveis'+i+'" value="'+futureMonth.format('DD/MM/YYYY')+'">\
 								</div>\
 							</div>\
-							<div class="col-md-2">\
-								<label for="ValorPagoRecebiveis">Valor Pago:</label><br>\
-								<div class="input-group" id="txtHint">\
-									<span class="input-group-addon" id="basic-addon1">R$</span>\
-									<input type="text" class="form-control Valor" maxlength="10" placeholder="0,00"\
-										    id="ValorPagoRecebiveis'+i+'" name="ValorPagoRecebiveis'+i+'" value="">\
-								</div>\
-							</div>\
-							<div class="col-md-2">\
-								<label for="DataPagoRecebiveis">Data Pag.</label>\
-								<div class="input-group DatePicker">\
-									<span class="input-group-addon" disabled>\
-										<span class="glyphicon glyphicon-calendar"></span>\
-									</span>\
-									<input type="text" class="form-control Date" id="DataPagoRecebiveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
-										   name="DataPagoRecebiveis'+i+'" value="">\
-								</div>\
-							</div>\
-							<div class="col-md-2">\
-								<label for="QuitadoRecebiveis">Quitado????</label><br>\
+							<div class="col-md-3">\
+								<label for="QuitadoRecebiveis">Quitado?</label><br>\
 								<div class="form-group">\
 									<div class="btn-group" data-toggle="buttons">\
 										<label class="btn btn-warning active" name="radio_QuitadoRecebiveis'+i+'" id="radio_QuitadoRecebiveis'+i+'N">\
@@ -466,7 +430,7 @@ function calculaParcelasMensais() {
 										</label>\
 										<label class="btn btn-default" name="radio_QuitadoRecebiveis'+i+'" id="radio_QuitadoRecebiveis'+i+'S">\
 										<input type="radio" name="QuitadoRecebiveis'+i+'" id="radiogeraldinamico"\
-											onchange="carregaQuitado(this.value,this.name,'+i+',1)" autocomplete="off" value="S">Sim\
+											 autocomplete="off" value="S">Sim\
 										</label>\
 									</div>\
 								</div>\
@@ -565,34 +529,16 @@ function calculaParcelasPagaveis() {
 								</div>\
 							</div>\
 							<div class="col-md-2">\
-								<label for="ValorPagoPagaveis">Valor Pago:</label><br>\
-								<div class="input-group" id="txtHint">\
-									<span class="input-group-addon" id="basic-addon1">R$</span>\
-									<input type="text" class="form-control Valor" maxlength="10" placeholder="0,00"\
-										    id="ValorPagoPagaveis'+i+'" name="ValorPagoPagaveis'+i+'" value="">\
-								</div>\
-							</div>\
-							<div class="col-md-2">\
-								<label for="DataPagoPagaveis">Data Pag.</label>\
-								<div class="input-group DatePicker">\
-									<span class="input-group-addon" disabled>\
-										<span class="glyphicon glyphicon-calendar"></span>\
-									</span>\
-									<input type="text" class="form-control Date" id="DataPagoPagaveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
-										   name="DataPagoPagaveis'+i+'" value="">\
-								</div>\
-							</div>\
-							<div class="col-md-2">\
 								<label for="QuitadoPagaveis">Quitado?</label><br>\
 								<div class="form-group">\
 									<div class="btn-group" data-toggle="buttons">\
 										<label class="btn btn-warning active" name="radio_QuitadoPagaveis'+i+'" id="radio_QuitadoPagaveis'+i+'N">\
 										<input type="radio" name="QuitadoPagaveis'+i+'" id="radiogeraldinamico"\
-											onchange="carregaQuitadoDespesas(this.value,this.name,'+i+',1)" autocomplete="off" value="N" checked>Não\
+											 autocomplete="off" value="N" checked>Não\
 										</label>\
 										<label class="btn btn-default" name="radio_QuitadoPagaveis'+i+'" id="radio_QuitadoPagaveis'+i+'S">\
 										<input type="radio" name="QuitadoPagaveis'+i+'" id="radiogeraldinamico"\
-											onchange="carregaQuitadoDespesas(this.value,this.name,'+i+',1)" autocomplete="off" value="S">Sim\
+											 autocomplete="off" value="S">Sim\
 										</label>\
 									</div>\
 								</div>\
@@ -691,34 +637,16 @@ function calculaParcelasPagaveisMensais() {
 								</div>\
 							</div>\
 							<div class="col-md-2">\
-								<label for="ValorPagoPagaveis">Valor Pago:</label><br>\
-								<div class="input-group" id="txtHint">\
-									<span class="input-group-addon" id="basic-addon1">R$</span>\
-									<input type="text" class="form-control Valor" maxlength="10" placeholder="0,00"\
-										    id="ValorPagoPagaveis'+i+'" name="ValorPagoPagaveis'+i+'" value="">\
-								</div>\
-							</div>\
-							<div class="col-md-2">\
-								<label for="DataPagoPagaveis">Data Pag.</label>\
-								<div class="input-group DatePicker">\
-									<span class="input-group-addon" disabled>\
-										<span class="glyphicon glyphicon-calendar"></span>\
-									</span>\
-									<input type="text" class="form-control Date" id="DataPagoPagaveis'+i+'" maxlength="10" placeholder="DD/MM/AAAA"\
-										   name="DataPagoPagaveis'+i+'" value="">\
-								</div>\
-							</div>\
-							<div class="col-md-2">\
 								<label for="QuitadoPagaveis">Quitado?</label><br>\
 								<div class="form-group">\
 									<div class="btn-group" data-toggle="buttons">\
 										<label class="btn btn-warning active" name="radio_QuitadoPagaveis'+i+'" id="radio_QuitadoPagaveis'+i+'N">\
 										<input type="radio" name="QuitadoPagaveis'+i+'" id="radiogeraldinamico"\
-											onchange="carregaQuitadoDespesas(this.value,this.name,'+i+',1)" autocomplete="off" value="N" checked>Não\
+											 autocomplete="off" value="N" checked>Não\
 										</label>\
 										<label class="btn btn-default" name="radio_QuitadoPagaveis'+i+'" id="radio_QuitadoPagaveis'+i+'S">\
 										<input type="radio" name="QuitadoPagaveis'+i+'" id="radiogeraldinamico"\
-											onchange="carregaQuitadoDespesas(this.value,this.name,'+i+',1)" autocomplete="off" value="S">Sim\
+											 autocomplete="off" value="S">Sim\
 										</label>\
 									</div>\
 								</div>\
@@ -2310,12 +2238,12 @@ $(document).ready(function () {
                 <div class="panel panel-warning">\
                     <div class="panel-heading">\
                         <div class="row">\
-                            <div class="col-md-1">\
+                            <div class="col-md-2">\
 								<label for="ParcelaRecebiveis">Parcela:</label><br>\
 								<input type="text" class="form-control" maxlength="6"\
 									   name="ParcelaRecebiveis'+pc+'" value="Ex.">\
 							</div>\
-							<div class="col-md-2">\
+							<div class="col-md-3">\
 								<label for="ValorParcelaRecebiveis">Valor Parcela:</label><br>\
 								<div class="input-group" id="txtHint">\
 									<span class="input-group-addon" id="basic-addon1">R$</span>\
@@ -2323,7 +2251,7 @@ $(document).ready(function () {
 										    id="ValorParcelaRecebiveis'+pc+'" name="ValorParcelaRecebiveis'+pc+'" value="">\
 								</div>\
 							</div>\
-							<div class="col-md-2">\
+							<div class="col-md-3">\
 								<label for="DataVencimentoRecebiveis">Data Venc. Parc.</label>\
 								<div class="input-group DatePicker">\
 									<span class="input-group-addon" disabled>\
@@ -2333,25 +2261,7 @@ $(document).ready(function () {
 										   name="DataVencimentoRecebiveis'+pc+'" value="">\
 								</div>\
 							</div>\
-							<div class="col-md-2">\
-								<label for="ValorPagoRecebiveis">Valor Pago:</label><br>\
-								<div class="input-group" id="txtHint">\
-									<span class="input-group-addon" id="basic-addon1">R$</span>\
-									<input type="text" class="form-control Valor" maxlength="10" placeholder="0,00"\
-										    id="ValorPagoRecebiveis'+pc+'" name="ValorPagoRecebiveis'+pc+'" value="">\
-								</div>\
-							</div>\
-							<div class="col-md-2">\
-								<label for="DataPagoRecebiveis">Data Pag.</label>\
-								<div class="input-group DatePicker">\
-									<span class="input-group-addon" disabled>\
-										<span class="glyphicon glyphicon-calendar"></span>\
-									</span>\
-									<input type="text" class="form-control Date" id="DataPagoRecebiveis'+pc+'" maxlength="10" placeholder="DD/MM/AAAA"\
-										   name="DataPagoRecebiveis'+pc+'" value="">\
-								</div>\
-							</div>\
-							<div class="col-md-2">\
+							<div class="col-md-3">\
 								<label for="QuitadoRecebiveis">Quitado????</label><br>\
 								<div class="form-group">\
 									<div class="btn-group" data-toggle="buttons">\
@@ -2361,7 +2271,7 @@ $(document).ready(function () {
 										</label>\
 										<label class="btn btn-default" name="radio_QuitadoRecebiveis'+pc+'" id="radio_QuitadoRecebiveis'+pc+'S">\
 										<input type="radio" name="QuitadoRecebiveis'+pc+'" id="radiogeraldinamico"\
-											onchange="carregaQuitado(this.value,this.name,'+pc+',1)" autocomplete="off" value="S">Sim\
+											 autocomplete="off" value="S">Sim\
 										</label>\
 									</div>\
 								</div>\
@@ -2430,12 +2340,12 @@ $(document).ready(function () {
                 <div class="panel panel-warning">\
                     <div class="panel-heading">\
                         <div class="row">\
-                            <div class="col-md-1">\
+                            <div class="col-md-2">\
 								<label for="ParcelaPagaveis">Parcela:</label><br>\
 								<input type="text" class="form-control" maxlength="6"\
 									   name="ParcelaPagaveis'+pc+'" value="Ex.">\
 							</div>\
-							<div class="col-md-2">\
+							<div class="col-md-3">\
 								<label for="ValorParcelaPagaveis">Valor Parcela:</label><br>\
 								<div class="input-group" id="txtHint">\
 									<span class="input-group-addon" id="basic-addon1">R$</span>\
@@ -2443,7 +2353,7 @@ $(document).ready(function () {
 										    id="ValorParcelaPagaveis'+pc+'" name="ValorParcelaPagaveis'+pc+'" value="">\
 								</div>\
 							</div>\
-							<div class="col-md-2">\
+							<div class="col-md-3">\
 								<label for="DataVencimentoPagaveis">Data Venc. Parc.</label>\
 								<div class="input-group DatePicker">\
 									<span class="input-group-addon" disabled>\
@@ -2453,25 +2363,7 @@ $(document).ready(function () {
 										   name="DataVencimentoPagaveis'+pc+'" value="">\
 								</div>\
 							</div>\
-							<div class="col-md-2">\
-								<label for="ValorPagoPagaveis">Valor Pago:</label><br>\
-								<div class="input-group" id="txtHint">\
-									<span class="input-group-addon" id="basic-addon1">R$</span>\
-									<input type="text" class="form-control Valor" maxlength="10" placeholder="0,00"\
-										    id="ValorPagoPagaveis'+pc+'" name="ValorPagoPagaveis'+pc+'" value="">\
-								</div>\
-							</div>\
-							<div class="col-md-2">\
-								<label for="DataPagoPagaveis">Data Pag.</label>\
-								<div class="input-group DatePicker">\
-									<span class="input-group-addon" disabled>\
-										<span class="glyphicon glyphicon-calendar"></span>\
-									</span>\
-									<input type="text" class="form-control Date" id="DataPagoPagaveis'+pc+'" maxlength="10" placeholder="DD/MM/AAAA"\
-										   name="DataPagoPagaveis'+pc+'" value="">\
-								</div>\
-							</div>\
-							<div class="col-md-2">\
+							<div class="col-md-3">\
 								<label for="QuitadoPagaveis">Quitado????</label><br>\
 								<div class="form-group">\
 									<div class="btn-group" data-toggle="buttons">\
@@ -2481,7 +2373,7 @@ $(document).ready(function () {
 										</label>\
 										<label class="btn btn-default" name="radio_QuitadoPagaveis'+pc+'" id="radio_QuitadoPagaveis'+pc+'S">\
 										<input type="radio" name="QuitadoPagaveis'+pc+'" id="radiogeraldinamico"\
-											onchange="carregaQuitadoDespesas(this.value,this.name,'+pc+',1)" autocomplete="off" value="S">Sim\
+											 autocomplete="off" value="S">Sim\
 										</label>\
 									</div>\
 								</div>\

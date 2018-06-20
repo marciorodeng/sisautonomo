@@ -4,8 +4,8 @@
 <div class="container-fluid">
 	<div class="row">
 
-		<div class="col-md-1"></div>
-		<div class="col-md-10 ">
+		<div class="col-md-2"></div>
+		<div class="col-md-8 ">
 
 			<?php echo validation_errors(); ?>
 
@@ -32,7 +32,7 @@
 										<div class="panel-heading">
 											<div class="form-group">	
 												<div class="row">
-													<div class="col-md-2">
+													<div class="col-md-3">
 														<label for="TipoReceita">Tipo de Receita</label>
 														<select data-placeholder="Selecione uma opção..." class="form-control" <?php echo $readonly; ?>
 																id="TipoReceita" name="TipoReceita">
@@ -49,21 +49,21 @@
 															?>
 														</select>
 													</div>
-													<div class="col-md-2">
+													<div class="col-md-3">
 														<label for="ObsOrca">Receita</label><br>
 														<input type="text" class="form-control" maxlength="200"
 																name="ObsOrca" value="<?php echo $orcatrata['ObsOrca'] ?>">
 													</div>
-													<div class="col-md-2">
-														<label for="ValorRestanteOrca">Valor da Receita:</label><br>
+													<div class="col-md-3">
+														<label for="ValorRestanteOrca">Valor:</label><br>
 														<div class="input-group" id="txtHint">
 															<span class="input-group-addon" id="basic-addon1">R$</span>
 															<input type="text" class="form-control Valor" id="ValorRestanteOrca" maxlength="10" placeholder="0,00"
 																   name="ValorRestanteOrca" value="<?php echo $orcatrata['ValorRestanteOrca'] ?>">
 														</div>
 													</div>														
-													<div class="col-md-2">
-														<label for="DataVencimentoOrca"> Dt Receita/ 1º Venc.</label>
+													<div class="col-md-3">
+														<label for="DataVencimentoOrca"> Dt./ 1º Venc.</label>
 														<div class="input-group <?php echo $datepicker; ?>">
 															<span class="input-group-addon" disabled>
 																<span class="glyphicon glyphicon-calendar"></span>
@@ -76,7 +76,7 @@
 											</div>
 											<div class="form-group">
 												<div class="row">																												
-													<div class="col-md-2">
+													<div class="col-md-3">
 														<label for="FormaPagamento">Forma de Pagam.:</label>
 														<select data-placeholder="Selecione uma opção..." class="form-control" <?php echo $readonly; ?>
 																id="FormaPagamento" name="FormaPagamento">
@@ -93,13 +93,13 @@
 															?>
 														</select>
 													</div>
-													<div class="col-md-2">
+													<div class="col-md-3">
 														<label for="QtdParcelasOrca">Qtd. Parc.:</label><br>
 														<input type="text" class="form-control Numero" id="QtdParcelasOrca" maxlength="3" placeholder="0"
 															   
 															   name="QtdParcelasOrca" value="<?php echo $orcatrata['QtdParcelasOrca'] ?>">
 													</div>													
-													<div class="col-md-3">
+													<div class="col-md-4">
 														<label for="Modalidade">Modalidade</label><br>
 														<div class="form-group">
 															<div class="btn-block" data-toggle="buttons">
@@ -168,12 +168,12 @@
 											<div class="panel panel-warning">
 												<div class="panel-heading">
 													<div class="row">
-														<div class="col-md-1">
+														<div class="col-md-2">
 															<label for="ParcelaRecebiveis">Parcela:</label><br>
 															<input type="text" class="form-control" maxlength="6" 
 																   name="ParcelaRecebiveis<?php echo $i ?>" value="<?php echo $parcelasrec[$i]['ParcelaRecebiveis'] ?>">
 														</div>
-														<div class="col-md-2">
+														<div class="col-md-3">
 															<label for="ValorParcelaRecebiveis">Valor Parcela:</label><br>
 															<div class="input-group" id="txtHint">
 																<span class="input-group-addon" id="basic-addon1">R$</span>
@@ -181,7 +181,7 @@
 																	   name="ValorParcelaRecebiveis<?php echo $i ?>" value="<?php echo $parcelasrec[$i]['ValorParcelaRecebiveis'] ?>">
 															</div>
 														</div>
-														<div class="col-md-2">
+														<div class="col-md-3">
 															<label for="DataVencimentoRecebiveis">Data Venc. Parc.</label>
 															<div class="input-group DatePicker">
 																<span class="input-group-addon" disabled>
@@ -192,6 +192,7 @@
 																
 															</div>
 														</div>
+														<!--
 														<div class="col-md-2">
 															<label for="ValorPagoRecebiveis">Valor Pago:</label><br>
 															<div class="input-group" id="txtHint">
@@ -211,8 +212,9 @@
 																
 															</div>
 														</div>
-														<div class="col-md-2">
-															<label for="QuitadoRecebiveis">Quitado????</label><br>
+														-->
+														<div class="col-md-3">
+															<label for="QuitadoRecebiveis">Quitado?</label><br>
 															<div class="form-group">
 																<div class="btn-group" data-toggle="buttons">
 																	<?php
@@ -223,7 +225,7 @@
 																			echo ''
 																			. '<label class="btn btn-warning active" name="radiobutton_QuitadoRecebiveis' . $i . '" id="radiobutton_QuitadoRecebiveis' . $i .  $key . '">'
 																			. '<input type="radio" name="QuitadoRecebiveis' . $i . '" id="radiobuttondinamico" '
-																			. 'onchange="carregaQuitado(this.value,this.name,'.$i.')" '
+																			#. 'onchange="carregaQuitado(this.value,this.name,'.$i.')" '
 																			. 'autocomplete="off" value="' . $key . '" checked>' . $row
 																			. '</label>'
 																			;
@@ -231,7 +233,7 @@
 																			echo ''
 																			. '<label class="btn btn-default" name="radiobutton_QuitadoRecebiveis' . $i . '" id="radiobutton_QuitadoRecebiveis' . $i .  $key . '">'
 																			. '<input type="radio" name="QuitadoRecebiveis' . $i . '" id="radiobuttondinamico" '
-																			. 'onchange="carregaQuitado(this.value,this.name,'.$i.')" '
+																			#. 'onchange="carregaQuitado(this.value,this.name,'.$i.')" '
 																			. 'autocomplete="off" value="' . $key . '" >' . $row
 																			. '</label>'
 																			;
@@ -271,7 +273,7 @@
 							</div>
 						</div>
 					</div>
-
+					<!--
 					<div class="panel-group" id="accordion8" role="tablist" aria-multiselectable="true">
 						<div class="panel panel-primary">
 							<div class="panel-heading collapsed" role="tab" id="heading8" data-toggle="collapse" data-parent="#accordion8" data-target="#collapse8" aria-expanded="false">								<h4 class="panel-title">
@@ -289,7 +291,7 @@
 											<div class="panel-heading">
 												<div class="form-group text-left">
 													<div class="row">
-														<!--
+														
 														<div class="col-md-3 form-inline">
 															<label for="ServicoConcluido">Concluída?</label><br>
 															<div class="form-group">
@@ -318,7 +320,7 @@
 																</div>
 															</div>
 														</div>								
-														-->
+														
 														<div class="col-md-3 form-inline">
 															<label for="QuitadoOrca">Receita Quit.?</label><br>
 															<div class="form-group">
@@ -356,7 +358,7 @@
 							</div>
 						</div>
 					</div>							
-					
+					-->
 					<div class="form-group">
 						<div class="row">
 							<input type="hidden" name="idApp_OrcaTrata" value="<?php echo $orcatrata['idApp_OrcaTrata']; ?>">
@@ -416,6 +418,6 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-1"></div>
+		<div class="col-md-2"></div>
 	</div>
 </div>

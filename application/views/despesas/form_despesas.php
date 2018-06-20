@@ -3,8 +3,8 @@
 <div class="container-fluid">	
 	<div class="row">
 	
-		<div class="col-md-1"></div>
-		<div class="col-md-10 ">
+		<div class="col-md-2"></div>
+		<div class="col-md-8 ">
 
 			<?php echo validation_errors(); ?>
 
@@ -193,6 +193,7 @@
 																
 															</div>
 														</div>
+														<!--
 														<div class="col-md-2">
 															<label for="ValorPagoPagaveis">Valor Pago:</label><br>
 															<div class="input-group" id="txtHint">
@@ -212,6 +213,7 @@
 																
 															</div>
 														</div>
+														-->
 														<div class="col-md-2">
 															<label for="QuitadoPagaveis">Quitado?</label><br>
 															<div class="form-group">
@@ -224,7 +226,7 @@
 																			echo ''
 																			. '<label class="btn btn-warning active" name="radiobutton_QuitadoPagaveis' . $i . '" id="radiobutton_QuitadoPagaveis' . $i .  $key . '">'
 																			. '<input type="radio" name="QuitadoPagaveis' . $i . '" id="radiobuttondinamico" '
-																			. 'onchange="carregaQuitadoDespesas(this.value,this.name,'.$i.')" '
+																			#. 'onchange="carregaQuitadoDespesas(this.value,this.name,'.$i.')" '
 																			. 'autocomplete="off" value="' . $key . '" checked>' . $row
 																			. '</label>'
 																			;
@@ -232,7 +234,7 @@
 																			echo ''
 																			. '<label class="btn btn-default" name="radiobutton_QuitadoPagaveis' . $i . '" id="radiobutton_QuitadoPagaveis' . $i .  $key . '">'
 																			. '<input type="radio" name="QuitadoPagaveis' . $i . '" id="radiobuttondinamico" '
-																			. 'onchange="carregaQuitadoDespesas(this.value,this.name,'.$i.')" '
+																			#. 'onchange="carregaQuitadoDespesas(this.value,this.name,'.$i.')" '
 																			. 'autocomplete="off" value="' . $key . '" >' . $row
 																			. '</label>'
 																			;
@@ -403,6 +405,6 @@
 			</div>
 
 		</div>
-		<div class="col-md-1"></div>
+		<div class="col-md-2"></div>
 	</div>
 </div>
