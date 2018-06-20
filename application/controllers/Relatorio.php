@@ -3160,9 +3160,9 @@ class Relatorio extends CI_Controller {
             'TarefaConcluida',
             'Prioridade',
 			'Rotina',
-			'ConcluidoProcedtarefa',
+			'ConcluidoProcedimento',
 			'ObsTarefa',
-			'Procedtarefa',
+			'Procedimento',
 
         ), TRUE));
 		/*
@@ -3191,24 +3191,18 @@ class Relatorio extends CI_Controller {
             'N' => 'Não',
             'S' => 'Sim',
         );
-
-		$data['select']['ConcluidoProcedtarefa'] = array(
-            '#' => 'TODOS',
+*/
+		$data['select']['ConcluidoProcedimento'] = array(
             'N' => 'Não',
             'S' => 'Sim',
+			'#' => 'TODOS',
         );
-*/
+
         $data['select']['Campo'] = array(
-           # 'C.NomeCliente' => 'Nome do Cliente',
-			'TF.DataPrazoTarefa' => 'Prazo da Tarefa',
-			'TF.DataTarefa' => 'Data do Tarefa',
-			#'TF.ProfissionalTarefa' => 'Responsável',
+			'PM.DataProcedimento' => 'Data',
+			'PM.Procedimento' => 'Ação',
+			'PM.ConcluidoProcedimento' => 'Concl.',
 			'TF.idApp_Tarefa' => 'Número do Tarefas',
-			'TF.ObsTarefa' => 'Tarefa',
-			'TF.Rotina' => 'Rotina',
-			'TF.Prioridade' => 'Prioridade',
-			'TF.TarefaConcluida' => 'Tarefa Concl.?',
-			'TF.DataConclusao' => 'Data da Concl.',
         );
 
         $data['select']['Ordenamento'] = array(
@@ -3219,9 +3213,9 @@ class Relatorio extends CI_Controller {
         $data['select']['NomeProfissional'] = $this->Relatorio_model->select_profissional3();
 		$data['select']['Profissional'] = $this->Relatorio_model->select_profissional2();
 		$data['select']['ObsTarefa'] = $this->Relatorio_model->select_obstarefa();
-		$data['select']['Procedtarefa'] = $this->Relatorio_model->select_procedtarefa();
+		$data['select']['Procedimento'] = $this->Relatorio_model->select_procedimento();
 
-        $data['titulo'] = 'Tarefas & Ações';
+        $data['titulo'] = 'Ações';
 
         #run form validation
         if ($this->form_validation->run() !== FALSE) {
@@ -3236,9 +3230,9 @@ class Relatorio extends CI_Controller {
             $data['bd']['TarefaConcluida'] = $data['query']['TarefaConcluida'];
             $data['bd']['Prioridade'] = $data['query']['Prioridade'];
 			$data['bd']['Rotina'] = $data['query']['Rotina'];
-			$data['bd']['ConcluidoProcedtarefa'] = $data['query']['ConcluidoProcedtarefa'];
+			$data['bd']['ConcluidoProcedimento'] = $data['query']['ConcluidoProcedimento'];
 			$data['bd']['ObsTarefa'] = $data['query']['ObsTarefa'];
-			$data['bd']['Procedtarefa'] = $data['query']['Procedtarefa'];
+			$data['bd']['Procedimento'] = $data['query']['Procedimento'];
 
 
             $data['report'] = $this->Relatorio_model->list_tarefa($data['bd'],TRUE);

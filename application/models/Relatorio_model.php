@@ -4990,11 +4990,11 @@ exit();*/
 
         if ($data['DataFim']) {
             $consulta =
-                '(TF.DataTarefa >= "' . $data['DataInicio'] . '" AND TF.DataTarefa <= "' . $data['DataFim'] . '")';
+                '(PM.DataProcedimento >= "' . $data['DataInicio'] . '" AND PM.DataProcedimento <= "' . $data['DataFim'] . '")';
         }
         else {
             $consulta =
-                '(TF.DataTarefa >= "' . $data['DataInicio'] . '")';
+                '(PM.DataProcedimento >= "' . $data['DataInicio'] . '")';
         }
 
 		#$data['NomeCliente'] = ($data['NomeCliente']) ? ' AND C.idApp_Cliente = ' . $data['NomeCliente'] : FALSE;
@@ -5006,6 +5006,7 @@ exit();*/
 		$filtro5 = ($data['TarefaConcluida'] != '#') ? 'TF.TarefaConcluida = "' . $data['TarefaConcluida'] . '" AND ' : FALSE;
         $filtro6 = ($data['Prioridade'] != '#') ? 'TF.Prioridade = "' . $data['Prioridade'] . '" AND ' : FALSE;
 		$filtro7 = ($data['Rotina'] != '#') ? 'TF.Rotina = "' . $data['Rotina'] . '" AND ' : FALSE;
+		$filtro8 = ($data['ConcluidoProcedimento'] != '#') ? 'PM.ConcluidoProcedimento = "' . $data['ConcluidoProcedimento'] . '" AND ' : FALSE;
 
         $query = $this->db->query('
             SELECT
@@ -5017,16 +5018,19 @@ exit();*/
 				TF.Prioridade,
 				TF.Rotina,
 				TF.DataPrazoTarefa,
-				TF.DataConclusao
+				TF.DataConclusao,
+				PM.Procedimento,
+				PM.ConcluidoProcedimento,
+				PM.DataProcedimento
             FROM
                 App_Tarefa AS TF
 					LEFT JOIN App_Profissional AS P ON P.idApp_Profissional = TF.ProfissionalTarefa
+					LEFT JOIN App_Procedimento AS PM ON PM.idApp_Tarefa = TF.idApp_Tarefa
             WHERE
                 TF.Empresa = ' . $_SESSION['log']['Empresa'] . ' AND
 				TF.idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND
-				TF.idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND
 				TF.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . ' AND
-				' . $filtro5 . '
+				' . $filtro8 . '
 				(' . $consulta . ')
             ORDER BY
 				' . $data['Campo'] . ' ' . $data['Ordenamento'] . '
@@ -5052,6 +5056,8 @@ exit();*/
 				$row->TarefaConcluida = $this->basico->mascara_palavra_completa($row->TarefaConcluida, 'NS');
                 $row->Prioridade = $this->basico->mascara_palavra_completa($row->Prioridade, 'NS');
 				$row->Rotina = $this->basico->mascara_palavra_completa($row->Rotina, 'NS');
+				$row->DataProcedimento = $this->basico->mascara_data($row->DataProcedimento, 'barras');
+				$row->ConcluidoProcedimento = $this->basico->mascara_palavra_completa($row->ConcluidoProcedimento, 'NS');
             }
             $query->soma = new stdClass();
             $query->soma->somatarefa = number_format($somatarefa, 2, ',', '.');
@@ -5858,25 +5864,25 @@ exit();*/
         return $array;
     }
 
-	public function select_procedtarefa() {
+	public function select_procedimento() {
 
         $query = $this->db->query('
             SELECT
-                OB.idApp_Procedtarefa,
-                OB.Procedtarefa
+                OB.idApp_Procedimento,
+                OB.Procedimento
             FROM
-                App_Procedtarefa AS OB
+                App_Procedimento AS OB
             WHERE
                 OB.idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND
 				OB.idTab_Modulo = ' . $_SESSION['log']['idTab_Modulo'] . '
             ORDER BY
-                Procedtarefa ASC
+                Procedimento ASC
         ');
 
         $array = array();
         $array[0] = ':: Todos ::';
         foreach ($query->result() as $row) {
-            $array[$row->idApp_Procedtarefa] = $row->Procedtarefa;
+            $array[$row->idApp_Procedimento] = $row->Procedimento;
         }
 
         return $array;
