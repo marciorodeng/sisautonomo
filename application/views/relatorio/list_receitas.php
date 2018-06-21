@@ -42,7 +42,7 @@
                     <tr>
                         <!--<th class="active">Cliente</th>
 						<th class="active">Nº</th>-->
-						<th class="active">Receita</th>
+						<th class="active">Receita/Tipo</th>
 						<!--<th class="active">Quit</th>
                         <th class="active">Data Receita.</th>
                         <th class="active">Data Entrada</th>
@@ -50,8 +50,8 @@
 						<th class="active">Orç. Aprov.?</th>
 						<th class="active">Concl.?</th>
 						<th class="active">Quit.?</th>-->						
-                        <th class="active">Prcl.</th>
-                        <th class="active">Venc.</th>
+                        <th class="active">Pcl/Pg</th>
+                        <th class="active">Venc/Mod</th>
                         <!--<th class="active">Pago</th>
                         <th class="active">Data do Pagam.</th>-->
                         <th class="active">Valor</th>
@@ -72,7 +72,7 @@
 						    #echo '<td>' . $row['AprovadoOrca'] . '</td>';
 							#echo '<td>' . $row['ServicoConcluido'] . '</td>';
 							#echo '<td>' . $row['QuitadoOrca'] . '</td>';						
-                            echo '<td>' . $row['ParcelaRecebiveis'] . ' Pg-' . $row['QuitadoRecebiveis'] . '</td>';
+                            echo '<td>' . $row['ParcelaRecebiveis'] . ' ' . $row['QuitadoRecebiveis'] . '</td>';
                             echo '<td>' . $row['DataVencimentoRecebiveis'] . ' ' . $row['Modalidade'] . '</td>';
                             #echo '<td>' . $row['DataPagoRecebiveis'] . ' R$' . $row['ValorPagoRecebiveis'] . '</td>';
 							#echo '<td>' . $row['QuitadoRecebiveis'] . '</td>';

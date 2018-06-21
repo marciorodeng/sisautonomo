@@ -66,9 +66,9 @@
 						<th class="active">Nº</th>
 						<th class="active">Mod.</th>
 						<th class="active">Tipo</th>-->
-						<th class="active">Despesa</th>
-                        <th class="active">Prcl.</th>
-                        <th class="active">Venc.</th>
+						<th class="active">Despesa/Tipo</th>
+                        <th class="active">Pcl/Pg</th>
+                        <th class="active">Venc/Mod</th>
                         <!--<th class="active">Pago</th>
 						<th class="active">Quit.</th>
                         <th class="active">Data do Pagam.</th>-->
@@ -90,7 +90,7 @@
 							#echo '<td>' . $row['TipoDespesa'] . '</td>';
 							echo '<td>' . $row['Despesa'] . '</td>';
 														
-                            echo '<td>' . $row['ParcelaPagaveis'] . ' Pg-' . $row['QuitadoPagaveis'] . '</td>';
+                            echo '<td>' . $row['ParcelaPagaveis'] . ' ' . $row['QuitadoPagaveis'] . '</td>';
                             echo '<td>' . $row['DataVencimentoPagaveis'] . ' ' . $row['Modalidade'] . '</td>';
 							#echo '<td>' . $row['DataPagoPagaveis'] . ' R$' . $row['ValorPagoPagaveis'] . '</td>';
                             #echo '<td>' . $row['QuitadoPagaveis'] . '</td>';
