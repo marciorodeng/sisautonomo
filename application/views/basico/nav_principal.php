@@ -67,9 +67,9 @@
 								<ul class="dropdown-menu" role="menu">									
 									<li><a href="<?php echo base_url(); ?>agenda"><span class="glyphicon glyphicon-calendar"></span> Calendário</a></li>
 									<li role="separator" class="divider"></li>
-									<li><a href="<?php echo base_url() ?>relatorio/tarefa"><span class="glyphicon glyphicon-pencil"></span> Anotações</a></li>
-									<li role="separator" class="divider"></li>
-									<li><a href="<?php echo base_url() ?>relatorio/procedimento"><span class="glyphicon glyphicon-pencil"></span> Procedimento</a></li>
+									<!--<li><a href="<?php echo base_url() ?>relatorio/tarefa"><span class="glyphicon glyphicon-pencil"></span> Anotações</a></li>
+									<li role="separator" class="divider"></li>-->
+									<li><a href="<?php echo base_url() ?>relatorio/procedimento"><span class="glyphicon glyphicon-pencil"></span> Anotações</a></li>
 								</ul>
 							</div>
 							<div class="btn-group" role="group" aria-label="..."> </div>
