@@ -256,7 +256,7 @@
 							</div>
 						</div>
 					</div>
-											
+					<!--						
 					<div class="panel-group" id="accordion8" role="tablist" aria-multiselectable="true">
 						<div class="panel panel-primary">
 							<div class="panel-heading collapsed" role="tab" id="heading8" data-toggle="collapse" data-parent="#accordion8" data-target="#collapse8" aria-expanded="false">								<h4 class="panel-title">
@@ -275,7 +275,7 @@
 												
 												<div class="form-group text-left">
 													<div class="row">									
-														<!--
+														
 														<div class="col-md-3 text-left form-inline">
 															<label for="ServicoConcluidoDespesas">Concluída?</label><br>
 															<div class="form-group">
@@ -304,7 +304,7 @@
 																</div>
 															</div>
 														</div>
-														-->
+														
 														<div class="col-md-3 form-inline">
 															<label for="QuitadoDespesas">Despesa Quit.?</label><br>
 															<div class="form-group">
@@ -342,7 +342,7 @@
 							</div>
 						</div>
 					</div>	
-
+					-->
 					<div class="form-group">
 						<div class="row">
 							<input type="hidden" name="idApp_Despesas" value="<?php echo $despesas['idApp_Despesas']; ?>">
