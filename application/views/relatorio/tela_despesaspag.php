@@ -15,20 +15,20 @@
 					<div class="panel-heading"><strong><?php echo $titulo; ?></strong>
 						
 						<?php echo form_open('relatorio/despesaspag', 'role="form"'); ?>
-						
+						<!--
 						<button class="btn btn-sm btn-info" name="pesquisar" value="0" type="submit">
 							<span class="glyphicon glyphicon-search"></span>Pesquise
 						</button>
-						<!--
+						
 						<a class="btn btn-sm btn-warning" href="<?php echo base_url() ?>relatorio/despesas" role="button"> 
 							<span class="glyphicon glyphicon-pencil"></span> Mensais
 						</a>
 						-->
-						<button  class="btn btn-sm btn-success" type="button" data-toggle="modal" data-loading-text="Aguarde..." data-target=".bs-excluir-modal2-sm">
-							<span class="glyphicon glyphicon-filter"></span>Filtro
+						<button  class="btn btn-sm btn-info" type="button" data-toggle="modal" data-loading-text="Aguarde..." data-target=".bs-excluir-modal2-sm">
+							<span class="glyphicon glyphicon-search"></span> Pesquisar
 						</button>
 						<button  class="btn btn-sm btn-danger" type="button" data-toggle="modal" data-loading-text="Aguarde..." data-target=".bs-excluir-modal-sm">
-							<span class="glyphicon glyphicon-plus"></span>Despesa
+							<span class="glyphicon glyphicon-plus"></span> Nova Despesa
 						</button>					
 					</div>
 					<div class="panel-body">
@@ -62,15 +62,15 @@
 											-->
 											<div class="form-group col-md-3 text-left">
 												<div class="form-footer">
-													<button class="btn btn-info btn-block" name="pesquisar" value="0" type="submit">
-														<span class="glyphicon glyphicon-search"></span> Pesquise
+													<button class="btn btn-success btn-block" name="pesquisar" value="0" type="submit">
+														<span class="glyphicon glyphicon-filter"></span> Filtrar
 													</button>
 												</div>
 											</div>
 											<div class="form-group col-md-3 text-left">
 												<div class="form-footer">		
 													<a class="btn btn-danger btn-block " href="<?php echo base_url() ?>despesas/cadastrar" role="button">
-														<span class="glyphicon glyphicon-plus"></span> Nova Desp.
+														<span class="glyphicon glyphicon-plus"></span> Nova Despesa
 													</a>
 												</div>
 											</div>	
@@ -147,8 +147,8 @@
 													<br>
 													<div class="form-group col-md-3 text-left">
 														<div class="form-footer">
-															<button class="btn btn-info btn-block" name="pesquisar" value="0" type="submit">
-																<span class="glyphicon glyphicon-search"></span> Pesquisar
+															<button class="btn btn-success btn-block" name="pesquisar" value="0" type="submit">
+																<span class="glyphicon glyphicon-filter"></span> Pesquisar
 															</button>
 														</div>
 													</div>

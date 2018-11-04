@@ -9,17 +9,17 @@
 					<div class="panel-heading"><strong><?php echo $titulo; ?></strong>
 					
 						<?php echo form_open('relatorio/procedimento', 'role="form"'); ?>
-							
+						<!--	
 						<button class="btn btn-sm btn-info" name="pesquisar" value="0" type="submit">
 							<span class="glyphicon glyphicon-search"></span> Pesq.
 						</button>
-						
-						<button  class="btn btn-sm btn-success" type="button" data-toggle="modal" data-loading-text="Aguarde..." data-target=".bs-excluir-modal2-sm">
-							<span class="glyphicon glyphicon-filter"></span> Filtros
+						-->
+						<button  class="btn btn-sm btn-info" type="button" data-toggle="modal" data-loading-text="Aguarde..." data-target=".bs-excluir-modal2-sm">
+							<span class="glyphicon glyphicon-search"></span> Pesquisar
 						</button>
 																	
 						<a class="btn btn-sm btn-danger" href="<?php echo base_url() ?>procedimento/cadastrar" role="button"> 
-							<span class="glyphicon glyphicon-plus"></span> Proced.
+							<span class="glyphicon glyphicon-plus"></span> Nova Tarefa
 						</a>
 					
 					</div>
@@ -132,8 +132,8 @@
 														<br>
 														<div class="col-md-3 text-left">
 															<div class="form-footer btn-block">
-																<button class="btn btn-primary " name="pesquisar" value="0" type="submit">
-																<span class="glyphicon glyphicon-search"></span> Pesquisar</button>
+																<button class="btn btn-success " name="pesquisar" value="0" type="submit">
+																<span class="glyphicon glyphicon-filter"></span> Filtrar</button>
 															</div>
 														</div>
 														<div class="col-md-2 text-left">
