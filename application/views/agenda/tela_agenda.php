@@ -49,7 +49,7 @@
 									-->
 										<input type="hidden" id="start" />
 										<input type="hidden" id="end" />
-									</div>
+									
 								</div>
 							</div>
 						</div>

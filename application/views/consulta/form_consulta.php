@@ -39,7 +39,7 @@
 													  name="Obs"><?php echo $query['Obs']; ?></textarea>
 										</div>		
 										
-										<div class="col-md-12">	
+										<div class="col-md-6">	
 											<label for="Data">Data Início: </label>												
 											<!--<div class="input-group <?php echo $datepicker; ?>">-->
 												<input type="text" class="form-control Date" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
@@ -51,7 +51,7 @@
 										</div>	
 										
 										<div class="col-md-6">
-											<label for="Hora">Hora/ De:</label>
+											<label for="Hora">Dàs:</label>
 											<!--<div class="input-group <?php echo $timepicker; ?>">-->
 												<input type="text" class="form-control Time" <?php echo $readonly; ?> maxlength="5"  placeholder="HH:MM"
 													   accept=""name="HoraInicio" value="<?php echo $query['HoraInicio']; ?>">
@@ -61,7 +61,7 @@
 											</div>-->
 										</div>
 										
-										<div class="col-md-12">	
+										<div class="col-md-6">	
 											<label for="Data2">Data Fim: </label>												
 											<!--<div class="input-group <?php echo $datepicker; ?>">-->
 												<input type="text" class="form-control Date" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
@@ -73,7 +73,7 @@
 										</div>
 									
 										<div class="col-md-6">		
-											<label for="Hora">Até:</label>
+											<label for="Hora">Às:</label>
 											<!--<div class="input-group <?php echo $timepicker; ?>">-->
 												<input type="text" class="form-control Time" <?php echo $readonly; ?> maxlength="5" placeholder="HH:MM"
 													   accept=""name="HoraFim" value="<?php echo $query['HoraFim']; ?>">

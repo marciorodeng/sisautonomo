@@ -128,18 +128,20 @@
 															</div>
 														</div>
 													</div>
-													<div class="row">	
+													<div class="row">
 														<br>
-														<div class="col-md-3 text-left">
-															<div class="form-footer btn-block">
-																<button class="btn btn-success " name="pesquisar" value="0" type="submit">
-																<span class="glyphicon glyphicon-filter"></span> Filtrar</button>
+														<div class="form-group col-md-3 text-left">
+															<div class="form-footer ">
+																<button class="btn btn-success btn-block" name="pesquisar" value="0" type="submit">
+																	<span class="glyphicon glyphicon-filter"></span> Filtrar
+																</button>
 															</div>
 														</div>
-														<div class="col-md-2 text-left">
-															<div class="form-footer btn-block">
-																<button type="button" class="btn btn-default" data-dismiss="modal">
-																<span class="glyphicon glyphicon-remove"> Fechar</button>
+														<div class="form-group col-md-3 text-left">
+															<div class="form-footer ">
+																<button type="button" class="btn btn-primary btn-block" data-dismiss="modal">
+																	<span class="glyphicon glyphicon-remove"> Fechar
+																</button>
 															</div>
 														</div>
 													</div>
