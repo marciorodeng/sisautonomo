@@ -120,6 +120,7 @@ class Agenda_model extends CI_Model {
         }
 
     }	
+
     public function contatocliente_aniversariantes($data) {
 
         $query = $this->db->query('

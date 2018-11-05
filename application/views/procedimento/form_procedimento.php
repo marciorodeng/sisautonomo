@@ -37,7 +37,7 @@
 											</div>
 										</div>	
 										<div class="row">	
-											<div class="col-md-3">
+											<div class="col-md-4">
 												<label for="ConcluidoProcedimento">Concl.?</label><br>
 												<div class="form-group">
 													<div class="btn-group" data-toggle="buttons">

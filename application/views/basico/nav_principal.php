@@ -37,17 +37,19 @@
 							</div>
 							<div class="btn-group" role="group" aria-label="..."> </div>
 						</li>
+						-->
 						
 						<li class="btn-toolbar navbar-form" role="toolbar" aria-label="...">
-							<div class="btn-group btn-dander" role="group" aria-label="...">
+							<div class="btn-group " role="group" aria-label="...">
 								<a href="<?php echo base_url(); ?>agenda">
-									<button type="button" class="btn btn-md btn-warning ">
+									<button type="button" class="btn btn-md btn-info ">
 										<span class="glyphicon glyphicon-calendar"></span> Agenda
 									</button>
 								</a>
 							</div>
 							<div class="btn-group" role="group" aria-label="..."> </div>
 						</li>
+						<!--
 						<li class="btn-toolbar navbar-form" role="toolbar" aria-label="...">
 							<div class="btn-group btn-dander" role="group" aria-label="...">
 								<a href="<?php echo base_url() ?>relatorio/tarefa">
@@ -58,7 +60,7 @@
 							</div>
 							<div class="btn-group" role="group" aria-label="..."> </div>
 						</li>
-						-->
+						
 						<li class="btn-toolbar navbar-form" role="toolbar" aria-label="...">
 							<div class="btn-group">
 								<button type="button" class="btn btn-md btn-info  dropdown-toggle" data-toggle="dropdown">
@@ -67,14 +69,12 @@
 								<ul class="dropdown-menu" role="menu">									
 									<li><a href="<?php echo base_url(); ?>agenda"><span class="glyphicon glyphicon-calendar"></span> Calendário</a></li>
 									<li role="separator" class="divider"></li>
-									<!--<li><a href="<?php echo base_url() ?>relatorio/tarefa"><span class="glyphicon glyphicon-pencil"></span> Anotações</a></li>
-									<li role="separator" class="divider"></li>-->
 									<li><a href="<?php echo base_url() ?>relatorio/procedimento"><span class="glyphicon glyphicon-pencil"></span> Anotações</a></li>
 								</ul>
 							</div>
 							<div class="btn-group" role="group" aria-label="..."> </div>
 						</li>
-						
+						-->
 						<li class="btn-toolbar navbar-form" role="toolbar" aria-label="...">														
 							<div class="btn-group">
 								<button type="button" class="btn btn-md btn-warning  dropdown-toggle" data-toggle="dropdown">
