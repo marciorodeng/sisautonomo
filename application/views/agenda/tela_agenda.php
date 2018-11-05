@@ -98,20 +98,53 @@
 							<div class="panel-body">
 								<div class="col-md-12 text-center t">
 									<label for="">Tarefas:</label>
-									<div class="row">
-										<a class="btn btn-md btn-danger" href="<?php echo base_url() ?>tarefa/cadastrar" role="button">
+									
+										<a class="btn btn-sm btn-danger" href="<?php echo base_url() ?>procedimento/cadastrar" role="button">
 											<span class="glyphicon glyphicon-plus"></span> Nova
 										</a>
+										
 										<a class="btn btn-md btn-success" href="<?php echo base_url() ?>relatorio/tarefa" role="button">
 											<span class="glyphicon glyphicon-list"></span> Listar
 										</a>
-									</div>
+										
+									
 								</div>
 							</div>
 						</div>
 						-->
 						<div id="datepickerinline" class="col-md-12"></div>
+						
+						<table class="table table-condensed table-bordered table-striped">
+							<tr class="active text-active">
+								<th colspan="3" class="col-md-12 text-center"><b><span class="glyphicon glyphicon-pencil"></span> Anotações 
+									<a class="btn btn-sm btn-danger" href="<?php echo base_url() ?>procedimento/cadastrar" role="button">
+											<span class="glyphicon glyphicon-plus"></span> Nova
+									</a>
+									</b>
+								</th>
+							</tr>
+							<?php
 
+							if ($query['procedimento'] != FALSE) {
+
+								foreach ($query['procedimento']->result_array() as $row) {
+									$url = base_url() . 'procedimento/alterar/' . $row['idApp_Procedimento'];
+
+									echo '<tr class="clickable-row" data-href="' . $url . '" data-original-title="' . $row['Idade'] . ' anos" data-container="body"
+											data-toggle="tooltip" data-placement="right" title="">';
+										echo '<td>' . $row['Procedimento'] . '</td>';
+										echo '<td>' . $row['DataProcedimento'] . '</td>';
+										echo '<td>' . $row['ConcluidoProcedimento'] . '</td>';
+										
+									echo '</tr>';
+
+								}
+
+							}
+
+
+							?>
+						</table>
 
 						<!--
 						<table class="table table-condensed table-bordered">
@@ -143,7 +176,7 @@
 								<th><?php if (isset($query['estatisticas'][6])) { echo $query['estatisticas'][6]; } else { echo 0; } ?></th>
 							</tr>
 						</table>
-
+						
 						<table class="table table-condensed table-bordered table-striped">
 							<tr class="active text-active">
 								<th colspan="3" class="col-md-12 text-center"><b>Aniversariantes - <?php echo date('m/Y', time()) ?></b></th>

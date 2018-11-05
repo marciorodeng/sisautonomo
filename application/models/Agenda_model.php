@@ -18,8 +18,8 @@ class Agenda_model extends CI_Model {
                 C.idTab_Status, 
                 COUNT(*) AS Total 
             FROM
-                app.App_Agenda AS A, 
-                app.App_Consulta AS C 
+                App_Agenda AS A, 
+                App_Consulta AS C 
             WHERE 
                 YEAR(DataInicio) = ' . date('Y', time()) . ' AND MONTH(DataInicio) = ' . date('m', time()) . ' AND
                 C.Evento IS NULL AND 
@@ -61,7 +61,7 @@ class Agenda_model extends CI_Model {
 				Empresa,
 				Telefone1				
             FROM 
-                app.App_Cliente
+                App_Cliente
             WHERE 
                 Empresa = ' . $_SESSION['log']['Empresa'] . ' AND
                 (MONTH(DataNascimento) = ' . date('m', time()) . ')
@@ -89,6 +89,37 @@ class Agenda_model extends CI_Model {
         }
     }
 
+	public function procedimento($data) {
+   
+		$query = $this->db->query('
+            SELECT
+				idApp_Procedimento,
+                Procedimento,
+				DataProcedimento,
+				ConcluidoProcedimento
+            FROM
+				App_Procedimento
+            WHERE 
+                Empresa = ' . $_SESSION['log']['Empresa'] . ' AND
+				idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND
+				ConcluidoProcedimento = "N"
+            ORDER BY
+                DataProcedimento DESC
+        ');
+
+        if ($query->num_rows() === FALSE) {
+            return TRUE;
+        }else {
+
+            foreach ($query->result() as $row) {
+				$row->Idade = $this->basico->calcula_idade($row->DataProcedimento);
+				$row->DataProcedimento = $this->basico->mascara_data($row->DataProcedimento, 'barras');
+				$row->ConcluidoProcedimento = $this->basico->mascara_palavra_completa($row->ConcluidoProcedimento, 'NS');
+            }
+            return $query;
+        }
+
+    }	
     public function contatocliente_aniversariantes($data) {
 
         $query = $this->db->query('
