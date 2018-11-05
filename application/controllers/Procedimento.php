@@ -115,7 +115,8 @@ class Procedimento extends CI_Controller {
                 $data['auditoria'] = $this->Basico_model->set_auditoria($data['auditoriaitem'], 'App_Procedimento', 'CREATE', $data['auditoriaitem']);
                 $data['msg'] = '?m=1';
 
-                redirect(base_url() . 'relatorio/procedimento/' . $data['msg']);
+                redirect(base_url() . 'agenda' . $data['msg']);
+				#redirect(base_url() . 'relatorio/procedimento/' . $data['msg']);
                 exit();
             }
         }
@@ -202,7 +203,8 @@ class Procedimento extends CI_Controller {
                     $data['msg'] = '?m=1';
                 }
 
-                redirect(base_url() . 'relatorio/procedimento' . $data['msg']);
+                #redirect(base_url() . 'relatorio/procedimento' . $data['msg']);
+				redirect(base_url() . 'agenda' . $data['msg']);
                 exit();
             }
         }
@@ -223,7 +225,8 @@ class Procedimento extends CI_Controller {
 
         $data['msg'] = '?m=1';
 
-		redirect(base_url() . 'relatorio/procedimento' . $data['msg']);
+		redirect(base_url() . 'agenda' . $data['msg']);
+		#redirect(base_url() . 'relatorio/procedimento' . $data['msg']);
 		exit();
 
         $this->load->view('basico/footer');
