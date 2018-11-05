@@ -3,21 +3,21 @@
 
         <div class="col-md-1"></div>
         <div class="col-md-3">
-            <label for="DataFim">Total das Receitas:</label>
+            <label for="DataFim">Receitas:</label>
             <div class="input-group">
                 <span class="input-group-addon">R$</span>
                 <input type="text" class="form-control" disabled aria-label="Total Entrada" value="<?php echo $report->soma->balanco ?>">
             </div>
         </div>		
 		<div class="col-md-3">
-            <label for="DataFim">Total Recebido:</label>
+            <label for="DataFim">Recebido:</label>
             <div class="input-group">
                 <span class="input-group-addon">R$</span>
                 <input type="text" class="form-control" disabled aria-label="Total Pago" value="<?php echo $report->soma->somarecebido ?>">
             </div>
         </div>
 		<div class="col-md-3">
-            <label for="DataFim">Total a Receber:</label>
+            <label for="DataFim">À Receber:</label>
             <div class="input-group">
                 <span class="input-group-addon">R$</span>
                 <input type="text" class="form-control" disabled aria-label="Total a receber" value="<?php echo $report->soma->somareceber ?>">

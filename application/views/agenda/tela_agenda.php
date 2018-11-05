@@ -52,7 +52,11 @@
 		<div class="panel-body">
 			<div class="form-group">
 				<div class="row">
-					<div id="calendar" class="col-md-12"></div>
+					<div class="col-md-12">
+						<div  style="overflow: auto; height: 680px; "> 
+								<table id="calendar" class="table table-condensed table-bordered table-striped"></table>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -106,10 +110,10 @@
 				<div class="row">
 					<div class="col-md-12">
 						<!--
-						<div style="overflow: auto; width: 640px; height: 200px; border:solid 1px"> 
+						<div style="overflow: auto; width: 640px; height: 200px; border:solid 1px"></div> 
 							<table class="tabela" style="width:800px">
 						-->
-						<div style="overflow: auto; height: 200px; border:solid 1px">
+						<div style="overflow: auto; height: 200px; ">
 							<table class="table table-condensed table-bordered table-striped" >
 								<tr>
 									<th class="active">Tarefa</th>	
