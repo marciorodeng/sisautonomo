@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
 		
-		<div style="overflow: auto; height: 220px; border:solid 1px"> 
+		<div style="overflow: auto; height: 220px;"> 
 			
 			<table class="table table-bordered table-condensed table-striped">
 
@@ -71,7 +71,7 @@
 							$bgcolor = ($report['TotalVenc']->{'M'.$i} < 0) ? 'bg-danger' : 'bg-success';
 							echo '<td class="text-left ' . $bgcolor . '">' . $report['TotalVenc']->{'M'.$i} . '</td>';
 						}
-						$bgcolor = ($report['TotalGeralvenc']->BalancoGeralvenc < 0) ? 'bg-danger' : 'bg-warning';
+						$bgcolor = ($report['TotalGeralvenc']->BalancoGeralvenc < 0) ? 'bg-danger' : 'bg-info';
 						echo '<td class="text-left ' . $bgcolor . '">' . $report['TotalGeralvenc']->BalancoGeralvenc . '</td>';
 						?>
 					</tr>
@@ -83,7 +83,7 @@
 							$bgcolor = ($report['TotalPago']->{'M'.$i} < 0) ? 'bg-danger' : 'bg-info';
 							echo '<td class="text-left ' . $bgcolor . '">' . $report['TotalPago']->{'M'.$i} . '</td>';
 						}
-						$bgcolor = ($report['TotalGeralpago']->BalancoGeralpago < 0) ? 'bg-danger' : 'bg-warning';
+						$bgcolor = ($report['TotalGeralpago']->BalancoGeralpago < 0) ? 'bg-danger' : 'bg-info';
 						echo '<td class="text-left ' . $bgcolor . '">' . $report['TotalGeralpago']->BalancoGeralpago . '</td>';
 						?>
 					</tr>
