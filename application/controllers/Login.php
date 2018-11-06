@@ -130,8 +130,8 @@ class Login extends CI_Controller {
                     $this->basico->erro($msg);
                     $this->load->view('form_login');
                 } else {
-					redirect('acesso');
-					#redirect('agenda');
+					#redirect('acesso');
+					redirect('agenda');
 					#redirect('cliente');
                 }
             }
