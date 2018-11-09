@@ -104,7 +104,7 @@ class Agenda_model extends CI_Model {
 				idSis_Usuario = ' . $_SESSION['log']['id'] . ' AND
 				ConcluidoProcedimento = "N"
             ORDER BY
-                DataProcedimento DESC
+                DataProcedimento ASC
         ');
 
         if ($query->num_rows() === FALSE) {

@@ -32,7 +32,7 @@
 										<div class="panel-heading">
 											<div class="form-group">	
 												<div class="row">
-													<div class="col-md-2">
+													<div class="col-md-3">
 														<label for="TipoDespesa">Tipo de Despesa</label>
 														<select data-placeholder="Selecione uma opção..." class="form-control" <?php echo $readonly; ?>
 																id="TipoDespesa" name="TipoDespesa">
@@ -49,13 +49,13 @@
 															?>
 														</select>
 													</div>
-													<div class="col-md-2">
+													<div class="col-md-3">
 														<label for="Despesa">Despesa</label><br>
 														<input type="text" class="form-control" maxlength="200"
 																name="Despesa" value="<?php echo $despesas['Despesa'] ?>">
 													</div>
 													
-													<div class="col-md-2">
+													<div class="col-md-3">
 														<label for="ValorRestanteDespesas">Valor da Despesa:</label><br>
 														<div class="input-group" id="txtHint">
 															<span class="input-group-addon" id="basic-addon1">R$</span>
@@ -65,13 +65,15 @@
 																   name="ValorRestanteDespesas" value="<?php echo $despesas['ValorRestanteDespesas'] ?>">
 														</div>
 													</div>
-													<div class="col-md-2">
+													<div class="col-md-3">
 														<label for="DataVencimentoDespesas">Dt. Desp./ 1º Venc.</label>
 														<div class="input-group <?php echo $datepicker; ?>">
 															<span class="input-group-addon" disabled>
 																<span class="glyphicon glyphicon-calendar"></span>
 															</span>
 															<input type="text" class="form-control Date" id="DataVencimentoDespesas" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
+																   data-toggle="collapse" onkeyup="calculaParcelasPagaveis()" onchange="calculaParcelasPagaveis()"
+																	data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas"
 																   name="DataVencimentoDespesas" value="<?php echo $despesas['DataVencimentoDespesas']; ?>">															
 														</div>
 													</div>														
@@ -79,7 +81,7 @@
 											</div>		
 											<div class="form-group">
 												<div class="row">																																																										
-													<div class="col-md-2">
+													<div class="col-md-3">
 														<label for="FormaPagamentoDespesas">Forma de Pag.</label>
 														<select data-placeholder="Selecione uma opção..." class="form-control" <?php echo $readonly; ?>
 																id="FormaPagamentoDespesas" name="FormaPagamentoDespesas">
@@ -96,14 +98,14 @@
 															?>
 														</select>
 													</div>
-													<div class="col-md-2">
+													<div class="col-md-3">
 														<label for="QtdParcelasDespesas">Qtd.Prc</label><br>
 														<input type="text" class="form-control Numero" id="QtdParcelasDespesas" maxlength="3" placeholder="0"
 															   data-toggle="collapse" onkeyup="calculaParcelasPagaveis()"
 																	data-target="#Parcelas" aria-expanded="false" aria-controls="Parcelas"
 															   name="QtdParcelasDespesas" value="<?php echo $despesas['QtdParcelasDespesas'] ?>">
 													</div>														
-													<div class="col-md-3">
+													<div class="col-md-4">
 														<label for="ModalidadeDespesas">Modalidade</label><br>
 														<div class="form-group">
 															<div class="btn-block" data-toggle="buttons">
