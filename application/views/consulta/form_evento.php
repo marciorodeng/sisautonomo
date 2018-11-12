@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class="col-sm-7 col-sm-offset-3 col-md-3 col-md-offset-4 main">
 
-			<?php echo validation_errors(); ?>
+			<?php #echo validation_errors(); ?>
 
 			<div class="panel panel-<?php echo $panel; ?>">
 			<?php echo form_open_multipart($form_open_path); ?>	
@@ -29,41 +29,68 @@
 											}
 											?>
 										</select>
+										<?php echo form_error('idApp_Agenda'); ?>
 									</div>
 									<div class="input-inline">
 										<label for="Obs">Evento</label>
 										<textarea class="form-control" id="Obs"
 												 autofocus name="Obs"><?php echo $query['Obs']; ?></textarea>
+									<?php echo form_error('Obs'); ?>
 									</div>																					
-		
-									<label for="Data">Data: </label>												
-									<div class="input-inline <?php echo $datepicker; ?>">
-										<input type="text" class="form-control Date" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
-											   name="Data" value="<?php echo $query['Data']; ?>">
-										<!--<span class="input-group-addon" disabled>
-											<span class="glyphicon glyphicon-calendar"></span>
-										</span>-->
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<div class="row">		
+									<div class="col-md-6">	
+										<label for="Data">Data Início : </label>												
+										<div class="input-group <?php echo $datepicker; ?>">
+											<span class="input-group-addon" disabled>
+												<span class="glyphicon glyphicon-calendar"></span>
+											</span>
+											<input type="text" class="form-control Date" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
+												   name="Data" value="<?php echo $query['Data']; ?>">
+										</div>
+										<?php echo form_error('Data'); ?>
+									</div>	
+									
+									<div class="col-md-6">
+										<label for="Hora">Dàs :</label>
+										<!--<div class="input-group <?php echo $timepicker; ?>">-->
+											<input type="text" class="form-control Time" <?php echo $readonly; ?> maxlength="5"  placeholder="HH:MM"
+												   accept=""name="HoraInicio" value="<?php echo $query['HoraInicio']; ?>">
+											<!--<span class="input-group-addon">
+												<span class="glyphicon glyphicon-time"></span>
+											</span>
+										</div>-->
+									<?php echo form_error('HoraInicio'); ?>
 									</div>
-										
-									<label for="Hora">Hora/ De:</label>												
-									<div class="input-inline <?php echo $timepicker; ?>">
-										<input type="text" class="form-control Time" <?php echo $readonly; ?> maxlength="5"  placeholder="HH:MM"
-											   accept=""name="HoraInicio" value="<?php echo $query['HoraInicio']; ?>">
-										<!--<span class="input-group-addon">
-											<span class="glyphicon glyphicon-time"></span>
-										</span>-->
+									
+									<div class="col-md-6">	
+										<label for="Data2">Data Fim : </label>												
+										<div class="input-group <?php echo $datepicker; ?>">
+											<span class="input-group-addon" disabled>
+												<span class="glyphicon glyphicon-calendar"></span>
+											</span>
+											<input type="text" class="form-control Date" <?php echo $readonly; ?> maxlength="10" placeholder="DD/MM/AAAA"
+												   name="Data2" value="<?php echo $query['Data2']; ?>">
+										</div>
+										<?php echo form_error('Data2'); ?>
 									</div>
-																					
-									<label for="Hora">Até:</label>
-									<div class="input-inline <?php echo $timepicker; ?>">
-										<input type="text" class="form-control Time" <?php echo $readonly; ?> maxlength="5" placeholder="HH:MM"
-											   accept=""name="HoraFim" value="<?php echo $query['HoraFim']; ?>">
-										<!--<span class="input-group-addon">
-											<span class="glyphicon glyphicon-time"></span>
-										</span>-->
+								
+									<div class="col-md-6">		
+										<label for="Hora">Às :</label>
+										<!--<div class="input-group <?php echo $timepicker; ?>">-->
+											<input type="text" class="form-control Time" <?php echo $readonly; ?> maxlength="5" placeholder="HH:MM"
+												   accept=""name="HoraFim" value="<?php echo $query['HoraFim']; ?>">
+											<!--<span class="input-group-addon">
+												<span class="glyphicon glyphicon-time"></span>
+											</span>
+										</div>-->
+									<?php echo form_error('HoraFim'); ?>
 									</div>
 								</div>
-							</div>							
+							</div>						
 							
 							<div class="form-group">
 								<div class="row">

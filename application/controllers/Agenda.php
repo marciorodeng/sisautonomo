@@ -35,6 +35,11 @@ class Agenda extends CI_Controller {
 
         $data['select']['NomeUsuario'] = $this->Relatorio_model->select_usuario();
 
+		$data['datepicker'] = 'DatePicker';
+        $data['timepicker'] = 'TimePicker';
+		$data['collapse'] = '';	
+		$data['collapse1'] = 'class="collapse"';
+		
         $data['query'] = quotes_to_entities($this->input->post(array(
             'NomeUsuario',
         ), TRUE));
