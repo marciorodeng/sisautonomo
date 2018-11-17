@@ -4,7 +4,7 @@
 
 			<div class="col-md-1"></div>
 			<div class="col-md-3">
-				<label for="DataFim">Receitas:</label>
+				<label for="DataFim">Total:</label>
 				<div class="input-group">
 					<span class="input-group-addon">R$</span>
 					<input type="text" class="form-control" disabled aria-label="Total Entrada" value="<?php echo $report->soma->balanco ?>">

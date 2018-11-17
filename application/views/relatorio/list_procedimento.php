@@ -1,48 +1,51 @@
-<div class="container-fluid">
-    <div class="row">
+<div style="overflow: auto; height: 350px; ">	
+	<div class="container-fluid">
+		<div class="row">
 
-        <div>
-			<table class="table table-bordered table-condensed table-striped">	
-				<tfoot>
-                    <tr>
-                        <th colspan="9" class="active">Total: <?php echo $report->num_rows(); ?> resultado(s)</th>
-                    </tr>
-                </tfoot>
-			</table>	
-            <table class="table table-bordered table-condensed table-striped">								
-                <thead>
-                    <tr>
-                        <!--<th class="active">id</th>-->
-                        <th class="active">Ação</th>
-						<th class="active">Data</th>
-						<th class="active">Concl.?</th>
+			<div>
+				
+					<table class="table table-bordered table-condensed table-striped">	
+						<tfoot>
+							<tr>
+								<th colspan="9" class="active">Total: <?php echo $report->num_rows(); ?> resultado(s)</th>
+							</tr>
+						</tfoot>
+					</table>	
+					<table class="table table-bordered table-condensed table-striped">								
+						<thead>
+							<tr>
+								<!--<th class="active">id</th>-->
+								<th class="active">Ação</th>
+								<th class="active">Data</th>
+								<th class="active">Concl.?</th>
 
 
-                    </tr>
-                </thead>
+							</tr>
+						</thead>
 
-				<tbody>
+						<tbody>
 
-                    <?php
-                    foreach ($report->result_array() as $row) {
+							<?php
+							foreach ($report->result_array() as $row) {
 
-                        #echo '<tr>';
-                        echo '<tr class="clickable-row" data-href="' . base_url() . 'procedimento/alterar/' . $row['idApp_Procedimento'] . '">';
-                            #echo '<td>' . $row['idApp_Procedimento'] . '</td>';
-                            echo '<td>' . $row['Procedimento'] . '</td>';
-							echo '<td>' . $row['DataProcedimento'] . '</td>';							
-							echo '<td>' . $row['ConcluidoProcedimento'] . '</td>';
+								#echo '<tr>';
+								echo '<tr class="clickable-row" data-href="' . base_url() . 'procedimento/alterar/' . $row['idApp_Procedimento'] . '">';
+									#echo '<td>' . $row['idApp_Procedimento'] . '</td>';
+									echo '<td>' . $row['Procedimento'] . '</td>';
+									echo '<td>' . $row['DataProcedimento'] . '</td>';							
+									echo '<td>' . $row['ConcluidoProcedimento'] . '</td>';
 
-                        echo '</tr>';
-                    }
-                    ?>
+								echo '</tr>';
+							}
+							?>
 
-                </tbody>
+						</tbody>
 
-            </table>
+					</table>
+				
+			</div>
 
-        </div>
+		</div>
 
-    </div>
-
+	</div>
 </div>

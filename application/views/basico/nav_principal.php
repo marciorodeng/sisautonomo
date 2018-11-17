@@ -78,7 +78,7 @@
 						<li class="btn-toolbar navbar-form" role="toolbar" aria-label="...">														
 							<div class="btn-group">
 								<button type="button" class="btn btn-md btn-warning  dropdown-toggle" data-toggle="dropdown">
-									<span class="glyphicon glyphicon-usd"></span> Transações <span class="caret"></span>
+									<span class="glyphicon glyphicon-usd"></span> Finanças <span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu" role="menu">
 									<li><a href="<?php echo base_url() ?>relatorio/receitas"><span class="glyphicon glyphicon-pencil"></span> Receitas</a></li>							

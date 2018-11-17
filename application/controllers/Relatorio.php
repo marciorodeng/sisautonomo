@@ -279,7 +279,7 @@ class Relatorio extends CI_Controller {
         */
 
 
-        $data['titulo'] = 'Receitas & Recebimentos';
+        $data['titulo'] = 'Receitas';
 
         #run form validation
         if ($this->form_validation->run() !== FALSE) {
@@ -824,7 +824,7 @@ class Relatorio extends CI_Controller {
 		$data['select']['Mespag'] = $this->Relatorio_model->select_mes();
 		$data['select']['Dia'] = $this->Relatorio_model->select_dia();
 
-        $data['titulo'] = 'Despesas & Pagamentos';
+        $data['titulo'] = 'Despesas';
 
         #run form validation
         if ($this->form_validation->run() !== FALSE) {
@@ -3300,7 +3300,7 @@ class Relatorio extends CI_Controller {
 		$data['select']['Dia'] = $this->Relatorio_model->select_dia();
 		$data['select']['Mesvenc'] = $this->Relatorio_model->select_mes();
 		
-        $data['titulo'] = 'Procedimentos';
+        $data['titulo'] = 'Tarefas';
 
         #run form validation
         if ($this->form_validation->run() !== TRUE) {

@@ -12,23 +12,15 @@
 
 				<div class="panel panel-primary">
 
-					<div class="panel-heading"><strong><?php echo $titulo; ?></strong>
-						
+					<div class="panel-heading">
 						<?php echo form_open('relatorio/despesaspag', 'role="form"'); ?>
-						<!--
-						<button class="btn btn-sm btn-info" name="pesquisar" value="0" type="submit">
-							<span class="glyphicon glyphicon-search"></span>Pesquise
-						</button>
-						
-						<a class="btn btn-sm btn-warning" href="<?php echo base_url() ?>relatorio/despesas" role="button"> 
-							<span class="glyphicon glyphicon-pencil"></span> Mensais
-						</a>
-						-->
+						<?php echo $titulo; ?>
+
 						<button  class="btn btn-sm btn-info" type="button" data-toggle="modal" data-loading-text="Aguarde..." data-target=".bs-excluir-modal2-sm">
 							<span class="glyphicon glyphicon-search"></span> Pesquisar
 						</button>
 						<button  class="btn btn-sm btn-danger" type="button" data-toggle="modal" data-loading-text="Aguarde..." data-target=".bs-excluir-modal-sm">
-							<span class="glyphicon glyphicon-plus"></span> Nova Despesa
+							<span class="glyphicon glyphicon-plus"></span> Nova
 						</button>					
 					</div>
 					<div class="panel-body">

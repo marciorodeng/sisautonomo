@@ -12,21 +12,21 @@
 				</div>
 			</div>-->
 			<div class="col-md-3">
-				<label for="DataFim">Total das Despesas:</label>
+				<label for="DataFim">Total:</label>
 				<div class="input-group">
 					<span class="input-group-addon">R$</span>
 					<input type="text" class="form-control" disabled aria-label="Total Entrada" value="<?php echo $report->soma->balanco ?>">
 				</div>
 			</div>		
 			<div class="col-md-3">
-				<label for="DataFim">Total Pago:</label>
+				<label for="DataFim">Pago:</label>
 				<div class="input-group">
 					<span class="input-group-addon">R$</span>
 					<input type="text" class="form-control" disabled aria-label="Total Pago" value="<?php echo $report->soma->somarecebido ?>">
 				</div>
 			</div>
 			<div class="col-md-3">
-				<label for="DataFim">Total a Pagar:</label>
+				<label for="DataFim">À Pagar:</label>
 				<div class="input-group">
 					<span class="input-group-addon">R$</span>
 					<input type="text" class="form-control" disabled aria-label="Total a receber" value="<?php echo $report->soma->somareceber ?>">
