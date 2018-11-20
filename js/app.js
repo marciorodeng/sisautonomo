@@ -2958,7 +2958,7 @@ $('#calendar').fullCalendar({
             url: 'Consulta_json.php', // use the `url` property
         }],
     //allDayDefault: true,
-    defaultView: 'agendaWeek',
+    defaultView: 'month',
     //contentHeight: 700,
     height: 'auto',
     //handleWindowResize: false,
@@ -2967,7 +2967,7 @@ $('#calendar').fullCalendar({
     firstDay: '0',
 	//minTime: '08:00',
     //maxTime: '21:00',
-    minTime: '06:00',
+    minTime: '00:00',
     maxTime: '24:00',
     nowIndicator: true,
     selectable: true,

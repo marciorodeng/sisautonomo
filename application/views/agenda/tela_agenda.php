@@ -17,7 +17,7 @@
 				<span class="glyphicon glyphicon-pencil"> Tarefas</span>
 			</div>
 		</div>
-		<div <?php echo $collapse; ?> id="Tarefas">
+		<div <?php echo $collapse1; ?> id="Tarefas">
 			<div class="panel-body">
 				<div class="form-group">
 					<div class="row">
